@@ -23,6 +23,10 @@ app
   .mount('#app')
 ```
 
+## Example
+
+https://github.com/xNoRain001/undefined-element-test
+
 ## License
 
 MIT
