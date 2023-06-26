@@ -11,17 +11,25 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs } from 'vue';
+import { ref, toRefs } from 'vue'
 
 const props = defineProps<{ modelValue: number }>()
+const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const { modelValue } = toRefs(props)
 
 let prevOffset = 0
 let dragging = false
 const inner = ref<HTMLElement | null>(null)
-const offset = ref(0)
 
 const updateDragState = () => dragging = !dragging
+
+const updateOffset = (e: MouseEvent) => {
+  const { clientX, clientY } = e
+  
+  emit('update:modelValue', modelValue.value + (clientX - prevOffset))
+  prevOffset = clientX
+  inner.value!.style.left = `${ modelValue.value }px`
+}
 
 const addGlobalEventListener = () => {
   const { body } = document
@@ -41,7 +49,6 @@ const mousedownHandler = (e: MouseEvent) => {
   prevOffset = e.clientX
   updateDragState()
   addGlobalEventListener()
-  // emit('update:modelValue')
 }
 
 const mousemoveHandler = (e: MouseEvent) => {
@@ -49,11 +56,7 @@ const mousemoveHandler = (e: MouseEvent) => {
     return
   }
 
-  const { clientX, clientY } = e
-  
-  modelValue.value += clientX - prevOffset
-  prevOffset = clientX
-  inner.value!.style.left = `${ modelValue.value }px`
+  updateOffset(e)
 }
 
 const mouseupHandler = () => {
