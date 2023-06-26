@@ -8,7 +8,9 @@
     "type": "git",
     "url": "https://github.com/xNoRain001/undefined-element.git"
   },
-  "keywords": ["undefined-element"],
+  "keywords": [
+    "undefined-element"
+  ],
   "license": "MIT",
   "devDependencies": {
     "vue": "^3.3.4"
