@@ -1,5 +1,5 @@
 <template>
-  <div class="u-tab-pannel">
+  <div class="u-tab-panel">
     <slot></slot>
   </div>
 </template>

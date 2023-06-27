@@ -14,7 +14,7 @@ const prevActiveKey = ref('')
 onMounted(() => {
   initActiveKey()
   updateTabAttr(activeKey.value, '')
-  updateTabPannelAttr(activeKey.value, '')
+  updateTabpanelAttr(activeKey.value, '')
 })
 
 const initActiveKey = () => {
@@ -22,13 +22,13 @@ const initActiveKey = () => {
   activeKey.value = activeTab.getAttribute('data-key') as string
 }
 
-const updateTabPannelAttr = (activeKey: string, prevActiveKey: string) => {
-  const tabPannels = tabs.value!.parentNode!.querySelector('.u-tab-pannels') as HTMLElement
-  const activeTabPannel = tabPannels.querySelector(`.u-tab-pannel[data-key="${ activeKey }"]`) as HTMLElement
-  const prevActiveTabPannel = tabPannels.querySelector(`.u-tab-pannel[data-key="${ prevActiveKey }"]`)
+const updateTabpanelAttr = (activeKey: string, prevActiveKey: string) => {
+  const tabpanels = tabs.value!.parentNode!.querySelector('.u-tab-panels') as HTMLElement
+  const activeTabpanel = tabpanels.querySelector(`.u-tab-panel[data-key="${ activeKey }"]`) as HTMLElement
+  const prevActiveTabpanel = tabpanels.querySelector(`.u-tab-panel[data-key="${ prevActiveKey }"]`)
   
-  activeTabPannel.setAttribute('data-active', 'true')
-  prevActiveTabPannel?.setAttribute('data-active', 'false')
+  activeTabpanel.setAttribute('data-active', 'true')
+  prevActiveTabpanel?.setAttribute('data-active', 'false')
 }
 
 const getActiveKey = (target: HTMLElement) => {
@@ -66,16 +66,16 @@ const updateActiveKey = (e: Event) => {
   activeKey.value = _activeKey
 
   updateTabAttr(activeKey.value, prevActiveKey.value)
-  updateTabPannelAttr(activeKey.value, prevActiveKey.value)
+  updateTabpanelAttr(activeKey.value, prevActiveKey.value)
 }
 </script>
 
 <style>
-.u-tab-pannels .u-tab-pannel > * {
+.u-tab-panels .u-tab-panel > * {
   display: none;
 }
 
-.u-tab-pannels .u-tab-pannel[data-active="true"] > * {
+.u-tab-panels .u-tab-panel[data-active="true"] > * {
   display: block;
 }
 </style>

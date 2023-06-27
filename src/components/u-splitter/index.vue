@@ -1,6 +1,6 @@
 <template>
   <div ref="container" class="u-splitter-container">
-    <div ref="before" class="before" :style="{ width: `${ modelValue }%` }">
+    <div ref="before" :style="{ width: `${ modelValue }%` }">
       <slot name="before"></slot>
     </div>
     <div 
@@ -11,7 +11,7 @@
     >
       <slot name="splitter"></slot>
     </div>
-    <div class="after">
+    <div class="u-splitter-after">
       <slot name="after"></slot>
     </div>
   </div>
@@ -30,7 +30,6 @@ const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const { modelValue, min, max } = toRefs(props)
 const _min = min?.value || 10
 const _max = max?.value || 90
-console.log(min)
 const before = ref<HTMLElement | null>(null)
 const splitter = ref<HTMLElement | null>(null)
 const container = ref<HTMLElement | null>(null)
@@ -101,7 +100,7 @@ onMounted(() => {
   user-select: none;
 }
 
-.after {
+.u-splitter-after {
   width: 0;
   flex-grow: 1;
 }
