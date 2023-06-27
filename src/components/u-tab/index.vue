@@ -1,6 +1,6 @@
 <template>
   <div class="u-tab">
-    <slot name="default"></slot>
+    <slot></slot>
   </div>
 </template>
 

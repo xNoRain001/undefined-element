@@ -1,6 +1,6 @@
 <template>
   <div ref="tabs" class="u-tabs" @click="updateActiveKey($event)">
-    <slot name="default"></slot>
+    <slot></slot>
   </div>
 </template>
 
