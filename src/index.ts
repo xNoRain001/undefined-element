@@ -7,6 +7,7 @@ import USplitter from './components/u-splitter/index.vue'
 import UTabPannel from './components/u-tab-panel/index.vue'
 import UExpansion from './components/u-expansion/index.vue'
 import UTabPannels from './components/u-tab-panels/index.vue'
+import USliderTrack from './components/u-slider-track/index.vue'
 
 const undefinedElement = {
   install (app) {
@@ -20,6 +21,7 @@ const undefinedElement = {
       .component('UTabPannel', UTabPannel)
       .component('UExpansion', UExpansion)
       .component('UTabPannels', UTabPannels)
+      .component('USliderTrack', USliderTrack)
   }
 }
 
