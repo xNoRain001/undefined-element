@@ -8,7 +8,7 @@
         }" 
       >
       </div>
-      <div class="u-dialog-inner">
+      <div class="u-dialog-inner" :style="style">
         <div>
           <slot name="default"></slot>
         </div>
@@ -25,6 +25,32 @@ const props = withDefaults(defineProps<{
   position?: 'top' | 'right' | 'bottom' | 'left' | 'center'
 }>(), { position: 'center' })
 const { modelValue, position } = toRefs(props)
+
+const style = computed(() => {
+  const _position = position.value
+  const justifyContent = /^center|top|bottom$/.test(_position)
+    ? 'center'
+    : _position === 'left'
+      ? 'start'
+      : _position === 'right'
+        ? 'end'
+        : 'unset'
+  const isCenterOrLeftOrRight = /^center|left|right$/.test(_position)
+  const top = isCenterOrLeftOrRight
+    ? '50%'
+    : _position === 'top'
+      ? '0'
+      : 'unset'
+  const transform = isCenterOrLeftOrRight ? 'translateY(-50%)' : 'unset'
+  const bottom = _position === 'bottom' ? '0' : 'unset'
+
+  return {
+    top,
+    bottom,
+    transform,
+    justifyContent
+  }
+})
 </script>
 
 <style scoped>
@@ -46,7 +72,5 @@ const { modelValue, position } = toRefs(props)
   width: 100%;
   position: fixed;
   display: flex;
-  justify-content: center;
-  top: 0;
 }
 </style>
