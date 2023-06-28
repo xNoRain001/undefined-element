@@ -3,6 +3,7 @@ import UTabs from './components/u-tabs/index.vue'
 import UInput from './components/u-input/index.vue'
 import UDialog from './components/u-dialog/index.vue'
 import USlider from './components/u-slider/index.vue'
+import URating from './components/u-rating/index.vue'
 import USplitter from './components/u-splitter/index.vue'
 import UTabPannel from './components/u-tab-panel/index.vue'
 import UExpansion from './components/u-expansion/index.vue'
@@ -17,6 +18,7 @@ const undefinedElement = {
       .component('UInput', UInput)
       .component('UDialog', UDialog)
       .component('USlider', USlider)
+      .component('URating', URating)
       .component('USplitter', USplitter)
       .component('UTabPannel', UTabPannel)
       .component('UExpansion', UExpansion)
