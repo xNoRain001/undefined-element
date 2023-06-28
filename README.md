@@ -23,9 +23,9 @@ app
   .mount('#app')
 ```
 
-## Example
+## Examples
 
-https://github.com/xNoRain001/undefined-element-test
+<a href="http://120.77.148.28:3000/u-input">clike me</a>
 
 ## License
 
