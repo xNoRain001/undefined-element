@@ -18,17 +18,19 @@
 import throttle from '../../utils/throttle'
 import { ref, toRefs, onMounted } from 'vue'
 
-const props = defineProps<{ 
+const props = withDefaults(defineProps<{ 
   modelValue: number,
   min?: number,
   max?: number
-}>()
+}>(), {
+  min: 0,
+  max: 100
+})
+
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const { min, max, modelValue } = toRefs(props)
-const _min = min?.value || 0
-const _max = max?.value || 100
 const sliderTrack = ref<HTMLElement | null>(null)
-let offset = modelValue.value / _max * 100
+let offset = modelValue.value / max.value * 100
 let prevOffset = 0
 let dragging = false
 let sliderTrackWidth = 0
@@ -41,7 +43,7 @@ const updateOffset = (e: MouseEvent) => {
   
   if (_offset > 0 && _offset < 100) {
     offset = _offset
-    emit('update:modelValue', offset / 100 * _max)
+    emit('update:modelValue', Number((offset / 100 * max.value).toFixed(2)))
     prevOffset = clientX
   }
 }
@@ -93,5 +95,6 @@ onMounted(() => {
 
 .u-slider-track > .u-slider-track-thumb {
   position: absolute;
+  cursor: pointer;
 }
 </style>

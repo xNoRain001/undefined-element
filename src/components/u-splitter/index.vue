@@ -21,15 +21,16 @@
 import throttle from '../../utils/throttle'
 import { ref, toRefs, onMounted } from 'vue'
 
-const props = defineProps<{ 
+const props = withDefaults(defineProps<{ 
   modelValue: number,
   min?: number,
   max?: number
-}>()
+}>(), {
+  min: 10,
+  max: 90
+})
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const { modelValue, min, max } = toRefs(props)
-const _min = min?.value || 10
-const _max = max?.value || 90
 const before = ref<HTMLElement | null>(null)
 const splitter = ref<HTMLElement | null>(null)
 const container = ref<HTMLElement | null>(null)
@@ -45,7 +46,7 @@ const updateOffset = (e: MouseEvent) => {
   const { clientX, clientY } = e
   const offset = Number((modelValue.value + (clientX - prevOffset) / containerWidth * 100).toFixed(2))
   
-  if (offset > _min && offset < _max) {
+  if (offset > min.value && offset < max.value) {
     emit('update:modelValue', offset)
     prevOffset = clientX
   }
