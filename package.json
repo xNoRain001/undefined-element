@@ -1,6 +1,6 @@
 {
   "name": "undefined-element",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "undefined element",
   "main": "./src/index.js",
   "author": "xnorain001",
@@ -9,6 +9,8 @@
     "url": "https://github.com/xNoRain001/undefined-element.git"
   },
   "keywords": [
+    "vue",
+    "component-library",
     "undefined-element"
   ],
   "license": "MIT",
