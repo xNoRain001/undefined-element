@@ -1,5 +1,6 @@
 <template>
   <div 
+    ref="inputContainer"
     class="u-input-container" 
     :class="disabled ? 'u-disabled' : ''" 
     @click="foucsHelper"
@@ -21,18 +22,21 @@
 
 <script lang="ts" setup>
 import { noop, debounce as debounceFn } from '../../utils'
-import { ref, toRefs } from 'vue'
+import { ref, toRefs, onMounted } from 'vue'
 
 const props = withDefaults(defineProps<{
   modelValue?: string,
   placeholder?: string,
   debounce?: string | number,
   readonly?: boolean,
-  disabled?: boolean
+  disabled?: boolean,
+  clearable?: boolean
 }>(), {
+  placeholder: '',
   debounce: 0,
   readonly: false,
-  disabled: false
+  disabled: false,
+  clearable: false
 })
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 const { 
@@ -43,6 +47,7 @@ const {
   placeholder,
 } = toRefs(props)
 const input = ref<HTMLElement | null>(null)
+const inputContainer = ref<HTMLElement | null>(null)
 
 const foucsHelper = () => input.value!.focus()
 
@@ -56,6 +61,20 @@ const debouncedInputHandler = debounce.value
   : handler
 
 const inputHandler = readonly.value ? noop : debouncedInputHandler
+
+const clearContents = () => emit('update:modelValue', '')
+
+const addEventListenerForClearable = () => {
+  const icons = inputContainer.value!.querySelectorAll('*[data-clearable]')
+
+  for (let i = 0, l = icons.length; i < l; i++) {
+    icons[i].addEventListener('click', clearContents)
+  }
+}
+
+onMounted(() => {
+  addEventListenerForClearable()
+})
 </script>
 
 <style scoped>
