@@ -1,5 +1,6 @@
 <template>
   <div 
+    tabindex="-1"
     ref="inputContainer"
     class="u-input-container" 
     :class="disabled ? 'u-disabled' : ''" 
@@ -13,6 +14,8 @@
       :placeholder="placeholder" 
       :value="modelValue" 
       @input="inputHandler"  
+      @focus="focusHandler"
+      @blur="blurHandler"
       class="u-input"
       ref="input" 
       type="text" 
@@ -44,7 +47,12 @@ const props = withDefaults(defineProps<{
   autofocus: false,
   type: 'text'
 })
-const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
+const emit = defineEmits<{ 
+  'update:modelValue': [value: string],
+  'focus': [e: Event],
+  'blur': [e: Event],
+  'clear': [value: string]
+}>()
 const { 
   debounce, 
   readonly,
@@ -55,7 +63,15 @@ const {
 const input = ref<HTMLElement | null>(null)
 const inputContainer = ref<HTMLElement | null>(null)
 
-const foucsHelper = () => input.value!.focus()
+const foucsHelper = (e: Event) => {
+  if (e.target !== input.value) {
+    input.value!.focus()
+  }
+}
+
+const focusHandler = (e: Event) => emit('focus', e)
+
+const blurHandler = (e: Event) => emit('blur', e)
 
 const handler = (e: Event) => emit(
   'update:modelValue', 
@@ -68,7 +84,11 @@ const debouncedInputHandler = debounce.value
 
 const inputHandler = readonly.value ? noop : debouncedInputHandler
 
-const clearContents = () => emit('update:modelValue', '')
+const clearContents = () => {
+  const oldValue = modelValue?.value
+  emit('update:modelValue', '')
+  emit('clear', oldValue)
+}
 
 const addEventListenerForClearable = () => {
   const icons = inputContainer.value!.querySelectorAll('*[data-clearable]')
@@ -85,7 +105,8 @@ onMounted(() => {
 
 <style scoped>
 .u-input-container {
-  cursor: text;
+  display: flex;
+  align-items: center;
 }
 
 .u-input-container.u-disabled {
@@ -94,6 +115,7 @@ onMounted(() => {
 
 .u-input {
   width: 100%;
+  height: 100%;
 }
 
 .u-input:focus {
