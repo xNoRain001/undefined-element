@@ -1,10 +1,16 @@
 <template>
-  <div class="u-input-container" @click="foucsHelper">
+  <div 
+    class="u-input-container" 
+    :class="disabled ? 'u-disabled' : ''" 
+    @click="foucsHelper"
+  >
     <slot name="prefix"></slot>
     <input 
+      :readonly="readonly ? true : false"
+      :disabled="disabled ? true : false"
       :placeholder="placeholder" 
       :value="modelValue" 
-      @input="debouncedInputHandler"  
+      @input="inputHandler"  
       class="u-input"
       ref="input" 
       type="text" 
@@ -14,35 +20,51 @@
 </template>
 
 <script lang="ts" setup>
-import debounceFn from '../../utils/debounce'
+import { noop, debounce as debounceFn } from '../../utils'
 import { ref, toRefs } from 'vue'
 
 const props = withDefaults(defineProps<{
   modelValue?: string,
   placeholder?: string,
   debounce?: string | number,
+  readonly?: boolean,
+  disabled?: boolean
 }>(), {
-  debounce: 0
+  debounce: 0,
+  readonly: false,
+  disabled: false
 })
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
-const { modelValue, placeholder, debounce } = toRefs(props)
+const { 
+  debounce, 
+  readonly,
+  disabled,
+  modelValue, 
+  placeholder,
+} = toRefs(props)
 const input = ref<HTMLElement | null>(null)
 
 const foucsHelper = () => input.value!.focus()
 
-const inputHandler = (e: Event) => emit(
+const handler = (e: Event) => emit(
   'update:modelValue', 
   (e.target as HTMLInputElement).value
 )
 
 const debouncedInputHandler = debounce.value
-  ? debounceFn(inputHandler, Number(debounce.value))
-  : inputHandler
+  ? debounceFn(handler, Number(debounce.value))
+  : handler
+
+const inputHandler = readonly.value ? noop : debouncedInputHandler
 </script>
 
 <style scoped>
 .u-input-container {
   cursor: text;
+}
+
+.u-input-container.u-disabled {
+  cursor: not-allowed;
 }
 
 .u-input {
