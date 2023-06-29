@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <div v-if="modelValue" class="u-dialog">
+    <div v-if="modelValue" class="u-dialog" @click="closeDialog">
       <div 
         class="u-dialog-backdrop" 
         :style="{ 
@@ -8,7 +8,7 @@
         }" 
       >
       </div>
-      <div class="u-dialog-inner" :style="style">
+      <div ref="inner" class="u-dialog-inner" :style="postionStyle">
         <div>
           <slot name="default"></slot>
         </div>
@@ -18,38 +18,84 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, computed } from 'vue'
+import { ref, toRefs, computed } from 'vue'
 
 const props = withDefaults(defineProps<{ 
   modelValue: boolean,
-  position?: 'top' | 'right' | 'bottom' | 'left' | 'center'
-}>(), { position: 'center' })
-const { modelValue, position } = toRefs(props)
+  position?: 'top' | 'right' | 'bottom' | 'left' | 'center',
+  persistent?: boolean
+}>(), { 
+  position: 'center',
+  persistent: false
+})
+const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
+const { modelValue, position, persistent } = toRefs(props)
 
-const style = computed(() => {
-  const _position = position.value
-  const justifyContent = /^center|top|bottom$/.test(_position)
-    ? 'center'
-    : _position === 'left'
-      ? 'start'
-      : _position === 'right'
-        ? 'end'
-        : 'unset'
-  const isCenterOrLeftOrRight = /^center|left|right$/.test(_position)
-  const top = isCenterOrLeftOrRight
-    ? '50%'
-    : _position === 'top'
-      ? '0'
-      : 'unset'
-  const transform = isCenterOrLeftOrRight ? 'translateY(-50%)' : 'unset'
-  const bottom = _position === 'bottom' ? '0' : 'unset'
+const inner = ref<HTMLElement | null>(null)
 
-  return {
-    top,
-    bottom,
-    transform,
-    justifyContent
+const closeDialog = (e: Event) => {
+  const _inner = inner.value as HTMLElement
+
+  if (!persistent.value && !_inner.contains(e.target as HTMLElement)) {
+    emit('update:modelValue', false)
+  } else if (modelValue.value) {
+    // when dialog opened and persistent, need to add animation, 
+    // but don't add to inner node, because animation will clear 
+    // inner node's transform property.
+    const { classList } = _inner.children[0]
+    
+    classList.add('u-animate-scale')
+    setTimeout(() => {
+      classList.remove('u-animate-scale')
+    }, 150)
   }
+}
+
+const positionStrategies = {
+  top () {
+    return {
+      top: 0,
+      left: '50%',
+      transform: 'translateX(-50%)'
+    }
+  },
+
+  right () {
+    return {
+      right: 0,
+      top: '50%',
+      transform: 'translateY(-50%)'
+    }
+  },
+
+  bottom () {
+    return {
+      bottom: 0,
+      left: '50%',
+      transform: 'translateX(-50%)'
+    }
+  },
+
+  left () {
+    return {
+      left: 0,
+      top: '50%',
+      transform: 'translateY(-50%)'
+    }
+  },
+
+  center () {
+    return {
+      left: '50%',
+      top: '50%',
+      transform: 'translate(-50%, -50%)'
+    }
+  }
+}
+
+const postionStyle = computed(() => {
+  const _position = position.value
+  return positionStrategies[_position]()
 })
 </script>
 
@@ -68,9 +114,7 @@ const style = computed(() => {
   transition: background-color .3s;
 }
 
-.u-dialog-inner{
-  width: 100%;
+.u-dialog-inner {
   position: fixed;
-  display: flex;
 }
 </style>
