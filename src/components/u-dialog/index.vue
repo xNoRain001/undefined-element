@@ -36,10 +36,19 @@ const inner = ref<HTMLElement | null>(null)
 const closeDialog = (e: Event) => {
   const _inner = inner.value as HTMLElement
 
-  if (!persistent.value && !_inner.contains(e.target as HTMLElement)) {
+  // dialog is closed by inner element
+  if (!_inner) {
+    return
+  }
+
+  // close dialog by outer element
+  const isInner = _inner.contains(e.target as HTMLElement)
+  const _persistent = persistent.value
+
+  if (!_persistent && !isInner) {
     emit('update:modelValue', false)
-  } else if (modelValue.value) {
-    // when dialog opened and persistent, need to add animation, 
+  } else if (_persistent && !isInner && modelValue.value) {
+    // when dialog is opened and persistent, need to add animation, 
     // but don't add to inner node, because animation will clear 
     // inner node's transform property.
     const { classList } = _inner.children[0]
@@ -94,8 +103,7 @@ const positionStrategies = {
 }
 
 const postionStyle = computed(() => {
-  const _position = position.value
-  return positionStrategies[_position]()
+  return positionStrategies[position.value]()
 })
 </script>
 
