@@ -7,6 +7,7 @@
   >
     <slot name="prefix"></slot>
     <input 
+      :autofocus="autofocus ? true : false"
       :readonly="readonly ? true : false"
       :disabled="disabled ? true : false"
       :placeholder="placeholder" 
@@ -30,13 +31,18 @@ const props = withDefaults(defineProps<{
   debounce?: string | number,
   readonly?: boolean,
   disabled?: boolean,
-  clearable?: boolean
+  clearable?: boolean,
+  autofocus?: boolean,
+  type?: 'text' | 'password' | 'textareae' | 'mail' | 'search' | 'tel' | 'file' 
+  | 'number' | 'url' | 'time' | 'date'
 }>(), {
   placeholder: '',
   debounce: 0,
   readonly: false,
   disabled: false,
-  clearable: false
+  clearable: false,
+  autofocus: false,
+  type: 'text'
 })
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 const { 
