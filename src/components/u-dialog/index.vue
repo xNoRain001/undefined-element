@@ -3,9 +3,7 @@
     <div v-if="modelValue" class="u-dialog" @click="closeDialog">
       <div 
         class="u-dialog-backdrop" 
-        :style="{ 
-          backgroundColor: modelValue ? 'rgba(0, 0, 0, .4)' : 'transparent' 
-        }" 
+        :style="backgroundColorStyle" 
       >
       </div>
       <div ref="inner" class="u-dialog-inner" :style="postionStyle">
@@ -30,7 +28,6 @@ const props = withDefaults(defineProps<{
 })
 const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
 const { modelValue, position, persistent } = toRefs(props)
-
 const inner = ref<HTMLElement | null>(null)
 
 const closeDialog = (e: Event) => {
@@ -102,8 +99,12 @@ const positionStrategies = {
   }
 }
 
-const postionStyle = computed(() => {
-  return positionStrategies[position.value]()
+const postionStyle = computed(() => positionStrategies[position.value]())
+
+const backgroundColorStyle = computed(() => {
+  return {
+    backgroundColor: modelValue.value ? 'rgba(0, 0, 0, .4)' : 'transparent' 
+  }
 })
 </script>
 
