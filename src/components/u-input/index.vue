@@ -3,8 +3,11 @@
     tabindex="-1"
     ref="inputContainer"
     class="u-input-container" 
-    :class="disabled ? 'u-disabled' : ''" 
+    :class="disabled ? 'u-disabled' : ''"
+    :style="focusedStyle"
     @click="foucsHelper"
+    @focus="containerFocusHandler"
+    @blur="containerBlurHandler"
   >
     <slot name="prefix"></slot>
     <input 
@@ -26,7 +29,7 @@
 
 <script lang="ts" setup>
 import { noop, debounce as debounceFn } from '../../utils'
-import { ref, toRefs, onMounted } from 'vue'
+import { ref, toRefs, onMounted, computed, watch } from 'vue'
 
 const props = withDefaults(defineProps<{
   modelValue?: string,
@@ -36,6 +39,7 @@ const props = withDefaults(defineProps<{
   disabled?: boolean,
   clearable?: boolean,
   autofocus?: boolean,
+  focusedBorderColor?: string,
   type?: 'text' | 'password' | 'textareae' | 'mail' | 'search' | 'tel' | 'file' 
   | 'number' | 'url' | 'time' | 'date'
 }>(), {
@@ -45,7 +49,8 @@ const props = withDefaults(defineProps<{
   disabled: false,
   clearable: false,
   autofocus: false,
-  type: 'text'
+  type: 'text',
+  focusedBorderColor: ''
 })
 const emit = defineEmits<{ 
   'update:modelValue': [value: string],
@@ -59,19 +64,51 @@ const {
   disabled,
   modelValue, 
   placeholder,
+  focusedBorderColor
 } = toRefs(props)
 const input = ref<HTMLElement | null>(null)
 const inputContainer = ref<HTMLElement | null>(null)
+const focusedInput = ref(false)
+const focusedInputContainer = ref(false)
 
 const foucsHelper = (e: Event) => {
-  if (e.target !== input.value) {
+  const { target, currentTarget } = e
+
+  if (target === currentTarget) {
     input.value!.focus()
-  }
+  } 
 }
 
-const focusHandler = (e: Event) => emit('focus', e)
+const containerFocusHandler = () => {
+  console.log('@')
+  focusedInputContainer.value = true
+}
 
-const blurHandler = (e: Event) => emit('blur', e)
+const containerBlurHandler = () => {
+  focusedInputContainer.value = false
+}
+
+const focusHandler = (e: Event) => {
+  focusedInput.value = true
+  emit('focus', e)
+}
+
+const blurHandler = (e: Event) => {
+  focusedInput.value = false
+  emit('blur', e)
+}
+
+const focused = computed(() => {
+  return !readonly.value && 
+    !disabled.value &&
+    (focusedInput.value || focusedInputContainer.value)
+})
+
+const focusedStyle = computed(() => {
+  return {
+    borderColor: focused.value ? focusedBorderColor.value : ''
+  }
+})
 
 const handler = (e: Event) => emit(
   'update:modelValue', 
