@@ -23,8 +23,7 @@
         :placeholder="placeholder" 
         :value="modelValue" 
         :style="{ 
-          '--placeholder-color': dynamicInputStyle.placeholderColor,
-          backgroundColor: dynamicInputStyle.backgroundColor 
+          '--placeholder-color': dynamicInputStyle.placeholderColor
         }"
         @input="inputHandler"  
         @focus="focusHandler"
@@ -132,8 +131,7 @@ const dynamicInputStyle = computed(() => {
     hovered: { border: '2px solid black' }
   }
   const { focused, hovered, source, common } = _inputStyle
-
-  return JSON.parse(JSON.stringify(Object.assign(
+  const __inputStlye = JSON.parse(JSON.stringify(Object.assign(
     common as any, 
     focusedInputOrInputContainer.value
       ? focused
@@ -141,6 +139,20 @@ const dynamicInputStyle = computed(() => {
         ? hovered
         : source
   )))
+  const { border, borderTop, borderBottom, borderLeft, boderRight } = __inputStlye
+
+  __inputStlye['--input-container-border'] = border ||
+    borderTop ||
+    boderRight ||
+    borderBottom ||
+    borderLeft
+  delete __inputStlye.border
+  delete __inputStlye.borderBottom
+  delete __inputStlye.boderRight
+  delete __inputStlye.borderLeft
+  delete __inputStlye.top
+
+  return __inputStlye
 })
 
 const handler = (e: Event) => emit(
@@ -177,7 +189,6 @@ onMounted(() => {
 .u-input-wrapper {
   display: flex;
   align-items: center;
-  color: var()
 }
 
 .u-input-container {
@@ -185,6 +196,17 @@ onMounted(() => {
   height: 100%;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.u-input-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border: var(--input-container-border);
 }
 
 .u-input-container.u-disabled,
@@ -195,6 +217,7 @@ onMounted(() => {
 .u-input {
   width: 100%;
   height: 100%;
+  background-color: transparent;
 }
 
 .u-input:focus {
