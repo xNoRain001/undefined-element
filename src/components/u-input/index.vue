@@ -1,5 +1,8 @@
 <template>
-  <div class="u-input-wrapper" :style="{ '--input-height': dynamicInputStyle.height }">
+  <div 
+    class="u-input-wrapper" 
+    :style="{ '--input-wrapper-height': dynamicInputStyle.height }"
+  >
     <div class="u-input-before">
       <slot name="before"></slot>
     </div>
@@ -197,8 +200,11 @@ onMounted(() => {
   display: flex;
   align-items: center;
   position: relative;
+  transition-property: background-color;
+  transition-duration: var(--u-transition-duration);
 }
 
+/* handle text jitter */
 .u-input-container::before {
   content: '';
   position: absolute;
@@ -207,6 +213,8 @@ onMounted(() => {
   bottom: 0;
   top: 0;
   border: var(--input-container-border);
+  transition-property: border-color;
+  transition-duration: var(--u-transition-duration);
 }
 
 .u-input-container.u-disabled,
@@ -230,6 +238,6 @@ onMounted(() => {
 
 .u-input-before,
 .u-input-after {
-  height: var(--input-height);
+  height: var(--input-wrapper-height);
 }
 </style>

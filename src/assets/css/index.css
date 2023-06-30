@@ -15,3 +15,8 @@
 .u-animate-scale {
   animation: u-scale .15s;
 }
+
+:root {
+  --u-transition-duration: .3s
+}
+
