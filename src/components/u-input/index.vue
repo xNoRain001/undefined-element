@@ -1,45 +1,56 @@
 <template>
-  <div 
-    tabindex="-1"
-    ref="inputContainer"
-    class="u-input-container" 
-    :class="disabled ? 'u-disabled' : ''"
-    :style="focusedStyle"
-    @click="foucsHelper"
-    @focus="containerFocusHandler"
-    @blur="containerBlurHandler"
-  >
-    <slot name="prefix"></slot>
-    <input 
-      :autofocus="autofocus ? true : false"
-      :readonly="readonly ? true : false"
-      :disabled="disabled ? true : false"
-      :placeholder="placeholder" 
-      :value="modelValue" 
-      @input="inputHandler"  
-      @focus="focusHandler"
-      @blur="blurHandler"
-      class="u-input"
-      ref="input" 
-      type="text" 
-    />
-    <slot name="suffix"></slot>
+  <div class="u-input-wrapper">
+    <slot name="before"></slot>
+    <div 
+      tabindex="-1"
+      ref="inputContainer"
+      class="u-input-container" 
+      :class="disabled ? 'u-disabled' : ''"
+      :style="dynamicInputStyle"
+      @click="foucsHelper"
+      @focus="containerFocusHandler"
+      @blur="containerBlurHandler"
+      @mouseenter="mouseenterHandler"
+      @mouseleave="mouseleaveHandler"
+    >
+      <slot name="prepend"></slot>
+      <input 
+        :autofocus="autofocus ? true : false"
+        :readonly="readonly ? true : false"
+        :disabled="disabled ? true : false"
+        :placeholder="placeholder" 
+        :value="modelValue" 
+        @input="inputHandler"  
+        @focus="focusHandler"
+        @blur="blurHandler"
+        class="u-input"
+        ref="input" 
+        type="text" 
+      />
+      <slot name="append"></slot>
+    </div>
+    <slot name="after"></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { noop, debounce as debounceFn } from '../../utils'
-import { ref, toRefs, onMounted, computed, watch } from 'vue'
+import { noop, merge, debounce as debounceFn } from '../../utils'
+import { ref, toRefs, computed, onMounted } from 'vue'
 
 const props = withDefaults(defineProps<{
-  modelValue?: string,
+  modelValue: string,
   placeholder?: string,
   debounce?: string | number,
   readonly?: boolean,
   disabled?: boolean,
   clearable?: boolean,
   autofocus?: boolean,
-  focusedBorderColor?: string,
+  inputStyle?: {
+    common?: { [propName: string]: string | number },
+    source?: { [propName: string]: string | number },
+    focused?: { [propName: string]: string | number },
+    hovered?: { [propName: string]: string | number }
+  },
   type?: 'text' | 'password' | 'textareae' | 'mail' | 'search' | 'tel' | 'file' 
   | 'number' | 'url' | 'time' | 'date'
 }>(), {
@@ -50,7 +61,7 @@ const props = withDefaults(defineProps<{
   clearable: false,
   autofocus: false,
   type: 'text',
-  focusedBorderColor: ''
+  inputStyle: () => ({}),
 })
 const emit = defineEmits<{ 
   'update:modelValue': [value: string],
@@ -64,29 +75,30 @@ const {
   disabled,
   modelValue, 
   placeholder,
-  focusedBorderColor
+  inputStyle,
 } = toRefs(props)
 const input = ref<HTMLElement | null>(null)
 const inputContainer = ref<HTMLElement | null>(null)
 const focusedInput = ref(false)
 const focusedInputContainer = ref(false)
+const hoveredInputContainer = ref(false)
 
 const foucsHelper = (e: Event) => {
   const { target, currentTarget } = e
 
+  // if target is not input and container contains target, autofocus.
   if (target === currentTarget) {
     input.value!.focus()
   } 
 }
 
-const containerFocusHandler = () => {
-  console.log('@')
-  focusedInputContainer.value = true
-}
+const containerFocusHandler = () => focusedInputContainer.value = true
 
-const containerBlurHandler = () => {
-  focusedInputContainer.value = false
-}
+const containerBlurHandler = () => focusedInputContainer.value = false
+
+const mouseenterHandler = () => hoveredInputContainer.value = true
+
+const mouseleaveHandler = () => hoveredInputContainer.value = false
 
 const focusHandler = (e: Event) => {
   focusedInput.value = true
@@ -98,16 +110,29 @@ const blurHandler = (e: Event) => {
   emit('blur', e)
 }
 
-const focused = computed(() => {
+const focusedInputOrInputContainer = computed(() => {
   return !readonly.value && 
     !disabled.value &&
     (focusedInput.value || focusedInputContainer.value)
 })
 
-const focusedStyle = computed(() => {
-  return {
-    borderColor: focused.value ? focusedBorderColor.value : ''
-  }
+const dynamicInputStyle = computed(() => {
+  const _inputStyle = merge({ 
+    common: { padding: '0 8px' },
+    source: { border: '2px solid rgba(0, 0, 0, .4)' },
+    focused: { border: '2px solid #3b82f6' },
+    hovered: { border: '2px solid black' }
+  }, inputStyle.value)
+  const { focused, hovered, source, common } = _inputStyle
+
+  return JSON.parse(JSON.stringify(Object.assign(
+    common as any, 
+    focusedInputOrInputContainer.value
+      ? focused
+      : hoveredInputContainer.value
+        ? hovered
+        : source
+  )))
 })
 
 const handler = (e: Event) => emit(
@@ -122,7 +147,7 @@ const debouncedInputHandler = debounce.value
 const inputHandler = readonly.value ? noop : debouncedInputHandler
 
 const clearContents = () => {
-  const oldValue = modelValue?.value
+  const oldValue = modelValue.value
   emit('update:modelValue', '')
   emit('clear', oldValue)
 }
@@ -141,12 +166,20 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.u-input-container {
+.u-input-wrapper {
   display: flex;
   align-items: center;
 }
 
-.u-input-container.u-disabled {
+.u-input-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.u-input-container.u-disabled,
+.u-input-container.u-disabled > .u-input {
   cursor: not-allowed;
 }
 
@@ -158,4 +191,8 @@ onMounted(() => {
 .u-input:focus {
   outline: none;
 }
+/* 
+.u-input:disabled {
+  background-color: none;
+} */
 </style>
