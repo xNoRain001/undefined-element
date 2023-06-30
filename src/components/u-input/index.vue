@@ -20,6 +20,10 @@
         :disabled="disabled ? true : false"
         :placeholder="placeholder" 
         :value="modelValue" 
+        :style="{ 
+          '--placeholder-color': dynamicInputStyle.placeholderColor,
+          backgroundColor: dynamicInputStyle.backgroundColor 
+        }"
         @input="inputHandler"  
         @focus="focusHandler"
         @blur="blurHandler"
@@ -35,7 +39,7 @@
 
 <script lang="ts" setup>
 import { noop, merge, debounce as debounceFn } from '../../utils'
-import { ref, toRefs, computed, onMounted } from 'vue'
+import { ref, toRefs, computed, onMounted, watch } from 'vue'
 
 const props = withDefaults(defineProps<{
   modelValue: string,
@@ -169,6 +173,7 @@ onMounted(() => {
 .u-input-wrapper {
   display: flex;
   align-items: center;
+  color: var()
 }
 
 .u-input-container {
@@ -191,8 +196,8 @@ onMounted(() => {
 .u-input:focus {
   outline: none;
 }
-/* 
-.u-input:disabled {
-  background-color: none;
-} */
+
+.u-input::placeholder {
+  color: var(--placeholder-color);
+}
 </style>
