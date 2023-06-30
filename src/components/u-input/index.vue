@@ -56,8 +56,7 @@ const props = withDefaults(defineProps<{
   clearable?: boolean,
   autofocus?: boolean,
   inputStyle?: {
-    common?: { [propName: string]: string | number },
-    source?: { [propName: string]: string | number },
+    style?: { [propName: string]: string | number },
     focused?: { [propName: string]: string | number },
     hovered?: { [propName: string]: string | number }
   },
@@ -128,32 +127,29 @@ const focusedInputOrInputContainer = computed(() => {
 
 const dynamicInputStyle = computed(() => {
   const _inputStyle = inputStyle?.value || { 
-    common: { padding: '0 8px', placeholderColor: '#dcdfe6' },
-    source: { border: '2px solid rgba(0, 0, 0, .4)' },
+    style: { 
+      border: '2px solid rgba(0, 0, 0, .4)',
+      padding: '0 8px', 
+      placeholderColor: '#dcdfe6'
+    },
     focused: { border: '2px solid #3b82f6' },
     hovered: { border: '2px solid black' }
   }
-  const { focused, hovered, source, common } = _inputStyle
-  const __inputStlye = JSON.parse(JSON.stringify(Object.assign(
-    common as any, 
-    focusedInputOrInputContainer.value
-      ? focused
-      : hoveredInputContainer.value
-        ? hovered
-        : source
-  )))
-  const { border, borderTop, borderBottom, borderLeft, boderRight } = __inputStlye
+  const { focused, hovered, style } = _inputStyle
+  const __inputStlye = {
+    ...style, 
+    ...(
+      focusedInputOrInputContainer.value
+        ? focused
+        : hoveredInputContainer.value
+          ? hovered
+          : {}
+    )
+  }
+  const { border } = __inputStlye
 
-  __inputStlye['--input-container-border'] = border ||
-    borderTop ||
-    boderRight ||
-    borderBottom ||
-    borderLeft
+  __inputStlye['--input-container-border'] = border
   delete __inputStlye.border
-  delete __inputStlye.borderBottom
-  delete __inputStlye.boderRight
-  delete __inputStlye.borderLeft
-  delete __inputStlye.top
 
   return __inputStlye
 })
