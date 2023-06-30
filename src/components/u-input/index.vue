@@ -1,6 +1,8 @@
 <template>
-  <div class="u-input-wrapper">
-    <slot name="before"></slot>
+  <div class="u-input-wrapper" :style="{ '--input-height': dynamicInputStyle.height }">
+    <div class="u-input-before">
+      <slot name="before"></slot>
+    </div>
     <div 
       tabindex="-1"
       ref="inputContainer"
@@ -33,7 +35,9 @@
       />
       <slot name="append"></slot>
     </div>
-    <slot name="after"></slot>
+    <div class="u-input-after">
+      <slot name="after"></slot>
+    </div>
   </div>
 </template>
 
@@ -65,7 +69,7 @@ const props = withDefaults(defineProps<{
   clearable: false,
   autofocus: false,
   type: 'text',
-  inputStyle: () => ({}),
+  // inputStyle: () => ({}),
 })
 const emit = defineEmits<{ 
   'update:modelValue': [value: string],
@@ -121,12 +125,12 @@ const focusedInputOrInputContainer = computed(() => {
 })
 
 const dynamicInputStyle = computed(() => {
-  const _inputStyle = merge({ 
-    common: { padding: '0 8px' },
+  const _inputStyle = inputStyle?.value || { 
+    common: { padding: '0 8px', placeholderColor: '#dcdfe6' },
     source: { border: '2px solid rgba(0, 0, 0, .4)' },
     focused: { border: '2px solid #3b82f6' },
     hovered: { border: '2px solid black' }
-  }, inputStyle.value)
+  }
   const { focused, hovered, source, common } = _inputStyle
 
   return JSON.parse(JSON.stringify(Object.assign(
@@ -199,5 +203,10 @@ onMounted(() => {
 
 .u-input::placeholder {
   color: var(--placeholder-color);
+}
+
+.u-input-before,
+.u-input-after {
+  height: var(--input-height);
 }
 </style>
