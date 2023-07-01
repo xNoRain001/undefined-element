@@ -15,6 +15,7 @@ import undefinedElement from 'undefined-element'
 import { createApp } from 'vue'
 
 import App from './App.vue'
+import 'undefined-element/assets/css/index.css'
 
 const app = createApp(App)
 
