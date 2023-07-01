@@ -6,7 +6,7 @@ import USlider from './components/u-slider/index.vue'
 import URating from './components/u-rating/index.vue'
 import UTooltip from './components/u-tooltip/index.vue'
 import USplitter from './components/u-splitter/index.vue'
-import UTabPannel from './components/u-tab-panel/index.vue'
+import UTabPanel from './components/u-tab-panel/index.vue'
 import UExpansion from './components/u-expansion/index.vue'
 import UTabPanels from './components/u-tab-panels/index.vue'
 import UScrollArea from './components/u-scroll-area/index.vue'
@@ -23,7 +23,7 @@ const undefinedElement = {
       .component('URating', URating)
       .component('UTooltip', UTooltip)
       .component('USplitter', USplitter)
-      .component('UTabPannel', UTabPannel)
+      .component('UTabPanel', UTabPanel)
       .component('UExpansion', UExpansion)
       .component('UTabPanels', UTabPanels)
       .component('UScrollArea', UScrollArea)
