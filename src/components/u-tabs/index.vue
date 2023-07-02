@@ -2,6 +2,8 @@
   <div 
     ref="tabs" 
     class="u-tabs"
+    :style="tabsStyle"
+    :class="tabsClass"
   >
     <slot></slot>
   </div>
@@ -13,17 +15,33 @@ import { tabsKey } from '../../keys'
 
 const props = withDefaults(defineProps<{
    modelValue: string,
-   activeTabStyle?: {}
+   tabsStyle?: { [propName: string]: string | number },
+   tabsClass?: string,
+   tabStyle?: { [propName: string]: string | number },
+   tabClass?: string,
+   activeTabClass?: string
 }>(), {
-  activeTabStyle: () => ({})
+  tabsStyle: () => ({}),
+  tabsClass: '',
+  tabStyle: () => ({}),
+  tabClass: '',
+  activeTabClass: ''
 })
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
-const { modelValue, activeTabStyle } = toRefs(props)
+const { 
+  modelValue, 
+  tabsStyle, 
+  tabStyle, 
+  tabClass, 
+  activeTabClass 
+} = toRefs(props)
 const updateModel = (name: string) => emit('update:modelValue', name)
 
 provide(tabsKey, {
   modelValue,
   updateModel,
-  activeTabStyle
+  tabStyle,
+  tabClass,
+  activeTabClass
 })
 </script>

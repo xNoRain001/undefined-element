@@ -1,5 +1,9 @@
 <template>
-  <div class="u-tab-panels" :style="pannelStyle">
+  <div 
+    class="u-tab-panels" 
+    :style="pannelStyle"
+    :class="pannelClass"
+  >
     <slot></slot>
   </div>
 </template>
@@ -10,13 +14,13 @@ import { pannelsKey } from '../../keys'
 
 const props = withDefaults(defineProps<{
   modelValue: string,
-  pannelStyle?: {}
+  pannelStyle?: { [propName: string]: string | number }
+  pannelClass?: string
 }>(), {
-  pannelStyle: () => ({})
+  pannelStyle: () => ({}),
+  pannelClass: ''
 })
-const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
-const { modelValue, pannelStyle } = toRefs(props)
-const updateModel = (name: string) => emit('update:modelValue', name)
+const { modelValue, pannelStyle, pannelClass } = toRefs(props)
 
 provide(pannelsKey, modelValue)
 </script>
