@@ -28,7 +28,7 @@ const {
 } = inject(tabsKey) as {
   modelValue: Ref<string>
   updateModel: Function,
-  tabStyle: {},
+  tabStyle: Ref<{ [propName: string]: string | number }>,
   tabClass: Ref<string>,
   activeTabClass: Ref<string>
 }

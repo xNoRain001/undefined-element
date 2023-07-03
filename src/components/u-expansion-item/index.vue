@@ -9,11 +9,11 @@
       <slot name="header"></slot>
     </div>
     <div 
-      ref="expansionContent" 
+      ref="content" 
       :style="{ 
         ...contentStyle,
         height: modelValue.includes(name)
-          ? `${ expansionContent?.scrollHeight }px` || '100%' 
+          ? `${ content?.scrollHeight }px` || '100%' 
           : '0' 
       }" 
       class="u-expansion-item-content"
@@ -41,13 +41,13 @@ const {
 } = inject(expansionKey) as {
   modelValue: Ref<string>
   updateModel: Function,
-  headerStyle: {},
+  headerStyle: Ref<{ [propName: string]: string | number }>,
   headerClass: Ref<string>,
   activeHeaderClass: Ref<string>,
-  contentStyle: {},
+  contentStyle: Ref<{ [propName: string]: string | number }>,
   contentClass: Ref<string>,
 }
-const expansionContent = ref<HTMLElement | null>(null)
+const content = ref<HTMLElement | null>(null)
 
 const clickHandler = () => {
   updateModel(name)
