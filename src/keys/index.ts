@@ -13,6 +13,8 @@ const pannelsKey: InjectionKey<Ref<string>> = Symbol()
 const expansionKey: InjectionKey<{
   modelValue: string[],
   updateModel: Function,
+  itemStyle: Ref<{ [propName: string]: string | number }>,
+  itemClass: Ref<string>,
   headerStyle: Ref<{ [propName: string]: string | number }>,
   headerClass: Ref<string>,
   activeHeaderClass: Ref<string>

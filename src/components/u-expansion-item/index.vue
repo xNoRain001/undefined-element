@@ -1,5 +1,9 @@
 <template>
-  <div class="u-expansion-item">
+  <div 
+    class="u-expansion-item"
+    :class="itemClass"
+    :style="itemStyle"
+  >
     <div 
       @click="clickHandler" 
       class="u-expansion-item-header"
@@ -33,6 +37,8 @@ const { name } = useAttrs()
 const { 
   modelValue, 
   updateModel, 
+  itemStyle,
+  itemClass,
   headerStyle, 
   headerClass, 
   activeHeaderClass,
@@ -41,6 +47,8 @@ const {
 } = inject(expansionKey) as {
   modelValue: Ref<string>
   updateModel: Function,
+  itemStyle: Ref<{ [propName: string]: string | number }>,
+  itemClass: Ref<string>,
   headerStyle: Ref<{ [propName: string]: string | number }>,
   headerClass: Ref<string>,
   activeHeaderClass: Ref<string>,
