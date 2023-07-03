@@ -1,7 +1,7 @@
 <template>
   <div 
     class="u-tabs"
-    :style="tabsStyle"
+    :style="style"
     :class="tabsClass"
   >
     <slot></slot>
@@ -14,14 +14,14 @@ import { tabsKey } from '../../keys'
 
 const props = withDefaults(defineProps<{
    modelValue: string,
-   tabsStyle?: { [propName: string]: string | number },
-   tabsClass?: string,
+   style?: { [propName: string]: string | number },
+   class?: string,
    tabStyle?: { [propName: string]: string | number },
    tabClass?: string,
    activeTabClass?: string
 }>(), {
-  tabsStyle: () => ({}),
-  tabsClass: '',
+  style: () => ({}),
+  class: '',
   tabStyle: () => ({}),
   tabClass: '',
   activeTabClass: ''
@@ -29,7 +29,8 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 const { 
   modelValue, 
-  tabsStyle, 
+  style, 
+  class: tabsClass,
   tabStyle, 
   tabClass, 
   activeTabClass 

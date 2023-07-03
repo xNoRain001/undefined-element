@@ -3,7 +3,7 @@
     <div 
       @click="clickHandler" 
       class="u-expansion-item-header"
-      :class="headerClass"
+      :class="_headerClass"
       :style="headerStyle"
     >
       <slot name="header"></slot>
@@ -35,6 +35,7 @@ const {
   updateModel, 
   headerStyle, 
   headerClass, 
+  activeHeaderClass,
   contentStyle,
   contentClass 
 } = inject(expansionKey) as {
@@ -42,6 +43,7 @@ const {
   updateModel: Function,
   headerStyle: {},
   headerClass: Ref<string>,
+  activeHeaderClass: Ref<string>,
   contentStyle: {},
   contentClass: Ref<string>,
 }
@@ -50,6 +52,12 @@ const expansionContent = ref<HTMLElement | null>(null)
 const clickHandler = () => {
   updateModel(name)
 }
+
+const expanded = computed(() => modelValue.includes(name))
+
+const _headerClass = computed(() => {
+  return `${ headerClass.value }${ expanded.value ? ` ${ activeHeaderClass.value }` : '' }`
+})
 </script>
 
 <style scoped>

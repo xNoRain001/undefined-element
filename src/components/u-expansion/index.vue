@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<{
    class?: string,
    headerStyle?: { [propName: string]: string | number },
    headerClass?: string,
+   activeHeaderClass?: string,
    contentStyle?: { [propName: string]: string | number },
    contentClass?: string
 }>(), {
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<{
   class: '',
   headerStyle: () => ({}),
   headerClass: '',
+  activeHeaderClass: '',
   contentStyle: () => ({}),
   contentClass: ''
 })
@@ -34,6 +36,7 @@ const {
   class: expansionClass,
   headerStyle, 
   headerClass, 
+  activeHeaderClass,
   contentStyle, 
   contentClass 
 } = toRefs(props)
@@ -54,6 +57,7 @@ provide(expansionKey, {
   updateModel,
   headerStyle,
   headerClass,
+  activeHeaderClass,
   contentStyle,
   contentClass
 })

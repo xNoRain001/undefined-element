@@ -15,6 +15,7 @@ const expansionKey: InjectionKey<{
   updateModel: Function,
   headerStyle: {},
   headerClass: Ref<string>,
+  activeHeaderClass: Ref<string>
   contentStyle: {},
   contentClass: Ref<string>,
 }> = Symbol()
