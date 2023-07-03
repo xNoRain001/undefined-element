@@ -9,5 +9,14 @@ const tabsKey: InjectionKey<{
 }> = Symbol()
 
 const pannelsKey: InjectionKey<Ref<string>> = Symbol()
+
+const expansionKey: InjectionKey<{
+  modelValue: string[],
+  updateModel: Function,
+  headerStyle: {},
+  headerClass: Ref<string>,
+  contentStyle: {},
+  contentClass: Ref<string>,
+}> = Symbol()
   
-export { tabsKey, pannelsKey }
+export { tabsKey, pannelsKey, expansionKey }

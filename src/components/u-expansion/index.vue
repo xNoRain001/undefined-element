@@ -1,42 +1,60 @@
 <template>
-  <div class="u-expansion">
-    <div @click="clickHandler" class="u-expansion-header">
-      <slot name="header"></slot>
-    </div>
-    <div 
-      ref="expansionContent" 
-      :style="{ 
-        height: modelValue 
-          ? `${ expansionContent?.scrollHeight }px` || '100%' 
-          : '0' 
-      }" 
-      class="u-expansion-content"
-    >
-      <slot name="content"></slot>
-    </div>
+  <div 
+    class="u-expansion"
+    :style="style"
+    :class="expansionClass"
+  >
+    <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs } from 'vue'
+import { toRefs, provide } from 'vue'
+import { expansionKey } from '../../keys'
 
-const props = defineProps<{ modelValue: boolean }>()
-const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
-const { modelValue } = toRefs(props)
-const expansionContent = ref<HTMLElement | null>(null)
+const props = withDefaults(defineProps<{
+   modelValue: string[],
+   style?: { [propName: string]: string | number },
+   class?: string,
+   headerStyle?: { [propName: string]: string | number },
+   headerClass?: string,
+   contentStyle?: { [propName: string]: string | number },
+   contentClass?: string
+}>(), {
+  style: () => ({}),
+  class: '',
+  headerStyle: () => ({}),
+  headerClass: '',
+  contentStyle: () => ({}),
+  contentClass: ''
+})
+const { 
+  modelValue,
+  style,
+  class: expansionClass,
+  headerStyle, 
+  headerClass, 
+  contentStyle, 
+  contentClass 
+} = toRefs(props)
 
-const clickHandler = () => {
-  emit('update:modelValue', !modelValue.value)
+const updateModel = (name: string) => {
+  const expanded = modelValue.value
+  const index = expanded.indexOf(name)
+
+  if (index >= 0) {
+    expanded.splice(index, 1)
+  } else {
+    expanded.push(name)
+  }
 }
+
+provide(expansionKey, {
+  modelValue: modelValue.value,
+  updateModel,
+  headerStyle,
+  headerClass,
+  contentStyle,
+  contentClass
+})
 </script>
-
-<style scoped>
-.u-expansion-header {
-  cursor: pointer;
-}
-
-.u-expansion-content {
-  transition: height var(--u-transition-duration);
-  overflow-y: hidden;
-}
-</style>

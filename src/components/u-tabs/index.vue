@@ -1,6 +1,5 @@
 <template>
   <div 
-    ref="tabs" 
     class="u-tabs"
     :style="tabsStyle"
     :class="tabsClass"
