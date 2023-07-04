@@ -1,3 +1,7 @@
+:root {
+  --u-transition-duration: .3s
+}
+
 @keyframes u-scale {
   from {
     transform: scale(1)
@@ -16,7 +20,16 @@
   animation: u-scale .15s;
 }
 
-:root {
-  --u-transition-duration: .3s
+@keyframes u-shake {
+  from {
+    top: '-100%'
+  }
+
+  to {
+    top: 0
+  }
 }
 
+.u-animate-shake {
+  animation: u-shake .3s;
+}
