@@ -1,7 +1,7 @@
 <template>
-  <div ref="tooltipContainer">
+  <div ref="containerRef">
     <Teleport to="body">
-      <div ref="tooltip" class="u-tooltip">
+      <div ref="tooltipRef" class="u-tooltip">
         <slot></slot>
       </div>
     </Teleport>
@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, onMounted } from 'vue'
+import { ref, toRefs, reactive, onMounted, watch } from 'vue'
 
 const props = withDefaults(defineProps<{ 
   position?: 'top' | 'right' | 'bottom' | 'left'
@@ -17,9 +17,8 @@ const props = withDefaults(defineProps<{
   position: 'bottom'
 })
 const { position } = toRefs(props)
-const tooltip = ref<HTMLElement | null>(null)
-const tooltipContainer = ref<HTMLElement | null>(null)
-console.log(position.value)
+const tooltipRef = ref<HTMLElement | null>(null)
+const containerRef = ref<HTMLElement | null>(null)
 
 const displayTooltip = (
   target: HTMLElement,
@@ -36,10 +35,13 @@ const displayTooltip = (
   const _top = _position === 'top' 
     ? top - height 
     : /^left|right$/.test(_position)
-      ? top
+      ? top + (bottom - top) / 2 - height / 2 // center
       : bottom
 
-  tooltip.value!.style.cssText = `
+  const { style } = tooltipRef.value as HTMLElement
+
+  style.cssText = `
+    z-index: 99;
     opacity: 1;
     top: ${ _top }px;
     left: ${ _left }px;
@@ -47,19 +49,15 @@ const displayTooltip = (
 }
 
 const hideTooltip = () => {
-  tooltip.value!.style.opacity = '0'
+  const { style } = tooltipRef.value as HTMLElement
 
-  setTimeout(() => {
-    tooltip.value!.style.cssText = `
-      top: 0;
-      left: 0;
-    `
-  }, 300)
+  style.zIndex = '0'
+  style.opacity = '0'
 }
 
 const addEventListeners = (target: HTMLElement) => {
   // TODO: dynamic content
-  const { clientWidth, clientHeight } = tooltip.value as HTMLElement
+  const { clientWidth, clientHeight } = tooltipRef.value as HTMLElement
   
   target.addEventListener('mouseenter', () => {
     displayTooltip(target, clientWidth, clientHeight)
@@ -71,15 +69,14 @@ const addEventListeners = (target: HTMLElement) => {
 }
 
 onMounted(() => {
-  const parent = tooltipContainer.value!.parentNode as HTMLElement
-  addEventListeners(parent)
+  addEventListeners(containerRef.value!.parentNode as HTMLElement)
 })
 </script>
 
 <style scoped>
 .u-tooltip {
   opacity: 0;
-  transition: opacity .3s;
+  transition: opacity var(--u-transition-duration);
   overflow-y: hidden;
   position: absolute;
 }
