@@ -13,13 +13,8 @@
       <slot name="header"></slot>
     </div>
     <div 
-      ref="content" 
-      :style="{ 
-        ...contentStyle,
-        height: modelValue.includes(name)
-          ? `${ content?.scrollHeight }px` || '100%' 
-          : '0' 
-      }" 
+      ref="contentRef" 
+      :style="_contentStyle" 
       class="u-expansion-item-content"
       :class="contentClass"
     >
@@ -29,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, inject } from 'vue'
+import { ref, inject, computed } from 'vue'
 import { expansionKey } from '../../keys'
 import type { Ref } from 'vue'
 
@@ -45,7 +40,7 @@ const {
   contentStyle,
   contentClass 
 } = inject(expansionKey) as {
-  modelValue: Ref<string>
+  modelValue: string[],
   updateModel: Function,
   itemStyle: Ref<{ [propName: string]: string | number }>,
   itemClass: Ref<string>,
@@ -55,17 +50,23 @@ const {
   contentStyle: Ref<{ [propName: string]: string | number }>,
   contentClass: Ref<string>,
 }
-const content = ref<HTMLElement | null>(null)
+const contentRef = ref<HTMLElement | null>(null)
+const expanded = computed(() => modelValue.includes(name))
+const _contentStyle = computed(() => {
+  return {
+    ...contentStyle,
+    height: expanded.value
+      ? `${ contentRef.value?.scrollHeight }px` 
+      : '0'
+  }
+})
+const _headerClass = computed(() => {
+  return `${ headerClass.value }${ expanded.value ? ` ${ activeHeaderClass.value }` : '' }`
+})
 
 const clickHandler = () => {
   updateModel(name)
 }
-
-const expanded = computed(() => modelValue.includes(name))
-
-const _headerClass = computed(() => {
-  return `${ headerClass.value }${ expanded.value ? ` ${ activeHeaderClass.value }` : '' }`
-})
 </script>
 
 <style scoped>
