@@ -19,17 +19,3 @@
 .u-animate-scale {
   animation: u-scale .15s;
 }
-
-@keyframes u-shake {
-  from {
-    top: '-100%'
-  }
-
-  to {
-    top: 0
-  }
-}
-
-.u-animate-shake {
-  animation: u-shake .3s;
-}

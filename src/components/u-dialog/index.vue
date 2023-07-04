@@ -107,13 +107,14 @@ const backgroundColorStyle = computed(() => ({
   backgroundColor: modelValue.value ? 'rgba(0, 0, 0, .4)' : 'transparent' 
 }))
 
+// TODO: add animation
 watch(modelValue, v => {
   if (v) {
     _modelValue.value = v
   } else {
-    setTimeout(() => {
+    // setTimeout(() => {
       _modelValue.value = v
-    }, 300)
+    // }, 300)
   }
 })
 </script>
