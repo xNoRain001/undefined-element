@@ -115,7 +115,7 @@ const backgroundColorStyle = computed(() => {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 99;
 }
 .u-dialog-backdrop {
   width: 100%;
