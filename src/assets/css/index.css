@@ -2,7 +2,91 @@
   --u-transition-duration: .3s
 }
 
-@keyframes u-scale {
+@keyframes u-animate-expansion-item {
+  from {
+    height: var(--u-expansion-item-height-start)
+  }
+
+  to {
+    height: var(--u-expansion-item-height-end)
+  }
+}
+
+.u-animate-expansion-item {
+  animation: u-animate-expansion-item var(--u-transition-duration);
+}
+
+@keyframes u-animate-dialog-inner-top {
+  from {
+    top: var(--u-dialog-inner-top-start);
+  }
+
+  to {
+    top: var(--u-dialog-inner-top-end);
+  }
+}
+
+.u-animate-dialog-inner-top {
+  animation: u-animate-dialog-inner-top var(--u-transition-duration);
+}
+
+@keyframes u-animate-dialog-inner-right {
+  from {
+    right: var(--u-dialog-inner-right-start);
+  }
+
+  to {
+    right: var(--u-dialog-inner-right-end);
+  }
+}
+
+.u-animate-dialog-inner-right {
+  animation: u-animate-dialog-inner-right var(--u-transition-duration);
+}
+
+@keyframes u-animate-dialog-inner-bottom {
+  from {
+    bottom: var(--u-dialog-inner-bottom-start);
+  }
+
+  to {
+    bottom: var(--u-dialog-inner-bottom-end);
+  }
+}
+
+.u-animate-dialog-inner-bottom {
+  animation: u-animate-dialog-inner-bottom var(--u-transition-duration);
+}
+
+@keyframes u-animate-dialog-inner-left {
+  from {
+    left: var(--u-dialog-inner-left-start);
+  }
+
+  to {
+    left: var(--u-dialog-inner-left-end);
+  }
+}
+
+.u-animate-dialog-inner-left {
+  animation: u-animate-dialog-inner-left var(--u-transition-duration);
+}
+
+@keyframes u-animate-dialog-inner-center {
+  from {
+    opacity: var(--u-dialog-inner-center-start);
+  }
+
+  to {
+    opacity: var(--u-dialog-inner-center-end);
+  }
+}
+
+.u-animate-dialog-inner-center {
+  animation: u-animate-dialog-inner-center .3s;
+}
+
+@keyframes u-animate-dialog-inner-persistent {
   from {
     transform: scale(1)
   }
@@ -16,20 +100,20 @@
   }
 }
 
-.u-animate-scale {
-  animation: u-scale .15s;
+.u-animate-dialog-inner-persistent {
+  animation: u-animate-dialog-inner-persistent .15s;
 }
 
-@keyframes u-expansion-animation {
+@keyframes u-animate-dialog-backdrop {
   from {
-    height: var(--u-expansion-height-start)
+    background-color: var(--u-dialog-backdrop-bg-start);
   }
 
   to {
-    height: var(--u-expansion-height-end)
+    background-color: var(--u-dialog-backdrop-bg-end);
   }
 }
 
-.u-animate-expansion {
-  animation: u-expansion-animation var(--u-transition-duration);
+.u-animate-dialog-backdrop {
+  animation: u-animate-dialog-backdrop var(--u-transition-duration);
 }

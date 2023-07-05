@@ -25,7 +25,10 @@
 
 <script lang="ts" setup>
 import { ref, inject, computed, watch } from 'vue'
+
 import { expansionKey } from '../../keys'
+import { genCSSVariables } from '../../utils'
+
 import type { Ref } from 'vue'
 
 const { name } = useAttrs()
@@ -53,15 +56,21 @@ const {
 const contentRef = ref<HTMLElement | null>(null)
 const expanded = computed(() => modelValue.includes(name))
 const _contentStyle = computed(() => {
-  const scrollHeight = `${ contentRef.value?.scrollHeight }px`
-  const _expanded = expanded.value
+  const value1 = '0'
+  const value2 = `${ contentRef.value?.scrollHeight }px`
+  // 100% for dynamic height
+  const styleValue = expanded.value ? '100%' : '0'
+  const { startValue, endValue } = genCSSVariables(
+    styleValue === '100%' ? value2 : value1, 
+    value1, 
+    value2
+  )
   
   return {
     ...contentStyle,
-    // for dynamic height
-    height: _expanded ? '100%' : '0',
-    '--u-expansion-height-start': _expanded ? '0' : scrollHeight,
-    '--u-expansion-height-end': _expanded ? scrollHeight : '0'
+    height: styleValue,
+    '--u-expansion-item-height-start': startValue,
+    '--u-expansion-item-height-end': endValue
   }
 })
 const _headerClass = computed(() => {
@@ -75,11 +84,27 @@ const _headerClass = computed(() => {
 const clickHandler = () => updateModel(name)
 
 watch(expanded, () => {
-  contentRef.value?.classList.add('u-animate-expansion')
+  const { classList } = contentRef.value as HTMLElement
+
+  classList.add('u-animate-expansion-item')
   setTimeout(() => {
-    contentRef.value?.classList.remove('u-animate-expansion')
+    classList.remove('u-animate-expansion-item')
   }, 300) 
 })
+
+// This is a possible solution to replace animation，but need to resolve
+// browser rendering queue.
+// watch(expanded, v => {
+//   height.value = `${ contentRef.value?.scrollHeight }px`
+
+//   if (v) {
+//     setTimeout(() => {
+//       height.value = '100%'
+//     }, 300)
+//   } else {
+//     height.value = '0'
+//   }
+// })
 </script>
 
 <style scoped>
