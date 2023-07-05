@@ -19,3 +19,17 @@
 .u-animate-scale {
   animation: u-scale .15s;
 }
+
+@keyframes u-expansion-animation {
+  from {
+    height: var(--u-expansion-height-start)
+  }
+
+  to {
+    height: var(--u-expansion-height-end)
+  }
+}
+
+.u-animate-expansion {
+  animation: u-expansion-animation var(--u-transition-duration);
+}

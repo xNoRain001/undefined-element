@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, computed } from 'vue'
+import { ref, inject, computed, watch } from 'vue'
 import { expansionKey } from '../../keys'
 import type { Ref } from 'vue'
 
@@ -53,20 +53,33 @@ const {
 const contentRef = ref<HTMLElement | null>(null)
 const expanded = computed(() => modelValue.includes(name))
 const _contentStyle = computed(() => {
+  const scrollHeight = `${ contentRef.value?.scrollHeight }px`
+  const _expanded = expanded.value
+  
   return {
     ...contentStyle,
-    height: expanded.value
-      ? `${ contentRef.value?.scrollHeight }px` 
-      : '0'
+    // for dynamic height
+    height: _expanded ? '100%' : '0',
+    '--u-expansion-height-start': _expanded ? '0' : scrollHeight,
+    '--u-expansion-height-end': _expanded ? scrollHeight : '0'
   }
 })
 const _headerClass = computed(() => {
-  return `${ headerClass.value }${ expanded.value ? ` ${ activeHeaderClass.value }` : '' }`
+  return `${ headerClass.value }${ 
+    expanded.value 
+      ? ` ${ activeHeaderClass.value }` 
+      : '' 
+  }`
 })
 
-const clickHandler = () => {
-  updateModel(name)
-}
+const clickHandler = () => updateModel(name)
+
+watch(expanded, () => {
+  contentRef.value?.classList.add('u-animate-expansion')
+  setTimeout(() => {
+    contentRef.value?.classList.remove('u-animate-expansion')
+  }, 300) 
+})
 </script>
 
 <style scoped>
@@ -75,7 +88,6 @@ const clickHandler = () => {
 }
 
 .u-expansion-item-content {
-  transition: height var(--u-transition-duration);
   overflow-y: hidden;
 }
 </style>
