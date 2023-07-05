@@ -83,7 +83,7 @@
 }
 
 .u-animate-dialog-inner-center {
-  animation: u-animate-dialog-inner-center .3s;
+  animation: u-animate-dialog-inner-center var(--u-transition-duration);
 }
 
 @keyframes u-animate-dialog-inner-persistent {
@@ -116,4 +116,18 @@
 
 .u-animate-dialog-backdrop {
   animation: u-animate-dialog-backdrop var(--u-transition-duration);
+}
+
+@keyframes u-animate-tooltip {
+  from {
+    opacity: var(--u-tooltip-opacity-start);
+  }
+
+  to {
+    opacity: var(--u-tooltip-opacity-end);
+  }
+}
+
+.u-animate-tooltip {
+  animation: u-animate-tooltip var(--u-transition-duration);
 }

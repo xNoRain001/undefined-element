@@ -99,15 +99,16 @@ const positionStrategies = {
 
 const positionStyle = computed(() => {
   const _position = position.value
+  const _modelValue = modelValue.value
   const value1 = '0'
   const value2 = '-100%'
-  const styleValue = modelValue.value ? value1 : value2
+  const styleValue = _modelValue ? value1 : value2
   const { startValue, endValue } = genCSSVariables(styleValue, value1, value2)
 
   // for center
   const value3 = '1'
   const value4 = '0'
-  const opacityValue = modelValue.value ? value3 : value4
+  const opacityValue = _modelValue ? value3 : value4
   const { 
     startValue: startValue2, 
     endValue: endValue2 
