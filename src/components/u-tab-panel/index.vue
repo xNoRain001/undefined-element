@@ -17,6 +17,6 @@ import type { Ref } from 'vue'
 const modelValue = inject(panelsKey) as Ref<string>
 const { name } = useAttrs()
 const panelStyle = computed(() => ({ 
-  display: name === modelValue ? 'block' : 'none' 
+  display: name === modelValue.value ? 'block' : 'none' 
 }))
 </script>
