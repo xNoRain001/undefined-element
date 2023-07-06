@@ -8,7 +8,7 @@
   >
     <div 
       class="u-rating-icon-container"
-      v-for="i in max" 
+      v-for="i in Number(max)" 
       :key="i" 
       :data-index="i - 1"
       :style="{ color: i <= modelValue ? activeColor : color }"
@@ -23,14 +23,16 @@ import { ref, toRefs } from 'vue'
 
 import { throttle } from '../../utils'
 
-const props = defineProps<{ 
-  max: number, 
+const props = withDefaults(defineProps<{ 
+  max: number | string, 
+  color?: string,
   modelValue: number,
-  activeColor: string,
-  color: string
-}>()
-const { max, modelValue, activeColor, color } = toRefs(props)
-const _modelValue = modelValue.value
+  activeColor?: string
+}>(), {
+  color: '#000',
+  activeColor: '#eab308'
+})
+const { max, color, modelValue, activeColor } = toRefs(props)
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const ratingRef = ref<HTMLElement | null>(null)
 
