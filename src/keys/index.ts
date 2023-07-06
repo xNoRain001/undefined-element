@@ -21,5 +21,9 @@ const expansionKey: InjectionKey<{
   contentStyle: Ref<{ [propName: string]: string | number }>,
   contentClass: Ref<string>,
 }> = Symbol()
-  
-export { tabsKey, pannelsKey, expansionKey }
+
+export { 
+  tabsKey, 
+  pannelsKey, 
+  expansionKey 
+}

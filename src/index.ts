@@ -10,7 +10,6 @@ import UTabPanel from './components/u-tab-panel/index.vue'
 import UExpansion from './components/u-expansion/index.vue'
 import UTabPanels from './components/u-tab-panels/index.vue'
 import UScrollArea from './components/u-scroll-area/index.vue'
-import USliderTrack from './components/u-slider-track/index.vue'
 import UExpansionItem from './components/u-expansion-item/index.vue'
 
 const undefinedElement = {
@@ -28,7 +27,6 @@ const undefinedElement = {
       .component('UExpansion', UExpansion)
       .component('UTabPanels', UTabPanels)
       .component('UScrollArea', UScrollArea)
-      .component('USliderTrack', USliderTrack)
       .component('UExpansionItem', UExpansionItem)
   }
 }
