@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed, onMounted } from 'vue'
+import { ref, toRefs, computed } from 'vue'
 
 import { throttle } from '../../utils'
 

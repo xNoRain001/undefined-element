@@ -10,7 +10,8 @@
 
 <script lang="ts" setup>
 import { toRefs, provide } from 'vue'
-import { pannelsKey } from '../../keys'
+
+import { panelsKey } from '../../keys'
 
 const props = withDefaults(defineProps<{
   modelValue: string,
@@ -22,5 +23,5 @@ const props = withDefaults(defineProps<{
 })
 const { modelValue, pannelStyle, pannelClass } = toRefs(props)
 
-provide(pannelsKey, modelValue)
+provide(panelsKey, modelValue)
 </script>

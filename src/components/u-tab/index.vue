@@ -12,24 +12,25 @@
 
 <script lang="ts" setup>
 import { inject, computed, useAttrs } from 'vue'
+
 import { tabsKey } from '../../keys'
+
 import type { Ref } from 'vue'
 
 const { name } = useAttrs()
 const actived = computed(() => name === modelValue.value)
-
 // TODO: declare better type
 const { 
-  modelValue, 
-  updateModel, 
   tabStyle, 
   tabClass, 
+  modelValue, 
+  updateModel, 
   activeTabClass 
 } = inject(tabsKey) as {
-  modelValue: Ref<string>
-  updateModel: Function,
   tabStyle: Ref<{ [propName: string]: string | number }>,
   tabClass: Ref<string>,
+  updateModel: Function,
+  modelValue: Ref<string>,
   activeTabClass: Ref<string>
 }
 
@@ -42,7 +43,9 @@ const updateActiveTab = () => {
 }
 
 const _tabClass = computed(() => {
-  return `${ tabClass.value }${ actived.value ? ` ${ activeTabClass.value }` : '' }`
+  return `${ tabClass.value }${ 
+    actived.value ? ` ${ activeTabClass.value }` : '' 
+  }`
 })
 </script>
 

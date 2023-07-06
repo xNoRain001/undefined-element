@@ -1,17 +1,22 @@
 <template>
   <div 
     class="u-tab-panel" 
-    :style="{ display: name === modelValue ? 'block' : 'none' }"
+    :style="panelStyle"
   >
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { inject, useAttrs } from 'vue'
-import { pannelsKey } from '../../keys'
+import { inject, computed, useAttrs } from 'vue'
+
+import { panelsKey } from '../../keys'
+
 import type { Ref } from 'vue'
 
+const modelValue = inject(panelsKey) as Ref<string>
 const { name } = useAttrs()
-const modelValue = inject(pannelsKey) as Ref<string>
+const panelStyle = computed(() => ({ 
+  display: name === modelValue ? 'block' : 'none' 
+}))
 </script>

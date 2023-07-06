@@ -10,15 +10,16 @@
 
 <script lang="ts" setup>
 import { toRefs, provide } from 'vue'
+
 import { tabsKey } from '../../keys'
 
 const props = withDefaults(defineProps<{
-   modelValue: string,
-   style?: { [propName: string]: string | number },
-   class?: string,
-   tabStyle?: { [propName: string]: string | number },
-   tabClass?: string,
-   activeTabClass?: string
+  style?: { [propName: string]: string | number },
+  class?: string,
+  tabStyle?: { [propName: string]: string | number },
+  tabClass?: string,
+  modelValue: string,
+  activeTabClass?: string
 }>(), {
   style: () => ({}),
   class: '',
@@ -28,20 +29,20 @@ const props = withDefaults(defineProps<{
 })
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 const { 
-  modelValue, 
   style, 
   class: tabsClass,
   tabStyle, 
   tabClass, 
+  modelValue, 
   activeTabClass 
 } = toRefs(props)
 const updateModel = (name: string) => emit('update:modelValue', name)
 
 provide(tabsKey, {
-  modelValue,
-  updateModel,
   tabStyle,
   tabClass,
+  modelValue,
+  updateModel,
   activeTabClass
 })
 </script>

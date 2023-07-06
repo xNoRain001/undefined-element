@@ -1,6 +1,7 @@
 <template>
   <div ref="containerRef">
     <Teleport to="body">
+      <!-- don't merge -->
       <div ref="tooltipRef" class="u-tooltip" :style="{
         ...tooltipStyle,
         top
@@ -22,12 +23,12 @@ const props = withDefaults(defineProps<{
 }>(), {
   position: 'bottom'
 })
-const { position } = toRefs(props)
-const tooltipRef = ref<HTMLElement | null>(null)
-const containerRef = ref<HTMLElement | null>(null)
+const top = ref('0')
 const parent = ref<HTMLElement | null>(null)
 const visible = ref(false)
-const top = ref('0')
+const tooltipRef = ref<HTMLElement | null>(null)
+const containerRef = ref<HTMLElement | null>(null)
+const { position } = toRefs(props)
 // TODO: waiting
 let waiting = false
 let proxyTop = '0'
