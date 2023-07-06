@@ -8,7 +8,10 @@
       >
       </div>
       <div ref="innerRef" class="u-dialog-inner" :style="positionStyle">
-        <slot name="default"></slot>
+        <!-- this is a container for persistent -->
+        <div>
+          <slot name="default"></slot>
+        </div>
       </div>
     </div>
   </Teleport>
@@ -16,7 +19,9 @@
 
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed } from 'vue'
+
 import { genCSSVariables } from '../../utils'
+import { useAddAnimation } from '../../composables'
 
 const props = withDefaults(defineProps<{ 
   modelValue: boolean,
@@ -50,12 +55,9 @@ const closeDialog = (e: Event) => {
     // when dialog is opened and persistent, need to add animation, 
     // but don't add to inner node, because animation will clear 
     // inner node's transform property.
-    const { classList } = _inner.children[0]
-    
-    classList.add('u-animate-dialog-inner-persistent')
-    setTimeout(() => {
-      classList.remove('u-animate-dialog-inner-persistent')
-    }, 150)
+    useAddAnimation(
+      _inner.children[0], 'u-animate-dialog-inner-persistent', 150
+    )
   }
 }
 
@@ -145,17 +147,13 @@ const backgroundColorStyle = computed(() => {
 })
 
 watch(modelValue, v => {
-  const { classList } = innerRef.value as HTMLElement
-  const { classList: classList2 } = backdropRef.value as HTMLElement
   const _position = position.value
 
-  classList.add(`u-animate-dialog-inner-${ _position }`)
-  classList2.add('u-animate-dialog-backdrop')
-  
-  setTimeout(() => {
-    classList.remove(`u-animate-dialog-inner-${ _position }`)
-    classList2.remove('u-animate-dialog-backdrop')
-  }, 300)
+  useAddAnimation(
+    innerRef.value as HTMLElement, 
+    `u-animate-dialog-inner-${ _position }`
+  )
+  useAddAnimation(backdropRef.value as HTMLElement, 'u-animate-dialog-backdrop')
 
   if (v) {
     _modelValue.value = v
