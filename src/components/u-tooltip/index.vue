@@ -1,7 +1,10 @@
 <template>
   <div ref="containerRef">
     <Teleport to="body">
-      <div ref="tooltipRef" class="u-tooltip" :style="tooltipStyle">
+      <div ref="tooltipRef" class="u-tooltip" :style="{
+        ...tooltipStyle,
+        top
+      }">
         <slot></slot>
       </div>
     </Teleport>
@@ -12,6 +15,7 @@
 import { ref, toRefs, computed, onMounted, watch } from 'vue'
 
 import { genCSSVariables } from '../../utils'
+import { useAddAnimation } from '../../composables'
 
 const props = withDefaults(defineProps<{ 
   position?: 'top' | 'right' | 'bottom' | 'left'
@@ -23,6 +27,10 @@ const tooltipRef = ref<HTMLElement | null>(null)
 const containerRef = ref<HTMLElement | null>(null)
 const parent = ref<HTMLElement | null>(null)
 const visible = ref(false)
+const top = ref('0')
+// TODO: waiting
+let waiting = false
+let proxyTop = '0'
 
 const addEventListeners = (target: HTMLElement) => {
   target.addEventListener('mouseenter', () => visible.value = true)
@@ -101,9 +109,21 @@ const tooltipStyle = computed(() => {
   const value2 = '0'
   const opacityValue = _visible ? '1' : '0'
   const { startValue, endValue } = genCSSVariables(opacityValue, value1, value2)
+  const style = {
+    left: '',
+    zIndex: '99',
+    opacity: opacityValue,
+    '--u-tooltip-opacity-start': startValue,
+    '--u-tooltip-opacity-end': endValue
+  }
 
-  if (_visible) {
-    const { clientWidth, clientHeight } = tooltipRef.value as HTMLElement
+  const _tooltipRef = tooltipRef.value
+
+  if (!_tooltipRef) {
+    proxyTop = '0'
+    style.left = '0'
+  } else {
+    const { clientWidth, clientHeight } = _tooltipRef
     const _position = position.value
     const { top, right, bottom, left } = parent.value!.getBoundingClientRect()
     const centerX = left + (right - left) / 2 - clientWidth / 2
@@ -112,31 +132,23 @@ const tooltipStyle = computed(() => {
       clientWidth, clientHeight, top, right, bottom, left, centerX, centerY
     )
 
-    return {
-      zIndex: '99',
-      opacity: opacityValue,
-      top: `${ _top }px`,
-      left: `${ _left }px`,
-      '--u-tooltip-opacity-start': startValue,
-      '--u-tooltip-opacity-end': endValue
-    }
-  } else {
-    return {
-      zIndex: '0',
-      opacity: opacityValue,
-      '--u-tooltip-opacity-start': startValue,
-      '--u-tooltip-opacity-end': endValue
-    }
+    proxyTop = `${ _top }px`
+    style.left = `${ _left }px`
   }
+
+  return style
 })
 
-watch(visible, () => {
-  // const { classList } = tooltipRef.value as HTMLElement
-
-  // classList.add('u-animate-tooltip')
-  // setTimeout(() => {
-  //   classList.remove('u-animate-tooltip')
-  // }, 300)
+watch(visible, v => {
+  useAddAnimation(tooltipRef.value as HTMLElement, 'u-animate-tooltip')
+  
+  if (!v) {
+    setTimeout(() => {
+      top.value = '-100%'
+    }, 300)
+  } else {
+    top.value = proxyTop
+  }
 })
 
 onMounted(() => {
