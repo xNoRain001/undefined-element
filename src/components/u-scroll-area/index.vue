@@ -18,18 +18,18 @@
         <slot></slot>
       </div>
     </div>
-    <div class="u-scroll-area-bar-y" ref="barYRef" @click="clickHandler">
-      <div 
-        ref="thumbYRef" 
-        class="u-scroll-area-thumb-y" 
-        :style="{ height: `${ thumbHeight }px` }"
-      ></div>
-    </div>
-    <div class="u-scroll-area-bar-x" ref="barXRef">
+    <div class="u-scroll-area-bar-x" ref="barXRef" @click="clickBarXHandler">
       <div 
         ref="thumbXRef" 
         class="u-scroll-area-thumb-x" 
         :style="{ width: `${ thumbWidth }px` }"
+      ></div>
+    </div>
+    <div class="u-scroll-area-bar-y" ref="barYRef" @click="clickBarYHandler">
+      <div 
+        ref="thumbYRef" 
+        class="u-scroll-area-thumb-y" 
+        :style="{ height: `${ thumbHeight }px` }"
       ></div>
     </div>
   </div>
@@ -128,10 +128,12 @@ const mouseupHandler = () => {
   dragging = false
 }
 
-const clickHandler = (e: Event) => {
+const clickBarYHandler = (e: Event) => {
   const { target, layerY }: { target: HTMLElement, layerY: number } = e as any
 
-  if (target !== barYRef.value) {
+  const _barYRef = barYRef.value
+
+  if (target !== _barYRef) {
     return
   }
 
@@ -172,6 +174,55 @@ const clickHandler = (e: Event) => {
 
   flag = true
   _containerRef.scrollTop = (scrollHeight - containerHeight) * rate
+  setTimeout(() => flag = false)
+}
+
+// TODO: unknown bug
+const clickBarXHandler = (e: Event) => {
+  const { target, layerX }: { target: HTMLElement, layerX: number } = e as any
+  const _barXRef = barXRef.value
+
+  if (target !== _barXRef) {
+    return
+  }
+
+  const _thumbXRef = thumbXRef.value as HTMLElement
+  const { style } = _thumbXRef
+  const oldLeft = (parseInt(style.left) || 0)
+  const { clientWidth } = _thumbXRef // or thumbWidth
+  const { clientWidth: barWidth } = barXRef.value as HTMLElement
+  let newLeft = 0
+
+  if (layerX > (oldLeft + clientWidth)) {
+    // scroll right
+    newLeft = oldLeft + (layerX - clientWidth / 2)
+
+    const maxLeft = barWidth - clientWidth
+
+    // remaining space less than the thumb width
+    if (newLeft > maxLeft) {
+      newLeft = maxLeft
+    }
+  } else {
+    // scroll left
+    if (layerX > clientWidth) {
+      // remaining space greater than the thumb width, keep the center of the 
+      // thumb on layerX
+      newLeft = (layerX - clientWidth / 2)
+    } else {
+      // remaining space less than the thumb width
+      newLeft = 0
+    }
+  }
+
+  style.left = `${ newLeft }px`
+
+  const rate = Number((newLeft / (barWidth - clientWidth)).toFixed(2))
+  const _containerRef = containerRef.value as HTMLElement
+  const { scrollWidth, clientWidth: containerWidth } = _containerRef
+
+  flag = true
+  _containerRef.scrollLeft = (scrollWidth - containerWidth) * rate
   setTimeout(() => flag = false)
 }
 
