@@ -1,14 +1,17 @@
 <template>
   <div 
-    ref="rating" 
+    ref="ratingRef"
     class="u-rating" 
     @click="clickHandler" 
     @mousemove="mousemoveHandler"
+    @mouseleave="mouseleaveHandler"
   >
     <div 
+      class="u-rating-icon-container"
       v-for="i in max" 
       :key="i" 
-      :data-key="i"
+      :data-index="i - 1"
+      :style="{ color: i <= modelValue ? activeColor : color }"
     >
       <slot></slot>
     </div>
@@ -17,81 +20,70 @@
 
 <script lang="ts" setup>
 import { ref, toRefs } from 'vue'
-import throttle from '../../utils/throttle'
+
+import { throttle } from '../../utils'
 
 const props = defineProps<{ 
   max: number, 
   modelValue: number,
   activeColor: string,
-  defaultColor: string
+  color: string
 }>()
-const { max, modelValue, activeColor, defaultColor } = toRefs(props)
+const { max, modelValue, activeColor, color } = toRefs(props)
+const _modelValue = modelValue.value
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
-const rating = ref<HTMLElement | null>(null)
-let practicalScore = modelValue.value
-let currentScore = practicalScore
+const ratingRef = ref<HTMLElement | null>(null)
 
-const getScore = (target: HTMLElement) => {
-  let score = '0'
+const fillIcons = (endIndex: number) => {
+  const { children } = ratingRef.value as HTMLElement
 
-  while (
-    target !== rating.value && 
-    !(score = target.getAttribute('data-key') as string)
-  ) {
+  for (let i = 0; i <= endIndex; i++) {
+    (children[i] as HTMLElement).style.color = activeColor.value
+  }
+
+  for (let i = endIndex + 1, l = children.length; i < l; i++) {
+    (children[i] as HTMLElement).style.color = color.value
+  }
+}
+
+const getIndex = (target: HTMLElement) => {
+  while (target.tagName !== 'DIV') {
     target = target.parentNode as HTMLElement
   }
 
-  return Number(score)
-}
-
-const fillIcons = (score, iconContainers) => {
-  for (let i = 0; i <= score - 1; i++) {
-    iconContainers[i].querySelector('svg')!.setAttribute('fill', activeColor.value)
-  }
-}
-
-const unfillIcons = (score, iconContainers) => {
-  for (let i = score; i <= max.value - 1; i++) {
-    iconContainers[i].querySelector('svg')!.setAttribute('fill', defaultColor.value)
-  }
-}
-
-const updateScore = () => {
-  practicalScore = currentScore
-  emit('update:modelValue', practicalScore)
+  return Number(target.getAttribute('data-index'))
 }
 
 const clickHandler = (e: Event) => {
-  if (e.target === rating.value) {
+  const { target, currentTarget }: {
+    target: HTMLElement,
+    currentTarget: HTMLElement
+  } = e as any
+
+  if (target === currentTarget) {
     return
   }
 
-  updateScore()
-}
-
-const restoreFilledIcons = (iconContainers: HTMLCollection) => {
-  fillIcons(practicalScore, iconContainers)
-  unfillIcons(practicalScore, iconContainers)
+  const index = getIndex(target)
+  emit('update:modelValue', index + 1)
 }
 
 const mousemoveHandler = throttle((e: MouseEvent) => {
-  const { target, currentTarget } = e
-  const iconContainers = (currentTarget as HTMLElement).children
+  const { target, currentTarget }: {
+    target: HTMLElement,
+    currentTarget: HTMLElement
+  } = e as any
 
-  // @ts-ignore
-  if (target === currentTarget && practicalScore) {
-    restoreFilledIcons(iconContainers)
+  if (target === currentTarget) {
+    fillIcons(modelValue.value - 1)
     return
   }
 
-  const score = getScore(target as HTMLElement)
-
-  // score: 1-5
-  // HTMLCollection: 0-4
-  fillIcons(score, iconContainers)
-  unfillIcons(score, iconContainers)
-  currentScore = score
+  const index = getIndex(target) 
+  fillIcons(index)
 }, 200)
+
+const mouseleaveHandler = () => fillIcons(modelValue.value - 1)
 </script>
 
 <style scoped>
@@ -99,7 +91,7 @@ const mousemoveHandler = throttle((e: MouseEvent) => {
   display: flex;
 }
 
-.u-rating > div > *[data-active="true"] {
-  fill: red
+.u-rating-icon-container {
+  cursor: pointer;
 }
 </style>
