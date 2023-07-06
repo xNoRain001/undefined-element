@@ -10,19 +10,20 @@
 
 <script lang="ts" setup>
 import { toRefs, provide } from 'vue'
+
 import { expansionKey } from '../../keys'
 
 const props = withDefaults(defineProps<{
-   modelValue: string[],
-   style?: { [propName: string]: string | number },
-   class?: string,
-   itemStyle?: { [propName: string]: string | number },
-   itemClass?: string,
-   headerStyle?: { [propName: string]: string | number },
-   headerClass?: string,
-   activeHeaderClass?: string,
-   contentStyle?: { [propName: string]: string | number },
-   contentClass?: string
+  style?: { [propName: string]: string | number },
+  class?: string,
+  modelValue: string[],
+  itemStyle?: { [propName: string]: string | number },
+  itemClass?: string,
+  headerStyle?: { [propName: string]: string | number },
+  headerClass?: string,
+  contentStyle?: { [propName: string]: string | number },
+  contentClass?: string,
+  activeHeaderClass?: string
 }>(), {
   style: () => ({}),
   class: '',
@@ -30,21 +31,21 @@ const props = withDefaults(defineProps<{
   itemClass: '',
   headerStyle: () => ({}),
   headerClass: '',
-  activeHeaderClass: '',
   contentStyle: () => ({}),
-  contentClass: ''
+  contentClass: '',
+  activeHeaderClass: ''
 })
 const { 
-  modelValue,
   style,
   class: expansionClass,
+  modelValue,
   itemStyle,
   itemClass,
   headerStyle, 
   headerClass, 
-  activeHeaderClass,
   contentStyle, 
-  contentClass 
+  contentClass,
+  activeHeaderClass
 } = toRefs(props)
 
 const updateModel = (name: string) => {
@@ -59,14 +60,14 @@ const updateModel = (name: string) => {
 }
 
 provide(expansionKey, {
-  modelValue: modelValue.value,
-  updateModel,
   itemStyle,
   itemClass,
+  modelValue: modelValue.value,
+  updateModel,
   headerStyle,
   headerClass,
-  activeHeaderClass,
   contentStyle,
-  contentClass
+  contentClass,
+  activeHeaderClass,
 })
 </script>

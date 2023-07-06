@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, computed, watch } from 'vue'
+import { ref, watch, inject, computed, useAttrs } from 'vue'
 
 import { expansionKey } from '../../keys'
 import { genCSSVariables } from '../../utils'
@@ -32,30 +32,30 @@ import { useAddAnimation } from '../../composables'
 
 import type { Ref } from 'vue'
 
-const { name } = useAttrs()
+const name = useAttrs().name as string
 const { 
-  modelValue, 
-  updateModel, 
   itemStyle,
   itemClass,
+  modelValue, 
+  updateModel, 
   headerStyle, 
   headerClass, 
-  activeHeaderClass,
   contentStyle,
-  contentClass 
+  contentClass, 
+  activeHeaderClass
 } = inject(expansionKey) as {
-  modelValue: string[],
-  updateModel: Function,
   itemStyle: Ref<{ [propName: string]: string | number }>,
   itemClass: Ref<string>,
+  modelValue: string[],
+  updateModel: Function,
   headerStyle: Ref<{ [propName: string]: string | number }>,
   headerClass: Ref<string>,
-  activeHeaderClass: Ref<string>,
   contentStyle: Ref<{ [propName: string]: string | number }>,
   contentClass: Ref<string>,
+  activeHeaderClass: Ref<string>
 }
-const contentRef = ref<HTMLElement | null>(null)
 const expanded = computed(() => modelValue.includes(name))
+const contentRef = ref<HTMLElement | null>(null)
 const _contentStyle = computed(() => {
   const _contentRef = contentRef.value
   const value1 = '0'
@@ -87,13 +87,6 @@ const clickHandler = () => updateModel(name)
 
 watch(expanded, () => {
   useAddAnimation(contentRef.value as HTMLElement, 'u-animate-expansion-item')
-  
-  // const { classList } = contentRef.value as HTMLElement
-
-  // classList.add('u-animate-expansion-item')
-  // setTimeout(() => {
-  //   classList.remove('u-animate-expansion-item')
-  // }, 300) 
 })
 
 // This is a possible solution to replace animation，but need to resolve

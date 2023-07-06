@@ -24,15 +24,15 @@ import { genCSSVariables } from '../../utils'
 import { useAddAnimation } from '../../composables'
 
 const props = withDefaults(defineProps<{ 
-  modelValue: boolean,
   position?: 'top' | 'right' | 'bottom' | 'left' | 'center',
+  modelValue: boolean,
   persistent?: boolean
 }>(), { 
   position: 'center',
   persistent: false
 })
 const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
-const { modelValue, position, persistent } = toRefs(props)
+const { position, modelValue, persistent } = toRefs(props)
 const innerRef = ref<HTMLElement | null>(null)
 const backdropRef = ref<HTMLElement | null>()
 const _modelValue = ref(modelValue.value)
@@ -56,7 +56,9 @@ const closeDialog = (e: Event) => {
     // but don't add to inner node, because animation will clear 
     // inner node's transform property.
     useAddAnimation(
-      _inner.children[0], 'u-animate-dialog-inner-persistent', 150
+      _inner.children[0] as HTMLElement, 
+      'u-animate-dialog-inner-persistent', 
+      150
     )
   }
 }
