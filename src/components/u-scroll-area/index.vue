@@ -1,33 +1,33 @@
 <template>
+  <!-- @mousedown="mousedownHandler"
+  @mousemove="mousemoveHandler"
+  @mouseup="mouseupHandler" -->
   <div 
     class="u-scroll-area" 
     :style="{
       width,
       height
     }"
-    @mousedown="mousedownHandler"
-    @mousemove="mousemoveHandler"
-    @mouseup="mouseupHandler"
   >
     <div 
       @scroll="scrollHandler" 
-      ref="container" 
+      ref="containerRef" 
       class="u-scroll-area-container"
     >
       <div class="u-scroll-area-content">
         <slot></slot>
       </div>
     </div>
-    <div class="u-scroll-area-bar-y" ref="barY">
+    <div class="u-scroll-area-bar-y" ref="barYRef" @click="clickHandler">
       <div 
-        ref="thumbY" 
+        ref="thumbYRef" 
         class="u-scroll-area-thumb-y" 
         :style="{ height: `${ thumbHeight }px` }"
       ></div>
     </div>
-    <div class="u-scroll-area-bar-x" ref="barX">
+    <div class="u-scroll-area-bar-x" ref="barXRef">
       <div 
-        ref="thumbX" 
+        ref="thumbXRef" 
         class="u-scroll-area-thumb-x" 
         :style="{ width: `${ thumbWidth }px` }"
       ></div>
@@ -46,11 +46,11 @@ const props = withDefaults(defineProps<{
   height: '100%'
 })
 const { width, height } = toRefs(props)
-const barX = ref<HTMLElement | null>(null)
-const barY = ref<HTMLElement | null>(null)
-const thumbX = ref<HTMLElement | null>(null)
-const thumbY = ref<HTMLLIElement | null>(null)
-const container = ref<HTMLElement | null>(null)
+const barXRef = ref<HTMLElement | null>(null)
+const barYRef = ref<HTMLElement | null>(null)
+const thumbXRef = ref<HTMLElement | null>(null)
+const thumbYRef = ref<HTMLLIElement | null>(null)
+const containerRef = ref<HTMLElement | null>(null)
 const thumbHeight = ref(0)
 const thumbWidth = ref(0)
 
@@ -60,7 +60,7 @@ const initThumbSize = () => {
     clientWidth,
     scrollHeight, 
     clientHeight
-  } = container.value as HTMLElement
+  } = containerRef.value as HTMLElement
 
   if (scrollHeight > clientHeight) {
     thumbHeight.value = clientHeight * (clientHeight / scrollHeight)
@@ -71,7 +71,13 @@ const initThumbSize = () => {
   }
 }
 
+let flag = false
+
 const scrollHandler = (e: Event) => {
+  if (flag) {
+    return
+  }
+
   const { 
     scrollTop,
     scrollLeft,
@@ -87,8 +93,8 @@ const scrollHandler = (e: Event) => {
   const offsetX = Number((scrollLeft / scrollAreaWidth * thumnScrollableWidth).toFixed(2))
   const offsetY = Number((scrollTop / scrollAreaHeight * thumnScrollableHeight).toFixed(2))
 
-  thumbX.value!.style.left = `${ offsetX }px`
-  thumbY.value!.style.top = `${ offsetY }px`
+  thumbXRef.value!.style.left = `${ offsetX }px`
+  thumbYRef.value!.style.top = `${ offsetY }px`
 }
 
 let dragging = false
@@ -97,12 +103,12 @@ let prevOffset = 0
 const mousedownHandler = (e: MouseEvent) => {
   const {target} = e
 
-  if (target === thumbX.value || target === thumbY.value) {
+  if (target === thumbXRef.value || target === thumbYRef.value) {
     dragging = true
     prevOffset = e.clientX
   }
 
-  if (target === barX.value || target === barY.value) {
+  if (target === barXRef.value || target === barYRef.value) {
   }
 }
 
@@ -114,12 +120,59 @@ const mousemoveHandler = (e: MouseEvent) => {
   const { clientX } = e
   const offset = clientX - prevOffset
 
-  thumbX.value!.style.left = `${ parseInt(thumbX.value!.style.left) || 0 + offset }px`
+  thumbXRef.value!.style.left = `${ parseInt(thumbXRef.value!.style.left) || 0 + offset }px`
   prevOffset = clientX
 }
 
 const mouseupHandler = () => {
   dragging = false
+}
+
+const clickHandler = (e: Event) => {
+  const { target, layerY }: { target: HTMLElement, layerY: number } = e as any
+
+  if (target !== barYRef.value) {
+    return
+  }
+
+  const _thumbYRef = thumbYRef.value as HTMLElement
+  const { style } = _thumbYRef
+  const oldTop = (parseInt(style.top) || 0)
+  const { clientHeight } = _thumbYRef // or thumbHeight
+  const { clientHeight: barHeight } = barYRef.value as HTMLElement
+  let newTop = 0
+
+  if (layerY > (oldTop + clientHeight)) {
+    // scroll down
+    newTop = oldTop + (layerY - clientHeight / 2)
+
+    const maxTop = barHeight - clientHeight
+
+    // remaining space less than the thumb height
+    if (newTop > maxTop) {
+      newTop = maxTop
+    }
+  } else {
+    // scroll up
+    if (layerY > clientHeight) {
+      // remaining space greater than the thumb height, keep the center of the 
+      // thumb on layerY
+      newTop = (layerY - clientHeight / 2)
+    } else {
+      // remaining space less than the thumb height
+      newTop = 0
+    }
+  }
+
+  style.top = `${ newTop }px`
+
+  const rate = Number((newTop / (barHeight - clientHeight)).toFixed(2))
+  const _containerRef = containerRef.value as HTMLElement
+  const { scrollHeight, clientHeight: containerHeight } = _containerRef
+
+  flag = true
+  _containerRef.scrollTop = (scrollHeight - containerHeight) * rate
+  setTimeout(() => flag = false)
 }
 
 onMounted(() => {
