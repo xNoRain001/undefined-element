@@ -1,17 +1,15 @@
 <template>
-  <div 
-    class="u-input-wrapper" 
-    :style="{ '--input-wrapper-height': dynamicInputStyle.height }"
-  >
+  <div class="u-input-wrapper" >
     <div class="u-input-before">
       <slot name="before"></slot>
     </div>
+
     <div 
       tabindex="-1"
       ref="inputContainer"
       class="u-input-container" 
+      :style="_inputStyle"
       :class="disabled ? 'u-disabled' : ''"
-      :style="dynamicInputStyle"
       @click="foucsHelper"
       @focus="containerFocusHandler"
       @blur="containerBlurHandler"
@@ -19,15 +17,14 @@
       @mouseleave="mouseleaveHandler"
     >
       <slot name="prepend"></slot>
+
       <input 
         :autofocus="autofocus ? true : false"
         :readonly="readonly ? true : false"
         :disabled="disabled ? true : false"
         :placeholder="placeholder" 
         :value="modelValue" 
-        :style="{ 
-          '--placeholder-color': dynamicInputStyle.placeholderColor
-        }"
+        :style="_placeholderStyle"
         @input="inputHandler"  
         @focus="focusHandler"
         @blur="blurHandler"
@@ -35,8 +32,10 @@
         ref="input" 
         type="text" 
       />
+
       <slot name="append"></slot>
     </div>
+
     <div class="u-input-after">
       <slot name="after"></slot>
     </div>
@@ -44,51 +43,78 @@
 </template>
 
 <script lang="ts" setup>
-import { noop, merge, debounce as debounceFn } from '../../utils'
-import { ref, toRefs, computed, onMounted, watch } from 'vue'
+import { ref, toRefs, computed, onMounted } from 'vue'
+
+import { noop, debounce as debounceFn } from '../../utils'
 
 const props = withDefaults(defineProps<{
-  modelValue: string,
-  placeholder?: string,
+  type?: 'text' | 'password' | 'textareae' | 'mail' | 'search' | 'tel' | 'file' 
+  | 'number' | 'url' | 'time' | 'date',
   debounce?: string | number,
   readonly?: boolean,
   disabled?: boolean,
   clearable?: boolean,
   autofocus?: boolean,
-  inputStyle?: {
-    style?: { [propName: string]: string | number },
-    focused?: { [propName: string]: string | number },
-    hovered?: { [propName: string]: string | number }
-  },
-  type?: 'text' | 'password' | 'textareae' | 'mail' | 'search' | 'tel' | 'file' 
-  | 'number' | 'url' | 'time' | 'date'
+  modelValue: string,
+  inputStyle?: { [propName: string]: string | number },
+  inputClass?: string,
+  placeholder?: string,
+  placeholderStyle?: { [propName: string]: string | number },
+  hoveredInputStyle?: { [propName: string]: string | number }
+  focusedInputStyle?: { [propName: string]: string | number },
+  focusedInputClass?: string,
+  hoveredInputClass?: string
 }>(), {
-  placeholder: '',
+  type: 'text',
   debounce: 0,
   readonly: false,
   disabled: false,
   clearable: false,
   autofocus: false,
-  type: 'text',
-  // inputStyle: () => ({}),
+  inputClass: '',
+  inputStyle: () => ({ 
+    height: '56px',
+    borderRadius: '4px',
+    padding: '0 12px',
+    color: 'rgba(0, 0, 0, .87)',
+    fontSize: '14px',
+    fontWeight: '400px',
+    border: '1px solid rgba(0, 0, 0, .23)'
+  }),
+  placeholder: '',
+  placeholderStyle: () => ({ color: '#a8abb2' }),
+  focusedInputStyle: () => ({ border: '2px solid rgb(25, 118, 210)' }),
+  hoveredInputStyle: () => ({ border: '1px solid rgba(0, 0, 0, .87)' }),
+  focusedInputClass: '',
+  hoveredInputClass: ''
 })
 const emit = defineEmits<{ 
-  'update:modelValue': [value: string],
-  'focus': [e: Event],
   'blur': [e: Event],
-  'clear': [value: string]
+  'focus': [e: Event],
+  'clear': [value: string],
+  'update:modelValue': [value: string]
 }>()
+
 const { 
+  type,
   debounce, 
   readonly,
   disabled,
+  clearable,
+  autofocus,
   modelValue, 
-  placeholder,
   inputStyle,
+  inputClass,
+  placeholder,
+  placeholderStyle,
+  focusedInputClass,
+  hoveredInputClass,
+  focusedInputStyle,
+  hoveredInputStyle
 } = toRefs(props)
 const input = ref<HTMLElement | null>(null)
-const inputContainer = ref<HTMLElement | null>(null)
 const focusedInput = ref(false)
+const inputContainer = ref<HTMLElement | null>(null)
 const focusedInputContainer = ref(false)
 const hoveredInputContainer = ref(false)
 
@@ -125,33 +151,45 @@ const focusedInputOrInputContainer = computed(() => {
     (focusedInput.value || focusedInputContainer.value)
 })
 
-const dynamicInputStyle = computed(() => {
-  const _inputStyle = inputStyle?.value || { 
-    style: { 
-      border: '2px solid rgba(0, 0, 0, .4)',
-      padding: '0 8px', 
-      placeholderColor: '#dcdfe6'
-    },
-    focused: { border: '2px solid #3b82f6' },
-    hovered: { border: '2px solid black' }
-  }
-  const { focused, hovered, style } = _inputStyle
-  const __inputStlye = {
-    ...style, 
+const _inputStyle = computed(() => {
+  const style = {
+    ...inputStyle.value, 
     ...(
       focusedInputOrInputContainer.value
-        ? focused
+        ? focusedInputStyle.value
         : hoveredInputContainer.value
-          ? hovered
+          ? hoveredInputStyle.value
           : {}
     )
   }
-  const { border } = __inputStlye
 
-  __inputStlye['--input-container-border'] = border
-  delete __inputStlye.border
+  const { border } = style
+  style['--input-container-border'] = border
+  delete style.border
 
-  return __inputStlye
+  return style
+})
+
+const _inputClass = computed(() => {
+  return `
+    ${ inputClass.value }
+    ${ focusedInputOrInputContainer.value ? focusedInputClass.value : '' }
+    ${ hoveredInputContainer.value ? hoveredInputClass.value : '' }
+  `
+})
+
+const _placeholderStyle = computed(() => {
+  const style = placeholderStyle.value
+  const keys = Object.keys(style)
+  const res: { [propName: string]: string | number } = {}
+
+  for (let i = 0, l = keys.length; i < l; i++) {
+    const key = keys[i]
+
+    res[`--u-placeholder-${ key }`] = style[key]
+  }
+
+  return res
 })
 
 const handler = (e: Event) => emit(
@@ -209,8 +247,8 @@ onMounted(() => {
   bottom: 0;
   top: 0;
   border: var(--input-container-border);
-  transition-property: border-color;
-  transition-duration: var(--u-transition-duration);
+  /* transition-property: border-color;
+  transition-duration: var(--u-transition-duration); */
 }
 
 .u-input-container.u-disabled,
@@ -229,11 +267,12 @@ onMounted(() => {
 }
 
 .u-input::placeholder {
-  color: var(--placeholder-color);
+  color: var(--u-placeholder-color);
+  font-size: var(--u-placeholder-fontSize);
 }
 
 .u-input-before,
 .u-input-after {
-  height: var(--input-wrapper-height);
+  height: 100%;
 }
 </style>
