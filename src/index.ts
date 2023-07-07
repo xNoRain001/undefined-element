@@ -1,5 +1,6 @@
 import UTab from './components/u-tab/index.vue'
 import UTabs from './components/u-tabs/index.vue'
+import UIcon from './components/u-icon/index.vue'
 import UInput from './components/u-input/index.vue'
 import UDialog from './components/u-dialog/index.vue'
 import USlider from './components/u-slider/index.vue'
@@ -17,6 +18,7 @@ const undefinedElement = {
     app
       .component('UTab', UTab)
       .component('UTabs', UTabs)
+      .component('UIcon', UIcon)
       .component('UInput', UInput)
       .component('UDialog', UDialog)
       .component('USlider', USlider)
