@@ -58,7 +58,7 @@ const getDef = (): string => {
   const _name = formattedName(name.value)
   const _type = type.value
 
-  return icons[_type][`${ prefixesMap[_type] }${ _name }`]
+  return icons[_type][`${ prefixesMap[_type] }${ _name }`] || ''
 }
 
 type Paths = { 
