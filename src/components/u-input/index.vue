@@ -82,7 +82,12 @@ const props = withDefaults(defineProps<{
     border: '1px solid rgba(0, 0, 0, .23)'
   }),
   placeholder: '',
-  placeholderStyle: () => ({ color: '#a8abb2' }),
+  placeholderStyle: () => ({ 
+    color: '#a8abb2',
+    fontSize: '14px',
+    fontWeight: '400px'
+  }),
+  // TODO: focusedPlaceholderStyle and hoveredPlaceholderStyle
   focusedInputStyle: () => ({ border: '2px solid rgb(25, 118, 210)' }),
   hoveredInputStyle: () => ({ border: '1px solid rgba(0, 0, 0, .87)' }),
   focusedInputClass: '',
@@ -179,14 +184,11 @@ const _inputClass = computed(() => {
 })
 
 const _placeholderStyle = computed(() => {
-  const style = placeholderStyle.value
-  const keys = Object.keys(style)
-  const res: { [propName: string]: string | number } = {}
-
-  for (let i = 0, l = keys.length; i < l; i++) {
-    const key = keys[i]
-
-    res[`--u-placeholder-${ key }`] = style[key]
+  const { color, fontSize, fontWeight } = placeholderStyle.value
+  const res: { [propName: string]: string | number } = {
+    '--u-placeholder-color': color,
+    '--u-placeholder-fontSize': fontSize,
+    '--u-placeholder-fontWeight': fontWeight,
   }
 
   return res
@@ -210,7 +212,7 @@ const clearContents = () => {
 }
 
 const addEventListenerForClearable = () => {
-  const icons = inputContainer.value!.querySelectorAll('*[data-clearable]')
+  const icons = inputContainer.value!.querySelectorAll('*[clearable]')
 
   for (let i = 0, l = icons.length; i < l; i++) {
     icons[i].addEventListener('click', clearContents)
@@ -269,6 +271,7 @@ onMounted(() => {
 .u-input::placeholder {
   color: var(--u-placeholder-color);
   font-size: var(--u-placeholder-fontSize);
+  font-weight: var(--u-placeholder-fontWeight);
 }
 
 .u-input-before,
