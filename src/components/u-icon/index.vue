@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<{
   height: 24,
 })
 
-const { name, type } = toRefs(props)
+const { name, type, color, width, height } = toRefs(props)
 const prefixesMap = {
   filled: 'mat',
   sharp: 'sharp',
@@ -41,6 +41,7 @@ const prefixesMap = {
   outlined: 'outlined'
 }
 
+// foo_bar -> FooBar
 const formattedName = (name: string) => {
   let res = ''
   const segments = name.split('_')
@@ -70,7 +71,7 @@ const genPaths = (
   def: string, 
   res: Paths
 ) => {
-  def.split('&&').map(path => {
+  def.split('&&').forEach(path => {
     const [ d, style, transform ] = path.split('@@')
     res.push({ style, d, transform })
   })

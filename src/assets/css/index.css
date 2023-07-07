@@ -2,90 +2,106 @@
   --u-transition-duration: .3s
 }
 
-@keyframes u-animate-expansion-item {
+/* common animation */
+@keyframes u-animate-height {
   from {
-    height: var(--u-expansion-item-height-start)
+    height: var(--u-height-start);
   }
 
   to {
-    height: var(--u-expansion-item-height-end)
+    height: var(--u-height-end);
   }
 }
 
-.u-animate-expansion-item {
-  animation: u-animate-expansion-item var(--u-transition-duration);
+.u-animate-height {
+  animation: u-animate-height var(--u-transition-duration);
 }
 
-@keyframes u-animate-dialog-inner-top {
+@keyframes u-animate-top {
   from {
-    top: var(--u-dialog-inner-top-start);
+    top: var(--u-top-start);
   }
 
   to {
-    top: var(--u-dialog-inner-top-end);
+    top: var(--u-top-end);
   }
 }
 
-.u-animate-dialog-inner-top {
-  animation: u-animate-dialog-inner-top var(--u-transition-duration);
+.u-animate-top {
+  animation: u-animate-top var(--u-transition-duration);
 }
 
-@keyframes u-animate-dialog-inner-right {
+@keyframes u-animate-right {
   from {
-    right: var(--u-dialog-inner-right-start);
+    right: var(--u-right-start);
   }
 
   to {
-    right: var(--u-dialog-inner-right-end);
+    right: var(--u-right-end);
   }
 }
 
-.u-animate-dialog-inner-right {
-  animation: u-animate-dialog-inner-right var(--u-transition-duration);
+.u-animate-right {
+  animation: u-animate-right var(--u-transition-duration);
 }
 
-@keyframes u-animate-dialog-inner-bottom {
+@keyframes u-animate-bottom {
   from {
-    bottom: var(--u-dialog-inner-bottom-start);
+    bottom: var(--u-bottom-start);
   }
 
   to {
-    bottom: var(--u-dialog-inner-bottom-end);
+    bottom: var(--u-bottom-end);
   }
 }
 
-.u-animate-dialog-inner-bottom {
-  animation: u-animate-dialog-inner-bottom var(--u-transition-duration);
+.u-animate-bottom {
+  animation: u-animate-bottom var(--u-transition-duration);
 }
 
-@keyframes u-animate-dialog-inner-left {
+@keyframes u-animate-left {
   from {
-    left: var(--u-dialog-inner-left-start);
+    left: var(--u-left-start);
   }
 
   to {
-    left: var(--u-dialog-inner-left-end);
+    left: var(--u-left-end);
   }
 }
 
-.u-animate-dialog-inner-left {
-  animation: u-animate-dialog-inner-left var(--u-transition-duration);
+.u-animate-left {
+  animation: u-animate-left var(--u-transition-duration);
 }
 
-@keyframes u-animate-dialog-inner-center {
+@keyframes u-animate-opacity {
   from {
-    opacity: var(--u-dialog-inner-center-start);
+    opacity: var(--u-opacity-start);
   }
 
   to {
-    opacity: var(--u-dialog-inner-center-end);
+    opacity: var(--u-opacity-end);
   }
 }
 
-.u-animate-dialog-inner-center {
-  animation: u-animate-dialog-inner-center var(--u-transition-duration);
+.u-animate-opacity {
+  animation: u-animate-opacity var(--u-transition-duration);
 }
 
+@keyframes u-animate-bg {
+  from {
+    background-color: var(--u-bg-start);
+  }
+
+  to {
+    background-color: var(--u-bg-end);
+  }
+}
+
+.u-animate-bg {
+  animation: u-animate-bg var(--u-transition-duration);
+}
+
+/* customized animation */
 @keyframes u-animate-dialog-inner-persistent {
   from {
     transform: scale(1)
@@ -102,32 +118,4 @@
 
 .u-animate-dialog-inner-persistent {
   animation: u-animate-dialog-inner-persistent .15s;
-}
-
-@keyframes u-animate-dialog-backdrop {
-  from {
-    background-color: var(--u-dialog-backdrop-bg-start);
-  }
-
-  to {
-    background-color: var(--u-dialog-backdrop-bg-end);
-  }
-}
-
-.u-animate-dialog-backdrop {
-  animation: u-animate-dialog-backdrop var(--u-transition-duration);
-}
-
-@keyframes u-animate-tooltip {
-  from {
-    opacity: var(--u-tooltip-opacity-start);
-  }
-
-  to {
-    opacity: var(--u-tooltip-opacity-end);
-  }
-}
-
-.u-animate-tooltip {
-  animation: u-animate-tooltip var(--u-transition-duration);
 }

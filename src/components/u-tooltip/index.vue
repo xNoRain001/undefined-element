@@ -114,8 +114,8 @@ const tooltipStyle = computed(() => {
     left: '',
     zIndex: '99',
     opacity: opacityValue,
-    '--u-tooltip-opacity-start': startValue,
-    '--u-tooltip-opacity-end': endValue
+    '--u-opacity-start': startValue,
+    '--u-opacity-end': endValue
   }
 
   const _tooltipRef = tooltipRef.value
@@ -141,7 +141,7 @@ const tooltipStyle = computed(() => {
 })
 
 watch(visible, v => {
-  useAddAnimation(tooltipRef.value as HTMLElement, 'u-animate-tooltip')
+  useAddAnimation(tooltipRef.value as HTMLElement, 'u-animate-opacity')
   
   if (!v) {
     setTimeout(() => {

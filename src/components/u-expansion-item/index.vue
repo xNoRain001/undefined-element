@@ -71,8 +71,8 @@ const _contentStyle = computed(() => {
   return {
     ...contentStyle,
     height: styleValue,
-    '--u-expansion-item-height-start': startValue,
-    '--u-expansion-item-height-end': endValue
+    '--u-height-start': startValue,
+    '--u-height-end': endValue
   }
 })
 const _headerClass = computed(() => {
@@ -86,7 +86,7 @@ const _headerClass = computed(() => {
 const clickHandler = () => updateModel(name)
 
 watch(expanded, () => {
-  useAddAnimation(contentRef.value as HTMLElement, 'u-animate-expansion-item')
+  useAddAnimation(contentRef.value as HTMLElement, 'u-animate-height')
 })
 
 // This is a possible solution to replace animation，but need to resolve

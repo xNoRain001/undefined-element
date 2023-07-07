@@ -124,12 +124,12 @@ const positionStyle = computed(() => {
 
   if (_position === 'center') {
     res.opacity = opacityValue
-    res[`--u-dialog-inner-${ _position }-start`] = startValue2,
-    res[`--u-dialog-inner-${ _position }-end`] = endValue2
+    res[`--u-opacity-start`] = startValue2,
+    res[`--u-opacity-end`] = endValue2
   } else {
     res[_position] = styleValue
-    res[`--u-dialog-inner-${ _position }-start`] = startValue,
-    res[`--u-dialog-inner-${ _position }-end`] = endValue
+    res[`--u-${ _position }-start`] = startValue,
+    res[`--u-${ _position }-end`] = endValue
   }
 
   return res
@@ -143,8 +143,8 @@ const backgroundColorStyle = computed(() => {
 
   return {
     backgroundColor: styleValue,
-    '--u-dialog-backdrop-bg-start': startValue,
-    '--u-dialog-backdrop-bg-end': endValue
+    '--u-bg-start': startValue,
+    '--u-bg-end': endValue
   }
 })
 
@@ -153,9 +153,9 @@ watch(modelValue, v => {
 
   useAddAnimation(
     innerRef.value as HTMLElement, 
-    `u-animate-dialog-inner-${ _position }`
+    `u-animate-${ _position }`
   )
-  useAddAnimation(backdropRef.value as HTMLElement, 'u-animate-dialog-backdrop')
+  useAddAnimation(backdropRef.value as HTMLElement, 'u-animate-bg')
 
   if (v) {
     _modelValue.value = v
