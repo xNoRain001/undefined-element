@@ -1,8 +1,8 @@
 <template>
   <div 
     class="u-tab-panels" 
-    :style="pannelStyle"
-    :class="pannelClass"
+    :style="panelStyle"
+    :class="panelClass"
   >
     <slot></slot>
   </div>
@@ -15,13 +15,13 @@ import { panelsKey } from '../../keys'
 
 const props = withDefaults(defineProps<{
   modelValue: string,
-  pannelStyle?: { [propName: string]: string | number }
-  pannelClass?: string
+  panelStyle?: { [propName: string]: string | number }
+  panelClass?: string
 }>(), {
-  pannelStyle: () => ({}),
-  pannelClass: ''
+  panelStyle: () => ({}),
+  panelClass: ''
 })
-const { modelValue, pannelStyle, pannelClass } = toRefs(props)
+const { modelValue, panelStyle, panelClass } = toRefs(props)
 
 provide(panelsKey, modelValue)
 </script>
