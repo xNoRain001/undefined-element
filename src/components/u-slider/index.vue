@@ -29,8 +29,9 @@
 import { ref, toRefs, computed } from 'vue'
 
 import { throttle } from '../../utils'
-import { useAddAnimation } from '../../composables';
+import { useAddAnimation } from '../../composables'
 
+const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const props = withDefaults(defineProps<{
   min?: number,
   max?: number,
@@ -65,20 +66,17 @@ const {
   selectionClass,
   selectionStyle
 } = toRefs(props)
-const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
-const leftStart = ref(0)
-const leftEnd = ref(0)
-const widthStart = ref(0)
-const widthEnd = ref(0)
 const offset = ref(Number((modelValue.value / max.value * 100).toFixed(2)))
+const leftEnd = ref(0)
+const leftStart = ref(0)
 const thumbRef = ref<HTMLElement | null>(null)
 const trackRef = ref<HTMLElement | null>(null)
 const selectionRef = ref<HTMLElement | null>(null)
 const _selectionStyle = computed(() => ({ 
   ...selectionStyle.value,
   width: `${ offset.value }%`,
-  '--u-width-start': `${ widthStart.value }%`, 
-  '--u-width-end': `${ widthEnd.value }%`, 
+  '--u-width-start': `${ leftStart.value }%`, 
+  '--u-width-end': `${ leftEnd.value }%`, 
 }))
 const _thumbStyle = computed(() => ({ 
   ...thumbStyle.value,
@@ -142,18 +140,21 @@ const mousemoveHandler = throttle((e: MouseEvent) => {
   updateOffset(e)
 }, 10)
 
-const _updateOffset = () => {
-  const newOffset = modelValue.value / max.value * 100
+const updateAnimationStartAndEnd = (newOffset: number) => {
   const oldOffset = offset.value
 
   if (oldOffset < newOffset) {
-    leftStart.value = widthStart.value = oldOffset
-    leftEnd.value = widthEnd.value = newOffset
+    leftStart.value = oldOffset
+    leftEnd.value = newOffset
   } else {
-    leftStart.value = widthStart.value = oldOffset
-    leftEnd.value = widthEnd.value = newOffset
+    leftStart.value = oldOffset
+    leftEnd.value = newOffset
   }
-  
+}
+
+const _updateOffset = () => {
+  const newOffset = modelValue.value / max.value * 100
+  updateAnimationStartAndEnd(newOffset)
   useAddAnimation(thumbRef.value as HTMLElement, 'u-animate-left')
   useAddAnimation(selectionRef.value as HTMLElement, 'u-animate-width')
   offset.value = newOffset 
