@@ -101,6 +101,20 @@
   animation: u-animate-bg var(--u-transition-duration);
 }
 
+@keyframes u-animate-width {
+  from {
+    width: var(--u-width-start);
+  }
+
+  to {
+    width: var(--u-width-end);
+  }
+}
+
+.u-animate-width {
+  animation: u-animate-width var(--u-transition-duration);
+}
+
 /* customized animation */
 @keyframes u-animate-dialog-inner-persistent {
   from {
