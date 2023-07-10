@@ -249,6 +249,7 @@ onMounted(() => {
   bottom: 0;
   top: 0;
   border: var(--input-container-border);
+  z-index: -1;
   /* transition-property: border-color;
   transition-duration: var(--u-transition-duration); */
 }
