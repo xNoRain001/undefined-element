@@ -1,17 +1,31 @@
 <template>
-  <div ref="container" class="u-splitter-container">
-    <div ref="before" :style="{ width: `${ modelValue }%` }">
+  <div 
+    ref="container" 
+    class="u-splitter-container"
+    :style="{ flexDirection: horizontal ? 'column' : 'row' }"
+  >
+    <div 
+      :class="beforeClass" 
+      class="u-splitter-before" 
+      ref="before" 
+      :style="_beforeStyle"
+    >
       <slot name="before"></slot>
     </div>
     <div 
       ref="splitter"
       class="u-splitter"
+      :style="{ cursor: dragging ? 'pointer' : 'move' }"
       @mousedown="mousedownHandler($event)"
       @mouseup="mouseupHandler"
     >
       <slot name="splitter"></slot>
     </div>
-    <div class="u-splitter-after">
+    <div 
+      class="u-splitter-after"
+      :class="afterClass"
+      :style="afterStyle"
+    >
       <slot name="after"></slot>
     </div>
   </div>
@@ -19,36 +33,71 @@
 
 <script lang="ts" setup>
 import throttle from '../../utils/throttle'
-import { ref, toRefs, onMounted } from 'vue'
+import { ref, toRefs, computed } from 'vue'
 
 const props = withDefaults(defineProps<{ 
+  min?: number | string,
+  max?: number | string,
   modelValue: number,
-  min?: number,
-  max?: number
+  horizontal?: boolean,
+  afterStyle?: { [propName: string]: string | number },
+  afterClass?: string,
+  beforeStyle?: { [propName: string]: string | number },
+  beforeClass?: string
 }>(), {
-  min: 10,
-  max: 90
+  min: 20,
+  max: 80,
+  horizontal: false,
+  afterStyle: () => ({}),
+  afterClass: '',
+  beforeStyle: () => ({}),
+  beforeClass: ''
 })
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
-const { modelValue, min, max } = toRefs(props)
+const { 
+  min, 
+  max, 
+  modelValue, 
+  horizontal,
+  afterStyle,
+  afterClass,
+  beforeStyle,
+  beforeClass
+} = toRefs(props)
 const before = ref<HTMLElement | null>(null)
+const dragging = ref(false)
 const splitter = ref<HTMLElement | null>(null)
 const container = ref<HTMLElement | null>(null)
+const _beforeStyle = computed(() => {
+  return {
+    ...beforeStyle,
+    ...(
+      horizontal.value 
+        ? { height: `${ modelValue.value }%` } 
+        : { width: `${ modelValue.value }%` }
+    )
+  }
+})
 let prevOffset = 0
-let dragging = false
-let containerWidth = 0
 
-const initContainerWidth = () => containerWidth = container.value!.clientWidth
-
-const updateDragState = () => dragging = !dragging
+const updateDragState = () => dragging.value = !dragging.value
 
 const updateOffset = (e: MouseEvent) => {
+  let offset = 0
+  const _modelValue = modelValue.value
+  const _horizontal = horizontal.value
   const { clientX, clientY } = e
-  const offset = Number((modelValue.value + (clientX - prevOffset) / containerWidth * 100).toFixed(2))
-  
+  const { clientWidth, clientHeight } = container.value as HTMLElement
+
+  if (_horizontal) {
+    offset = _modelValue + (clientY - prevOffset) / clientHeight * 100
+  } else {
+    offset = _modelValue + (clientX - prevOffset) / clientWidth * 100
+  }
+
   if (offset > min.value && offset < max.value) {
     emit('update:modelValue', offset)
-    prevOffset = clientX
+    prevOffset = _horizontal ? clientY : clientX
   }
 }
 
@@ -56,44 +105,40 @@ const addGlobalEventListener = () => {
   const { body } = document
 
   body.addEventListener('mousemove', mousemoveHandler)
-  body.addEventListener('mouseup', updateDragState)
+  body.addEventListener('mouseup', mouseupHandler)
 }
 
 const removeGlobalEventListener = () => {
   const { body } = document
   
   body.removeEventListener('mousemove', mousemoveHandler)
-  body.removeEventListener('mouseup', updateDragState)
+  body.removeEventListener('mouseup', mouseupHandler)
 }
 
 const mousedownHandler = (e: MouseEvent) => {
-  prevOffset = e.clientX
+  const { clientX, clientY } = e
+  prevOffset = horizontal.value ? clientY : clientX
   updateDragState()
   addGlobalEventListener()
 }
 
 const mousemoveHandler = throttle((e: MouseEvent) => {
-  if (!dragging) {
+  if (!dragging.value) {
     return
   }
 
   updateOffset(e)
-}, 50)
+}, 10)
 
 const mouseupHandler = () => {
   updateDragState()
   removeGlobalEventListener()
 }
-
-onMounted(() => {
-  initContainerWidth()
-})
 </script>
 
 <style scoped>
 .u-splitter-container {
   display: flex;
-  justify-content: space-between;
 }
 
 .u-splitter {
@@ -101,8 +146,13 @@ onMounted(() => {
   user-select: none;
 }
 
+.u-splitter-before,
 .u-splitter-after {
-  width: 0;
+  overflow: auto;
+}
+
+.u-splitter-after {
+  flex-basis: 0;
   flex-grow: 1;
 }
 </style>
