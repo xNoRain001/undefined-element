@@ -10,10 +10,17 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs } from 'vue'
+import { toRefs, provide } from 'vue'
 
-const props = defineProps<{
-  modelValue: boolean
-}>()
-const { modelValue } = toRefs(props)
+import { skeletonKey } from '../../keys'
+
+const props = withDefaults(defineProps<{
+  animate?: boolean
+  modelValue: boolean,
+}>(), {
+  animate: true
+})
+const { animate, modelValue } = toRefs(props)
+
+provide(skeletonKey, animate)
 </script>

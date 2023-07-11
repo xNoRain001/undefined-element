@@ -10,6 +10,8 @@ const tabsKey: InjectionKey<{
 
 const panelsKey: InjectionKey<Ref<string>> = Symbol()
 
+const skeletonKey: InjectionKey<Ref<boolean>> = Symbol()
+
 const expansionKey: InjectionKey<{
   itemStyle: Ref<{ [propName: string]: string | number }>,
   itemClass: Ref<string>,
@@ -25,5 +27,6 @@ const expansionKey: InjectionKey<{
 export { 
   tabsKey, 
   panelsKey, 
+  skeletonKey,
   expansionKey 
 }
