@@ -14,6 +14,7 @@ import { toRefs, provide } from 'vue'
 import { expansionKey } from '../../keys'
 
 const props = withDefaults(defineProps<{
+  max?: number | string,
   style?: { [propName: string]: string | number },
   class?: string,
   modelValue: string[],
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<{
   contentClass?: string,
   activeHeaderClass?: string
 }>(), {
+  max: Number.MAX_SAFE_INTEGER,
   style: () => ({}),
   class: '',
   itemStyle: () => ({}),
@@ -35,7 +37,8 @@ const props = withDefaults(defineProps<{
   contentClass: '',
   activeHeaderClass: ''
 })
-const { 
+const {
+  max, 
   style,
   class: expansionClass,
   modelValue,
@@ -56,6 +59,10 @@ const updateModel = (name: string) => {
     expanded.splice(index, 1)
   } else {
     expanded.push(name)
+
+    if (expanded.length > max.value) {
+      expanded.shift()
+    }
   }
 }
 
