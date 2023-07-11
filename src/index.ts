@@ -8,9 +8,11 @@ import URating from './components/u-rating/index.vue'
 import UTooltip from './components/u-tooltip/index.vue'
 import USplitter from './components/u-splitter/index.vue'
 import UTabPanel from './components/u-tab-panel/index.vue'
+import USkeleton from './components/u-skeleton/index.vue'
 import UExpansion from './components/u-expansion/index.vue'
 import UTabPanels from './components/u-tab-panels/index.vue'
 import UScrollArea from './components/u-scroll-area/index.vue'
+import USkeletonItem from './components/u-skeleton-item/index.vue'
 import UExpansionItem from './components/u-expansion-item/index.vue'
 
 const undefinedElement = {
@@ -26,9 +28,11 @@ const undefinedElement = {
       .component('UTooltip', UTooltip)
       .component('USplitter', USplitter)
       .component('UTabPanel', UTabPanel)
+      .component('USkeleton', USkeleton)
       .component('UExpansion', UExpansion)
       .component('UTabPanels', UTabPanels)
       .component('UScrollArea', UScrollArea)
+      .component('USkeletonItem', USkeletonItem)
       .component('UExpansionItem', UExpansionItem)
   }
 }
