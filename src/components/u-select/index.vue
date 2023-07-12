@@ -54,9 +54,10 @@ import { useAddAnimation } from '../../composables/index'
 import { genCSSVariables } from '../../utils'
 
 const props = withDefaults(defineProps<{
+  race?: boolean,
   options: string[],
   multiple?: boolean,
-  maxValues?: number | string,
+  maxValues?: number,
   modelValue: string | string[],
   selectStyle?: { [propName: string]: string | number },
   selectClass?: string,
@@ -67,6 +68,7 @@ const props = withDefaults(defineProps<{
   focusedSelectClass?: string,
   hoveredSelectClass?: string
 }>(), {
+  race: false,
   multiple: false,
   maxValues: Number.MAX_SAFE_INTEGER,
   selectClass: '',
@@ -86,6 +88,7 @@ const emit = defineEmits<{
   'update:modelValue': [value: string]
 }>()
 const { 
+  race,
   options,
   multiple,
   maxValues,
@@ -131,8 +134,9 @@ const updateModel = (e: Event) => {
       _modelValue.splice(index, 1)
     } else if (_modelValue.length < maxValues.value) {
       _modelValue.push(value)
-    } else {
-      // TODO: auto replacement
+    } else if (race.value) {
+      _modelValue.shift()
+      _modelValue.push(value)
     }
   } else {
     emit('update:modelValue', value)
