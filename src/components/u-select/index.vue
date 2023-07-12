@@ -9,9 +9,7 @@
       ref="inputContainer"
       class="u-select-container" 
       :style="_selectStyle"
-      @click="foucsHelper"
-      @focus="containerFocusHandler"
-      @blur="containerBlurHandler"
+      @click="clickHandler"
       @mouseenter="mouseenterHandler"
       @mouseleave="mouseleaveHandler"
     >
@@ -24,14 +22,16 @@
         class="u-select"
         ref="input" 
         type="text" 
-        @click="foucsHelper"
-        @focus="containerFocusHandler"
-        @blur="containerBlurHandler"
       />
 
       <slot name="append"></slot>
 
-      <div @click="updateModel" class="u-select-items">
+      <div 
+        @click="updateModel" 
+        ref="selectItemsRef"
+        class="u-select-items"
+        :style="selectItemsStyle"
+      >
         <slot name="select-items"></slot>
       </div>
     </div>
@@ -43,7 +43,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed } from 'vue'
+import { ref, watch, toRefs, computed } from 'vue'
+
+import { useAddAnimation } from '../../composables/index'
+import { genCSSVariables } from '../../utils'
 
 const props = withDefaults(defineProps<{
   options: string[],
@@ -68,7 +71,6 @@ const props = withDefaults(defineProps<{
   hoveredSelectClass: ''
 })
 const emit = defineEmits<{ 'update:modelValue': [string] }>()
-
 const { 
   options,
   modelValue, 
@@ -82,10 +84,10 @@ const {
   hoveredSelectStyle
 } = toRefs(props)
 const input = ref<HTMLElement | null>(null)
-const focusedInput = ref(false)
+const focused = ref(false)
+const hovered = ref(false)
 const inputContainer = ref<HTMLElement | null>(null)
-const focusedInputContainer = ref(false)
-const hoveredInputContainer = ref(false)
+const selectItemsRef = ref<HTMLElement | null>(null)
 
 const getIndex = (target: HTMLElement, parent: HTMLElement) => {
   let index: string | null = null
@@ -103,25 +105,27 @@ const updateModel = (e: Event) => {
   emit('update:modelValue', options.value[index])
 }
 
-const foucsHelper = (e: Event) => {
-  const { target, currentTarget } = e
+const clickHandler = () => focused.value = !focused.value 
 
-  // if target is not input and container contains target, autofocus.
-  if (target === currentTarget) {
-    input.value!.focus()
-  } 
-}
+const mouseenterHandler = () => hovered.value = true
 
-const containerFocusHandler = () => focusedInputContainer.value = true
+const mouseleaveHandler = () => hovered.value = false
 
-const containerBlurHandler = () => focusedInputContainer.value = false
+const selectItemsStyle = computed(() => {
+  const value1 = '1'
+  const value2 = '0'
+  const styleValue = focused.value ? value1 : value2
+  const { startValue, endValue } = genCSSVariables(styleValue, value1, value2)
 
-const mouseenterHandler = () => hoveredInputContainer.value = true
+  return {
+    opacity: styleValue,
+    '--u-opacity-start': startValue,
+    '--u-opacity-end': endValue
+  }
+})
 
-const mouseleaveHandler = () => hoveredInputContainer.value = false
-
-const focusedInputOrInputContainer = computed(() => {
-  return focusedInput.value || focusedInputContainer.value
+watch(focused, () => {
+  useAddAnimation(selectItemsRef.value as HTMLElement, 'u-animate-opacity')
 })
 
 const _selectStyle = computed(() => {
@@ -130,9 +134,9 @@ const _selectStyle = computed(() => {
     // replace top: var(--u-select-height) with top: 100% 
     // '--u-select-height': selectStyle.value.height,
     ...(
-      focusedInputOrInputContainer.value
+      focused.value
         ? focusedSelectStyle.value
-        : hoveredInputContainer.value
+        : hovered.value
           ? hoveredSelectStyle.value
           : {}
     )
@@ -148,8 +152,8 @@ const _selectStyle = computed(() => {
 const _selectClass = computed(() => {
   return `
     ${ selectClass.value }
-    ${ focusedInputOrInputContainer.value ? focusedSelectClass.value : '' }
-    ${ hoveredInputContainer.value ? hoveredSelectClass.value : '' }
+    ${ focused.value ? focusedSelectClass.value : '' }
+    ${ hovered.value ? hoveredSelectClass.value : '' }
   `
 })
 
@@ -193,11 +197,6 @@ const _placeholderStyle = computed(() => {
   z-index: -1;
   /* transition-property: border-color;
   transition-duration: var(--u-transition-duration); */
-}
-
-.u-select-container.u-disabled,
-.u-select-container.u-disabled > .u-select {
-  cursor: not-allowed;
 }
 
 .u-select {
