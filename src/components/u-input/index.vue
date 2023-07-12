@@ -72,24 +72,12 @@ const props = withDefaults(defineProps<{
   clearable: false,
   autofocus: false,
   inputClass: '',
-  inputStyle: () => ({ 
-    height: '56px',
-    borderRadius: '4px',
-    padding: '0 12px',
-    color: 'rgba(0, 0, 0, .87)',
-    fontSize: '14px',
-    fontWeight: '400px',
-    border: '1px solid rgba(0, 0, 0, .23)'
-  }),
+  inputStyle: () => ({}),
   placeholder: '',
-  placeholderStyle: () => ({ 
-    color: '#a8abb2',
-    fontSize: '14px',
-    fontWeight: '400px'
-  }),
+  placeholderStyle: () => ({}),
   // TODO: focusedPlaceholderStyle and hoveredPlaceholderStyle
-  focusedInputStyle: () => ({ border: '2px solid rgb(25, 118, 210)' }),
-  hoveredInputStyle: () => ({ border: '1px solid rgba(0, 0, 0, .87)' }),
+  focusedInputStyle: () => ({}),
+  hoveredInputStyle: () => ({}),
   focusedInputClass: '',
   hoveredInputClass: ''
 })
