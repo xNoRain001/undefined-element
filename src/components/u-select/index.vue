@@ -95,6 +95,7 @@ const showing = ref(false)
 const hoveredInputContainer = ref(false)
 const inputContainer = ref<HTMLElement | null>(null)
 const selectItemsRef = ref<HTMLElement | null>(null)
+const persistentFocus = ref(false)
 
 const getIndex = (target: HTMLElement, parent: HTMLElement) => {
   let index: string | null = null
@@ -110,19 +111,36 @@ const updateModel = (e: Event) => {
   const { target, currentTarget } = e 
   const index = getIndex(target as HTMLElement, currentTarget as HTMLElement)
   emit('update:modelValue', options.value[index])
-  blurHandler()
-  containerBlurHandler()
+  // click select items, input must be blurred, container muse be focused.
+  containerBlurHandler(true)
 }
 
 const containerFocusHandler = () => focusedInputContainer.value = true
 
 // set timeout for resolve focusedInputOrInputContainer change twice when 
 // focus change.
-const containerBlurHandler = () => setTimeout(() => focusedInputContainer.value = false)
+const containerBlurHandler = (_persistentFocus: boolean | FocusEvent) => {
+  setTimeout(() => {
+    focusedInputContainer.value = false
+
+    if (typeof _persistentFocus === 'boolean') {
+      // when click select items, type of argument must be boolean, update
+      // persistenFocus make container keep focus.
+      persistentFocus.value = _persistentFocus // must be true
+    } else {
+      // when select items is not clicked, container blur.
+      persistentFocus.value = false
+    }
+  })
+}
 
 const focusHandler = () => focusedInput.value = true
 
-const blurHandler = () => setTimeout(() => focusedInput.value = false)
+const blurHandler = () => {
+  setTimeout(() => {
+    focusedInput.value = false
+  })
+}
 
 const mouseenterHandler = () => hoveredInputContainer.value = true
 
@@ -165,7 +183,7 @@ const _selectStyle = computed(() => {
     // replace top: var(--u-select-height) with top: 100% 
     // '--u-select-height': selectStyle.value.height,
     ...(
-      focusedInputOrInputContainer.value
+      focusedInputOrInputContainer.value || persistentFocus.value
         ? focusedSelectStyle.value
         : hoveredInputContainer.value
           ? hoveredSelectStyle.value
