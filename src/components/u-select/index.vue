@@ -58,6 +58,7 @@ const props = withDefaults(defineProps<{
   options: string[],
   multiple?: boolean,
   maxValues?: number,
+  persistent?:boolean,
   modelValue: string | string[],
   selectStyle?: { [propName: string]: string | number },
   selectClass?: string,
@@ -71,6 +72,7 @@ const props = withDefaults(defineProps<{
   race: false,
   multiple: false,
   maxValues: Number.MAX_SAFE_INTEGER,
+  persistent: true,
   selectClass: '',
   selectStyle: () => ({}),
   placeholder: '',
@@ -93,6 +95,7 @@ const {
   multiple,
   maxValues,
   modelValue, 
+  persistent,
   selectStyle,
   selectClass,
   placeholder,
@@ -137,6 +140,10 @@ const updateModel = (e: Event) => {
     } else if (race.value) {
       _modelValue.shift()
       _modelValue.push(value)
+    }
+
+    if (!persistent.value && _modelValue.length >= maxValues.value) {
+      containerBlurHandler(true)
     }
   } else {
     emit('update:modelValue', value)
