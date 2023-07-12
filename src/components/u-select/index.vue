@@ -55,7 +55,8 @@ import { genCSSVariables } from '../../utils'
 
 const props = withDefaults(defineProps<{
   options: string[],
-  modelValue: string,
+  multiple?: boolean,
+  modelValue: string | string[],
   selectStyle?: { [propName: string]: string | number },
   selectClass?: string,
   placeholder?: string,
@@ -65,6 +66,7 @@ const props = withDefaults(defineProps<{
   focusedSelectClass?: string,
   hoveredSelectClass?: string
 }>(), {
+  multiple: false,
   selectClass: '',
   selectStyle: () => ({}),
   placeholder: '',
@@ -75,9 +77,15 @@ const props = withDefaults(defineProps<{
   focusedSelectClass: '',
   hoveredSelectClass: ''
 })
-const emit = defineEmits<{ 'update:modelValue': [string] }>()
+const emit = defineEmits<{ 
+  'blur': [e: Event],
+  'focus': [e: Event],
+  'clear': [value: string],
+  'update:modelValue': [value: string]
+}>()
 const { 
   options,
+  multiple,
   modelValue, 
   selectStyle,
   selectClass,
@@ -110,9 +118,23 @@ const getIndex = (target: HTMLElement, parent: HTMLElement) => {
 const updateModel = (e: Event) => {
   const { target, currentTarget } = e 
   const index = getIndex(target as HTMLElement, currentTarget as HTMLElement)
-  emit('update:modelValue', options.value[index])
-  // click select items, input must be blurred, container muse be focused.
-  containerBlurHandler(true)
+  const value = options.value[index]
+  
+  if (multiple.value) {
+    const _modelValue = modelValue.value as string[]
+    const index = _modelValue.indexOf(value)
+
+    if (index >= 0) {
+      _modelValue.splice(index, 1)
+    } else {
+      _modelValue.push(value)
+    }
+  } else {
+    emit('update:modelValue', value)
+    // click select items, input must be blurred, container muse be focused.
+    // make container blur for hide select items.
+    containerBlurHandler(true)
+  }
 }
 
 const containerFocusHandler = () => focusedInputContainer.value = true
@@ -134,11 +156,15 @@ const containerBlurHandler = (_persistentFocus: boolean | FocusEvent) => {
   })
 }
 
-const focusHandler = () => focusedInput.value = true
+const focusHandler = (e: FocusEvent) => {
+  focusedInput.value = true
+  emit('focus', e)
+}
 
-const blurHandler = () => {
+const blurHandler = (e: Event) => {
   setTimeout(() => {
     focusedInput.value = false
+    emit('blur', e)
   })
 }
 
