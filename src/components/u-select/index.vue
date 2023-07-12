@@ -56,6 +56,7 @@ import { genCSSVariables } from '../../utils'
 const props = withDefaults(defineProps<{
   options: string[],
   multiple?: boolean,
+  maxValues?: number | string,
   modelValue: string | string[],
   selectStyle?: { [propName: string]: string | number },
   selectClass?: string,
@@ -67,6 +68,7 @@ const props = withDefaults(defineProps<{
   hoveredSelectClass?: string
 }>(), {
   multiple: false,
+  maxValues: Number.MAX_SAFE_INTEGER,
   selectClass: '',
   selectStyle: () => ({}),
   placeholder: '',
@@ -86,6 +88,7 @@ const emit = defineEmits<{
 const { 
   options,
   multiple,
+  maxValues,
   modelValue, 
   selectStyle,
   selectClass,
@@ -126,8 +129,10 @@ const updateModel = (e: Event) => {
 
     if (index >= 0) {
       _modelValue.splice(index, 1)
-    } else {
+    } else if (_modelValue.length < maxValues.value) {
       _modelValue.push(value)
+    } else {
+      // TODO: auto replacement
     }
   } else {
     emit('update:modelValue', value)
