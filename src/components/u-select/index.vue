@@ -9,7 +9,8 @@
       ref="inputContainer"
       class="u-select-container" 
       :style="_selectStyle"
-      @click="clickHandler"
+      @focus="containerFocusHandler"
+      @blur="containerBlurHandler"
       @mouseenter="mouseenterHandler"
       @mouseleave="mouseleaveHandler"
     >
@@ -19,6 +20,9 @@
         :placeholder="placeholder" 
         :value="modelValue" 
         :style="_placeholderStyle"
+        readonly
+        @focus="focusHandler"
+        @blur="blurHandler"
         class="u-select"
         ref="input" 
         type="text" 
@@ -27,6 +31,7 @@
       <slot name="append"></slot>
 
       <div 
+        v-show="showing"
         @click="updateModel" 
         ref="selectItemsRef"
         class="u-select-items"
@@ -84,8 +89,10 @@ const {
   hoveredSelectStyle
 } = toRefs(props)
 const input = ref<HTMLElement | null>(null)
-const focused = ref(false)
-const hovered = ref(false)
+const focusedInput = ref(false)
+const focusedInputContainer = ref(false)
+const showing = ref(false)
+const hoveredInputContainer = ref(false)
 const inputContainer = ref<HTMLElement | null>(null)
 const selectItemsRef = ref<HTMLElement | null>(null)
 
@@ -103,28 +110,52 @@ const updateModel = (e: Event) => {
   const { target, currentTarget } = e 
   const index = getIndex(target as HTMLElement, currentTarget as HTMLElement)
   emit('update:modelValue', options.value[index])
+  blurHandler()
+  containerBlurHandler()
 }
 
-const clickHandler = () => focused.value = !focused.value 
+const containerFocusHandler = () => focusedInputContainer.value = true
 
-const mouseenterHandler = () => hovered.value = true
+// set timeout for resolve focusedInputOrInputContainer change twice when 
+// focus change.
+const containerBlurHandler = () => setTimeout(() => focusedInputContainer.value = false)
 
-const mouseleaveHandler = () => hovered.value = false
+const focusHandler = () => focusedInput.value = true
+
+const blurHandler = () => setTimeout(() => focusedInput.value = false)
+
+const mouseenterHandler = () => hoveredInputContainer.value = true
+
+const mouseleaveHandler = () => hoveredInputContainer.value = false
+
+// callback will execute twice when focus change，but returned value don't
+// change twice by set timeout.
+const focusedInputOrInputContainer = computed(() => {
+  return focusedInput.value || focusedInputContainer.value
+})
 
 const selectItemsStyle = computed(() => {
   const value1 = '1'
   const value2 = '0'
-  const styleValue = focused.value ? value1 : value2
-  const { startValue, endValue } = genCSSVariables(styleValue, value1, value2)
+  const opacityValue = focusedInputOrInputContainer.value ? value1 : value2
+  const { startValue, endValue } = genCSSVariables(opacityValue, value1, value2)
 
   return {
-    opacity: styleValue,
+    opacity: opacityValue,
     '--u-opacity-start': startValue,
     '--u-opacity-end': endValue
   }
 })
 
-watch(focused, () => {
+watch(focusedInputOrInputContainer, (v) => {
+  if (v) {
+    showing.value = v
+  } else {
+    setTimeout(() => {
+      showing.value = v
+    }, 300)
+  }
+
   useAddAnimation(selectItemsRef.value as HTMLElement, 'u-animate-opacity')
 })
 
@@ -134,9 +165,9 @@ const _selectStyle = computed(() => {
     // replace top: var(--u-select-height) with top: 100% 
     // '--u-select-height': selectStyle.value.height,
     ...(
-      focused.value
+      focusedInputOrInputContainer.value
         ? focusedSelectStyle.value
-        : hovered.value
+        : hoveredInputContainer.value
           ? hoveredSelectStyle.value
           : {}
     )
@@ -152,8 +183,8 @@ const _selectStyle = computed(() => {
 const _selectClass = computed(() => {
   return `
     ${ selectClass.value }
-    ${ focused.value ? focusedSelectClass.value : '' }
-    ${ hovered.value ? hoveredSelectClass.value : '' }
+    ${ focusedInputOrInputContainer.value ? focusedSelectClass.value : '' }
+    ${ hoveredInputContainer.value ? hoveredSelectClass.value : '' }
   `
 })
 

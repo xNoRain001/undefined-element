@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed, onMounted } from 'vue'
+import { ref, toRefs, computed, onMounted, watch } from 'vue'
 
 import { noop, debounce as debounceFn } from '../../utils'
 
@@ -122,7 +122,7 @@ const foucsHelper = (e: Event) => {
 
 const containerFocusHandler = () => focusedInputContainer.value = true
 
-const containerBlurHandler = () => focusedInputContainer.value = false
+const containerBlurHandler = () => setTimeout(() => focusedInputContainer.value = false)
 
 const mouseenterHandler = () => hoveredInputContainer.value = true
 
@@ -134,7 +134,7 @@ const focusHandler = (e: Event) => {
 }
 
 const blurHandler = (e: Event) => {
-  focusedInput.value = false
+  setTimeout(() => focusedInput.value = false)
   emit('blur', e)
 }
 
@@ -142,6 +142,10 @@ const focusedInputOrInputContainer = computed(() => {
   return !readonly.value && 
     !disabled.value &&
     (focusedInput.value || focusedInputContainer.value)
+})
+
+watch(focusedInputOrInputContainer, v => {
+  console.log(v)
 })
 
 const _inputStyle = computed(() => {
