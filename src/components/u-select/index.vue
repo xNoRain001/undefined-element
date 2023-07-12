@@ -117,9 +117,9 @@ const updateModel = (e: Event) => {
 
 const containerFocusHandler = () => focusedInputContainer.value = true
 
-// set timeout for resolve focusedInputOrInputContainer change twice when 
-// focus change.
 const containerBlurHandler = (_persistentFocus: boolean | FocusEvent) => {
+  // set timeout for resolve focusedInputOrInputContainer change twice when 
+  // focus change.
   setTimeout(() => {
     focusedInputContainer.value = false
 
@@ -180,7 +180,7 @@ watch(focusedInputOrInputContainer, (v) => {
 const _selectStyle = computed(() => {
   const style = {
     ...selectStyle.value, 
-    // replace top: var(--u-select-height) with top: 100% 
+    // replace `top: var(--u-select-height);` with `top: 100%;`
     // '--u-select-height': selectStyle.value.height,
     ...(
       focusedInputOrInputContainer.value || persistentFocus.value
