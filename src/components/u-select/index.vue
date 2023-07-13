@@ -1,14 +1,14 @@
 <template>
-  <div class="u-select-wrapper" >
-    <div class="u-select-before">
+  <div class="u-input-wrapper" ref="inputWrapperRef">
+    <div class="u-input-before">
       <slot name="before"></slot>
     </div>
 
     <div 
       tabindex="-1"
-      ref="inputContainer"
-      class="u-select-container" 
+      class="u-input-container" 
       :style="_selectStyle"
+      :class="_selectClass"
       @focus="containerFocusHandler"
       @blur="containerBlurHandler"
       @mouseenter="mouseenterHandler"
@@ -23,15 +23,15 @@
         readonly
         @focus="focusHandler"
         @blur="blurHandler"
-        class="u-select"
-        ref="input" 
+        class="u-input"
+        ref="inputRef" 
         type="text" 
       />
 
       <slot name="append"></slot>
 
       <div 
-        v-show="showing"
+        v-show="visible"
         @click="updateModel" 
         ref="selectItemsRef"
         class="u-select-items"
@@ -41,14 +41,14 @@
       </div>
     </div>
 
-    <div class="u-select-after">
+    <div class="u-input-after">
       <slot name="after"></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toRefs, computed } from 'vue'
+import { ref, watch, toRefs, computed, onMounted } from 'vue'
 
 import { useAddAnimation } from '../../composables/index'
 import { genCSSVariables } from '../../utils'
@@ -56,6 +56,8 @@ import { genCSSVariables } from '../../utils'
 const props = withDefaults(defineProps<{
   race?: boolean,
   options: string[],
+  readonly?: boolean,
+  disabled?: boolean,
   multiple?: boolean,
   maxValues?: number,
   persistent?:boolean,
@@ -71,6 +73,8 @@ const props = withDefaults(defineProps<{
 }>(), {
   race: false,
   multiple: false,
+  readonly: false,
+  disabled: false,
   maxValues: Number.MAX_SAFE_INTEGER,
   persistent: true,
   selectClass: '',
@@ -93,6 +97,8 @@ const {
   race,
   options,
   multiple,
+  readonly,
+  disabled,
   maxValues,
   modelValue, 
   persistent,
@@ -105,14 +111,85 @@ const {
   focusedSelectStyle,
   hoveredSelectStyle
 } = toRefs(props)
-const input = ref<HTMLElement | null>(null)
+const visible = ref(false)
+const inputRef = ref<HTMLElement | null>(null)
 const focusedInput = ref(false)
-const focusedInputContainer = ref(false)
-const showing = ref(false)
-const hoveredInputContainer = ref(false)
-const inputContainer = ref<HTMLElement | null>(null)
 const selectItemsRef = ref<HTMLElement | null>(null)
+const inputWrapperRef = ref<HTMLElement | null>(null)
 const persistentFocus = ref(false)
+const focusedInputContainer = ref(false)
+const hoveredInputContainer = ref(false)
+const _placeholderStyle = computed(() => {
+  const { color, fontSize, fontWeight } = placeholderStyle.value
+
+  return {
+    '--u-input-placeholder-color': color,
+    '--u-input-placeholder-fontSize': fontSize,
+    '--u-input-placeholder-fontWeight': fontWeight,
+  }
+})
+const focused = computed(() => {
+  return !readonly.value && 
+    !disabled.value &&
+    (focusedInput.value || focusedInputContainer.value)
+})
+const _selectStyle = computed(() => {
+  const style = {
+    ...selectStyle.value, 
+    // replace `top: var(--u-input-height);` with `top: 100%;`
+    // '--u-input-height': selectStyle.value.height,
+    ...(
+      focused.value
+        ? focusedSelectStyle.value
+        : hoveredInputContainer.value
+          ? hoveredSelectStyle.value
+          : {}
+    )
+  }
+  const { 
+    border, 
+    borderRadius, 
+    borderTopLeftRadius,
+    borderTopRightRadius,
+    borderBottomLeftRadius,
+    borderBottomRightRadius
+  } = style
+  style['--u-input-container-before-border'] = border
+  style['--u-input-container-before-border-top-left-radius'] = 
+    borderTopLeftRadius || borderRadius
+  style['--u-input-container-before-border-top-right-radius'] = 
+    borderTopRightRadius || borderRadius
+  style['--u-input-container-before-border-bottom-left-radius'] = 
+    borderBottomLeftRadius || borderRadius
+  style['--u-input-container-before-border-bottom-right-radius'] = 
+    borderBottomRightRadius || borderRadius
+
+  return style
+})
+const _selectClass = computed(() => `
+  ${ selectClass.value }
+  ${ focused.value ? focusedSelectClass.value : '' }
+  ${ hoveredInputContainer.value ? hoveredSelectClass.value : '' }
+  ${ disabled.value ? 'u-disabled' : '' }
+`)
+// callback will execute twice when focus change，but returned value don't
+// change twice by set timeout.
+const focusedInputOrInputContainer = computed(() => {
+  return focusedInput.value || focusedInputContainer.value
+})
+
+const selectItemsStyle = computed(() => {
+  const value1 = '1'
+  const value2 = '0'
+  const opacityValue = focusedInputOrInputContainer.value ? value1 : value2
+  const { startValue, endValue } = genCSSVariables(opacityValue, value1, value2)
+
+  return {
+    opacity: opacityValue,
+    '--u-opacity-start': startValue,
+    '--u-opacity-end': endValue
+  }
+})
 
 const getIndex = (target: HTMLElement, parent: HTMLElement) => {
   let index: string | null = null
@@ -172,6 +249,10 @@ const containerBlurHandler = (_persistentFocus: boolean | FocusEvent) => {
   })
 }
 
+const mouseenterHandler = () => hoveredInputContainer.value = true
+
+const mouseleaveHandler = () => hoveredInputContainer.value = false
+
 const focusHandler = (e: FocusEvent) => {
   focusedInput.value = true
   emit('focus', e)
@@ -184,130 +265,93 @@ const blurHandler = (e: Event) => {
   })
 }
 
-const mouseenterHandler = () => hoveredInputContainer.value = true
-
-const mouseleaveHandler = () => hoveredInputContainer.value = false
-
-// callback will execute twice when focus change，but returned value don't
-// change twice by set timeout.
-const focusedInputOrInputContainer = computed(() => {
-  return focusedInput.value || focusedInputContainer.value
-})
-
-const selectItemsStyle = computed(() => {
-  const value1 = '1'
-  const value2 = '0'
-  const opacityValue = focusedInputOrInputContainer.value ? value1 : value2
-  const { startValue, endValue } = genCSSVariables(opacityValue, value1, value2)
-
-  return {
-    opacity: opacityValue,
-    '--u-opacity-start': startValue,
-    '--u-opacity-end': endValue
-  }
-})
-
 watch(focusedInputOrInputContainer, (v) => {
   if (v) {
-    showing.value = v
+    visible.value = v
   } else {
     setTimeout(() => {
-      showing.value = v
+      visible.value = v
     }, 300)
   }
 
   useAddAnimation(selectItemsRef.value as HTMLElement, 'u-animate-opacity')
 })
 
-const _selectStyle = computed(() => {
-  const style = {
-    ...selectStyle.value, 
-    // replace `top: var(--u-select-height);` with `top: 100%;`
-    // '--u-select-height': selectStyle.value.height,
-    ...(
-      focusedInputOrInputContainer.value || persistentFocus.value
-        ? focusedSelectStyle.value
-        : hoveredInputContainer.value
-          ? hoveredSelectStyle.value
-          : {}
-    )
+const clearContent = () => {
+  const oldValue = modelValue.value
+  emit('update:modelValue', '')
+  emit('clear', oldValue)
+}
+
+const addEventListener = (selector: string, callback: () => void) => {
+  const elms = inputWrapperRef.value!.querySelectorAll(selector)
+
+  for (let i = 0, l = elms.length; i < l; i++) {
+    elms[i].addEventListener('click', callback)
   }
+}
 
-  const { border } = style
-  style['--input-container-border'] = border
-  delete style.border
-
-  return style
-})
-
-const _selectClass = computed(() => {
-  return `
-    ${ selectClass.value }
-    ${ focusedInputOrInputContainer.value ? focusedSelectClass.value : '' }
-    ${ hoveredInputContainer.value ? hoveredSelectClass.value : '' }
-  `
-})
-
-const _placeholderStyle = computed(() => {
-  const { color, fontSize, fontWeight } = placeholderStyle.value
-  const res: { [propName: string]: string | number } = {
-    '--u-placeholder-color': color,
-    '--u-placeholder-fontSize': fontSize,
-    '--u-placeholder-fontWeight': fontWeight,
-  }
-
-  return res
+onMounted(() => {
+  addEventListener('*[clearable]', clearContent) 
 })
 </script>
 
 <style scoped>
-.u-select-wrapper {
+.u-input-wrapper {
   display: flex;
   align-items: center;
 }
 
-.u-select-container {
-  width: 100%;
-  height: 100%;
+.u-input-container {
   display: flex;
   align-items: center;
   position: relative;
+  border: none !important;
   transition-property: background-color;
   transition-duration: var(--u-transition-duration);
 }
 
 /* handle text jitter */
-.u-select-container::before {
+.u-input-container::before {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   top: 0;
-  border: var(--input-container-border);
+  border: var(--u-input-container-before-border);
+  border-top-right-radius: var(--u-input-container-before-border-top-right-radius);
+  border-top-left-radius: var(--u-input-container-before-border-top-left-radius);
+  border-bottom-right-radius: var(--u-input-container-before-border-bottom-right-radius);
+  border-bottom-left-radius: var(--u-input-container-before-border-bottom-left-radius);
   z-index: -1;
   /* transition-property: border-color;
   transition-duration: var(--u-transition-duration); */
 }
 
-.u-select {
+.u-input-container.u-disabled,
+.u-input-container.u-disabled > .u-input {
+  cursor: not-allowed;
+}
+
+.u-input {
   width: 100%;
   height: 100%;
   background-color: transparent;
 }
 
-.u-select:focus {
+.u-input:focus {
   outline: none;
 }
 
-.u-select::placeholder {
-  color: var(--u-placeholder-color);
-  font-size: var(--u-placeholder-fontSize);
-  font-weight: var(--u-placeholder-fontWeight);
+.u-input::placeholder {
+  color: var(--u-input-placeholder-color);
+  font-size: var(--u-input-placeholder-fontSize);
+  font-weight: var(--u-input-placeholder-fontWeight);
 }
 
-.u-select-before,
-.u-select-after {
+.u-input-before,
+.u-input-after {
   height: 100%;
 }
 

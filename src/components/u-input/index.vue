@@ -57,8 +57,6 @@ const props = withDefaults(defineProps<{
   inputStyle?: { [propName: string]: string | number },
   inputClass?: string,
   placeholder?: string,
-  disabledStyle?: { [propName: string]: string | number },
-  disabledClass?: string,
   placeholderStyle?: { [propName: string]: string | number },
   hoveredInputStyle?: { [propName: string]: string | number }
   focusedInputStyle?: { [propName: string]: string | number },
@@ -73,8 +71,6 @@ const props = withDefaults(defineProps<{
   inputClass: '',
   inputStyle: () => ({}),
   placeholder: '',
-  disabledStyle: () => ({}),
-  disabledClass: '',
   placeholderStyle: () => ({}),
   // TODO: focusedPlaceholderStyle and hoveredPlaceholderStyle
   focusedInputStyle: () => ({}),
@@ -98,8 +94,6 @@ const {
   inputStyle,
   inputClass,
   placeholder,
-  disabledStyle,
-  disabledClass,
   placeholderStyle,
   focusedInputClass,
   hoveredInputClass,
@@ -139,9 +133,7 @@ const _inputStyle = computed(() => {
         ? focusedInputStyle.value
         : hoveredInputContainer.value
           ? hoveredInputStyle.value
-          : disabled.value
-            ? disabledStyle.value
-            : {}
+          : {}
     )
   }
 
@@ -154,7 +146,6 @@ const _inputStyle = computed(() => {
     borderBottomRightRadius
   } = style
   style['--u-input-container-before-border'] = border
-  // style['--u-input-container-before-border-radius'] = borderRadius
   style['--u-input-container-before-border-top-left-radius'] = 
     borderTopLeftRadius || borderRadius
   style['--u-input-container-before-border-top-right-radius'] = 
@@ -170,7 +161,7 @@ const _inputClass = computed(() => `
   ${ inputClass.value }
   ${ focused.value ? focusedInputClass.value : '' }
   ${ hoveredInputContainer.value ? hoveredInputClass.value : '' }
-  ${ disabled.value ? `u-disabled ${ disabledClass.value }` : '' }
+  ${ disabled.value ? 'u-disabled' : '' }
 `)
 
 const foucsHelper = (e: Event) => {
@@ -198,8 +189,10 @@ const focusHandler = (e: Event) => {
 }
 
 const blurHandler = (e: Event) => {
-  setTimeout(() => focusedInput.value = false)
-  emit('blur', e)
+  setTimeout(() => {
+    focusedInput.value = false
+    emit('blur', e)
+  })
 }
 
 const inputHandler = (e: Event) => emit(
@@ -267,7 +260,6 @@ onMounted(() => {
   border-top-left-radius: var(--u-input-container-before-border-top-left-radius);
   border-bottom-right-radius: var(--u-input-container-before-border-bottom-right-radius);
   border-bottom-left-radius: var(--u-input-container-before-border-bottom-left-radius);
-  /* border-radius: var(--u-input-container-before-border-radius); */
   z-index: -1;
   /* transition-property: border-color;
   transition-duration: var(--u-transition-duration); */
