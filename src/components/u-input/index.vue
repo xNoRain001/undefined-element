@@ -44,6 +44,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, onMounted } from 'vue'
 
+import { useAddEventListener, useGenBorderVariables } from '../../composables'
 import { noop, debounce as debounceFn } from '../../utils'
 
 const props = withDefaults(defineProps<{
@@ -137,23 +138,7 @@ const _inputStyle = computed(() => {
     )
   }
 
-  const { 
-    border, 
-    borderRadius, 
-    borderTopLeftRadius,
-    borderTopRightRadius,
-    borderBottomLeftRadius,
-    borderBottomRightRadius
-  } = style
-  style['--u-input-container-before-border'] = border
-  style['--u-input-container-before-border-top-left-radius'] = 
-    borderTopLeftRadius || borderRadius
-  style['--u-input-container-before-border-top-right-radius'] = 
-    borderTopRightRadius || borderRadius
-  style['--u-input-container-before-border-bottom-left-radius'] = 
-    borderBottomLeftRadius || borderRadius
-  style['--u-input-container-before-border-bottom-right-radius'] = 
-    borderBottomRightRadius || borderRadius
+  useGenBorderVariables(style)
 
   return style
 })
@@ -218,17 +203,11 @@ const clearContent = () => {
 
 const updateVisible = () => visible.value = !visible.value
 
-const addEventListener = (selector: string, callback: () => void) => {
-  const elms = inputWrapperRef.value!.querySelectorAll(selector)
-
-  for (let i = 0, l = elms.length; i < l; i++) {
-    elms[i].addEventListener('click', callback)
-  }
-}
-
 onMounted(() => {
-  addEventListener('*[clearable]', clearContent) 
-  addEventListener('*[visible]', updateVisible) 
+  const _inputWrapperRef = inputWrapperRef.value as HTMLElement
+
+  useAddEventListener(_inputWrapperRef, '*[clearable]', 'click', clearContent)
+  useAddEventListener(_inputWrapperRef, '*[visible]', 'click', updateVisible)
 })
 </script>
 
@@ -255,11 +234,16 @@ onMounted(() => {
   right: 0;
   bottom: 0;
   top: 0;
-  border: var(--u-input-container-before-border);
-  border-top-right-radius: var(--u-input-container-before-border-top-right-radius);
-  border-top-left-radius: var(--u-input-container-before-border-top-left-radius);
-  border-bottom-right-radius: var(--u-input-container-before-border-bottom-right-radius);
-  border-bottom-left-radius: var(--u-input-container-before-border-bottom-left-radius);
+  border: 
+    var(--u-input-container-before-border);
+  border-top-right-radius: 
+    var(--u-input-container-before-border-top-right-radius);
+  border-top-left-radius: 
+    var(--u-input-container-before-border-top-left-radius);
+  border-bottom-right-radius: 
+    var(--u-input-container-before-border-bottom-right-radius);
+  border-bottom-left-radius: 
+    var(--u-input-container-before-border-bottom-left-radius);
   z-index: -1;
   /* transition-property: border-color;
   transition-duration: var(--u-transition-duration); */

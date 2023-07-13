@@ -16,8 +16,10 @@ import UScrollArea from './components/u-scroll-area/index.vue'
 import USkeletonItem from './components/u-skeleton-item/index.vue'
 import UExpansionItem from './components/u-expansion-item/index.vue'
 
+import type { App } from 'vue'
+
 const undefinedElement = {
-  install (app: any) {
+  install (app: App) {
     app
       .component('UTab', UTab)
       .component('UTabs', UTabs)
