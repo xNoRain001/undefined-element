@@ -6,6 +6,7 @@ import UDialog from './components/u-dialog/index.vue'
 import USlider from './components/u-slider/index.vue'
 import URating from './components/u-rating/index.vue'
 import USelect from './components/u-select/index.vue'
+import UToggle from './components/u-toggle/index.vue'
 import UTooltip from './components/u-tooltip/index.vue'
 import USplitter from './components/u-splitter/index.vue'
 import UTabPanel from './components/u-tab-panel/index.vue'
@@ -29,6 +30,7 @@ const undefinedElement = {
       .component('USlider', USlider)
       .component('URating', URating)
       .component('USelect', USelect)
+      .component('UToggle', UToggle)
       .component('UTooltip', UTooltip)
       .component('USplitter', USplitter)
       .component('UTabPanel', UTabPanel)
