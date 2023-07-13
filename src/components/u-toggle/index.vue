@@ -2,8 +2,6 @@
   <div 
     class="u-toggle" 
     @click="updateModel" 
-    :style="_toggleStyle"
-    :class="_toggleClass"
   >
     <div 
       class="u-toggle-track" 
@@ -24,31 +22,23 @@ import { toRefs, computed } from 'vue'
 const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
 const props = withDefaults(defineProps<{
   modelValue: boolean,
-  trackStyle?
+  trackStyle?: { [propName: string]: string | number },
   trackClass?: string,
   thumbStyle?: { [propName: string]: string | number },
   thumbClass?: string,
-  toggleStyle?: { [propName: string]: string | number },
-  toggleClass?: string
   activeTrackStyle?: { [propName: string]: string | number },
   activeTrackClass?: string,
   activeThumbStyle?: { [propName: string]: string | number },
-  activeThumbClass?: string,
-  activeToggleStyle?: { [propName: string]: string | number },
-  activeToggleClass?: string
+  activeThumbClass?: string
 }>(), {
   trackStyle: () => ({}),
   trackClass: '',
   thumbStyle: () => ({}),
   thumbClass: '',
-  toggleStyle: () => ({}),
-  toggleClass: '',
   activeTrackStyle: () => ({}),
   activeTrackClass: '',
   activeThumbStyle: () => ({}),
   activeThumbClass: '',
-  activeToggleStyle: () => ({}),
-  activeToggleClass: ''
 })
 const { 
   modelValue,
@@ -56,14 +46,10 @@ const {
   trackClass,
   thumbStyle,
   thumbClass,
-  toggleStyle,
-  toggleClass,
   activeTrackStyle,
   activeTrackClass,
   activeThumbStyle,
   activeThumbClass,
-  activeToggleStyle,
-  activeToggleClass
 } = toRefs(props)
 const _thumbStyle = computed(() => {
   const _modelValue = modelValue.value
@@ -78,23 +64,15 @@ const _thumbStyle = computed(() => {
     ...(_modelValue ? activeThumbStyle.value : {})
   }
 })
-console.log(_thumbStyle.value)
 const _trackStyle = computed(() => ({
   ...trackStyle.value,
   ...(modelValue.value ? activeTrackStyle.value : {})
-}))
-const _toggleStyle = computed(() => ({
-  ...toggleStyle.value,
-  ...(modelValue.value ? activeToggleStyle.value : {})
 }))
 const _thumbClass = computed(() => `
   ${ thumbClass.value } ${ modelValue.value ? activeThumbClass.value : ''}
 `)
 const _trackClass = computed(() => `
   ${ trackClass.value } ${ modelValue.value ? activeTrackClass.value : ''}
-`)
-const _toggleClass = computed(() => `
-  ${ toggleClass.value } ${ modelValue.value ? activeToggleClass.value : ''}
 `)
 
 const updateModel = () => emit('update:modelValue', !modelValue.value)
