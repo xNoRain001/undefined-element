@@ -7,12 +7,15 @@
       class="u-toggle-track" 
       :style="_trackStyle" 
       :class="_trackClass"
-    ></div>
+    >
+    </div>
     <div 
       class="u-toggle-thumb" 
       :style="_thumbStyle"
       :class="_thumbClass"
-    ></div>
+    >
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -93,6 +96,9 @@ const updateModel = () => emit('update:modelValue', !modelValue.value)
 
 .u-toggle-thumb {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: left var(--u-transition-duration);
 }
 </style>
