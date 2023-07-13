@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import { toRefs, provide } from 'vue'
 
-import { panelsKey } from '../../keys'
+import { panelsKey } from '../../const/keys'
 
 const props = withDefaults(defineProps<{
   modelValue: string,

@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import { inject } from 'vue'
 
-import { skeletonKey } from '../../keys'
+import { skeletonKey } from '../../const/keys'
 
 import type { Ref } from 'vue'
 

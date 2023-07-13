@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import { toRefs, provide } from 'vue'
 
-import { tabsKey } from '../../keys'
+import { tabsKey } from '../../const/keys'
 
 const props = withDefaults(defineProps<{
   style?: { [propName: string]: string | number },

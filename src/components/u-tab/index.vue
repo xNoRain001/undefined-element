@@ -13,7 +13,7 @@
 <script lang="ts" setup>
 import { inject, computed, useAttrs } from 'vue'
 
-import { tabsKey } from '../../keys'
+import { tabsKey } from '../../const/keys'
 
 import type { Ref } from 'vue'
 

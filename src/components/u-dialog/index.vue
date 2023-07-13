@@ -20,6 +20,7 @@
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed } from 'vue'
 
+import { dialogPosition } from '../../const/strategies'
 import { genCSSVariables } from '../../utils'
 import { useAddAnimation } from '../../composables'
 
@@ -63,44 +64,6 @@ const closeDialog = (e: Event) => {
   }
 }
 
-const positionStrategies = {
-  top () {
-    return {
-      left: '50%',
-      transform: 'translateX(-50%)',
-    }
-  },
-
-  right () {
-    return {
-      top: '50%',
-      transform: 'translateY(-50%)'
-    }
-  },
-
-  bottom () {
-    return {
-      left: '50%',
-      transform: 'translateX(-50%)'
-    }
-  },
-
-  left () {
-    return {
-      top: '50%',
-      transform: 'translateY(-50%)'
-    }
-  },
-
-  center () {
-    return {
-      left: '50%',
-      top: '50%',
-      transform: 'translate(-50%, -50%)'
-    }
-  }
-}
-
 const positionStyle = computed(() => {
   const _position = position.value
   const _modelValue = modelValue.value
@@ -119,7 +82,7 @@ const positionStyle = computed(() => {
   } = genCSSVariables(opacityValue, value3, value4)
 
   const res: { [propName: string]: string } = {
-    ...positionStrategies[_position](),
+    ...dialogPosition[_position](),
   }
 
   if (_position === 'center') {

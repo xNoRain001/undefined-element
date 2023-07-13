@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { ref, watch, inject, computed, useAttrs } from 'vue'
 
-import { expansionKey } from '../../keys'
+import { expansionKey } from '../../const/keys'
 import { genCSSVariables } from '../../utils'
 import { useAddAnimation } from '../../composables' 
 

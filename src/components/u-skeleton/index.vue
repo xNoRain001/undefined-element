@@ -12,7 +12,7 @@
 <script lang="ts" setup>
 import { toRefs, provide } from 'vue'
 
-import { skeletonKey } from '../../keys'
+import { skeletonKey } from '../../const/keys'
 
 const props = withDefaults(defineProps<{
   animate?: boolean

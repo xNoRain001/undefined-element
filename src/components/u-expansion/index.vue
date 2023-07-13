@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import { toRefs, provide } from 'vue'
 
-import { expansionKey } from '../../keys'
+import { expansionKey } from '../../const/keys'
 
 const props = withDefaults(defineProps<{
   max?: number | string,

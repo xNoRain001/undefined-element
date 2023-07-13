@@ -15,6 +15,7 @@
 <script lang="ts" setup>
 import { ref, toRefs, computed, onMounted, watch } from 'vue'
 
+import { tooltipPosition } from '../../const/strategies'
 import { genCSSVariables } from '../../utils'
 import { useAddAnimation } from '../../composables'
 
@@ -36,72 +37,6 @@ let proxyTop = '0'
 const addEventListeners = (target: HTMLElement) => {
   target.addEventListener('mouseenter', () => visible.value = true)
   target.addEventListener('mouseleave', () => visible.value = false)
-}
-
-const positionStrategies = {
-  top (
-    clientWidth: number, 
-    clientHeight: number, 
-    top: number, 
-    right: number, 
-    bottom: number, 
-    left: number, 
-    centerX: number, 
-    centerY: number
-  ) {
-    return {
-      left: centerX,
-      top: top - clientHeight
-    }
-  },
-
-  right (
-    clientWidth: number, 
-    clientHeight: number, 
-    top: number, 
-    right: number, 
-    bottom: number, 
-    left: number, 
-    centerX: number, 
-    centerY: number
-  ) {
-    return {
-      left: right,
-      top: centerY
-    }
-  },
-
-  bottom (
-    clientWidth: number, 
-    clientHeight: number, 
-    top: number, 
-    right: number, 
-    bottom: number, 
-    left: number, 
-    centerX: number, 
-    centerY: number
-  ) {
-    return {
-      left: centerX,
-      top: bottom
-    }
-  },
-
-  left (
-    clientWidth: number, 
-    clientHeight: number, 
-    top: number, 
-    right: number, 
-    bottom: number, 
-    left: number, 
-    centerX: number, 
-    centerY: number
-  ) {
-    return {
-      left: left - clientWidth,
-      top: centerY
-    }
-  }
 }
 
 const tooltipStyle = computed(() => {
@@ -129,7 +64,7 @@ const tooltipStyle = computed(() => {
     const { top, right, bottom, left } = parent.value!.getBoundingClientRect()
     const centerX = left + (right - left) / 2 - clientWidth / 2
     const centerY = top + (bottom - top) / 2 - clientHeight / 2
-    const { top: _top, left: _left } = positionStrategies[_position](
+    const { top: _top, left: _left } = tooltipPosition[_position](
       clientWidth, clientHeight, top, right, bottom, left, centerX, centerY
     )
 

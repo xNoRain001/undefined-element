@@ -10,7 +10,7 @@
 <script lang="ts" setup>
 import { inject, computed, useAttrs } from 'vue'
 
-import { panelsKey } from '../../keys'
+import { panelsKey } from '../../const/keys'
 
 import type { Ref } from 'vue'
 
