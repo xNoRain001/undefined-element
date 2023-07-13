@@ -1,15 +1,14 @@
 <template>
-  <div class="u-input-wrapper" >
+  <div class="u-input-wrapper" ref="inputWrapperRef">
     <div class="u-input-before">
       <slot name="before"></slot>
     </div>
 
     <div 
       tabindex="-1"
-      ref="inputContainer"
       class="u-input-container" 
       :style="_inputStyle"
-      :class="disabled ? 'u-disabled' : ''"
+      :class="_inputClass"
       @click="foucsHelper"
       @focus="containerFocusHandler"
       @blur="containerBlurHandler"
@@ -25,12 +24,12 @@
         :placeholder="placeholder" 
         :value="modelValue" 
         :style="_placeholderStyle"
-        @input="inputHandler"  
+        @input="_inputHandler"  
         @focus="focusHandler"
         @blur="blurHandler"
         class="u-input"
-        ref="input" 
-        type="text" 
+        ref="inputRef" 
+        :type="_type" 
       />
 
       <slot name="append"></slot>
@@ -43,22 +42,23 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed, onMounted, watch } from 'vue'
+import { ref, toRefs, computed, onMounted } from 'vue'
 
 import { noop, debounce as debounceFn } from '../../utils'
 
 const props = withDefaults(defineProps<{
   type?: 'text' | 'password' | 'textareae' | 'mail' | 'search' | 'tel' | 'file' 
   | 'number' | 'url' | 'time' | 'date',
-  debounce?: string | number,
+  debounce?: number,
   readonly?: boolean,
   disabled?: boolean,
-  clearable?: boolean,
   autofocus?: boolean,
   modelValue: string,
   inputStyle?: { [propName: string]: string | number },
   inputClass?: string,
   placeholder?: string,
+  disabledStyle?: { [propName: string]: string | number },
+  disabledClass?: string,
   placeholderStyle?: { [propName: string]: string | number },
   hoveredInputStyle?: { [propName: string]: string | number }
   focusedInputStyle?: { [propName: string]: string | number },
@@ -69,11 +69,12 @@ const props = withDefaults(defineProps<{
   debounce: 0,
   readonly: false,
   disabled: false,
-  clearable: false,
   autofocus: false,
   inputClass: '',
   inputStyle: () => ({}),
   placeholder: '',
+  disabledStyle: () => ({}),
+  disabledClass: '',
   placeholderStyle: () => ({}),
   // TODO: focusedPlaceholderStyle and hoveredPlaceholderStyle
   focusedInputStyle: () => ({}),
@@ -87,42 +88,105 @@ const emit = defineEmits<{
   'clear': [value: string],
   'update:modelValue': [value: string]
 }>()
-
 const { 
   type,
   debounce, 
   readonly,
   disabled,
-  clearable,
   autofocus,
   modelValue, 
   inputStyle,
   inputClass,
   placeholder,
+  disabledStyle,
+  disabledClass,
   placeholderStyle,
   focusedInputClass,
   hoveredInputClass,
   focusedInputStyle,
   hoveredInputStyle
 } = toRefs(props)
-const input = ref<HTMLElement | null>(null)
+const visible = ref(false)
+const inputRef = ref<HTMLElement | null>(null)
 const focusedInput = ref(false)
-const inputContainer = ref<HTMLElement | null>(null)
+const inputWrapperRef = ref<HTMLElement | null>(null)
 const focusedInputContainer = ref(false)
 const hoveredInputContainer = ref(false)
+const _type = computed(() => {
+  return type.value === 'password' && visible.value
+    ? 'text'
+    : type.value
+})
+const _placeholderStyle = computed(() => {
+  const { color, fontSize, fontWeight } = placeholderStyle.value
+
+  return {
+    '--u-input-placeholder-color': color,
+    '--u-input-placeholder-fontSize': fontSize,
+    '--u-input-placeholder-fontWeight': fontWeight,
+  }
+})
+const focused = computed(() => {
+  return !readonly.value && 
+    !disabled.value &&
+    (focusedInput.value || focusedInputContainer.value)
+})
+const _inputStyle = computed(() => {
+  const style = {
+    ...inputStyle.value, 
+    ...(
+      focused.value
+        ? focusedInputStyle.value
+        : hoveredInputContainer.value
+          ? hoveredInputStyle.value
+          : disabled.value
+            ? disabledStyle.value
+            : {}
+    )
+  }
+
+  const { 
+    border, 
+    borderRadius, 
+    borderTopLeftRadius,
+    borderTopRightRadius,
+    borderBottomLeftRadius,
+    borderBottomRightRadius
+  } = style
+  style['--u-input-container-before-border'] = border
+  // style['--u-input-container-before-border-radius'] = borderRadius
+  style['--u-input-container-before-border-top-left-radius'] = 
+    borderTopLeftRadius || borderRadius
+  style['--u-input-container-before-border-top-right-radius'] = 
+    borderTopRightRadius || borderRadius
+  style['--u-input-container-before-border-bottom-left-radius'] = 
+    borderBottomLeftRadius || borderRadius
+  style['--u-input-container-before-border-bottom-right-radius'] = 
+    borderBottomRightRadius || borderRadius
+
+  return style
+})
+const _inputClass = computed(() => `
+  ${ inputClass.value }
+  ${ focused.value ? focusedInputClass.value : '' }
+  ${ hoveredInputContainer.value ? hoveredInputClass.value : '' }
+  ${ disabled.value ? `u-disabled ${ disabledClass.value }` : '' }
+`)
 
 const foucsHelper = (e: Event) => {
   const { target, currentTarget } = e
 
   // if target is not input and container contains target, autofocus.
   if (target === currentTarget) {
-    input.value!.focus()
+    inputRef.value!.focus()
   } 
 }
 
 const containerFocusHandler = () => focusedInputContainer.value = true
 
-const containerBlurHandler = () => setTimeout(() => focusedInputContainer.value = false)
+const containerBlurHandler = () => setTimeout(
+  () => focusedInputContainer.value = false
+)
 
 const mouseenterHandler = () => hoveredInputContainer.value = true
 
@@ -138,81 +202,40 @@ const blurHandler = (e: Event) => {
   emit('blur', e)
 }
 
-const focusedInputOrInputContainer = computed(() => {
-  return !readonly.value && 
-    !disabled.value &&
-    (focusedInput.value || focusedInputContainer.value)
-})
-
-watch(focusedInputOrInputContainer, v => {
-  console.log(v)
-})
-
-const _inputStyle = computed(() => {
-  const style = {
-    ...inputStyle.value, 
-    ...(
-      focusedInputOrInputContainer.value
-        ? focusedInputStyle.value
-        : hoveredInputContainer.value
-          ? hoveredInputStyle.value
-          : {}
-    )
-  }
-
-  const { border } = style
-  style['--input-container-border'] = border
-  delete style.border
-
-  return style
-})
-
-const _inputClass = computed(() => {
-  return `
-    ${ inputClass.value }
-    ${ focusedInputOrInputContainer.value ? focusedInputClass.value : '' }
-    ${ hoveredInputContainer.value ? hoveredInputClass.value : '' }
-  `
-})
-
-const _placeholderStyle = computed(() => {
-  const { color, fontSize, fontWeight } = placeholderStyle.value
-  const res: { [propName: string]: string | number } = {
-    '--u-placeholder-color': color,
-    '--u-placeholder-fontSize': fontSize,
-    '--u-placeholder-fontWeight': fontWeight,
-  }
-
-  return res
-})
-
-const handler = (e: Event) => emit(
+const inputHandler = (e: Event) => emit(
   'update:modelValue', 
   (e.target as HTMLInputElement).value
 )
 
-const debouncedInputHandler = debounce.value
-  ? debounceFn(handler, Number(debounce.value))
-  : handler
+const _inputHandler = computed(() => {
+  const _debounce = debounce.value
 
-const inputHandler = readonly.value ? noop : debouncedInputHandler
+  return readonly.value 
+    ? noop 
+    : _debounce
+      ? debounceFn(inputHandler, _debounce)
+      : inputHandler
+})
 
-const clearContents = () => {
+const clearContent = () => {
   const oldValue = modelValue.value
   emit('update:modelValue', '')
   emit('clear', oldValue)
 }
 
-const addEventListenerForClearable = () => {
-  const icons = inputContainer.value!.querySelectorAll('*[clearable]')
+const updateVisible = () => visible.value = !visible.value
 
-  for (let i = 0, l = icons.length; i < l; i++) {
-    icons[i].addEventListener('click', clearContents)
+const addEventListener = (selector: string, callback: () => void) => {
+  const elms = inputWrapperRef.value!.querySelectorAll(selector)
+
+  for (let i = 0, l = elms.length; i < l; i++) {
+    elms[i].addEventListener('click', callback)
   }
 }
 
 onMounted(() => {
-  addEventListenerForClearable()
+  addEventListener('*[clearable]', clearContent) 
+  addEventListener('*[visible]', updateVisible) 
 })
 </script>
 
@@ -223,11 +246,10 @@ onMounted(() => {
 }
 
 .u-input-container {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   position: relative;
+  border: none !important;
   transition-property: background-color;
   transition-duration: var(--u-transition-duration);
 }
@@ -240,7 +262,12 @@ onMounted(() => {
   right: 0;
   bottom: 0;
   top: 0;
-  border: var(--input-container-border);
+  border: var(--u-input-container-before-border);
+  border-top-right-radius: var(--u-input-container-before-border-top-right-radius);
+  border-top-left-radius: var(--u-input-container-before-border-top-left-radius);
+  border-bottom-right-radius: var(--u-input-container-before-border-bottom-right-radius);
+  border-bottom-left-radius: var(--u-input-container-before-border-bottom-left-radius);
+  /* border-radius: var(--u-input-container-before-border-radius); */
   z-index: -1;
   /* transition-property: border-color;
   transition-duration: var(--u-transition-duration); */
@@ -262,9 +289,9 @@ onMounted(() => {
 }
 
 .u-input::placeholder {
-  color: var(--u-placeholder-color);
-  font-size: var(--u-placeholder-fontSize);
-  font-weight: var(--u-placeholder-fontWeight);
+  color: var(--u-input-placeholder-color);
+  font-size: var(--u-input-placeholder-fontSize);
+  font-weight: var(--u-input-placeholder-fontWeight);
 }
 
 .u-input-before,
