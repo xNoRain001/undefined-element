@@ -90,7 +90,7 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{ 
   'blur': [e: Event],
   'focus': [e: Event],
-  'clear': [value: string],
+  'clear': [value: string | string[]],
   'update:modelValue': [value: string]
 }>()
 const { 
@@ -204,7 +204,7 @@ const getIndex = (target: HTMLElement, parent: HTMLElement) => {
 const updateModel = (e: Event) => {
   const { target, currentTarget } = e 
   const index = getIndex(target as HTMLElement, currentTarget as HTMLElement)
-  const value = options.value[index]
+  const value = options.value[Number(index)]
   
   if (multiple.value) {
     const _modelValue = modelValue.value as string[]
@@ -266,6 +266,10 @@ const blurHandler = (e: Event) => {
 }
 
 watch(focusedInputOrInputContainer, (v) => {
+  if (disabled.value) {
+    return
+  }
+
   if (v) {
     visible.value = v
   } else {
@@ -279,7 +283,13 @@ watch(focusedInputOrInputContainer, (v) => {
 
 const clearContent = () => {
   const oldValue = modelValue.value
-  emit('update:modelValue', '')
+
+  if (multiple.value) {
+    (oldValue as string[]).splice(0)
+  } else {
+    emit('update:modelValue', '')
+  }
+
   emit('clear', oldValue)
 }
 
