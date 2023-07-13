@@ -300,8 +300,7 @@ onMounted(() => {
   align-items: center;
   position: relative;
   border: none !important;
-  transition-property: background-color;
-  transition-duration: var(--u-transition-duration);
+  transition: background-color var(--u-transition-duration);
 }
 
 /* handle text jitter */
@@ -322,8 +321,7 @@ onMounted(() => {
   border-bottom-left-radius: 
     var(--u-input-container-before-border-bottom-left-radius);
   z-index: -1;
-  /* transition-property: border-color;
-  transition-duration: var(--u-transition-duration); */
+  transition: border-color var(--u-transition-duration);
 }
 
 .u-input-container.u-disabled,

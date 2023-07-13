@@ -269,7 +269,7 @@ onMounted(() => {
   display: none;
   position: absolute;
   cursor: pointer;
-  transition: background-color .3s;
+  transition: background-color var(--u-transition-duration);
 }
 
 .u-scroll-area-thumb-x {
