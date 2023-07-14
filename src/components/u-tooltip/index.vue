@@ -1,64 +1,49 @@
 <template>
   <div ref="containerRef">
     <Teleport to="body">
-      <!-- don't merge -->
-      <div ref="tooltipRef" class="u-tooltip" :style="{
-        ...tooltipStyle,
-        top
-      }">
-        <slot></slot>
-      </div>
+      <Transition name="u-animate-opacity">
+        <div 
+          v-if="visible" 
+          ref="tooltipRef" 
+          class="u-tooltip"
+          :style="tooltipStyle"
+        >
+          <slot></slot>
+        </div>
+      </Transition>
     </Teleport>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed, onMounted, watch } from 'vue'
+import { ref, watch, toRefs, computed, onMounted } from 'vue'
 
-import { tooltipPosition } from '../../const/strategies'
 import { genCSSVariables } from '../../utils'
-import { useAddAnimation } from '../../composables'
+import { tooltipPosition } from '../../const/strategies'
 
 const props = withDefaults(defineProps<{ 
+  target?: string,
   position?: 'top' | 'right' | 'bottom' | 'left'
 }>(), {
+  target: '',
   position: 'bottom'
 })
-const top = ref('0')
-const parent = ref<HTMLElement | null>(null)
 const visible = ref(false)
+const parent = ref<HTMLElement | null>(null)
 const tooltipRef = ref<HTMLElement | null>(null)
 const containerRef = ref<HTMLElement | null>(null)
-const { position } = toRefs(props)
-// TODO: waiting
-let waiting = false
-let proxyTop = '0'
+const { target, position } = toRefs(props)
 
-const addEventListeners = (target: HTMLElement) => {
+const addEventsListener = (target: HTMLElement) => {
   target.addEventListener('mouseenter', () => visible.value = true)
   target.addEventListener('mouseleave', () => visible.value = false)
 }
 
 const tooltipStyle = computed(() => {
-  const _visible = visible.value
-  const value1 = '1'
-  const value2 = '0'
-  const opacityValue = _visible ? '1' : '0'
-  const { startValue, endValue } = genCSSVariables(opacityValue, value1, value2)
-  const style = {
-    left: '',
-    zIndex: '99',
-    opacity: opacityValue,
-    '--u-opacity-start': startValue,
-    '--u-opacity-end': endValue
-  }
-
+  // TODO: fix callback execute twice
   const _tooltipRef = tooltipRef.value
 
-  if (!_tooltipRef) {
-    proxyTop = '0'
-    style.left = '0'
-  } else {
+  if (_tooltipRef) {
     const { clientWidth, clientHeight } = _tooltipRef
     const _position = position.value
     const { top, right, bottom, left } = parent.value!.getBoundingClientRect()
@@ -67,29 +52,26 @@ const tooltipStyle = computed(() => {
     const { top: _top, left: _left } = tooltipPosition[_position](
       clientWidth, clientHeight, top, right, bottom, left, centerX, centerY
     )
+    const { startValue, endValue } = genCSSVariables(visible.value, '0', '1')
 
-    proxyTop = `${ _top }px`
-    style.left = `${ _left }px`
-  }
-
-  return style
-})
-
-watch(visible, v => {
-  useAddAnimation(tooltipRef.value as HTMLElement, 'u-animate-opacity')
-  
-  if (!v) {
-    setTimeout(() => {
-      top.value = '-100%'
-    }, 300)
-  } else {
-    top.value = proxyTop
+    return {
+      top: `${ _top }px`,
+      left: `${ _left }px`,
+      '--u-animate-opacity-start': startValue,
+      '--u-animate-opacity-end': endValue
+    }
   }
 })
 
 onMounted(() => {
-  parent.value = containerRef.value!.parentNode as HTMLElement
-  addEventListeners(parent.value)
+  // for dynamic target
+  watch(target, (v) => {
+    parent.value = v 
+      ? document.querySelector(v) as HTMLElement 
+      : containerRef.value!.parentNode as HTMLElement
+
+    addEventsListener(parent.value)
+  }, { immediate: true })
 })
 </script>
 

@@ -12,6 +12,7 @@
         :class="selectionClass"
         :style="_selectionStyle"
       ></div>
+
       <div 
         ref="thumbRef"
         class="u-slider-track-thumb" 
@@ -29,7 +30,6 @@
 import { ref, toRefs, computed } from 'vue'
 
 import { throttle } from '../../utils'
-import { useAddAnimation } from '../../composables'
 
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const props = withDefaults(defineProps<{
@@ -67,22 +67,19 @@ const {
   selectionStyle
 } = toRefs(props)
 const offset = ref(Number((modelValue.value / max.value * 100).toFixed(2)))
-const leftEnd = ref(0)
-const leftStart = ref(0)
+const animate = ref(false)
 const thumbRef = ref<HTMLElement | null>(null)
 const trackRef = ref<HTMLElement | null>(null)
 const selectionRef = ref<HTMLElement | null>(null)
 const _selectionStyle = computed(() => ({ 
   ...selectionStyle.value,
   width: `${ offset.value }%`,
-  '--u-width-start': `${ leftStart.value }%`, 
-  '--u-width-end': `${ leftEnd.value }%`, 
+  ...(animate.value ? { transition: 'width var(--u-transition-duration)' } : {})
 }))
 const _thumbStyle = computed(() => ({ 
   ...thumbStyle.value,
   left: `${ offset.value }%`,
-  '--u-left-start': `${ leftStart.value }%`,
-  '--u-left-end': `${ leftEnd.value }%`
+  ...(animate.value ? { transition: 'left var(--u-transition-duration)' } : {})
 }))
 let dragging = false
 let prevOffset = 0
@@ -140,24 +137,11 @@ const mousemoveHandler = throttle((e: MouseEvent) => {
   updateOffset(e)
 }, 10)
 
-const updateAnimationStartAndEnd = (newOffset: number) => {
-  const oldOffset = offset.value
-
-  if (oldOffset < newOffset) {
-    leftStart.value = oldOffset
-    leftEnd.value = newOffset
-  } else {
-    leftStart.value = oldOffset
-    leftEnd.value = newOffset
-  }
-}
-
 const _updateOffset = () => {
   const newOffset = modelValue.value / max.value * 100
-  updateAnimationStartAndEnd(newOffset)
-  useAddAnimation(thumbRef.value as HTMLElement, 'u-animate-left')
-  useAddAnimation(selectionRef.value as HTMLElement, 'u-animate-width')
   offset.value = newOffset 
+  animate.value = true
+  setTimeout(() => animate.value = false, 300)
 }
 
 const mouseupHandler = () => {

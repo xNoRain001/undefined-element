@@ -30,15 +30,17 @@
 
       <slot name="append"></slot>
 
-      <div 
-        v-show="visible"
-        @click="updateModel" 
-        ref="selectItemsRef"
-        class="u-select-items"
-        :style="selectItemsStyle"
-      >
-        <slot name="select-items"></slot>
-      </div>
+      <Transition name="u-animate-opacity">
+        <div 
+          v-if="visible"
+          @click="updateModel" 
+          ref="selectItemsRef"
+          class="u-select-items"
+          :style="selectItemsStyle"
+        >
+          <slot name="select-items"></slot>
+        </div>
+      </Transition>
     </div>
 
     <div class="u-input-after">
@@ -50,9 +52,8 @@
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed, onMounted } from 'vue'
 
-import { genCSSVariables } from '../../utils'
+import { genCSSVariables } from '../../utils';
 import { 
-  useAddAnimation, 
   useAddEventListener,
   useGenBorderVariables 
 } from '../../composables'
@@ -155,6 +156,14 @@ const _selectStyle = computed(() => {
 
   return style
 })
+const selectItemsStyle = computed(() => {
+  const { startValue, endValue } = genCSSVariables(visible.value, '0', '1')
+
+  return {
+    '--u-animate-opacity-start': startValue,
+    '--u-animate-opacity-end': endValue
+  }
+})
 const _selectClass = computed(() => `
   ${ selectClass.value }
   ${ focused.value ? focusedSelectClass.value : '' }
@@ -165,19 +174,6 @@ const _selectClass = computed(() => `
 // change twice by set timeout.
 const focusedInputOrInputContainer = computed(() => {
   return focusedInput.value || focusedInputContainer.value
-})
-
-const selectItemsStyle = computed(() => {
-  const value1 = '1'
-  const value2 = '0'
-  const opacityValue = focusedInputOrInputContainer.value ? value1 : value2
-  const { startValue, endValue } = genCSSVariables(opacityValue, value1, value2)
-
-  return {
-    opacity: opacityValue,
-    '--u-opacity-start': startValue,
-    '--u-opacity-end': endValue
-  }
 })
 
 const getIndex = (target: HTMLElement, parent: HTMLElement) => {
@@ -259,15 +255,7 @@ watch(focusedInputOrInputContainer, (v) => {
     return
   }
 
-  if (v) {
-    visible.value = v
-  } else {
-    setTimeout(() => {
-      visible.value = v
-    }, 300)
-  }
-
-  useAddAnimation(selectItemsRef.value as HTMLElement, 'u-animate-opacity')
+  visible.value = v
 })
 
 const clearContent = () => {

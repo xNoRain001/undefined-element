@@ -11,6 +11,7 @@ import UTooltip from './components/u-tooltip/index.vue'
 import USplitter from './components/u-splitter/index.vue'
 import UTabPanel from './components/u-tab-panel/index.vue'
 import USkeleton from './components/u-skeleton/index.vue'
+import UDropdown from './components/u-dropdown/index.vue'
 import UExpansion from './components/u-expansion/index.vue'
 import UTabPanels from './components/u-tab-panels/index.vue'
 import UScrollArea from './components/u-scroll-area/index.vue'
@@ -35,6 +36,7 @@ const undefinedElement = {
       .component('USplitter', USplitter)
       .component('UTabPanel', UTabPanel)
       .component('USkeleton', USkeleton)
+      .component('UDropdown', UDropdown)
       .component('UExpansion', UExpansion)
       .component('UTabPanels', UTabPanels)
       .component('UScrollArea', UScrollArea)

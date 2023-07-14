@@ -201,13 +201,13 @@ const clearContent = () => {
   emit('clear', oldValue)
 }
 
-const updateVisible = () => visible.value = !visible.value
+const updateVisibility = () => visible.value = !visible.value
 
 onMounted(() => {
   const _inputWrapperRef = inputWrapperRef.value as HTMLElement
 
   useAddEventListener(_inputWrapperRef, '*[clearable]', 'click', clearContent)
-  useAddEventListener(_inputWrapperRef, '*[visible]', 'click', updateVisible)
+  useAddEventListener(_inputWrapperRef, '*[visible]', 'click', updateVisibility)
 })
 </script>
 

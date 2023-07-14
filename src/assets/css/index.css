@@ -115,6 +115,135 @@
   animation: u-animate-width var(--u-transition-duration);
 }
 
+/* transition component animation */
+/* opacity */
+.u-animate-opacity-enter-active,
+.u-animate-opacity-leave-active {
+  transition: opacity var(--u-transition-duration);
+}
+
+.u-animate-opacity-enter-from,
+.u-animate-opacity-leave-to {
+  opacity: var(--u-animate-opacity-start);
+}
+
+.u-animate-opacity-enter-to,
+.u-animate-opacity-leave-from {
+  opacity: var(--u-animate-opacity-end);
+}
+
+/* height */
+.u-animate-height-enter-active,
+.u-animate-height-leave-active {
+  transition: height var(--u-transition-duration);
+}
+
+.u-animate-height-enter-from,
+.u-animate-height-leave-to {
+  height: var(--u-animate-height-start);
+}
+
+.u-animate-height-enter-to,
+.u-animate-height-leave-from {
+  height: var(--u-animate-height-end);
+}
+
+/* width */
+.u-animate-width-enter-active,
+.u-animate-width-leave-active {
+  transition: width var(--u-transition-duration);
+}
+
+.u-animate-width-enter-from,
+.u-animate-width-leave-to {
+  width: var(--u-animate-width-start);
+}
+
+.u-animate-width-enter-to,
+.u-animate-width-leave-from {
+  width: var(--u-animate-width-end);
+}
+
+/* top */
+.u-animate-top-enter-active,
+.u-animate-top-leave-active {
+  transition: top var(--u-transition-duration);
+}
+
+.u-animate-top-enter-from,
+.u-animate-top-leave-to {
+  top: var(--u-animate-top-start);
+}
+
+.u-animate-top-enter-to,
+.u-animate-top-leave-from {
+  top: var(--u-animate-top-end);
+}
+
+/* right */
+.u-animate-right-enter-active,
+.u-animate-right-leave-active {
+  transition: right var(--u-transition-duration);
+}
+
+.u-animate-right-enter-from,
+.u-animate-right-leave-to {
+  right: var(--u-animate-right-start);
+}
+
+.u-animate-right-enter-to,
+.u-animate-right-leave-from {
+  right: var(--u-animate-right-end);
+}
+
+/* bottom */
+.u-animate-bottom-enter-active,
+.u-animate-bottom-leave-active {
+  transition: bottom var(--u-transition-duration);
+}
+
+.u-animate-bottom-enter-from,
+.u-animate-bottom-leave-to {
+  bottom: var(--u-animate-bottom-start);
+}
+
+.u-animate-bottom-enter-to,
+.u-animate-bottom-leave-from {
+  bottom: var(--u-animate-bottom-end);
+}
+
+/* left */
+.u-animate-left-enter-active,
+.u-animate-left-leave-active {
+  transition: left var(--u-transition-duration);
+}
+
+.u-animate-left-enter-from,
+.u-animate-left-leave-to {
+  left: var(--u-animate-left-start);
+}
+
+.u-animate-left-enter-to,
+.u-animate-left-leave-from {
+  left: var(--u-animate-left-end);
+}
+
+/* background-color */
+.u-animate-background-color-enter-active .u-dialog-backdrop,
+.u-animate-background-color-leave-active .u-dialog-backdrop {
+  transition: background-color var(--u-transition-duration);
+}
+
+.u-animate-background-color-enter-from .u-dialog-backdrop,
+.u-animate-background-color-leave-to .u-dialog-backdrop {
+  background-color: var(--u-animate-background-color-start);
+}
+
+.u-animate-background-color-enter-to .u-dialog-backdrop,
+.u-animate-background-color-leave-from .u-dialog-backdrop {
+  background-color: var(--u-animate-background-color-end);
+}
+
 /* customized animation */
 @keyframes u-animate-dialog-inner-persistent {
   from {

@@ -12,6 +12,7 @@
     >
       <slot name="header"></slot>
     </div>
+
     <div 
       ref="contentRef" 
       :style="_contentStyle" 
@@ -24,11 +25,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, inject, computed, useAttrs } from 'vue'
+import { ref, inject, computed, useAttrs } from 'vue'
 
 import { expansionKey } from '../../const/keys'
-import { genCSSVariables } from '../../utils'
-import { useAddAnimation } from '../../composables' 
 
 import type { Ref } from 'vue'
 
@@ -58,50 +57,23 @@ const expanded = computed(() => modelValue.includes(name))
 const contentRef = ref<HTMLElement | null>(null)
 const _contentStyle = computed(() => {
   const _contentRef = contentRef.value
-  const value1 = '0'
-  const value2 = `${ _contentRef ? `${ _contentRef.scrollHeight }px` : '100%' }`
-  // 100% for dynamic height
-  const styleValue = expanded.value ? '100%' : '0'
-  const { startValue, endValue } = genCSSVariables(
-    styleValue === '100%' ? value2 : value1, 
-    value1, 
-    value2
-  )
 
-  return {
-    ...contentStyle,
-    height: styleValue,
-    '--u-height-start': startValue,
-    '--u-height-end': endValue
+  if (_contentRef) {
+    const height = expanded.value ? `${ _contentRef.scrollHeight }px` : '0'
+   
+    return {
+      ...contentStyle,
+      height
+    }
   }
 })
-const _headerClass = computed(() => {
-  return `${ headerClass.value }${ 
-    expanded.value 
-      ? ` ${ activeHeaderClass.value }` 
-      : '' 
-  }`
-})
+const _headerClass = computed(() => `${ headerClass.value }${ 
+  expanded.value 
+    ? ` ${ activeHeaderClass.value }` 
+    : '' 
+}`)
 
 const clickHandler = () => updateModel(name)
-
-watch(expanded, () => {
-  useAddAnimation(contentRef.value as HTMLElement, 'u-animate-height')
-})
-
-// This is a possible solution to replace animation，but need to resolve
-// browser rendering queue.
-// watch(expanded, v => {
-//   height.value = `${ contentRef.value?.scrollHeight }px`
-
-//   if (v) {
-//     setTimeout(() => {
-//       height.value = '100%'
-//     }, 300)
-//   } else {
-//     height.value = '0'
-//   }
-// })
 </script>
 
 <style scoped>
@@ -111,5 +83,6 @@ watch(expanded, () => {
 
 .u-expansion-item-content {
   overflow-y: hidden;
+  transition: height var(--u-transition-duration);
 }
 </style>
