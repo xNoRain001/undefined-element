@@ -165,7 +165,7 @@
 }
 
 /* top */
-.u-animate-top-enter-active,
+/* .u-animate-top-enter-active,
 .u-animate-top-leave-active {
   transition: top var(--u-transition-duration);
 }
@@ -178,10 +178,10 @@
 .u-animate-top-enter-to,
 .u-animate-top-leave-from {
   top: var(--u-animate-top-end);
-}
+} */
 
 /* right */
-.u-animate-right-enter-active,
+/* .u-animate-right-enter-active,
 .u-animate-right-leave-active {
   transition: right var(--u-transition-duration);
 }
@@ -194,10 +194,10 @@
 .u-animate-right-enter-to,
 .u-animate-right-leave-from {
   right: var(--u-animate-right-end);
-}
+} */
 
 /* bottom */
-.u-animate-bottom-enter-active,
+/* .u-animate-bottom-enter-active,
 .u-animate-bottom-leave-active {
   transition: bottom var(--u-transition-duration);
 }
@@ -210,10 +210,10 @@
 .u-animate-bottom-enter-to,
 .u-animate-bottom-leave-from {
   bottom: var(--u-animate-bottom-end);
-}
+} */
 
 /* left */
-.u-animate-left-enter-active,
+/* .u-animate-left-enter-active,
 .u-animate-left-leave-active {
   transition: left var(--u-transition-duration);
 }
@@ -226,10 +226,10 @@
 .u-animate-left-enter-to,
 .u-animate-left-leave-from {
   left: var(--u-animate-left-end);
-}
+} */
 
 /* background-color */
-.u-animate-background-color-enter-active .u-dialog-backdrop,
+/* .u-animate-background-color-enter-active .u-dialog-backdrop,
 .u-animate-background-color-leave-active .u-dialog-backdrop {
   transition: background-color var(--u-transition-duration);
 }
@@ -242,7 +242,7 @@
 .u-animate-background-color-enter-to .u-dialog-backdrop,
 .u-animate-background-color-leave-from .u-dialog-backdrop {
   background-color: var(--u-animate-background-color-end);
-}
+} */
 
 /* customized animation */
 @keyframes u-animate-dialog-inner-persistent {

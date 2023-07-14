@@ -67,30 +67,20 @@ const closeDialog = (e: Event) => {
 const positionStyle = computed(() => {
   const _position = position.value
   const _modelValue = modelValue.value
-  const value1 = '0'
-  const value2 = '-100%'
-  const styleValue = _modelValue ? value1 : value2
-  const { startValue, endValue } = genCSSVariables(styleValue, value1, value2)
-
-  // for center
-  const value3 = '1'
-  const value4 = '0'
-  const opacityValue = _modelValue ? value3 : value4
-  const { 
-    startValue: startValue2, 
-    endValue: endValue2 
-  } = genCSSVariables(opacityValue, value3, value4)
-
   const res: { [propName: string]: string } = {
     ...dialogPosition[_position](),
   }
 
   if (_position === 'center') {
-    res.opacity = opacityValue
-    res[`--u-opacity-start`] = startValue2,
-    res[`--u-opacity-end`] = endValue2
+    const { startValue, endValue } = genCSSVariables(_modelValue, '0', '1')
+
+    res.opacity = endValue
+    res[`--u-opacity-start`] = startValue,
+    res[`--u-opacity-end`] = endValue
   } else {
-    res[_position] = styleValue
+    const { startValue, endValue } = genCSSVariables(_modelValue, '-100%', '0')
+
+    res[_position] = endValue
     res[`--u-${ _position }-start`] = startValue,
     res[`--u-${ _position }-end`] = endValue
   }
@@ -99,13 +89,14 @@ const positionStyle = computed(() => {
 })
 
 const backgroundColorStyle = computed(() => {
-  const value1 = 'rgba(0, 0, 0, .4)'
-  const value2 = 'transparent'
-  const styleValue = modelValue.value ? value1 : value2
-  const { startValue, endValue } = genCSSVariables(styleValue, value1, value2)
+  const { startValue, endValue } = genCSSVariables(
+    modelValue.value, 
+    'transparent',
+    'rgba(0, 0, 0, .4)',
+  )
 
   return {
-    backgroundColor: styleValue,
+    backgroundColor: endValue,
     '--u-bg-start': startValue,
     '--u-bg-end': endValue
   }
