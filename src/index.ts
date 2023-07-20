@@ -19,6 +19,7 @@ import UTabPanels from './components/u-tab-panels/index.vue'
 import UScrollArea from './components/u-scroll-area/index.vue'
 import USkeletonItem from './components/u-skeleton-item/index.vue'
 import UExpansionItem from './components/u-expansion-item/index.vue'
+import UInfiniteScroll from './components/u-infinite-scroll/index.vue'
 
 import type { App } from 'vue'
 
@@ -46,6 +47,7 @@ const undefinedElement = {
       .component('UScrollArea', UScrollArea)
       .component('USkeletonItem', USkeletonItem)
       .component('UExpansionItem', UExpansionItem)
+      .component('UInfiniteScroll', UInfiniteScroll)
   }
 }
 

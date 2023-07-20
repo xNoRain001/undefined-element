@@ -6,7 +6,7 @@
     :style="_style"
   >
     <Transition name="u-animate-opacity">
-      <div v-if="modelValue" :style="cssVariables">
+      <div v-if="modelValue">
         <slot></slot>
       </div>
     </Transition>
@@ -15,8 +15,6 @@
 
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue'
-
-import { genCSSVariables } from '../../utils'
 
 const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
 const props = withDefaults(defineProps<{ 
@@ -45,14 +43,6 @@ const _style = computed(() => ({
   ...style.value,
   ...activeStyle.value
 }))
-const cssVariables = computed(() => {
-  const { startValue, endValue } = genCSSVariables(modelValue.value, '0', '1')
-
-  return {
-    '--u-animate-opacity-start': startValue,
-    '--u-animate-opacity-end': endValue
-  }
-})
 
 const updateModel = () =>  emit('update:modelValue', !modelValue.value)
 </script>

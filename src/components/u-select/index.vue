@@ -36,7 +36,6 @@
           @click="updateModel" 
           ref="selectItemsRef"
           class="u-select-items"
-          :style="selectItemsStyle"
         >
           <slot name="select-items"></slot>
         </div>
@@ -52,7 +51,6 @@
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed, onMounted } from 'vue'
 
-import { genCSSVariables } from '../../utils';
 import { 
   useAddEventListener,
   useGenBorderVariables 
@@ -155,14 +153,6 @@ const _selectStyle = computed(() => {
   useGenBorderVariables(style)
 
   return style
-})
-const selectItemsStyle = computed(() => {
-  const { startValue, endValue } = genCSSVariables(visible.value, '0', '1')
-
-  return {
-    '--u-animate-opacity-start': startValue,
-    '--u-animate-opacity-end': endValue
-  }
 })
 const _selectClass = computed(() => `
   ${ selectClass.value }

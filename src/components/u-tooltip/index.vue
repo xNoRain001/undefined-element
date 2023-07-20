@@ -18,7 +18,6 @@
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed, onMounted } from 'vue'
 
-import { genCSSVariables } from '../../utils'
 import { tooltipPosition } from '../../const/strategies'
 
 const props = withDefaults(defineProps<{ 
@@ -52,13 +51,10 @@ const tooltipStyle = computed(() => {
     const { top: _top, left: _left } = tooltipPosition[_position](
       clientWidth, clientHeight, top, right, bottom, left, centerX, centerY
     )
-    const { startValue, endValue } = genCSSVariables(visible.value, '0', '1')
 
     return {
       top: `${ _top }px`,
-      left: `${ _left }px`,
-      '--u-animate-opacity-start': startValue,
-      '--u-animate-opacity-end': endValue
+      left: `${ _left }px`
     }
   }
 })
