@@ -13,6 +13,7 @@ import UTabPanel from './components/u-tab-panel/index.vue'
 import USkeleton from './components/u-skeleton/index.vue'
 import UDropdown from './components/u-dropdown/index.vue'
 import UScroller from './components/u-scroller/index.vue'
+import UCheckbox from './components/u-checkbox/index.vue'
 import UExpansion from './components/u-expansion/index.vue'
 import UTabPanels from './components/u-tab-panels/index.vue'
 import UScrollArea from './components/u-scroll-area/index.vue'
@@ -39,6 +40,7 @@ const undefinedElement = {
       .component('USkeleton', USkeleton)
       .component('UDropdown', UDropdown)
       .component('UScroller', UScroller)
+      .component('UCheckbox', UCheckbox)
       .component('UExpansion', UExpansion)
       .component('UTabPanels', UTabPanels)
       .component('UScrollArea', UScrollArea)
