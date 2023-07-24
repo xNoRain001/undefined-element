@@ -7,7 +7,10 @@
           :key="field"
           @click="onSort(field, sortable, sortOrder)" 
           v-for="{ field, label, thClass, sortable, sortOrder } in head"
-        >{{ label }}</th>
+        >
+          {{ label }}
+          <slot name="th" :sortable="sortable" :label="label"></slot>
+        </th>
       </tr>
     </thead>
 
