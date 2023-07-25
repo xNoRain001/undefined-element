@@ -10,17 +10,19 @@ import { ref, watch, toRefs, onMounted } from 'vue'
 import { throttle } from '../../utils'
 
 const props = withDefaults(defineProps<{ 
+  to?: number,
   duration?: number,
   scrollOffset?: number,
   scrollTarget?: string
 }>(), {
+  to: 0,
   duration: 300,
   scrollOffset: 150,
   scrollTarget: '',
 })
 const scrollerRef = ref<HTMLElement | null>(null)
 const _scrollTarget = ref<HTMLElement | null>(null)
-const { duration, scrollOffset, scrollTarget } = toRefs(props)
+const { to, duration, scrollOffset, scrollTarget } = toRefs(props)
 
 const getScrollTarget = () => {
   let scrollTarget = scrollerRef.value as HTMLElement
@@ -33,13 +35,14 @@ const getScrollTarget = () => {
 }
 
 const scrollToTop = () => {
+  const _to = to.value
   const _duration = duration.value
   const scrollTarget = _scrollTarget.value as HTMLElement
  
   if (_duration) {
-    animateScroller(scrollTarget, 0, _duration)
+    animateScroller(scrollTarget, _to, _duration)
   } else {
-    scrollTarget.scrollTop = 0
+    scrollTarget.scrollTop = _to
   }
 }
 
@@ -52,8 +55,6 @@ const animateScroller = (el: HTMLElement, to: number, duration: number) => {
     const newPos = pos - (pos - to) * frameTime / Math.max(frameTime, duration)
 
     el.scrollTop = newPos <= to ? to : newPos
-    console.log(el.scrollTop);
-    
 
     if (newPos > to) {
       animateScroller(el, to, duration - frameTime)
@@ -65,7 +66,7 @@ const updateVisibility = () => {
   const scrollTarget = _scrollTarget.value as HTMLElement
   const onScroll = () => {
     scrollerRef.value!.style.display = 
-      scrollTarget.scrollTop > scrollOffset.value ? 'block' : 'none'
+      scrollTarget.scrollTop >= scrollOffset.value ? 'block' : 'none'
   }
 
   scrollTarget.addEventListener('scroll', throttle(
