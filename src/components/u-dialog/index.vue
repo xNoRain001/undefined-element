@@ -10,7 +10,7 @@
       <div ref="innerRef" class="u-dialog-inner" :style="positionStyle">
         <!-- this is a container for persistent -->
         <div>
-          <slot name="default"></slot>
+          <slot></slot>
         </div>
       </div>
     </div>

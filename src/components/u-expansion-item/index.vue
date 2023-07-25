@@ -10,7 +10,7 @@
       :class="_headerClass"
       :style="headerStyle"
     >
-      <slot name="header"></slot>
+      <slot name="header" :expanded="expanded"></slot>
     </div>
 
     <div 

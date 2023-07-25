@@ -83,7 +83,7 @@ const mousemoveHandler = throttle((e: MouseEvent) => {
 
   const index = getIndex(target) 
   fillIcons(index)
-}, 200)
+}, 100)
 
 const mouseleaveHandler = () => fillIcons(modelValue.value - 1)
 </script>

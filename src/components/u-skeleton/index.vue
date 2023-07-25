@@ -4,7 +4,7 @@
       <slot name="skeleton-items"></slot>
     </div>
     <div v-else>
-      <slot name="content"></slot>
+      <slot></slot>
     </div>
   </div>
 </template>

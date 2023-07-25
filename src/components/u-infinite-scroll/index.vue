@@ -1,12 +1,12 @@
 <template>
   <div class="u-infinite-scroll" @scroll="onScroll">
     <div class="u-infinite-scroll-content">
-      <slot name="content"></slot>
+      <slot></slot>
     </div>
 
     <Transition name="u-animate-opacity">
       <div v-if="loading" class="u-infinite-scroll-loading">
-        <slot name="loading"></slot>
+        <slot name="loading" :loading="loading"></slot>
       </div>
     </Transition>
   </div>
@@ -24,8 +24,9 @@ const onScroll = (e: Event) => {
   const { scrollTop, clientHeight, scrollHeight } = target
 
   if (scrollHeight - clientHeight === scrollTop) {
-    emit('load')
     loading.value = true
+    emit('load')
+    // loading.value = false
   }
 }
 </script>

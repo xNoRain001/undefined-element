@@ -4,7 +4,7 @@
     @click="updateVisibility"
   >
     <div class="u-dropdown-trigger">
-      <slot name="dropdown-trigger"></slot>
+      <slot></slot>
     </div>
 
     <Transition name="u-animate-opacity">
