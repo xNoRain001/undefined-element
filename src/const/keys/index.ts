@@ -1,6 +1,6 @@
 import type { Ref, InjectionKey } from 'vue'
 
-const tabsKey: InjectionKey<{
+export const tabsKey: InjectionKey<{
   tabStyle: Ref<{ [propName: string]: string | number }>,
   tabClass: Ref<string>
   modelValue: Ref<string>,
@@ -8,11 +8,11 @@ const tabsKey: InjectionKey<{
   activeTabClass: Ref<string>
 }> = Symbol()
 
-const panelsKey: InjectionKey<Ref<string>> = Symbol()
+export const panelsKey: InjectionKey<Ref<string>> = Symbol()
 
-const skeletonKey: InjectionKey<Ref<boolean>> = Symbol()
+export const skeletonKey: InjectionKey<Ref<boolean>> = Symbol()
 
-const expansionKey: InjectionKey<{
+export const expansionKey: InjectionKey<{
   itemStyle: Ref<{ [propName: string]: string | number }>,
   itemClass: Ref<string>,
   modelValue: string[],
@@ -24,9 +24,7 @@ const expansionKey: InjectionKey<{
   activeHeaderClass: Ref<string>
 }> = Symbol()
 
-export { 
-  tabsKey, 
-  panelsKey, 
-  skeletonKey,
-  expansionKey 
-}
+export const checkboxGroupKey: InjectionKey<{
+  modelValue: any[],
+  updateModel: Function
+}> = Symbol()

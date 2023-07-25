@@ -14,25 +14,28 @@
 </template>
 
 <script lang="ts" setup>
-import { toRefs, computed } from 'vue'
+import { toRefs, inject, computed } from 'vue'
+
+import { checkboxGroupKey } from '../../const/keys'
 
 const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
 const props = withDefaults(defineProps<{ 
   class?: string,
   style?: { [propName: string]: string | number },
-  modelValue: boolean,
+  modelValue?: boolean,
   activeStyle?: { [propName: string]: string | number }
   activeClass?: string,
 }>(), {
   style: () => ({}),
   class: '',
+  modelValue: false,
   activeStyle: () => ({}),
   activeClass: ''
 })
 const { 
-  modelValue, 
   class: className, 
   style, 
+  modelValue, 
   activeClass, 
   activeStyle 
 } = toRefs(props)
@@ -43,6 +46,14 @@ const _style = computed(() => ({
   ...style.value,
   ...activeStyle.value
 }))
+// const { 
+//   modelValue: _modelValue, 
+//   updateModel: _updateModel, 
+// } = (inject(checkboxGroupKey) || {})as {
+//   modelValue: any[],
+//   updateModel: Function,
+// }
+// console.log(_modelValue, _updateModel);
 
 const updateModel = () =>  emit('update:modelValue', !modelValue.value)
 </script>
