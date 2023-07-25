@@ -44,6 +44,12 @@ const scrollToTop = () => {
   } else {
     scrollTarget.scrollTop = _to
   }
+
+  // TODO:
+  // scrollTarget.scrollTo({
+  //   top: _to,
+  //   behavior: "smooth"
+  // })
 }
 
 const animateScroller = (el: HTMLElement, to: number, duration: number) => {

@@ -18,9 +18,9 @@ import { toRefs, computed } from 'vue'
 
 const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
 const props = withDefaults(defineProps<{ 
-  modelValue: boolean,
   class?: string,
   style?: { [propName: string]: string | number },
+  modelValue: boolean,
   activeStyle?: { [propName: string]: string | number }
   activeClass?: string,
 }>(), {
