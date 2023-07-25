@@ -1,11 +1,11 @@
 <template>
-  <div class="u-infinite-scroll" @scroll="onScroll">
+  <div class="u-infinite-scroll" ref="containerRef">
     <div class="u-infinite-scroll-content">
       <slot></slot>
     </div>
 
     <Transition name="u-animate-opacity">
-      <div v-if="loading" class="u-infinite-scroll-loading">
+      <div class="u-infinite-scroll-loading">
         <slot name="loading" :loading="loading"></slot>
       </div>
     </Transition>
@@ -13,20 +13,39 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch, toRefs, onMounted } from 'vue'
 
-const props = defineProps<{}>()
-const emit = defineEmits<{ 'load': [] }>()
+import { debounce } from '../../utils'
+import { useIsScrollToOffsetPosition } from '../../composables'
+
+const emit = defineEmits<{ 'load': [done: Function] }>()
+const props = withDefaults(defineProps<{
+  offset?: number,
+  scrollTarget?: string
+}>(), {
+  offset: 200,
+  scrollTarget: '',
+})
 const loading = ref(false)
+const containerRef = ref<HTMLElement | null>(null)
+const { offset, scrollTarget } = toRefs(props)
 
-const onScroll = (e: Event) => {
-  const target = e.target as HTMLElement
-  const { scrollTop, clientHeight, scrollHeight } = target
+const done = () => loading.value = false
 
-  if (scrollHeight - clientHeight === scrollTop) {
+const onScroll = debounce((e: Event) => {
+  if (
+    !loading.value && 
+    useIsScrollToOffsetPosition(e.target as HTMLElement, offset.value)
+  ) {
     loading.value = true
-    emit('load')
-    // loading.value = false
+    emit('load', done)
   }
-}
+}, 300)
+
+onMounted(() => {
+  watch(scrollTarget, v => {
+    const target = v ? document.querySelector(v) : containerRef.value
+    target?.addEventListener('scroll', onScroll)
+  }, { immediate: true })
+})
 </script>
