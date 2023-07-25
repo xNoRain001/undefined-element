@@ -5,17 +5,22 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs } from 'vue'
+import { ref, watch, toRefs, onMounted } from 'vue'
+
+import { throttle } from '../../utils'
 
 const props = withDefaults(defineProps<{ 
-  scrollTarget?: HTMLElement | string,
-  duration?: number 
+  duration?: number,
+  scrollOffset?: number,
+  scrollTarget?: string
 }>(), {
+  duration: 300,
+  scrollOffset: 150,
   scrollTarget: '',
-  duration: 0
 })
 const scrollerRef = ref<HTMLElement | null>(null)
-const { duration, scrollTarget } = toRefs(props)
+const _scrollTarget = ref<HTMLElement | null>(null)
+const { duration, scrollOffset, scrollTarget } = toRefs(props)
 
 const getScrollTarget = () => {
   let scrollTarget = scrollerRef.value as HTMLElement
@@ -29,15 +34,12 @@ const getScrollTarget = () => {
 
 const scrollToTop = () => {
   const _duration = duration.value
-  const _scrollTarget = scrollTarget.value
-  const __scrollTarget = _scrollTarget
-    ? document.querySelector(_scrollTarget as string) as HTMLElement
-    : getScrollTarget()
-
+  const scrollTarget = _scrollTarget.value as HTMLElement
+ 
   if (_duration) {
-    animateScroller(__scrollTarget, 0, _duration)
+    animateScroller(scrollTarget, 0, _duration)
   } else {
-    __scrollTarget.scrollTop = 0
+    scrollTarget.scrollTop = 0
   }
 }
 
@@ -50,6 +52,8 @@ const animateScroller = (el: HTMLElement, to: number, duration: number) => {
     const newPos = pos - (pos - to) * frameTime / Math.max(frameTime, duration)
 
     el.scrollTop = newPos <= to ? to : newPos
+    console.log(el.scrollTop);
+    
 
     if (newPos > to) {
       animateScroller(el, to, duration - frameTime)
@@ -57,4 +61,34 @@ const animateScroller = (el: HTMLElement, to: number, duration: number) => {
   })
 }
 
+const updateVisibility = () => {
+  const scrollTarget = _scrollTarget.value as HTMLElement
+  const onScroll = () => {
+    scrollerRef.value!.style.display = 
+      scrollTarget.scrollTop > scrollOffset.value ? 'block' : 'none'
+  }
+
+  scrollTarget.addEventListener('scroll', throttle(
+    onScroll, 
+    300, 
+    { trailing: true }
+  ))
+  onScroll()
+}
+
+onMounted(() => {
+  watch(scrollTarget, v => {
+    _scrollTarget.value = v
+    ? document.querySelector(v)
+    : getScrollTarget()
+  }, { immediate: true })
+
+  updateVisibility()
+})
 </script>
+
+<style scoped>
+.u-scroller {
+  display: none;
+}
+</style>

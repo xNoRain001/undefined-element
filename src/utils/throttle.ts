@@ -1,18 +1,21 @@
 const throttle = (
   fn: Function, 
   wait = 200, 
-  options = { leading: true, trailing: false }
+  options: { 
+    leading?: boolean, 
+    trailing?: boolean 
+  } = { leading: true, trailing: false }
 ) => {
   const { leading = true, trailing = false } = options
   let context
   let result
   let parmas: any[] = []
-  let timer = Number.MIN_SAFE_INTEGER
+  let timer = 0
   let prev = 0
 
   const clear = () => {
     context = null
-    timer = Number.MIN_SAFE_INTEGER
+    timer = 0
     parmas = []
   }
 
@@ -37,6 +40,7 @@ const throttle = (
     if (remaining <= 0 || remaining > wait) {
       if (timer) {
         clearTimeout(timer)
+        timer = 0
       }
 
       prev = _now
@@ -56,6 +60,7 @@ const throttle = (
 
   _throttle.cancle = () => {
     clearTimeout(timer)
+    timer = 0
     prev = 0
     clear()
   }
