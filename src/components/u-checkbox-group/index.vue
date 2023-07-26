@@ -12,12 +12,14 @@ import { checkboxGroupKey } from '../../const/keys'
 const props = withDefaults(defineProps<{ 
   min?: number,
   max?: number,
+  race?: false,
   modelValue: boolean[] 
 }>(), {
   min: Number.MIN_SAFE_INTEGER,
-  max: Number.MAX_SAFE_INTEGER
+  max: Number.MAX_SAFE_INTEGER,
+  race: false
 })
-const { min, max, modelValue } = toRefs(props)
+const { min, max, race, modelValue } = toRefs(props)
 
 const updateModel = (value: any) => {
   const _modelValue = modelValue.value
@@ -28,10 +30,11 @@ const updateModel = (value: any) => {
     if (length > min.value) {
       _modelValue.splice(index, 1)
     }
-  } else {
-    if (length < max.value) {
-      _modelValue.push(value)
-    } 
+  } else if (length < max.value) {
+    _modelValue.push(value)
+  } else if (race.value) {
+    _modelValue.shift()
+    _modelValue.push(value)
   }
 }
 
