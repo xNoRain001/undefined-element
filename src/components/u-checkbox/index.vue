@@ -6,7 +6,7 @@
     :style="_style"
   >
     <Transition name="u-animate-opacity">
-      <div v-if="modelValue">
+      <div v-if="checked">
         <slot></slot>
       </div>
     </Transition>
@@ -16,46 +16,71 @@
 <script lang="ts" setup>
 import { toRefs, inject, computed } from 'vue'
 
+import { noop } from '../../utils'
 import { checkboxGroupKey } from '../../const/keys'
 
 const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
 const props = withDefaults(defineProps<{ 
   class?: string,
   style?: { [propName: string]: string | number },
+  value?: any,
+  disabled?: boolean,
   modelValue?: boolean,
   activeStyle?: { [propName: string]: string | number }
   activeClass?: string,
+  disabledClass?: string
 }>(), {
   style: () => ({}),
+  value: false,
   class: '',
-  modelValue: false,
+  disabled: false,
   activeStyle: () => ({}),
-  activeClass: ''
+  activeClass: '',
+  disabledClass: ''
+})
+
+const { 
+  parentModel, 
+  updateParentModel 
+} = inject(checkboxGroupKey, {
+  parentModel: null,
+  updateParentModel: noop
 })
 const { 
   class: className, 
   style, 
+  value,
+  disabled,
   modelValue, 
   activeClass, 
-  activeStyle 
+  activeStyle,
+  disabledClass 
 } = toRefs(props)
 const _class = computed(() => `
-  ${ className.value }${ modelValue.value ? ` ${ activeClass.value }` : ''}
+  ${ className.value }${ checked.value ? ` ${ activeClass.value }` : ''}
+  ${ disabled.value ? ` ${ disabledClass.value }` : ''}
 `)
 const _style = computed(() => ({
   ...style.value,
   ...activeStyle.value
 }))
-// const { 
-//   modelValue: _modelValue, 
-//   updateModel: _updateModel, 
-// } = (inject(checkboxGroupKey) || {})as {
-//   modelValue: any[],
-//   updateModel: Function,
-// }
-// console.log(_modelValue, _updateModel);
+const checked = computed(() => {
+  return parentModel
+    ? parentModel.includes(value.value)
+    : modelValue.value
+})
 
-const updateModel = () =>  emit('update:modelValue', !modelValue.value)
+const updateModel = () => {
+  if (disabled.value) {
+    return
+  }
+
+  if (parentModel) {
+    updateParentModel(value.value)
+  } else {
+    emit('update:modelValue', !modelValue.value)
+  }
+}
 </script>
 
 <style scoped>

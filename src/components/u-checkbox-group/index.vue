@@ -9,22 +9,34 @@ import { toRefs, provide } from 'vue'
 
 import { checkboxGroupKey } from '../../const/keys'
 
-const props = defineProps<{ modelValue: boolean[] }>()
-const { modelValue } = toRefs(props)
+const props = withDefaults(defineProps<{ 
+  min?: number,
+  max?: number,
+  modelValue: boolean[] 
+}>(), {
+  min: Number.MIN_SAFE_INTEGER,
+  max: Number.MAX_SAFE_INTEGER
+})
+const { min, max, modelValue } = toRefs(props)
 
 const updateModel = (value: any) => {
   const _modelValue = modelValue.value
   const index = _modelValue.indexOf(value)
+  const { length } = _modelValue
 
   if (index >= 0) {
-    _modelValue.splice(index, 1)
+    if (length > min.value) {
+      _modelValue.splice(index, 1)
+    }
   } else {
-    _modelValue.push(value)
+    if (length < max.value) {
+      _modelValue.push(value)
+    } 
   }
 }
 
 provide(checkboxGroupKey, {
-  modelValue: modelValue.value,
-  updateModel,
+  parentModel: modelValue.value,
+  updateParentModel: updateModel,
 })
 </script>

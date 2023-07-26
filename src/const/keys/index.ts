@@ -25,6 +25,6 @@ export const expansionKey: InjectionKey<{
 }> = Symbol()
 
 export const checkboxGroupKey: InjectionKey<{
-  modelValue: any[],
-  updateModel: Function
+  parentModel: any[] | null,
+  updateParentModel: Function
 }> = Symbol()
