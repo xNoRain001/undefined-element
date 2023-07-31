@@ -1,7 +1,8 @@
 <template>
   <div 
+    tabindex="-1"
     class="u-dropdown"
-    @click="updateVisibility"
+    ref="dropdownRef"
   >
     <div class="u-dropdown-trigger">
       <slot></slot>
@@ -11,7 +12,8 @@
       <div 
         v-if="visible"
         class="u-dropdown-list" 
-        :style="cssVariables"
+        :class="listClass"
+        :style="listStyle"
         @click.stop="updateVisibility"
       >
         <slot name="dropdown-list"></slot>
@@ -21,41 +23,37 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed } from 'vue'
+import { ref, toRefs, onMounted } from 'vue'
 
-// TODO: trigger by mouseenter
-// const props = defineProps<{}>()
 const visible = ref(false)
 const props = withDefaults(defineProps<{
   trigger?: 'click' | 'hover',
-  offset?: {
-    top?: string,
-    right?: string,
-    bottom?: string,
-    left?: string
-  }
+  listClass?: string,
+  listStyle?: { [propName: string]: string |number }
 }>(), {
   trigger: 'click',
-  offset: {
-    top: 'auto',
-    right: 'auto',
-    bottom: 'auto',
-    left: 'auto'
-  }
+  listClass: '',
+  listStyle: () => ({})
 })
-const { offset } = toRefs(props)
-const cssVariables = computed(() => {
-  const { top, right, bottom, left } = offset.value
+const dropdownRef = ref<HTMLElement | null>(null)
+const { trigger } = toRefs(props)
 
-  return {
-    '--u-dropdown-list-top': top, 
-    '--u-dropdown-list-right': right, 
-    '--u-dropdown-list-bottom': bottom, 
-    '--u-dropdown-list-left': left, 
-  }
-})
+const onShow = () => visible.value = true
+
+const onHide = () => visible.value = false
 
 const updateVisibility = () => visible.value = !visible.value
+
+onMounted(() => {
+  const _dropdownRef = dropdownRef.value as HTMLElement
+
+  if (trigger.value === 'hover') {
+    _dropdownRef.addEventListener('mouseenter', onShow)
+    _dropdownRef.addEventListener('mouseleave', onHide)
+  }
+  
+  _dropdownRef.addEventListener('click', updateVisibility)
+})
 </script>
 
 <style scoped>
@@ -66,9 +64,6 @@ const updateVisibility = () => visible.value = !visible.value
 
 .u-dropdown-list {
   position: absolute;
-  top: var(--u-dropdown-list-top);
-  right: var(--u-dropdown-list-right);
-  bottom: var(--u-dropdown-list-bottom);
-  left: var(--u-dropdown-list-left);
+  z-index: 10;
 }
 </style>
