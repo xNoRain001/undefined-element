@@ -28,14 +28,16 @@
         type="text" 
       />
 
-      <slot name="append"></slot>
+      <slot name="append" :expanded="expanded"></slot>
 
       <Transition name="u-animate-opacity">
         <div 
-          v-if="visible"
+          v-if="expanded"
           @click="updateModel" 
           ref="selectItemsRef"
           class="u-select-items"
+          :class="selectItemsClass"
+          :style="selectItemsStyle"
         >
           <slot name="select-items"></slot>
         </div>
@@ -43,7 +45,7 @@
     </div>
 
     <div class="u-input-after">
-      <slot name="after"></slot>
+      <slot name="after" :expanded="expanded"></slot>
     </div>
   </div>
 </template>
@@ -68,6 +70,8 @@ const props = withDefaults(defineProps<{
   selectStyle?: { [propName: string]: string | number },
   selectClass?: string,
   placeholder?: string,
+  selectItemsStyle?: { [propName: string]: string | number },
+  selectItemsClass?: string,
   placeholderStyle?: { [propName: string]: string | number },
   hoveredSelectStyle?: { [propName: string]: string | number }
   focusedSelectStyle?: { [propName: string]: string | number },
@@ -83,6 +87,8 @@ const props = withDefaults(defineProps<{
   selectClass: '',
   selectStyle: () => ({}),
   placeholder: '',
+  selectItemsStyle: () => ({}),
+  selectItemsClass: '',
   placeholderStyle: () => ({}),
   // TODO: focusedPlaceholderStyle and hoveredPlaceholderStyle
   focusedSelectStyle: () => ({}),
@@ -108,13 +114,15 @@ const {
   selectStyle,
   selectClass,
   placeholder,
+  selectItemsStyle,
+  selectItemsClass,
   placeholderStyle,
   focusedSelectClass,
   hoveredSelectClass,
   focusedSelectStyle,
   hoveredSelectStyle
 } = toRefs(props)
-const visible = ref(false)
+const expanded = ref(false)
 const inputRef = ref<HTMLElement | null>(null)
 const focusedInput = ref(false)
 const selectItemsRef = ref<HTMLElement | null>(null)
@@ -245,7 +253,7 @@ watch(focusedInputOrInputContainer, (v) => {
     return
   }
 
-  visible.value = v
+  expanded.value = v
 })
 
 const clearContent = () => {
