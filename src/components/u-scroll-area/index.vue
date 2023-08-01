@@ -17,16 +17,20 @@
         ref="thumbXRef" 
         class="u-scroll-area-thumb-x" 
         :style="{ width: `${ thumbWidth }px` }"
+        @mousedown="onMousedown"
+        @mousemove="onMousemove"
+        @mouseup="onMouseup"
       ></div>
     </div>
     <div class="u-scroll-area-bar-y" ref="barYRef" @click="onClickBar">
-      <!-- @mousedown="onMousedown"
-      @mousemove="onMousemove"
-      @mouseup="onMouseup" -->
+
       <div 
         ref="thumbYRef" 
         class="u-scroll-area-thumb-y" 
         :style="{ height: `${ thumbHeight }px` }"
+        @mousedown="onMousedown"
+        @mousemove="onMousemove"
+        @mouseup="onMouseup"
       ></div>
     </div>
   </div>
@@ -105,22 +109,43 @@ let dragging = false
 let prevOffset = 0
 
 const onMousedown = (e: MouseEvent) => {
+  const { target, clientX, clientY } = e
   dragging = true
-  prevOffset = e.clientX
+  prevOffset = target === thumbXRef.value as HTMLElement ? clientX : clientY
 }
 
 const onMousemove = (e: MouseEvent) => {
   if (!dragging) {
     return
   }
-
-  const { clientX } = e
-  const offset = clientX - prevOffset
-  const rate = offset / (barXRef.value?.clientWidth - thumbXRef.value?.clientWidth)
-  
-
-  containerRef.value!.scrollTo({
-    left: containerRef.value?.scrollWidth * rate,
+  const _thumbXRef = thumbXRef.value as HTMLElement
+  const direction = e.target === _thumbXRef ? 'left' : 'top'
+  const isHorizontal = direction === 'left'
+  const { clientX, clientY } = e
+  const offset = isHorizontal
+    ? clientX - prevOffset
+    : clientY - prevOffset
+  const { clientWidth: thumbWidth, clientHeight: thumbHeight } = isHorizontal 
+    ? thumbXRef.value as HTMLElement
+    : thumbYRef.value as HTMLElement
+  const { clientWidth: barWidth, clientHeight: barHeight } = isHorizontal
+    ? barXRef.value as HTMLElement
+    : barYRef.value as HTMLElement
+  const rate = isHorizontal
+    ? offset / (barWidth - thumbWidth)
+    : offset / (barHeight - thumbHeight)
+  const _containerRef = containerRef.value as HTMLElement
+  const { 
+    scrollWidth, 
+    scrollHeight,
+    clientWidth: containerWidth,
+    clientHeight: containerHeight
+  } = _containerRef
+  const scrollOffset = isHorizontal
+    ? (scrollWidth - containerWidth) * rate
+    : (scrollHeight - containerHeight) * rate
+  _containerRef.scrollTo({
+    [isHorizontal ? 'left' : 'top']: scrollOffset,
     behavior: 'instant'
   })
 }
@@ -227,6 +252,46 @@ const getNewScrollOffsetStrategies = {
   },
 }
 
+const getNewScrollOffset = (
+  target: HTMLElement, 
+  layerX: number, 
+  layerY: number
+) => {
+  const _barXRef = barXRef.value as HTMLElement
+  const direction = target === _barXRef ? 'left' : 'top'
+  const isHorizontal = direction === 'left'
+  const thumb = isHorizontal
+    ? thumbXRef.value as HTMLElement
+    : thumbYRef.value as HTMLElement
+  const bar = isHorizontal
+    ? _barXRef
+    : barYRef.value as HTMLElement
+  const { style: { top, left } } = thumb
+  const oldOffset = isHorizontal
+    ? (parseInt(left) || 0)
+    : (parseInt(top) || 0)
+  // don't use thumbHeight, because content is dynamic, thumbHeight just
+  // for initialization.
+  const { clientWidth: thumbWidth, clientHeight: thumbHeight } = thumb
+  const { clientWidth: barWidth , clientHeight: barHeight } = bar
+  const newOffset = getNewThumbOffsetStrategies[direction](
+    layerX, layerY, oldOffset, thumbWidth, thumbHeight, barWidth, barHeight
+  )
+  const _containerRef = containerRef.value as HTMLElement
+  const { 
+    scrollWidth,
+    scrollHeight, 
+    clientWidth: containerWidth,
+    clientHeight: containerHeight 
+  } = _containerRef
+  const newScrollOffset = getNewScrollOffsetStrategies[direction](
+    newOffset, thumbWidth, thumbHeight, barWidth, barHeight, 
+    scrollWidth, scrollHeight, containerWidth, containerHeight
+  )
+
+  return newScrollOffset
+}
+
 const onClickBar = (e: Event) => {
   const { target, layerX, layerY, currentTarget }: { 
     target: HTMLElement, 
@@ -272,7 +337,7 @@ const onClickBar = (e: Event) => {
   )
 
   // don't update thumb offset, because when update container scroll offset,
-  // it will onScroll function to update thumb offset.
+  // it will execute onScroll function to update thumb offset.
   _containerRef.scrollTo({
     [isHorizontal ? 'left' : 'top']: newScrollOffset,
     behavior: 'smooth'
