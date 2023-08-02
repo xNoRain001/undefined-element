@@ -50,6 +50,8 @@
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed, onMounted } from 'vue'
 
+import { debounce } from '@/utils'
+
 const props = withDefaults(defineProps<{ 
   width?: string,
   height?: string,
@@ -84,11 +86,14 @@ const onScroll = (e: Event) => {
     clientWidth,
     clientHeight
   } = e.target as HTMLElement
-  const { style: thumbXStyle } = thumbXRef.value as HTMLElement
-  const thumbXWidth = parseInt(thumbXStyle.width)
-  const { style: thumbYStyle } = thumbYRef.value as HTMLElement
-  // don't use clientHeight because result is 0 when thumb hide.
-  const thumbYHeight = parseInt(thumbYStyle.height)
+  const { 
+    style: thumbXStyle, 
+    clientWidth: thumbXWidth 
+  } = thumbXRef.value as HTMLElement
+  const { 
+    style: thumbYStyle,
+    clientHeight: thumbYHeight
+  } = thumbYRef.value as HTMLElement
   const maxScrollTop = scrollHeight - clientHeight
   const maxScrollLeft = scrollWidth - clientWidth
   const maxLeft = clientWidth - thumbXWidth
@@ -347,13 +352,13 @@ const onClickBar = (e: Event) => {
 }
 
 const showThumbs = () => {
-  thumbXRef.value!.style.display = 'block'
-  thumbYRef.value!.style.display = 'block'
+  thumbXRef.value!.style.opacity = '1'
+  thumbYRef.value!.style.opacity = '1'
 }
 
-const hideThumbX = () => thumbXRef.value!.style.display = 'none'
+const hideThumbX = () => thumbXRef.value!.style.opacity = '0'
 
-const hideThumbY = () => thumbYRef.value!.style.display = 'none'
+const hideThumbY = () => thumbYRef.value!.style.opacity = '0'
 
 const hideThumbs = () => {
   hideThumbX()
@@ -485,10 +490,10 @@ onMounted(() => {
 .u-scroll-area-thumb-y {
   background-color: rgba(144, 147, 153, .3);
   border-radius: 4px;
-  display: none;
+  opacity: 0;
   position: absolute;
   cursor: pointer;
-  transition: background-color var(--u-transition-duration);
+  transition: all var(--u-transition-duration);
 }
 
 .u-scroll-area-thumb-x {
@@ -504,6 +509,6 @@ onMounted(() => {
 .u-scroll-area-thumb-x:hover,
 .u-scroll-area-thumb-y:hover {
   background-color: rgba(144, 147, 153, .5);
-  display: block !important;
+  opacity: 1 !important;
 }
 </style>
