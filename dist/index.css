@@ -86,9 +86,10 @@
   animation: u-animate-bg var(--u-transition-duration);
 }
 
-
 /* transition component animation */
+
 /* opacity */
+
 .u-animate-opacity-enter-active,
 .u-animate-opacity-leave-active {
   transition: opacity var(--u-transition-duration);
@@ -120,6 +121,7 @@
 } */
 
 /* customized animation */
+
 @keyframes u-animate-dialog-inner-persistent {
   from {
     transform: scale(1)
