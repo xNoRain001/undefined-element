@@ -3,26 +3,21 @@
     class="u-input-wrapper flex items-center" 
     ref="inputWrapperRef"
   >
-    <div class="u-input-before h-full">
-      <slot name="before"></slot>
-    </div>
+    <slot name="before"></slot>
 
     <div 
       tabindex="-1"
       class="
-        u-input-container flex items-center relative !border-none 
-        transition-[background-color] duration-[var(--u-transition-duration)]
+        u-input-container flex items-center relative
         before:content-[''] before:absolute before:left-0 before:right-0 
-        before:bottom-0 before:top-0 before:z-[-1] before:transition-[border-color] 
-        before:duration-[var(--transition-duration)]
+        before:bottom-0 before:top-0 before:z-[-1]
+        before:transition-colors
+        before:duration-[var(--u-transition-duration)]
       " 
-      :style="_inputStyle"
-      :class="_inputClass"
+      :class="inputContainerClass"
       @click="foucsHelper"
-      @focus="containerFocusHandler"
-      @blur="containerBlurHandler"
-      @mouseenter="mouseenterHandler"
-      @mouseleave="mouseleaveHandler"
+      @focus="onContainerFocus"
+      @blur="onContainerBlur"
     >
       <slot name="prepend"></slot>
 
@@ -32,13 +27,12 @@
         :disabled="disabled ? true : false"
         :placeholder="placeholder" 
         :value="modelValue" 
-        :style="_placeholderStyle"
-        @input="_inputHandler"  
-        @focus="focusHandler"
-        @blur="blurHandler"
-        class="
-          u-input w-full h-full bg-transparent focus:outline-none
-        "
+        @input="_onInput"  
+        @focus="onFocus"
+        @blur="onBlur"
+        @click.stop="noop"
+        class="u-input h-full grow focus:outline-none bg-transparent"
+        :class="_inputClass"
         ref="inputRef" 
         :type="_type" 
       />
@@ -46,49 +40,37 @@
       <slot name="append"></slot>
     </div>
 
-    <div class="u-input-after h-full">
-      <slot name="after"></slot>
-    </div>
+    <slot name="after"></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, toRefs, computed, onMounted } from 'vue'
 
-import { useAddEventListener, useGenBorderVariables } from '../../composables'
 import { noop, debounce as debounceFn } from '../../utils'
 
 const props = withDefaults(defineProps<{
   type?: 'text' | 'password' | 'textareae' | 'mail' | 'search' | 'tel' | 'file' 
   | 'number' | 'url' | 'time' | 'date',
+  class?: string,
   debounce?: number,
   readonly?: boolean,
   disabled?: boolean,
   autofocus?: boolean,
   modelValue: string,
-  inputStyle?: { [propName: string]: string | number },
   inputClass?: string,
   placeholder?: string,
-  placeholderStyle?: { [propName: string]: string | number },
-  hoveredInputStyle?: { [propName: string]: string | number }
-  focusedInputStyle?: { [propName: string]: string | number },
-  focusedInputClass?: string,
-  hoveredInputClass?: string
+  focusedClass?: string
 }>(), {
   type: 'text',
+  class: '',
   debounce: 0,
   readonly: false,
   disabled: false,
   autofocus: false,
   inputClass: '',
-  inputStyle: () => ({}),
   placeholder: '',
-  placeholderStyle: () => ({}),
-  // TODO: focusedPlaceholderStyle and hoveredPlaceholderStyle
-  focusedInputStyle: () => ({}),
-  hoveredInputStyle: () => ({}),
-  focusedInputClass: '',
-  hoveredInputClass: ''
+  focusedClass: ''
 })
 const emit = defineEmits<{ 
   'blur': [e: Event],
@@ -98,153 +80,105 @@ const emit = defineEmits<{
 }>()
 const { 
   type,
+  class: className,
   debounce, 
   readonly,
   disabled,
   autofocus,
   modelValue, 
-  inputStyle,
   inputClass,
   placeholder,
-  placeholderStyle,
-  focusedInputClass,
-  hoveredInputClass,
-  focusedInputStyle,
-  hoveredInputStyle
+  focusedClass
 } = toRefs(props)
 const visible = ref(false)
 const inputRef = ref<HTMLElement | null>(null)
 const focusedInput = ref(false)
 const inputWrapperRef = ref<HTMLElement | null>(null)
 const focusedInputContainer = ref(false)
-const hoveredInputContainer = ref(false)
 const _type = computed(() => {
   return type.value === 'password' && visible.value
     ? 'text'
     : type.value
-})
-const _placeholderStyle = computed(() => {
-  const { color, fontSize, fontWeight } = placeholderStyle.value
-
-  return {
-    '--u-input-placeholder-color': color,
-    '--u-input-placeholder-fontSize': fontSize,
-    '--u-input-placeholder-fontWeight': fontWeight,
-  }
 })
 const focused = computed(() => {
   return !readonly.value && 
     !disabled.value &&
     (focusedInput.value || focusedInputContainer.value)
 })
-const _inputStyle = computed(() => {
-  const style = {
-    ...inputStyle.value, 
-    ...(
-      focused.value
-        ? focusedInputStyle.value
-        : hoveredInputContainer.value
-          ? hoveredInputStyle.value
-          : {}
-    )
-  }
-
-  useGenBorderVariables(style)
-
-  return style
-})
+const inputContainerClass = computed(() => `
+  ${ className.value }
+  ${ focused.value ? ` ${ focusedClass.value }` : ''}
+  ${ disabled.value ? ' cursor-not-allowed' : ''}
+`)
 const _inputClass = computed(() => `
   ${ inputClass.value }
-  ${ focused.value ? focusedInputClass.value : '' }
-  ${ hoveredInputContainer.value ? hoveredInputClass.value : '' }
-  ${ disabled.value ? 'u-disabled' : '' }
+  ${ disabled.value ? ' cursor-not-allowed' : '' }
+  ${ readonly.value ? ' cursor-auto' : '' }
 `)
 
-const foucsHelper = (e: Event) => {
-  const { target, currentTarget } = e
+const foucsHelper = () => inputRef.value!.focus()
 
-  // if target is not input and container contains target, autofocus.
-  if (target === currentTarget) {
-    inputRef.value!.focus()
-  } 
-}
+const onContainerFocus = () => focusedInputContainer.value = true
 
-const containerFocusHandler = () => focusedInputContainer.value = true
-
-const containerBlurHandler = () => setTimeout(
+const onContainerBlur = () => setTimeout(
   () => focusedInputContainer.value = false
 )
 
-const mouseenterHandler = () => hoveredInputContainer.value = true
-
-const mouseleaveHandler = () => hoveredInputContainer.value = false
-
-const focusHandler = (e: Event) => {
+const onFocus = (e: Event) => {
   focusedInput.value = true
   emit('focus', e)
 }
 
-const blurHandler = (e: Event) => {
+const onBlur = (e: Event) => {
   setTimeout(() => {
     focusedInput.value = false
     emit('blur', e)
   })
 }
 
-const inputHandler = (e: Event) => emit(
+const onInput = (e: Event) => emit(
   'update:modelValue', 
   (e.target as HTMLInputElement).value
 )
 
-const _inputHandler = computed(() => {
+const _onInput = computed(() => {
   const _debounce = debounce.value
 
   return readonly.value 
     ? noop 
     : _debounce
-      ? debounceFn(inputHandler, _debounce)
-      : inputHandler
+      ? debounceFn(onInput, _debounce)
+      : onInput
 })
 
-const clearContent = () => {
-  const oldValue = modelValue.value
-  emit('update:modelValue', '')
-  emit('clear', oldValue)
+const initClearableBtns = () => {
+  const onClear = () => {
+    if (modelValue.value.length) {
+      const oldValue = modelValue.value
+      emit('update:modelValue', '')
+      emit('clear', oldValue)
+    }
+  }
+
+  const elms = inputWrapperRef.value!.querySelectorAll('*[clearable]')
+
+  for (let i = 0, l = elms.length; i < l; i++) {
+    elms[i].addEventListener('click', onClear)
+  }
 }
 
-const updateVisibility = () => visible.value = !visible.value
+const initVisibleBtns = () => {
+  const updateVisibility = () => visible.value = !visible.value
+
+  const elms = inputWrapperRef.value!.querySelectorAll('*[visible]')
+
+  for (let i = 0, l = elms.length; i < l; i++) {
+    elms[i].addEventListener('click', updateVisibility)
+  }
+}
 
 onMounted(() => {
-  const _inputWrapperRef = inputWrapperRef.value as HTMLElement
-
-  useAddEventListener(_inputWrapperRef, '*[clearable]', 'click', clearContent)
-  useAddEventListener(_inputWrapperRef, '*[visible]', 'click', updateVisibility)
+  initClearableBtns()
+  initVisibleBtns()
 })
 </script>
-
-<style scoped>
-/* handle text jitter */
-.u-input-container::before {
-  border: 
-    var(--u-input-container-before-border);
-  border-top-right-radius: 
-    var(--u-input-container-before-border-top-right-radius);
-  border-top-left-radius: 
-    var(--u-input-container-before-border-top-left-radius);
-  border-bottom-right-radius: 
-    var(--u-input-container-before-border-bottom-right-radius);
-  border-bottom-left-radius: 
-    var(--u-input-container-before-border-bottom-left-radius);
-}
-
-.u-input-container.u-disabled,
-.u-input-container.u-disabled > .u-input {
-  cursor: not-allowed;
-}
-
-.u-input::placeholder {
-  color: var(--u-input-placeholder-color);
-  font-size: var(--u-input-placeholder-fontSize);
-  font-weight: var(--u-input-placeholder-fontWeight);
-}
-</style>

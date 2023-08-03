@@ -159,8 +159,16 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.cursor-auto {
+  cursor: auto;
+}
+
 .cursor-move {
   cursor: move;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
 }
 
 .cursor-pointer {
@@ -489,9 +497,11 @@
   transition-duration: 150ms;
 }
 
-.before\:duration-\[var\(--transition-duration\)\]::before {
+.before\:transition-colors::before {
   content: var(--tw-content);
-  transition-duration: var(--transition-duration);
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .before\:duration-\[var\(--u-transition-duration\)\]::before {
