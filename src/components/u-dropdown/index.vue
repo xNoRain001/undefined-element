@@ -1,7 +1,7 @@
 <template>
   <div 
     tabindex="-1"
-    class="u-dropdown"
+    class="u-dropdown relative w-fit h-fit"
     ref="dropdownRef"
   >
     <div class="u-dropdown-trigger">
@@ -11,7 +11,7 @@
     <Transition name="u-animate-opacity">
       <div 
         v-if="visible"
-        class="u-dropdown-list" 
+        class="u-dropdown-list absolute z-10 left-0 right-0 top-full" 
         :class="listClass"
         :style="listStyle"
         @click.stop="updateVisibility"
@@ -55,19 +55,3 @@ onMounted(() => {
   _dropdownRef.addEventListener('click', updateVisibility)
 })
 </script>
-
-<style scoped>
-.u-dropdown {
-  position: relative;
-  width: fit-content;
-  height: fit-content;
-}
-
-.u-dropdown-list {
-  position: absolute;
-  z-index: 10;
-  left: 0;
-  right: 0;
-  top: 100%;
-}
-</style>

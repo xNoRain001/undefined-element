@@ -1,12 +1,21 @@
 <template>
-  <div class="u-input-wrapper" ref="inputWrapperRef">
-    <div class="u-input-before">
+  <div 
+    class="u-input-wrapper flex items-center" 
+    ref="inputWrapperRef"
+  >
+    <div class="u-input-before h-full">
       <slot name="before"></slot>
     </div>
 
     <div 
       tabindex="-1"
-      class="u-input-container" 
+      class="
+        u-input-container flex items-center relative !border-none
+        transition-[background-color] duration-[var(--u-transition-duration)]
+        before:content-[''] before:absolute before:left-0 before:right-0 
+        before:bottom-0 before:top-0 before:z-[-1] before:transition-[border-color] 
+        before:duration-[var(--u-transition-duration)]
+      " 
       :style="_selectStyle"
       :class="_selectClass"
       @focus="containerFocusHandler"
@@ -23,7 +32,7 @@
         readonly
         @focus="focusHandler"
         @blur="blurHandler"
-        class="u-input"
+        class="u-input w-full h-full bg-transparent focus:outline-none"
         ref="inputRef" 
         type="text" 
       />
@@ -35,7 +44,7 @@
           v-if="expanded"
           @click="updateModel" 
           ref="selectItemsRef"
-          class="u-select-items"
+          class="u-select-items absolute left-0 right-0 top-full z-10"
           :class="selectItemsClass"
           :style="selectItemsStyle"
         >
@@ -44,7 +53,7 @@
       </Transition>
     </div>
 
-    <div class="u-input-after">
+    <div class="u-input-after h-full">
       <slot name="after" :expanded="expanded"></slot>
     </div>
   </div>
@@ -276,27 +285,8 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.u-input-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.u-input-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  border: none !important;
-  transition: background-color var(--u-transition-duration);
-}
-
 /* handle text jitter */
 .u-input-container::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
   border: var(--u-input-container-before-border);
   border-top-right-radius: 
     var(--u-input-container-before-border-top-right-radius);
@@ -306,8 +296,6 @@ onMounted(() => {
     var(--u-input-container-before-border-bottom-right-radius);
   border-bottom-left-radius: 
     var(--u-input-container-before-border-bottom-left-radius);
-  z-index: -1;
-  transition: border-color var(--u-transition-duration);
 }
 
 .u-input-container.u-disabled,
@@ -315,31 +303,9 @@ onMounted(() => {
   cursor: not-allowed;
 }
 
-.u-input {
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-}
-
-.u-input:focus {
-  outline: none;
-}
-
 .u-input::placeholder {
   color: var(--u-input-placeholder-color);
   font-size: var(--u-input-placeholder-fontSize);
   font-weight: var(--u-input-placeholder-fontWeight);
-}
-
-.u-input-before,
-.u-input-after {
-  height: 100%;
-}
-
-.u-select-items {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
 }
 </style>

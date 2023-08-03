@@ -5,7 +5,7 @@
         <div 
           v-if="visible" 
           ref="tooltipRef" 
-          class="u-tooltip"
+          class="u-tooltip absolute overflow-y-hidden"
           :style="tooltipStyle"
         >
           <slot></slot>
@@ -70,10 +70,3 @@ onMounted(() => {
   }, { immediate: true })
 })
 </script>
-
-<style scoped>
-.u-tooltip {
-  overflow-y: hidden;
-  position: absolute;
-}
-</style>

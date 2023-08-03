@@ -6,7 +6,7 @@
   >
     <div 
       @click="clickHandler" 
-      class="u-expansion-item-header"
+      class="u-expansion-item-header cursor-pointer"
       :class="_headerClass"
       :style="headerStyle"
     >
@@ -16,7 +16,10 @@
     <div 
       ref="contentRef" 
       :style="_contentStyle" 
-      class="u-expansion-item-content"
+      class="
+        u-expansion-item-content overflow-y-hidden transition-[height] 
+        duration-[var(--u-transition-duration)]
+      "
       :class="contentClass"
     >
       <slot name="content"></slot>
@@ -75,14 +78,3 @@ const _headerClass = computed(() => `${ headerClass.value }${
 
 const clickHandler = () => updateModel(name)
 </script>
-
-<style scoped>
-.u-expansion-item-header {
-  cursor: pointer;
-}
-
-.u-expansion-item-content {
-  overflow-y: hidden;
-  transition: height var(--u-transition-duration);
-}
-</style>

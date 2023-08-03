@@ -1,16 +1,22 @@
 <template>
   <div 
-    class="u-toggle" 
+    class="u-toggle relative flex items-center" 
     @click="updateModel" 
   >
     <div 
-      class="u-toggle-track" 
+      class="
+        u-toggle-track w-full h-full transition-[background-color] 
+        duration-[var(--u-transition-duration)]
+      " 
       :style="_trackStyle" 
       :class="_trackClass"
     >
     </div>
     <div 
-      class="u-toggle-thumb" 
+      class="
+        u-toggle-thumb absolute flex justify-center items-center 
+        transition-[left] duration-[var(--u-transition-duration)]
+      " 
       :style="_thumbStyle"
       :class="_thumbClass"
     >
@@ -80,25 +86,3 @@ const _trackClass = computed(() => `
 
 const updateModel = () => emit('update:modelValue', !modelValue.value)
 </script>
-
-<style scoped>
-.u-toggle {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.u-toggle-track {
-  width: 100%;
-  height: 100%;
-  transition: background-color var(--u-transition-duration);
-}
-
-.u-toggle-thumb {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: left var(--u-transition-duration);
-}
-</style>

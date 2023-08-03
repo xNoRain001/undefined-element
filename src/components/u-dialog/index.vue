@@ -1,13 +1,21 @@
 <template>
   <Teleport to="body">
-    <div v-show="_modelValue" class="u-dialog" @click="closeDialog">
+    <div 
+      v-show="_modelValue" 
+      class="u-dialog w-screen h-screen fixed top-0 left-0 z-50" 
+      @click="closeDialog"
+    >
       <div 
         ref="backdropRef"
-        class="u-dialog-backdrop" 
+        class="u-dialog-backdrop h-full" 
         :style="backgroundColorStyle"
       >
       </div>
-      <div ref="innerRef" class="u-dialog-inner" :style="positionStyle">
+      <div 
+        ref="innerRef" 
+        class="u-dialog-inner fixed" 
+        :style="positionStyle"
+      >
         <!-- this is a container for persistent -->
         <div>
           <slot></slot>
@@ -120,23 +128,3 @@ watch(modelValue, v => {
   }
 })
 </script>
-
-<style scoped>
-.u-dialog {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-}
-
-.u-dialog-backdrop {
-  width: 100%;
-  height: 100%;
-}
-
-.u-dialog-inner {
-  position: fixed;
-}
-</style>

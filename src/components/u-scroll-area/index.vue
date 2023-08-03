@@ -1,13 +1,13 @@
 <template>
   <div 
-    class="u-scroll-area" 
+    class="u-scroll-area relative" 
     :style="scrollAreaStyle"
     ref="scrollAreaRef"
   >
     <div 
       @scroll.self="onScroll" 
       ref="containerRef" 
-      class="u-scroll-area-container"
+      class="u-scroll-area-container w-full h-full overflow-auto"
     >
       <div 
         class="u-scroll-area-content"
@@ -17,13 +17,18 @@
       </div>
     </div>
     <div 
-      class="u-scroll-area-bar-x" 
+      class="u-scroll-area-bar-x absolute right-0 bottom-0 left-0 h-[6px]" 
       ref="barXRef" 
       @click.self="onClickBar"
     >
       <div 
         ref="thumbXRef" 
-        class="u-scroll-area-thumb-x" 
+        class="
+          u-scroll-area-thumb-x opacity-0 absolute cursor-pointer rounded-[4px]
+          bg-[rgba(144,147,153,.3)] transition-[opacity,background-color]
+          duration-[var(--u-transition-duration)] hover:!opacity-100 
+          hover:bg-[rgba(144,147,153,.5)] h-full left-0 
+        " 
         :style="thumbXStyle"
         @mousedown="onMousedown"
         @mousemove.stop="onMousemove"
@@ -31,13 +36,18 @@
       ></div>
     </div>
     <div 
-      class="u-scroll-area-bar-y" 
+      class="u-scroll-area-bar-y absolute right-0 bottom-0 top-0 w-[6px]" 
       ref="barYRef" 
       @click.self="onClickBar"
     >
       <div 
         ref="thumbYRef" 
-        class="u-scroll-area-thumb-y" 
+        class="
+          u-scroll-area-thumb-y opacity-0 absolute cursor-pointer rounded-[4px]
+          bg-[rgba(144,147,153,.3)] transition-[opacity,background-color]
+          duration-[var(--u-transition-duration)] hover:!opacity-100 
+          hover:bg-[rgba(144,147,153,.5)] w-full top-0 
+        " 
         :style="thumbYStyle"
         @mousedown="onMousedown"
         @mousemove.stop="onMousemove"
@@ -455,60 +465,8 @@ onMounted(() => {
 })
 </script>
 
-<style>
-.u-scroll-area {
-  position: relative;
-}
-
-.u-scroll-area-container {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-}
-
+<style scoped>
 .u-scroll-area-container::-webkit-scrollbar {
   display: none;
-}
-
-.u-scroll-area-bar-x,
-.u-scroll-area-bar-y {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.u-scroll-area-bar-x {
-  left: 0;
-  height: 6px;
-}
-.u-scroll-area-bar-y {
-  top: 0;
-  width: 6px;
-}
-
-.u-scroll-area-thumb-x,
-.u-scroll-area-thumb-y {
-  background-color: rgba(144, 147, 153, .3);
-  border-radius: 4px;
-  opacity: 0;
-  position: absolute;
-  cursor: pointer;
-  transition: all var(--u-transition-duration);
-}
-
-.u-scroll-area-thumb-x {
-  height: 100%;
-  left: 0;
-}
-
-.u-scroll-area-thumb-y {
-  width: 100%;
-  top: 0;
-}
-
-.u-scroll-area-thumb-x:hover,
-.u-scroll-area-thumb-y:hover {
-  background-color: rgba(144, 147, 153, .5);
-  opacity: 1 !important;
 }
 </style>

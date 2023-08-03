@@ -1,6 +1,12 @@
 <template>
   <div 
-    class="u-skeleton-item" 
+    class="
+      u-skeleton-item relative before:content-[''] before:absolute before:w-full 
+      before:h-full before:top-0 before:-left-full before:z-0 
+      before:bg-gradient-to-r before:from-[rgba(255,255,255,0)] 
+      before:via-[rgba(255,255,255,.5)] before:to-[rgba(255,255,255,0)]
+      before:animate-[u-animate-left_1.5s_linear_.5s_infinite]
+    " 
     :style="{
       '--u-left-start': '-100%',
       '--u-left-end': '100%',
@@ -17,21 +23,3 @@ import type { Ref } from 'vue'
 
 const animate = inject(skeletonKey) as Ref<boolean>
 </script>
-
-<style scoped>
-.u-skeleton-item {
-  position: relative;
-}
-
-.u-skeleton-item::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: -100%;
-  z-index: 0;
-  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.5), rgba(255,255,255,0));
-  animation: u-animate-left 1.5s linear .5s infinite;
-}
-</style>

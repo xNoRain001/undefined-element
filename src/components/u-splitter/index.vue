@@ -1,12 +1,12 @@
 <template>
   <div 
     ref="container" 
-    class="u-splitter-container"
+    class="u-splitter-container flex"
     :style="{ flexDirection: horizontal ? 'column' : 'row' }"
   >
     <div 
       :class="beforeClass" 
-      class="u-splitter-before" 
+      class="u-splitter-before overflow-auto" 
       ref="before" 
       :style="_beforeStyle"
     >
@@ -14,7 +14,7 @@
     </div>
     <div 
       ref="splitter"
-      class="u-splitter"
+      class="u-splitter cursor-move select-none"
       :style="{ cursor: dragging ? 'pointer' : 'move' }"
       @mousedown="mousedownHandler($event)"
       @mouseup="mouseupHandler"
@@ -22,7 +22,7 @@
       <slot name="splitter"></slot>
     </div>
     <div 
-      class="u-splitter-after"
+      class="u-splitter-after overflow-auto basis-0 grow"
       :class="afterClass"
       :style="afterStyle"
     >
@@ -135,24 +135,3 @@ const mouseupHandler = () => {
   removeGlobalEventListener()
 }
 </script>
-
-<style scoped>
-.u-splitter-container {
-  display: flex;
-}
-
-.u-splitter {
-  cursor: move;
-  user-select: none;
-}
-
-.u-splitter-before,
-.u-splitter-after {
-  overflow: auto;
-}
-
-.u-splitter-after {
-  flex-basis: 0;
-  flex-grow: 1;
-}
-</style>

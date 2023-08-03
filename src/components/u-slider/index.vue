@@ -1,21 +1,21 @@
 <template>
-  <div class="u-slider">
+  <div class="u-slider cursor-pointer">
     <div
       ref="trackRef" 
-      class="u-slider-track"
+      class="u-slider-track relative"
       :class="trackClass"
       :style="trackStyle"
     >
       <div 
         ref="selectionRef"
-        class="u-slider-track-selection" 
+        class="u-slider-track-selection absolute" 
         :class="selectionClass"
         :style="_selectionStyle"
       ></div>
 
       <div 
         ref="thumbRef"
-        class="u-slider-track-thumb" 
+        class="u-slider-track-thumb absolute" 
         :class="thumbClass"
         :style="_thumbStyle"
         @mousedown="mousedownHandler"
@@ -150,19 +150,3 @@ const mouseupHandler = () => {
   _updateOffset()
 }
 </script>
-
-<style scoped>
-.u-slider {
-  cursor: pointer;
-}
-
-.u-slider-track {
-  position: relative;
-}
-
-.u-slider-track > .u-slider-track-selection,
-.u-slider-track > .u-slider-track-thumb {
-  position: absolute;
-}
-</style>
-

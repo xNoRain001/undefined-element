@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="u-checkbox" 
+    class="u-checkbox cursor-pointer" 
     @click="updateModel"
   >
     <slot name="before" :checked="checked"></slot>
@@ -61,9 +61,3 @@ const updateModel = () => {
   }
 }
 </script>
-
-<style scoped>
-.u-checkbox {
-  cursor: pointer;
-}
-</style>

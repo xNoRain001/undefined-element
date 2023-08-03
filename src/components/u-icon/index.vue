@@ -1,6 +1,6 @@
 <template>
   <svg 
-    class="u-icon" 
+    class="u-icon inline-block cursor-pointer" 
     viewBox="0 0 24 24" 
     :width="width" 
     :height="height" 
@@ -86,10 +86,3 @@ const paths = computed(() => {
   return res
 })
 </script>
-
-<style scoped>
-.u-icon {
-  display: inline-block;
-  cursor: pointer;
-}
-</style>

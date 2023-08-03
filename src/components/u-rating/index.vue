@@ -1,13 +1,13 @@
 <template>
   <div 
     ref="ratingRef"
-    class="u-rating" 
+    class="u-rating flex" 
     @click="clickHandler" 
     @mousemove="mousemoveHandler"
     @mouseleave="mouseleaveHandler"
   >
     <div 
-      class="u-rating-icon-container"
+      class="u-rating-icon-container cursor-pointer"
       v-for="i in Number(max)" 
       :key="i" 
       :data-index="i - 1"
@@ -87,13 +87,3 @@ const mousemoveHandler = throttle((e: MouseEvent) => {
 
 const mouseleaveHandler = () => fillIcons(modelValue.value - 1)
 </script>
-
-<style scoped>
-.u-rating {
-  display: flex;
-}
-
-.u-rating-icon-container {
-  cursor: pointer;
-}
-</style>

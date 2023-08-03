@@ -2,7 +2,7 @@
   <div 
     tabindex="-1"
     @click="updateActiveTab" 
-    class="u-tab" 
+    class="u-tab cursor-pointer" 
     :style="tabStyle"
     :class="_tabClass"
   >
@@ -48,9 +48,3 @@ const _tabClass = computed(() => {
   }`
 })
 </script>
-
-<style>
-.u-tab {
-  cursor: pointer;
-}
-</style>

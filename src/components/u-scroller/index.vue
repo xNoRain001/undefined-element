@@ -1,5 +1,9 @@
 <template>
-  <div @click="scrollToTop" ref="scrollerRef" class="u-scroller">
+  <div 
+    @click="scrollToTop" 
+    ref="scrollerRef" 
+    class="u-scroller hidden"
+  >
     <slot></slot>
   </div>
 </template>
@@ -93,9 +97,3 @@ onMounted(() => {
   updateVisibility()
 })
 </script>
-
-<style scoped>
-.u-scroller {
-  display: none;
-}
-</style>
