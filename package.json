@@ -14,11 +14,15 @@
     "undefined-element"
   ],
   "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
     "tailwindcss": "npx tailwindcss -i ./src/assets/css/index.css -o ./dist/index.css --watch"
   },
   "license": "MIT",
   "devDependencies": {
     "tailwindcss": "^3.3.3",
+    "vitepress": "^1.0.0-beta.7",
     "vue": "^3.3.4"
   }
 }
