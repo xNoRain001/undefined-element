@@ -1,0 +1,64 @@
+.my-\[16px\] {
+  margin-top: 16px;
+  margin-bottom: 16px
+}
+
+.h-\[56px\] {
+  height: 56px
+}
+
+.w-full {
+  width: 100%
+}
+
+.rounded-\[4px\] {
+  border-radius: 4px
+}
+
+.px-\[12px\] {
+  padding-left: 12px;
+  padding-right: 12px
+}
+
+.text-\[14px\] {
+  font-size: 14px
+}
+
+.font-normal {
+  font-weight: 400
+}
+
+.text-\[rgba\(0\2c 0\2c 0\2c \.87\)\] {
+  color: rgba(0,0,0,.87)
+}
+
+.before\:\!border-\[2px\]::before {
+  content: var(--tw-content);
+  border-width: 2px !important
+}
+
+.before\:border::before {
+  content: var(--tw-content);
+  border-width: 1px
+}
+
+.before\:border-solid::before {
+  content: var(--tw-content);
+  border-style: solid
+}
+
+.before\:\!border-\[rgb\(25\2c 118\2c 210\)\]::before {
+  content: var(--tw-content);
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(25 118 210 / var(--tw-border-opacity)) !important
+}
+
+.before\:border-\[rgba\(0\2c 0\2c 0\2c \.23\)\]::before {
+  content: var(--tw-content);
+  border-color: rgba(0,0,0,.23)
+}
+
+.hover\:before\:border-\[rgba\(0\2c 0\2c 0\2c \.87\)\]:hover::before {
+  content: var(--tw-content);
+  border-color: rgba(0,0,0,.87)
+}
