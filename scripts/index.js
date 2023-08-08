@@ -3,10 +3,10 @@ const { readdir, readFile, writeFile } = require('fs/promises')
 
 const rootDir = resolve(__dirname, '../')
 
-const readExamples = async () => {
+const getMeta = async () => {
   const baseDir = join(rootDir, './docs/examples')
   const dirs = await readdir(baseDir)
-  const res = {}
+  const meta = {}
 
   for (let i = 0, l = dirs.length; i < l; i++) {
     const dir = dirs[i]
@@ -20,8 +20,8 @@ const readExamples = async () => {
       const script = str.match(/<script lang="ts" setup>[\s\S]*<\/script>/)?.[0] || ''
       const style = str.match(/<style scoped>[\s\S]*<\/style>/)?.[0] || ''
       
-      res[dir] = res[dir] || {}
-      const target = res[dir][file] = { template }
+      meta[dir] = meta[dir] || {}
+      const target = meta[dir][file] = { template }
 
       if (script) {
         target.script = script
@@ -33,41 +33,59 @@ const readExamples = async () => {
     }
   }
 
-  return res
+  return meta
 }
 
-const writeExamples = async res => {
+const genMd = async meta => {
   const baseDir = join(rootDir, './docs/components')
+  const components = Object.keys(meta)
 
-  for (const file in res) {
-    const filePath = join(baseDir, `${ file }.md`)
+  for (let i = 0, l = components.length; i < l; i++) {
+    // input
+    const component = components[i]
+    const examples = meta[component]
+    const flag = `<!-- component -->`
+    // input.md
+    const filePath = join(baseDir, `${ component }.md`)
+    const regexp = new RegExp(`${ flag }[\\s\\S]*?${ flag }`, 'g')
+    // ['01.basic.vue', ...]
+    const keys = Object.keys(examples)
     let md = await readFile(filePath, 'utf-8')
-    console.log(file)
+    let _import = '<!-- import -->\n<script setup>\n'
+    let index = 0
 
-    for (const filename in res[file]) {
+    md = md.replace(regexp, () => {
+      // 01.basic.vue
+      const filename = keys[index]
+      // basic
       const name = filename.slice(3, -4)
+      // Basic
       const tagName = `${ name[0].toUpperCase() }${ name.slice(1) }`
-      const flag = `<!-- ${ filename } -->`
-      const regexp = new RegExp(`${ flag }[\\s\\S]*?${ flag }`)
+      _import += `import ${ tagName } from '../examples/${ component }/${ filename }'\n`
+      const strMap = examples[filename]
+      // ['template', 'script', 'style']
+      const _keys = Object.keys(strMap)
+      let s = `${ flag }\n<${ tagName }></${ tagName }>\n::: details 查看源码\n::: code-group\n`
 
-      md = md.replace(regexp, () => {
-        let s = `${ flag }\n<${ tagName }></${ tagName }>\n::: details 查看源码\n::: code-group\n`
+      for (let i = 0, l = _keys.length; i < l; i++) {
+        const key = _keys[i]
+        s += `\`\`\`vue [${ key }]\n${ strMap[key] }\n\`\`\`\n\n`
+      }
 
-        Object.keys(res[file][filename]).forEach(type => {
-          s += `\`\`\`vue [${ type }]\n${ res[file][filename][type] }\n\`\`\`\n\n`
-        })
+      s += `:::\n${ flag }`
 
-        s += `:::\n${ flag }`
+      index++
+      return s
+    })
 
-        return s
-      })
+    _import += '</script>\n<!-- import -->'
+    md = md.replace(/<!-- import -->[\s\S]*?<!-- import -->/, () => _import)
 
-      await writeFile(filePath, md)
-    }
+    await writeFile(filePath, md)
   }
 }
 
 ;(async () => {
-  const res = await readExamples()
-  await writeExamples(res)
+  const meta = await getMeta()
+  await genMd(meta)
 })()

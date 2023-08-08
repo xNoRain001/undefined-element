@@ -54,7 +54,7 @@ export default defineConfig({
   },
   locales: {
     root: {
-      label: 'Chinese',
+      label: '中文简体',
       lang: 'zh'
     },
     en: {

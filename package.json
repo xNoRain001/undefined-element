@@ -18,7 +18,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "css": "npx tailwindcss -i ./src/assets/css/index.css -o ./dist/index.css --watch",
-    "examples": "npx tailwindcss -i ./docs/assets/css/index.css --content ./docs/examples/**/*.vue -o ./docs/assets/css/dist.css --watch",
+    "examples": "npx tailwindcss -i ./docs/assets/css/index.css -c ./docs/tailwind.config.js -o ./docs/assets/css/dist.css --watch",
     "md": "node ./scripts/index.js"
   },
   "license": "MIT",
