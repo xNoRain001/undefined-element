@@ -26,7 +26,7 @@ app
 
 ## Examples
 
-<a href="http://120.77.148.28:3000/u-input">clike me</a>
+<a href="http://120.77.148.28/">clike me</a>
 
 ## License
 
