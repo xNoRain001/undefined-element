@@ -218,13 +218,3 @@ const updateVisible = () => visible.value = !visible.value
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-

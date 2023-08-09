@@ -219,13 +219,3 @@ const expanded = reactive<string[]>([])
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-

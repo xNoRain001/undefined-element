@@ -74,13 +74,3 @@ import Hidden from '../examples/scroll-area/03.hidden.vue'
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-

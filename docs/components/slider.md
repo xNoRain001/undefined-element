@@ -69,15 +69,3 @@ const value = ref(50)
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-
-
-

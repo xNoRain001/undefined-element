@@ -28,17 +28,3 @@ const value1 = ref(3)
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -53,17 +53,3 @@ import Basic from '../examples/tooltip/01.basic.vue'
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -70,17 +70,3 @@ const tab = ref('1')
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

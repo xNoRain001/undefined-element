@@ -141,15 +141,3 @@ const body = reactive([
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-
-
-

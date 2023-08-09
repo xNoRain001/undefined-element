@@ -120,15 +120,3 @@ import Trigger from '../examples/dropdown/02.trigger.vue'
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-
-
-

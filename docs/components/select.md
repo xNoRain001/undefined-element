@@ -530,5 +530,3 @@ const expanded = ref(false)
 
 :::
 <!-- component -->
-
-

@@ -45,17 +45,3 @@ import Basic from '../examples/icon/01.basic.vue'
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

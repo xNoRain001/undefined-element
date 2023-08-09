@@ -97,15 +97,3 @@ const onLoad = (done: Function) => {
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-
-
-
-
-

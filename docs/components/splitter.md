@@ -196,11 +196,3 @@ const value = ref(30)
 
 :::
 <!-- component -->
-
-
-
-
-
-
-
-

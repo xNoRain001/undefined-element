@@ -120,9 +120,3 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 
 :::
 <!-- component -->
-
-
-
-
-
-

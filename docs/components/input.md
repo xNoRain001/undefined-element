@@ -9,7 +9,7 @@ import Placeholder from '../examples/input/02.placeholder.vue'
 
 :::details 属性
 | 属性名        | 描述      | 类型 | 默认值 |
-| ------------- | :-----------: | :----: | ----: |
+|:-----------: | :-----------: | :----: | :----: |
 | type      | 类型 | string | 'text' |
 | debounce      | 防抖间隔，值为 0 时表示不开启防抖。 | number | 0 |
 | readonly      | 只读 | boolean | false |
