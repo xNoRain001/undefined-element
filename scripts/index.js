@@ -36,6 +36,24 @@ const getMeta = async () => {
   return meta
 }
 
+const genTagName = name => {
+  if (name.includes('-')) {
+    // max-values
+    let tagName = ''
+    const segments = name.split('-')
+
+    for (let i = 0, l = segments.length; i < l; i++) {
+      const segment = segments[i]
+      tagName += `${ segment[0].toUpperCase() }${ segment.slice(1) }`
+    }
+
+    return tagName
+  } else {
+    // basic
+    return `${ name[0].toUpperCase() }${ name.slice(1) }`
+  }
+}
+
 const genMd = async meta => {
   const baseDir = join(rootDir, './docs/components')
   const components = Object.keys(meta)
@@ -59,23 +77,23 @@ const genMd = async meta => {
       const filename = keys[index]
       // basic
       const name = filename.slice(3, -4)
-      // Basic
-      const tagName = `${ name[0].toUpperCase() }${ name.slice(1) }`
-      _import += `import ${ tagName } from '../examples/${ component }/${ filename }'\n`
+      const tagName = genTagName(name)
       const strMap = examples[filename]
       // ['template', 'script', 'style']
       const _keys = Object.keys(strMap)
-      let s = `${ flag }\n<${ tagName }></${ tagName }>\n::: details 查看源码\n::: code-group\n`
+      let code = `${ flag }\n<${ tagName }></${ tagName }>\n::: details 查看源码\n::: code-group\n`
+
+      _import += `import ${ tagName } from '../examples/${ component }/${ filename }'\n`
 
       for (let i = 0, l = _keys.length; i < l; i++) {
         const key = _keys[i]
-        s += `\`\`\`vue [${ key }]\n${ strMap[key] }\n\`\`\`\n\n`
+        code += `\`\`\`vue [${ key }]\n${ strMap[key] }\n\`\`\`\n\n`
       }
 
-      s += `:::\n${ flag }`
+      code += `:::\n${ flag }`
 
       index++
-      return s
+      return code
     })
 
     _import += '</script>\n<!-- import -->'

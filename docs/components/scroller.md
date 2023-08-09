@@ -3,8 +3,8 @@
 import Basic from '../examples/scroller/01.basic.vue'
 import To from '../examples/scroller/02.to.vue'
 import Duration from '../examples/scroller/03.duration.vue'
-import Scroll-offset from '../examples/scroller/04.scroll-offset.vue'
-import Scroll-target from '../examples/scroller/05.scroll-target.vue'
+import ScrollOffset from '../examples/scroller/04.scroll-offset.vue'
+import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 </script>
 <!-- import -->
 
@@ -75,7 +75,7 @@ import Scroll-target from '../examples/scroller/05.scroll-target.vue'
 <!-- component -->
 
 <!-- component -->
-<Scroll-offset></Scroll-offset>
+<ScrollOffset></ScrollOffset>
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -97,7 +97,7 @@ import Scroll-target from '../examples/scroller/05.scroll-target.vue'
 <!-- component -->
 
 <!-- component -->
-<Scroll-target></Scroll-target>
+<ScrollTarget></ScrollTarget>
 ::: details 查看源码
 ::: code-group
 ```vue [template]

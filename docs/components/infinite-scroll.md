@@ -1,7 +1,7 @@
 <!-- import -->
 <script setup>
 import Basic from '../examples/infinite-scroll/01.basic.vue'
-import Scroll-target from '../examples/infinite-scroll/02.scroll-target.vue'
+import ScrollTarget from '../examples/infinite-scroll/02.scroll-target.vue'
 </script>
 <!-- import -->
 
@@ -52,7 +52,7 @@ const onLoad = (done: Function) => {
 <!-- component -->
 
 <!-- component -->
-<Scroll-target></Scroll-target>
+<ScrollTarget></ScrollTarget>
 ::: details 查看源码
 ::: code-group
 ```vue [template]

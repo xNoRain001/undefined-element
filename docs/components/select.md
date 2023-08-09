@@ -2,7 +2,7 @@
 <script setup>
 import Basic from '../examples/select/01.basic.vue'
 import Multiple from '../examples/select/02.multiple.vue'
-import Max-values from '../examples/select/03.max-values.vue'
+import MaxValues from '../examples/select/03.max-values.vue'
 import Race from '../examples/select/04.race.vue'
 import Persistent from '../examples/select/05.persistent.vue'
 import Disabled from '../examples/select/06.disabled.vue'
@@ -185,7 +185,7 @@ const expanded = ref(false)
 <!-- component -->
 
 <!-- component -->
-<Max-values></Max-values>
+<MaxValues></MaxValues>
 ::: details 查看源码
 ::: code-group
 ```vue [template]
