@@ -10,6 +10,8 @@ import Clearable from '../examples/select/07.clearable.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -117,6 +119,8 @@ const options = ['1', '2', '3', '4']
 :::
 <!-- component -->
 
+## 多选
+
 <!-- component -->
 <Multiple></Multiple>
 ::: details 查看源码
@@ -183,6 +187,8 @@ const expanded = ref(false)
 
 :::
 <!-- component -->
+
+## 最大数量
 
 <!-- component -->
 <MaxValues></MaxValues>
@@ -251,6 +257,8 @@ const expanded = ref(false)
 
 :::
 <!-- component -->
+
+## 淘汰
 
 <!-- component -->
 <Race></Race>
@@ -321,6 +329,8 @@ const expanded = ref(false)
 :::
 <!-- component -->
 
+## 持久化
+
 <!-- component -->
 <Persistent></Persistent>
 ::: details 查看源码
@@ -390,6 +400,8 @@ const expanded = ref(false)
 :::
 <!-- component -->
 
+## 禁用
+
 <!-- component -->
 <Disabled></Disabled>
 ::: details 查看源码
@@ -455,6 +467,8 @@ const expanded = ref(false)
 
 :::
 <!-- component -->
+
+## 清除
 
 <!-- component -->
 <Clearable></Clearable>

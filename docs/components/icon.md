@@ -4,6 +4,8 @@ import Basic from '../examples/icon/01.basic.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码

@@ -5,6 +5,8 @@ import Sort from '../examples/table/02.sort.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -68,6 +70,8 @@ const body = reactive([
 
 :::
 <!-- component -->
+
+## 排序
 
 <!-- component -->
 <Sort></Sort>

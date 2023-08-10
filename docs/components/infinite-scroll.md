@@ -5,6 +5,8 @@ import ScrollTarget from '../examples/infinite-scroll/02.scroll-target.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -50,6 +52,8 @@ const onLoad = (done: Function) => {
 
 :::
 <!-- component -->
+
+## 目标
 
 <!-- component -->
 <ScrollTarget></ScrollTarget>

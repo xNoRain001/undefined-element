@@ -8,6 +8,10 @@ import Race from '../examples/checkbox/05.race.vue'
 </script>
 <!-- import -->
 
+# Checkbox
+
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -101,6 +105,8 @@ const value =ref(false)
 :::
 <!-- component -->
 
+## 分组
+
 <!-- component -->
 <Group></Group>
 ::: details 查看源码
@@ -180,6 +186,8 @@ const selection = reactive<any[]>([])
 :::
 <!-- component -->
 
+## 禁用
+
 <!-- component -->
 <Disabled></Disabled>
 ::: details 查看源码
@@ -257,6 +265,8 @@ const selection = reactive<any[]>([])
 
 :::
 <!-- component -->
+
+## 数量限制
 
 <!-- component -->
 <Limit></Limit>
@@ -338,6 +348,8 @@ const selection = reactive<any[]>([])
 
 :::
 <!-- component -->
+
+## 淘汰
 
 <!-- component -->
 <Race></Race>

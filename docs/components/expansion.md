@@ -6,6 +6,8 @@ import Max from '../examples/expansion/03.max.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -65,6 +67,8 @@ const expanded = reactive(['1'])
 
 :::
 <!-- component -->
+
+## 最小数量
 
 <!-- component -->
 <Min></Min>
@@ -142,6 +146,8 @@ const expanded = reactive<string[]>(['1'])
 
 :::
 <!-- component -->
+
+## 最大数量
 
 <!-- component -->
 <Max></Max>

@@ -6,6 +6,8 @@ import Drawer from '../examples/dialog/03.drawer.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -133,6 +135,8 @@ const updateVisible5 = () => visible5.value = !visible5.value
 :::
 <!-- component -->
 
+## 持久化
+
 <!-- component -->
 <Persistent></Persistent>
 ::: details 查看源码
@@ -175,6 +179,8 @@ const updateVisible1 = () => visible.value = !visible.value
 
 :::
 <!-- component -->
+
+## 抽屉
 
 <!-- component -->
 <Drawer></Drawer>

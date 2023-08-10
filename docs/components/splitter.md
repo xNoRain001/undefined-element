@@ -7,6 +7,8 @@ import Separator from '../examples/splitter/04.separator.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -51,6 +53,8 @@ const value = ref(30)
 
 :::
 <!-- component -->
+
+## 水平的
 
 <!-- component -->
 <Horizontal></Horizontal>
@@ -98,6 +102,8 @@ const value = ref(30)
 :::
 <!-- component -->
 
+## 范围
+
 <!-- component -->
 <Range></Range>
 ::: details 查看源码
@@ -144,6 +150,8 @@ const value = ref(30)
 
 :::
 <!-- component -->
+
+## 分隔
 
 <!-- component -->
 <Separator></Separator>

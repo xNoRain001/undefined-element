@@ -8,6 +8,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -29,6 +31,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 
 :::
 <!-- component -->
+
+## 滚动到
 
 <!-- component -->
 <To></To>
@@ -52,6 +56,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 :::
 <!-- component -->
 
+## 持续时间
+
 <!-- component -->
 <Duration></Duration>
 ::: details 查看源码
@@ -74,6 +80,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 :::
 <!-- component -->
 
+## 偏移
+
 <!-- component -->
 <ScrollOffset></ScrollOffset>
 ::: details 查看源码
@@ -95,6 +103,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 
 :::
 <!-- component -->
+
+## 滚动目标
 
 <!-- component -->
 <ScrollTarget></ScrollTarget>

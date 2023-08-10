@@ -5,6 +5,8 @@ import Trigger from '../examples/dropdown/02.trigger.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -75,6 +77,8 @@ import Trigger from '../examples/dropdown/02.trigger.vue'
 
 :::
 <!-- component -->
+
+## 目标
 
 <!-- component -->
 <Trigger></Trigger>

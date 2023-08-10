@@ -6,6 +6,8 @@ import Hidden from '../examples/scroll-area/03.hidden.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -37,6 +39,8 @@ import Hidden from '../examples/scroll-area/03.hidden.vue'
 :::
 <!-- component -->
 
+## 持久化
+
 <!-- component -->
 <Persistent></Persistent>
 ::: details 查看源码
@@ -55,6 +59,8 @@ import Hidden from '../examples/scroll-area/03.hidden.vue'
 
 :::
 <!-- component -->
+
+## 隐蔽
 
 <!-- component -->
 <Hidden></Hidden>

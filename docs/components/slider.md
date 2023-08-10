@@ -5,6 +5,8 @@ import Step from '../examples/slider/02.step.vue'
 </script>
 <!-- import -->
 
+## 基础
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -36,6 +38,8 @@ const value = ref(50)
 
 :::
 <!-- component -->
+
+## 间隔
 
 <!-- component -->
 <Step></Step>
