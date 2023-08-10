@@ -1,6 +1,6 @@
 <template>
   <div 
-    class="u-checkbox cursor-pointer" 
+    class="u-checkbox cursor-pointer inline-flex items-center" 
     @click="updateModel"
   >
     <slot name="before" :checked="checked"></slot>
@@ -19,16 +19,10 @@ const emit = defineEmits<{ 'update:modelValue': [boolean] }>()
 const props = withDefaults(defineProps<{ 
   value?: any,
   disabled?: boolean,
-  modelValue?: boolean,
-  activeStyle?: { [propName: string]: string | number }
-  activeClass?: string,
-  disabledClass?: string
+  modelValue?: boolean
 }>(), {
   value: false,
-  disabled: false,
-  activeStyle: () => ({}),
-  activeClass: '',
-  disabledClass: ''
+  disabled: false
 })
 
 const { 
