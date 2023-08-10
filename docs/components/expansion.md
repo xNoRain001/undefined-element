@@ -6,6 +6,26 @@ import Max from '../examples/expansion/03.max.vue'
 </script>
 <!-- import -->
 
+# Expansion
+
+Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们视为单击时会扩展的手风琴元素，也
+被称为可折叠。
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+|min|展开数量的最小值|number|Number.MIN_SAFE_INTEGER|
+|max|展开数量的最大值|number|Number.MAX_SAFE_INTEGER|
+|modelValue|展开的项|string[]|[]|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+|header|始终显示的内容|
+|content|展开时才显示的内容|
+:::
+
 ## 基础
 
 <!-- component -->

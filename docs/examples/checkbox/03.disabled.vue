@@ -2,15 +2,15 @@
   <div class="w-full">
     <u-checkbox-group 
       v-model="selection"
-      class="flex items-center [&>*:not(:first-of-type)]:ml-[32px]"
+      class="flex items-center"
     >
-      <u-checkbox class="flex items-center" value="red" disabled>
+      <u-checkbox value="red" disabled>
         <template #checkbox="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
               border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-              items-center duration-300 transition-[all] cursor-not-allowed
+              items-center duration-300 transition-colors cursor-not-allowed
             "
           >
             <Transition name="u-animate-opacity">
@@ -20,13 +20,13 @@
         </template>
       </u-checkbox>
 
-      <u-checkbox class="flex items-center" value="green">
+      <u-checkbox class="ml-[32px]" value="green">
         <template #checkbox="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
               border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-              items-center hover:border-green-500 duration-300 transition-[all]
+              items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
@@ -37,13 +37,13 @@
         </template>
       </u-checkbox>
 
-      <u-checkbox class="flex items-center" value="blue">
+      <u-checkbox class="ml-[32px]" value="blue">
         <template #checkbox="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
               border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-              items-center hover:border-blue-500 duration-300 transition-[all]
+              items-center hover:border-blue-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-blue-500 border-blue-500' : ''"
           >

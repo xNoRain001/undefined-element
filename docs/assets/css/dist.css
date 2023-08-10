@@ -91,6 +91,18 @@
   margin-top: 24px
 }
 
+.ml-\[16px\] {
+  margin-left: 16px
+}
+
+.ml-\[32px\] {
+  margin-left: 32px
+}
+
+.inline-block {
+  display: inline-block
+}
+
 .flex {
   display: flex
 }
@@ -607,8 +619,18 @@
   transition-duration: 150ms
 }
 
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms
+}
+
 .duration-300 {
   transition-duration: 300ms
+}
+
+.duration-\[3s\] {
+  transition-duration: 3s
 }
 
 .placeholder\:text-red-500::-moz-placeholder {

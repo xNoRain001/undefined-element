@@ -14,36 +14,66 @@ import Drawer from '../examples/dialog/03.drawer.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="btns w-full flex items-center">
-    <button @click="updateVisible1">
+  <div class="flex items-center">
+    <button 
+      @click="updateVisible1" 
+      class="
+        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
+        rounded-[3px] bg-[#1976d2]
+      "
+    >
       <u-icon name="keyboard_arrow_up" color="#fff"></u-icon>
-      <span>Top</span>
+      <span class="ml-[12px] text-white text-[14px] font-medium">Top</span>
     </button>
-    <button @click="updateVisible2">
+    <button 
+      @click="updateVisible2"
+      class="
+        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
+        rounded-[3px] bg-[#1976d2] ml-[16px]
+      "
+    >
       <u-icon name="keyboard_arrow_right" color="#fff"></u-icon>
-      <span>Right</span>
+      <span class="ml-[12px] text-white text-[14px] font-medium">Right</span>
     </button>
-    <button @click="updateVisible3">
+    <button 
+      @click="updateVisible3"
+      class="
+        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
+        rounded-[3px] bg-[#1976d2] ml-[16px]
+      "
+    >
       <u-icon name="keyboard_arrow_down" color="#fff"></u-icon>
-      <span>Bottom</span>
+      <span class="ml-[12px] text-white text-[14px] font-medium">Bottom</span>
     </button>
-    <button @click="updateVisible4">
+    <button 
+      @click="updateVisible4"
+      class="
+        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
+        rounded-[3px] bg-[#1976d2] ml-[16px]
+      "
+    >
       <u-icon name="keyboard_arrow_left" color="#fff"></u-icon>
-      <span>Left</span>
+      <span class="ml-[12px] text-white text-[14px] font-medium">Left</span>
     </button>
-    <button @click="updateVisible5">
+    <button 
+      @click="updateVisible5"
+      class="
+        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
+        rounded-[3px] bg-[#1976d2] ml-[16px]
+      "
+    >
       <u-icon name="control_camera" color="#fff"></u-icon>
-      <span>Center</span>
+      <span class="ml-[12px] text-white text-[14px] font-medium">Center</span>
     </button>
   </div>
 
   <u-dialog v-model="visible1" position="top">
-    <div class="dialog">
-      <div class="header">
-        <div>Top</div>
-        <u-icon name="close" @click="updateVisible1"></u-icon>
+    <div class="w-[560px] bg-white p-[24px]">
+      <div class="flex justify-between">
+        <div class="text-[20px] font-semibold ">Top</div>
+        <u-icon class="cursor-pointer" name="close" @click="updateVisible1"></u-icon>
       </div>
-      <div class="content">
+      <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
         quisquam repellendus vitae quam. Officiis, soluta. Perferendis 
         minima accusamus aliquid nam nostrum dolorem, ad numquam assumenda 
@@ -51,17 +81,14 @@ import Drawer from '../examples/dialog/03.drawer.vue'
       </div>
     </div>
   </u-dialog>
+
   <u-dialog v-model="visible2" position="right">
-    <div class="dialog">
-      <div class="header">
-        <div>Right</div>
-        <u-icon 
-          name="control_camera" 
-          @click="updateVisible2" 
-          color="#fff"
-        ></u-icon>
+    <div class="w-[560px] bg-white p-[24px]">
+      <div class="flex justify-between">
+        <div class="text-[20px] font-semibold ">Right</div>
+        <u-icon class="cursor-pointer" name="close" @click="updateVisible2"></u-icon>
       </div>
-      <div class="content">
+      <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
         quisquam repellendus vitae quam. Officiis, soluta. Perferendis 
         minima accusamus aliquid nam nostrum dolorem, ad numquam assumenda 
@@ -69,13 +96,14 @@ import Drawer from '../examples/dialog/03.drawer.vue'
       </div>
     </div>
   </u-dialog>
+
   <u-dialog v-model="visible3" position="bottom">
-    <div class="dialog">
-      <div class="header">
-        <div>Bottom</div>
-        <u-icon name="close" @click="updateVisible3"></u-icon>
+    <div class="w-[560px] bg-white p-[24px]">
+      <div class="flex justify-between">
+        <div class="text-[20px] font-semibold ">Bottom</div>
+        <u-icon class="cursor-pointer" name="close" @click="updateVisible3"></u-icon>
       </div>
-      <div class="content">
+      <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
         quisquam repellendus vitae quam. Officiis, soluta. Perferendis 
         minima accusamus aliquid nam nostrum dolorem, ad numquam assumenda 
@@ -83,13 +111,14 @@ import Drawer from '../examples/dialog/03.drawer.vue'
       </div>
     </div>
   </u-dialog>
+
   <u-dialog v-model="visible4" position="left">
-    <div class="dialog">
-      <div class="header">
-        <div>Left</div>
-        <u-icon name="close" @click="updateVisible4"></u-icon>
+    <div class="w-[560px] bg-white p-[24px]">
+      <div class="flex justify-between">
+        <div class="text-[20px] font-semibold ">Left</div>
+        <u-icon class="cursor-pointer" name="close" @click="updateVisible4"></u-icon>
       </div>
-      <div class="content">
+      <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
         quisquam repellendus vitae quam. Officiis, soluta. Perferendis 
         minima accusamus aliquid nam nostrum dolorem, ad numquam assumenda 
@@ -97,13 +126,14 @@ import Drawer from '../examples/dialog/03.drawer.vue'
       </div>
     </div>
   </u-dialog>
+
   <u-dialog v-model="visible5" position="center">
-    <div class="dialog">
-      <div class="header">
-        <div>Center</div>
-        <u-icon name="close" @click="updateVisible5"></u-icon>
+    <div class="w-[560px] bg-white p-[24px]">
+      <div class="flex justify-between">
+        <div class="text-[20px] font-semibold ">Center</div>
+        <u-icon class="cursor-pointer" name="close" @click="updateVisible5"></u-icon>
       </div>
-      <div class="content">
+      <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
         quisquam repellendus vitae quam. Officiis, soluta. Perferendis 
         minima accusamus aliquid nam nostrum dolorem, ad numquam assumenda 
@@ -143,20 +173,24 @@ const updateVisible5 = () => visible5.value = !visible5.value
 ::: code-group
 ```vue [template]
 <template>
-  <div class="btns w-full flex items-center">
-    <button @click="updateVisible1">
-      <u-icon name="control_camera" color="#fff"></u-icon>
-      <span>Persistent</span>
-    </button>
-  </div>
+  <button 
+    @click="updateVisible" 
+    class="
+      cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
+      rounded-[3px] bg-[#1976d2]
+    "
+  >
+    <u-icon name="control_camera" color="#fff"></u-icon>
+    <span class="ml-[12px] text-white text-[14px] font-medium">center</span>
+  </button>
 
   <u-dialog v-model="visible" position="center" persistent>
-    <div class="dialog">
-      <div class="header">
-        <div>Persistent</div>
-        <u-icon name="close" @click="updateVisible1"></u-icon>
+    <div class="w-[560px] bg-white p-[24px]">
+      <div class="flex justify-between">
+        <div class="text-[20px] font-semibold ">Center</div>
+        <u-icon class="cursor-pointer" name="close" @click="updateVisible"></u-icon>
       </div>
-      <div class="content">
+      <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
         quisquam repellendus vitae quam. Officiis, soluta. Perferendis 
         minima accusamus aliquid nam nostrum dolorem, ad numquam assumenda 
@@ -173,7 +207,7 @@ import { ref } from 'vue'
 
 const visible = ref(false)
 
-const updateVisible1 = () => visible.value = !visible.value
+const updateVisible = () => visible.value = !visible.value
 </script>
 ```
 
@@ -188,20 +222,24 @@ const updateVisible1 = () => visible.value = !visible.value
 ::: code-group
 ```vue [template]
 <template>
-  <div class="btns w-full flex items-center">
-    <button @click="updateVisible">
-      <u-icon name="keyboard_arrow_left" color="#fff"></u-icon>
-      <span>Left</span>
-    </button>
-  </div>
+  <button 
+    @click="updateVisible" 
+    class="
+      cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
+      rounded-[3px] bg-[#1976d2]
+    "
+  >
+    <u-icon name="keyboard_arrow_left" color="#fff"></u-icon>
+    <span class="ml-[12px] text-white text-[14px] font-medium">Left</span>
+  </button>
 
   <u-dialog v-model="visible" position="left">
-    <div class="dialog">
-      <div class="header">
-        <div>Drawer</div>
-        <u-icon name="close" @click="updateVisible"></u-icon>
+    <div class="w-[300px] h-screen bg-white p-[24px]">
+      <div class="flex justify-between">
+        <div class="text-[20px] font-semibold ">Left</div>
+        <u-icon class="cursor-pointer" name="close" @click="updateVisible"></u-icon>
       </div>
-      <div class="content">
+      <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
         quisquam repellendus vitae quam. Officiis, soluta. Perferendis 
         minima accusamus aliquid nam nostrum dolorem, ad numquam assumenda 

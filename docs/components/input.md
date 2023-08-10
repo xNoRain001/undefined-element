@@ -13,6 +13,8 @@ import Types from '../examples/input/08.types.vue'
 
 # Input
 
+Input 组件用于捕获来自用户的文本输入，它使用v-model，类似于常规输入。
+
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
@@ -46,6 +48,8 @@ import Types from '../examples/input/08.types.vue'
 ::: -->
 
 ## 基础
+
+<!-- u-input 组件上的 class 并不是作用在 input 元素上的，而是 input 的父元素， -->
 
 <!-- component -->
 <Basic></Basic>
@@ -142,7 +146,7 @@ const value = ref('')
     >
     </u-input>
 
-    <div>value: {{ value }}</div>
+    <div class="mt-[16px]">value: {{ value }}</div>
   </div>
 </template>
 ```

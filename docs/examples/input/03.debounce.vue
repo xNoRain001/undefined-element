@@ -13,7 +13,7 @@
     >
     </u-input>
 
-    <div>value: {{ value }}</div>
+    <div class="mt-[16px]">value: {{ value }}</div>
   </div>
 </template>
 
