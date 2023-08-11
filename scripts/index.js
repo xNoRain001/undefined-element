@@ -30,6 +30,8 @@ const getMeta = async () => {
       if (style) {
         target.style = style
       }
+
+      target.all = `${ template }\n${ script }\n${ style }`
     }
   }
 
@@ -79,7 +81,7 @@ const genMd = async meta => {
       const name = filename.slice(3, -4)
       const tagName = genTagName(name)
       const strMap = examples[filename]
-      // ['template', 'script', 'style']
+      // ['template', 'script', 'style', 'all']
       const _keys = Object.keys(strMap)
       let code = `${ flag }\n<${ tagName }></${ tagName }>\n::: details 查看源码\n::: code-group\n`
 
@@ -91,8 +93,8 @@ const genMd = async meta => {
       }
 
       code += `:::\n${ flag }`
-
       index++
+
       return code
     })
 

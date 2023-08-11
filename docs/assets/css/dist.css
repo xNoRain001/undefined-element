@@ -302,6 +302,10 @@
   row-gap: 24px
 }
 
+.gap-y-\[16px\] {
+  row-gap: 16px
+}
+
 .overflow-y-scroll {
   overflow-y: scroll
 }
