@@ -298,12 +298,12 @@
   justify-content: space-between
 }
 
-.gap-y-\[24px\] {
-  row-gap: 24px
-}
-
 .gap-y-\[16px\] {
   row-gap: 16px
+}
+
+.gap-y-\[24px\] {
+  row-gap: 24px
 }
 
 .overflow-y-scroll {

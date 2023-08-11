@@ -1,65 +1,9 @@
-/* @tailwind base;
-@tailwind components; */
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 :root {
   --u-transition-duration: .3s;
-}
-
-@keyframes u-animate-top {
-  from {
-    top: var(--u-top-start);
-  }
-
-  to {
-    top: var(--u-top-end);
-  }
-}
-
-.u-animate-top {
-  animation: u-animate-top var(--u-transition-duration);
-}
-
-@keyframes u-animate-right {
-  from {
-    right: var(--u-right-start);
-  }
-
-  to {
-    right: var(--u-right-end);
-  }
-}
-
-.u-animate-right {
-  animation: u-animate-right var(--u-transition-duration);
-}
-
-@keyframes u-animate-bottom {
-  from {
-    bottom: var(--u-bottom-start);
-  }
-
-  to {
-    bottom: var(--u-bottom-end);
-  }
-}
-
-.u-animate-bottom {
-  animation: u-animate-bottom var(--u-transition-duration);
-}
-
-@keyframes u-animate-left {
-  from {
-    left: var(--u-left-start);
-  }
-
-  to {
-    left: var(--u-left-end);
-  }
-}
-
-.u-animate-left {
-  animation: u-animate-left var(--u-transition-duration);
 }
 
 @keyframes u-animate-opacity {
@@ -75,21 +19,6 @@
 .u-animate-opacity {
   animation: u-animate-opacity var(--u-transition-duration);
 }
-
-@keyframes u-animate-bg {
-  from {
-    background-color: var(--u-bg-start);
-  }
-
-  to {
-    background-color: var(--u-bg-end);
-  }
-}
-
-.u-animate-bg {
-  animation: u-animate-bg var(--u-transition-duration);
-}
-
 
 /* transition component animation */
 /* opacity */
@@ -107,21 +36,6 @@
 .u-animate-opacity-leave-from {
   opacity: 1;
 }
-
-/* .u-dynamic-animate-opacity-enter-active,
-.u-animate-opacity-leave-active {
-  transition: opacity var(--u-transition-duration);
-}
-
-.u-dynamic-animate-opacity-enter-from,
-.u-animate-opacity-leave-to {
-  opacity: var(--u-animate-opacity-start);
-}
-
-.u-dynamic-animate-opacity-enter-to,
-.u-dynamic-animate-opacity-leave-from {
-  opacity: var(--u-animate-opacity-end);
-} */
 
 /* customized animation */
 @keyframes u-animate-dialog-inner-persistent {
