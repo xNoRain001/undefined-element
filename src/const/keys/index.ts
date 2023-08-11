@@ -13,15 +13,8 @@ export const panelsKey: InjectionKey<Ref<string>> = Symbol()
 export const skeletonKey: InjectionKey<Ref<boolean>> = Symbol()
 
 export const expansionKey: InjectionKey<{
-  itemStyle: Ref<{ [propName: string]: string | number }>,
-  itemClass: Ref<string>,
   modelValue: string[],
-  headerStyle: Ref<{ [propName: string]: string | number }>,
-  headerClass: Ref<string>,
-  updateModel: Function,
-  contentStyle: Ref<{ [propName: string]: string | number }>,
-  contentClass: Ref<string>,
-  activeHeaderClass: Ref<string>
+  updateModel: Function
 }> = Symbol()
 
 export const checkboxGroupKey: InjectionKey<{

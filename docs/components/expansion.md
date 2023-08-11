@@ -14,9 +14,10 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
-|min|展开数量的最小值|number|Number.MIN_SAFE_INTEGER|
-|max|展开数量的最大值|number|Number.MAX_SAFE_INTEGER|
-|modelValue|展开的项|string[]|[]|
+|min|至少应该展开的数量|number|Number.MIN_SAFE_INTEGER|
+|max|最多能展开的数量|number|Number.MAX_SAFE_INTEGER|
+|name|展开项的唯一标识|string|-|
+|modelValue|展开的项，里面存放着展开项的名字。|string[]|[]|
 :::
 
 :::details 插槽
@@ -37,20 +38,23 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
   <div class="w-full">
     <u-expansion 
       v-model="expanded"
-      itemClass="
-        border-[1px] border-x-0 border-solid border-[#dcdfe6] border-t-0
-        first-of-type:border-t-[1px]
-      "
-      headerClass="flex items-center justify-between h-[47px]"
-      contentClass="text-[14px] text-[#303133] font-medium"
     >
-      <u-expansion-item name="1">
+      <u-expansion-item 
+        name="1" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+        "
+      >
         <template #header="{ expanded }">
-          <div class="text-[14px] text-[#303133] font-medium">Home</div>
-          <u-icon :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></u-icon>
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Home</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
         </template>
         <template #content>
-          <div class="pb-[24px]">
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
             voluptatum laborum illo voluptatibus cumque nesciunt provident 
             alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
@@ -59,13 +63,22 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
         </template>
       </u-expansion-item>
 
-      <u-expansion-item name="2">
+      <u-expansion-item 
+        name="2" 
+        class="
+          border-px border-x-0 border-solid border-[#dcdfe6]
+        "
+      >
         <template #header="{ expanded }">
-          <div class="text-[14px] text-[#303133] font-medium">About us</div>
-          <u-icon :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></u-icon>
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">About us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
         </template>
         <template #content>
-          <div class="pb-[24px]">
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
             voluptatum laborum illo voluptatibus cumque nesciunt provident 
             alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
@@ -90,6 +103,8 @@ const expanded = reactive(['1'])
 
 ## 最小数量
 
+至少应该展开的数量
+
 <!-- component -->
 <Min></Min>
 ::: details 查看源码
@@ -100,20 +115,23 @@ const expanded = reactive(['1'])
     <u-expansion 
       v-model="expanded"
       :min="1"
-      itemClass="
-        border-[1px] border-x-0 border-solid border-[#dcdfe6] border-t-0
-        first-of-type:border-t-[1px]
-      "
-      headerClass="flex items-center justify-between h-[47px]"
-      contentClass="text-[14px] text-[#303133] font-medium"
     >
-      <u-expansion-item name="1">
+      <u-expansion-item 
+        name="1" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+        "
+      >
         <template #header="{ expanded }">
-          <div class="text-[14px] text-[#303133] font-medium">Home</div>
-          <u-icon :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></u-icon>
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Home</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
         </template>
         <template #content>
-          <div class="pb-[24px]">
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
             voluptatum laborum illo voluptatibus cumque nesciunt provident 
             alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
@@ -122,13 +140,22 @@ const expanded = reactive(['1'])
         </template>
       </u-expansion-item>
 
-      <u-expansion-item name="2">
+      <u-expansion-item 
+        name="2" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+        "
+      >
         <template #header="{ expanded }">
-          <div class="text-[14px] text-[#303133] font-medium">About us</div>
-          <u-icon :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></u-icon>
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">About us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
         </template>
         <template #content>
-          <div class="pb-[24px]">
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
             voluptatum laborum illo voluptatibus cumque nesciunt provident 
             alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
@@ -137,13 +164,22 @@ const expanded = reactive(['1'])
         </template>
       </u-expansion-item>
 
-      <u-expansion-item name="3">
+      <u-expansion-item 
+        name="3" 
+        class="
+          border-px border-x-0 border-solid border-[#dcdfe6]
+        "
+      >
         <template #header="{ expanded }">
-          <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
-          <u-icon :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></u-icon>
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
         </template>
         <template #content>
-          <div class="pb-[24px]">
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
             voluptatum laborum illo voluptatibus cumque nesciunt provident 
             alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
@@ -169,6 +205,8 @@ const expanded = reactive<string[]>(['1'])
 
 ## 最大数量
 
+最多能展开的数量，当即将超过该数量时，会自动折叠此前最早展开的项。
+
 <!-- component -->
 <Max></Max>
 ::: details 查看源码
@@ -179,20 +217,23 @@ const expanded = reactive<string[]>(['1'])
     <u-expansion 
       v-model="expanded"
       :max="1"
-      itemClass="
-        border-[1px] border-x-0 border-solid border-[#dcdfe6] border-t-0
-        first-of-type:border-t-[1px]
-      "
-      headerClass="flex items-center justify-between h-[47px]"
-      contentClass="text-[14px] text-[#303133] font-medium"
     >
-      <u-expansion-item name="1">
+      <u-expansion-item 
+        name="1" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+        "
+      >
         <template #header="{ expanded }">
-          <div class="text-[14px] text-[#303133] font-medium">Home</div>
-          <u-icon :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></u-icon>
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Home</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
         </template>
         <template #content>
-          <div class="pb-[24px]">
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
             voluptatum laborum illo voluptatibus cumque nesciunt provident 
             alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
@@ -201,13 +242,22 @@ const expanded = reactive<string[]>(['1'])
         </template>
       </u-expansion-item>
 
-      <u-expansion-item name="2">
+      <u-expansion-item 
+        name="2" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+        "
+      >
         <template #header="{ expanded }">
-          <div class="text-[14px] text-[#303133] font-medium">About us</div>
-          <u-icon :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></u-icon>
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">About us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
         </template>
         <template #content>
-          <div class="pb-[24px]">
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
             voluptatum laborum illo voluptatibus cumque nesciunt provident 
             alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
@@ -216,13 +266,22 @@ const expanded = reactive<string[]>(['1'])
         </template>
       </u-expansion-item>
 
-      <u-expansion-item name="3">
+      <u-expansion-item 
+        name="3" 
+        class="
+          border-px border-x-0 border-solid border-[#dcdfe6]
+        "
+      >
         <template #header="{ expanded }">
-          <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
-          <u-icon :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"></u-icon>
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
         </template>
         <template #content>
-          <div class="pb-[24px]">
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
             voluptatum laborum illo voluptatibus cumque nesciunt provident 
             alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
