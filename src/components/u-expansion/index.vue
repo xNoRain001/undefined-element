@@ -1,9 +1,5 @@
 <template>
-  <div 
-    class="u-expansion"
-    :style="style"
-    :class="expansionClass"
-  >
+  <div class="u-expansion">
     <slot></slot>
   </div>
 </template>
@@ -16,42 +12,15 @@ import { expansionKey } from '../../const/keys'
 const props = withDefaults(defineProps<{
   min?: number,
   max?: number,
-  style?: { [propName: string]: string | number },
-  class?: string,
-  modelValue: string[],
-  itemStyle?: { [propName: string]: string | number },
-  itemClass?: string,
-  headerStyle?: { [propName: string]: string | number },
-  headerClass?: string,
-  contentStyle?: { [propName: string]: string | number },
-  contentClass?: string,
-  activeHeaderClass?: string
+  modelValue: string[]
 }>(), {
   min: Number.MIN_SAFE_INTEGER,
-  max: Number.MAX_SAFE_INTEGER,
-  style: () => ({}),
-  class: '',
-  itemStyle: () => ({}),
-  itemClass: '',
-  headerStyle: () => ({}),
-  headerClass: '',
-  contentStyle: () => ({}),
-  contentClass: '',
-  activeHeaderClass: ''
+  max: Number.MAX_SAFE_INTEGER
 })
 const {
   min,
   max, 
-  style,
-  class: expansionClass,
-  modelValue,
-  itemStyle,
-  itemClass,
-  headerStyle, 
-  headerClass, 
-  contentStyle, 
-  contentClass,
-  activeHeaderClass
+  modelValue
 } = toRefs(props)
 
 const updateModel = (name: string) => {
@@ -71,14 +40,7 @@ const updateModel = (name: string) => {
 }
 
 provide(expansionKey, {
-  itemStyle,
-  itemClass,
   modelValue: modelValue.value,
   updateModel,
-  headerStyle,
-  headerClass,
-  contentStyle,
-  contentClass,
-  activeHeaderClass,
 })
 </script>

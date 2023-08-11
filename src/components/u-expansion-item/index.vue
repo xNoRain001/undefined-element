@@ -1,80 +1,58 @@
 <template>
-  <div 
-    class="u-expansion-item"
-    :class="itemClass"
-    :style="itemStyle"
-  >
+  <div class="u-expansion-item">
     <div 
-      @click="clickHandler" 
+      @click="onClick" 
       class="u-expansion-item-header cursor-pointer"
-      :class="_headerClass"
-      :style="headerStyle"
     >
       <slot name="header" :expanded="expanded"></slot>
     </div>
 
     <div 
       ref="contentRef" 
-      :style="_contentStyle" 
+      :style="contentStyle"
       class="
         u-expansion-item-content overflow-y-hidden transition-[height] 
         duration-[var(--u-transition-duration)]
       "
-      :class="contentClass"
     >
-      <slot name="content"></slot>
+      <slot name="content" :expanded="expanded"></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, computed, useAttrs } from 'vue'
+import { 
+  ref, 
+  watch, 
+  toRefs,
+  inject, 
+  computed, 
+  reactive, 
+  onMounted 
+} from 'vue'
 
 import { expansionKey } from '../../const/keys'
 
-import type { Ref } from 'vue'
-
-const name = useAttrs().name as string
+const props = defineProps<{ name: string }>()
+const { name } = toRefs(props)
 const { 
-  itemStyle,
-  itemClass,
   modelValue, 
-  updateModel, 
-  headerStyle, 
-  headerClass, 
-  contentStyle,
-  contentClass, 
-  activeHeaderClass
+  updateModel
 } = inject(expansionKey) as {
-  itemStyle: Ref<{ [propName: string]: string | number }>,
-  itemClass: Ref<string>,
   modelValue: string[],
-  updateModel: Function,
-  headerStyle: Ref<{ [propName: string]: string | number }>,
-  headerClass: Ref<string>,
-  contentStyle: Ref<{ [propName: string]: string | number }>,
-  contentClass: Ref<string>,
-  activeHeaderClass: Ref<string>
+  updateModel: Function
 }
-const expanded = computed(() => modelValue.includes(name))
+const expanded = computed(() => modelValue.includes(name.value))
 const contentRef = ref<HTMLElement | null>(null)
-const _contentStyle = computed(() => {
-  const _contentRef = contentRef.value
+const contentStyle = reactive({ height: expanded ? '100%' : '0px' })
 
-  if (_contentRef) {
-    const height = expanded.value ? `${ _contentRef.scrollHeight }px` : '0'
-   
-    return {
-      ...contentStyle,
-      height
-    }
-  }
+const onClick = () => updateModel(name.value)
+
+onMounted(() => {
+  watch(expanded, value => {
+    contentStyle.height = value 
+      ? `${ contentRef.value!.scrollHeight }px` 
+      : '0px'
+  }, { immediate: true })
 })
-const _headerClass = computed(() => `${ headerClass.value }${ 
-  expanded.value 
-    ? ` ${ activeHeaderClass.value }` 
-    : '' 
-}`)
-
-const clickHandler = () => updateModel(name)
 </script>
