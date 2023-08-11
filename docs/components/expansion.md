@@ -8,8 +8,7 @@ import Max from '../examples/expansion/03.max.vue'
 
 # Expansion
 
-Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们视为单击时会扩展的手风琴元素，也
-被称为可折叠。
+Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们视为单击时会扩展的手风琴元素，也被称为可折叠。
 
 :::details 属性
 |属性名|描述|类型|默认值|
@@ -96,6 +95,69 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
 import { reactive } from 'vue'
 const expanded = reactive(['1'])
 </script>
+```
+
+```vue [all]
+<template>
+  <div class="w-full">
+    <u-expansion 
+      v-model="expanded"
+    >
+      <u-expansion-item 
+        name="1" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+        "
+      >
+        <template #header="{ expanded }">
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Home</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
+        </template>
+        <template #content>
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
+            voluptatum laborum illo voluptatibus cumque nesciunt provident 
+            alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
+            accusantium laborum nulla aspernatur? Aut, tempore!
+          </div>
+        </template>
+      </u-expansion-item>
+
+      <u-expansion-item 
+        name="2" 
+        class="
+          border-px border-x-0 border-solid border-[#dcdfe6]
+        "
+      >
+        <template #header="{ expanded }">
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">About us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
+        </template>
+        <template #content>
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
+            voluptatum laborum illo voluptatibus cumque nesciunt provident 
+            alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
+            accusantium laborum nulla aspernatur? Aut, tempore!
+          </div>
+        </template>
+      </u-expansion-item>
+    </u-expansion>
+  </div>
+</template>
+<script lang="ts" setup>
+import { reactive } from 'vue'
+const expanded = reactive(['1'])
+</script>
+
 ```
 
 :::
@@ -200,6 +262,95 @@ const expanded = reactive<string[]>(['1'])
 </script>
 ```
 
+```vue [all]
+<template>
+  <div class="w-full">
+    <u-expansion 
+      v-model="expanded"
+      :min="1"
+    >
+      <u-expansion-item 
+        name="1" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+        "
+      >
+        <template #header="{ expanded }">
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Home</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
+        </template>
+        <template #content>
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
+            voluptatum laborum illo voluptatibus cumque nesciunt provident 
+            alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
+            accusantium laborum nulla aspernatur? Aut, tempore!
+          </div>
+        </template>
+      </u-expansion-item>
+
+      <u-expansion-item 
+        name="2" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+        "
+      >
+        <template #header="{ expanded }">
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">About us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
+        </template>
+        <template #content>
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
+            voluptatum laborum illo voluptatibus cumque nesciunt provident 
+            alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
+            accusantium laborum nulla aspernatur? Aut, tempore!
+          </div>
+        </template>
+      </u-expansion-item>
+
+      <u-expansion-item 
+        name="3" 
+        class="
+          border-px border-x-0 border-solid border-[#dcdfe6]
+        "
+      >
+        <template #header="{ expanded }">
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
+        </template>
+        <template #content>
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
+            voluptatum laborum illo voluptatibus cumque nesciunt provident 
+            alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
+            accusantium laborum nulla aspernatur? Aut, tempore!
+          </div>
+        </template>
+      </u-expansion-item>
+    </u-expansion>
+  </div>
+</template>
+<script lang="ts" setup>
+import { reactive } from 'vue'
+
+const expanded = reactive<string[]>(['1'])
+</script>
+
+```
+
 :::
 <!-- component -->
 
@@ -300,6 +451,95 @@ import { reactive } from 'vue'
 
 const expanded = reactive<string[]>([])
 </script>
+```
+
+```vue [all]
+<template>
+  <div class="w-full">
+    <u-expansion 
+      v-model="expanded"
+      :max="1"
+    >
+      <u-expansion-item 
+        name="1" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+        "
+      >
+        <template #header="{ expanded }">
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Home</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
+        </template>
+        <template #content>
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
+            voluptatum laborum illo voluptatibus cumque nesciunt provident 
+            alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
+            accusantium laborum nulla aspernatur? Aut, tempore!
+          </div>
+        </template>
+      </u-expansion-item>
+
+      <u-expansion-item 
+        name="2" 
+        class="
+          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+        "
+      >
+        <template #header="{ expanded }">
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">About us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
+        </template>
+        <template #content>
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
+            voluptatum laborum illo voluptatibus cumque nesciunt provident 
+            alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
+            accusantium laborum nulla aspernatur? Aut, tempore!
+          </div>
+        </template>
+      </u-expansion-item>
+
+      <u-expansion-item 
+        name="3" 
+        class="
+          border-px border-x-0 border-solid border-[#dcdfe6]
+        "
+      >
+        <template #header="{ expanded }">
+          <div class="flex items-center justify-between h-[47px]">
+            <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
+            <u-icon 
+              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+            ></u-icon>
+          </div>
+        </template>
+        <template #content>
+          <div class="pb-[24px] text-[14px] text-[#303133] font-medium">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, 
+            voluptatum laborum illo voluptatibus cumque nesciunt provident 
+            alias nam id possimus! Voluptatibus, at reprehenderit aperiam 
+            accusantium laborum nulla aspernatur? Aut, tempore!
+          </div>
+        </template>
+      </u-expansion-item>
+    </u-expansion>
+  </div>
+</template>
+<script lang="ts" setup>
+import { reactive } from 'vue'
+
+const expanded = reactive<string[]>([])
+</script>
+
 ```
 
 :::

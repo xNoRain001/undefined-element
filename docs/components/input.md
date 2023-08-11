@@ -13,19 +13,19 @@ import Types from '../examples/input/08.types.vue'
 
 # Input
 
-Input 组件用于捕获来自用户的文本输入，它使用v-model，类似于常规输入。
+Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似于常规输入。
 
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
-|type|类型|string|'text'|
-|debounce|防抖间隔，值为 0 时表示不开启防抖。|number|0|
-|readonly|只读|boolean|false|
-|disabled|禁用|boolean|false|
-|aotofocus|自动聚焦|boolean|false|
-|modelValue|绑定的值||-|
+|type|输入框的类型|string|'text'|
+|debounce|输入框的防抖间隔，值为 0 时表示不开启防抖。|number|0|
+|readonly|只读的输入框|boolean|false|
+|disabled|禁用输入框|boolean|false|
+|aotofocus|自动聚焦的输入框|boolean|false|
+|modelValue|输入框绑定的值||-|
 |inputClass|表单样式|string|''|
-|placeholder|占位符|string|''|
+|placeholder|输入框的占位符|string|''|
 |focusedClass|聚焦时表单容器的样式|string|''|
 :::
 
@@ -82,6 +82,31 @@ const value1 = ref('')
 </script>
 ```
 
+```vue [all]
+<template>
+  <div class="my-[16px]">
+    <u-input
+      class="
+        w-full h-[56px] px-[12px] rounded-[4px]
+        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        hover:before:border-[rgba(0,0,0,.87)]
+      "
+      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
+      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      v-model="value1"
+    >
+    </u-input>
+    <template></template>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value1 = ref('')
+</script>
+
+```
+
 :::
 <!-- component -->
 
@@ -119,6 +144,34 @@ import { ref } from 'vue'
 
 const value = ref('')
 </script>
+```
+
+```vue [all]
+<template>
+  <div class="my-[16px]">
+    <u-input
+      class="
+        w-full h-[56px] px-[12px] rounded-[4px]
+        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        hover:before:border-[rgba(0,0,0,.87)]
+      "
+      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
+      inputClass="
+        text-[rgba(0,0,0,.87)] text-[14px] font-normal
+        placeholder:text-red-500
+      "
+      v-model="value"
+      placeholder="Write your story!"
+    >
+    </u-input>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
 ```
 
 :::
@@ -159,6 +212,33 @@ const value = ref('')
 </script>
 ```
 
+```vue [all]
+<template>
+  <div class="my-[16px]">
+    <u-input
+      class="
+        w-full h-[56px] px-[12px] rounded-[4px]
+        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        hover:before:border-[rgba(0,0,0,.87)]
+      "
+      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
+      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      v-model="value"
+      :debounce="300"
+    >
+    </u-input>
+
+    <div class="mt-[16px]">value: {{ value }}</div>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
+```
+
 :::
 <!-- component -->
 
@@ -195,6 +275,31 @@ const value = ref('This is readonly input')
 </script>
 ```
 
+```vue [all]
+<template>
+  <div class="my-[16px]">
+    <u-input
+      class="
+        w-full h-[56px] px-[12px] rounded-[4px]
+        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        hover:before:border-[rgba(0,0,0,.87)]
+      "
+      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
+      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      v-model="value"
+      readonly
+    >
+    </u-input>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value = ref('This is readonly input')
+</script>
+
+```
+
 :::
 <!-- component -->
 
@@ -228,6 +333,30 @@ import { ref } from 'vue'
 
 const value = ref('This is disabled input')
 </script>
+```
+
+```vue [all]
+<template>
+  <div class="my-[16px]">
+    <u-input
+      class="
+        w-full h-[56px] px-[12px] rounded-[4px]
+        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+      "
+      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
+      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      v-model="value"
+      disabled
+    >
+    </u-input>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value = ref('This is disabled input')
+</script>
+
 ```
 
 :::
@@ -268,6 +397,33 @@ const value = ref('This is clearable input')
 </script>
 ```
 
+```vue [all]
+<template>
+  <div class="my-[16px]">
+    <u-input
+      class="
+        w-full h-[56px] px-[12px] rounded-[4px]
+        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        hover:before:border-[rgba(0,0,0,.87)]
+      "
+      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
+      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      v-model="value"
+    >
+      <template #append>
+        <u-icon name="close" width="16" height="16" clearable></u-icon>
+      </template>
+    </u-input>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value = ref('This is clearable input')
+</script>
+
+```
+
 :::
 <!-- component -->
 
@@ -302,6 +458,31 @@ import { ref } from 'vue'
 
 const value = ref('')
 </script>
+```
+
+```vue [all]
+<template>
+  <div class="my-[16px]">
+    <u-input
+      class="
+        w-full h-[56px] px-[12px] rounded-[4px]
+        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        hover:before:border-[rgba(0,0,0,.87)]
+      "
+      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
+      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      v-model="value"
+      autofocus
+    >
+    </u-input>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value = ref('')
+</script>
+
 ```
 
 :::
@@ -348,6 +529,41 @@ const visible = ref(false)
 
 const updateVisible = () => visible.value = !visible.value
 </script>
+```
+
+```vue [all]
+<template>
+  <div class="my-[16px]">
+    <u-input
+      class="
+        w-full h-[56px] px-[12px] rounded-[4px]
+        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        hover:before:border-[rgba(0,0,0,.87)]
+      "
+      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
+      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      v-model="value"
+      type="password"
+    >
+      <template #append>
+        <u-icon 
+          visible
+          @click="updateVisible" 
+          :name="visible ? 'visibility' : 'visibility_off'"
+        ></u-icon>
+      </template>
+    </u-input>
+  </div>
+</template>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value = ref('')
+const visible = ref(false)
+
+const updateVisible = () => visible.value = !visible.value
+</script>
+
 ```
 
 :::

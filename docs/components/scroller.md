@@ -29,6 +29,23 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 </template>
 ```
 
+```vue [all]
+<template>
+  <u-scroll-area height="400px">
+    <div v-for="i in 100" :key="i">
+      Lorem ipsum dolor sit amet.
+    </div>
+    <u-scroller class="absolute right-[20px] bottom-[20px]">
+      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+      </div>
+    </u-scroller>
+  </u-scroll-area>
+</template>
+
+
+```
+
 :::
 <!-- component -->
 
@@ -51,6 +68,23 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
     </u-scroller>
   </u-scroll-area>
 </template>
+```
+
+```vue [all]
+<template>
+  <u-scroll-area height="400px">
+    <div v-for="i in 100" :key="i">
+      Lorem ipsum dolor sit amet.
+    </div>
+    <u-scroller :to="100" class="absolute right-[20px] bottom-[20px]">
+      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+      </div>
+    </u-scroller>
+  </u-scroll-area>
+</template>
+
+
 ```
 
 :::
@@ -77,6 +111,23 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 </template>
 ```
 
+```vue [all]
+<template>
+  <u-scroll-area height="400px">
+    <div v-for="i in 100" :key="i">
+      Lorem ipsum dolor sit amet.
+    </div>
+    <u-scroller :duration="0" class="absolute right-[20px] bottom-[20px]">
+      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+      </div>
+    </u-scroller>
+  </u-scroll-area>
+</template>
+
+
+```
+
 :::
 <!-- component -->
 
@@ -99,6 +150,23 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
     </u-scroller>
   </u-scroll-area>
 </template>
+```
+
+```vue [all]
+<template>
+  <u-scroll-area height="400px">
+    <div v-for="i in 100" :key="i">
+      Lorem ipsum dolor sit amet.
+    </div>
+    <u-scroller :scrollOffset="0" class="absolute right-[20px] bottom-[20px]">
+      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+      </div>
+    </u-scroller>
+  </u-scroll-area>
+</template>
+
+
 ```
 
 :::
@@ -126,6 +194,26 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
     </u-scroller>
   </div>
 </template>
+```
+
+```vue [all]
+<template>
+  <div class="w-full relative">
+    <div class="scroll-target w-full h-[400px] overflow-y-scroll">
+      <div v-for="i in 100" :key="i">
+        Lorem ipsum dolor sit amet.
+      </div>
+    </div>
+
+    <u-scroller scrollTarget=".scroll-target" :duration="300" class="absolute right-[20px] bottom-[20px]">
+      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+      </div>
+    </u-scroller>
+  </div>
+</template>
+
+
 ```
 
 :::
