@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
 
-    <Transition name="u-animate-opacity">
+    <Transition name="u-fade">
       <div class="u-infinite-scroll-loading">
         <slot name="loading" :loading="loading"></slot>
       </div>

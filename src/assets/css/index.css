@@ -6,52 +6,87 @@
   --u-transition-duration: .3s;
 }
 
-@keyframes u-animate-opacity {
-  from {
-    opacity: var(--u-opacity-start);
+@keyframes u-fade {
+  0% {
+    opacity: 0;
   }
-
-  to {
-    opacity: var(--u-opacity-end);
-  }
-}
-
-.u-animate-opacity {
-  animation: u-animate-opacity var(--u-transition-duration);
-}
-
-/* transition component animation */
-/* opacity */
-.u-animate-opacity-enter-active,
-.u-animate-opacity-leave-active {
-  transition: opacity var(--u-transition-duration);
-}
-
-.u-animate-opacity-enter-from,
-.u-animate-opacity-leave-to {
-  opacity: 0;
-}
-
-.u-animate-opacity-enter-to,
-.u-animate-opacity-leave-from {
-  opacity: 1;
-}
-
-/* customized animation */
-@keyframes u-animate-dialog-inner-persistent {
-  from {
-    transform: scale(1)
-  }
-
-  50% {
-    transform: scale(1.05)
-  }
-
-  to {
-    transform: scale(1)
+  100% {
+    opacity: 1;
   }
 }
 
-.u-animate-dialog-inner-persistent {
-  animation: u-animate-dialog-inner-persistent .15s;
+.u-fade-enter-active {
+  animation: u-fade var(--u-transition-duration);
+}
+
+.u-fade-leave-active {
+  animation: u-fade var(--u-transition-duration) reverse;
+}
+
+@keyframes u-slide-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.u-slide-up-enter-active {
+  animation: u-slide-up var(--u-transition-duration);
+}
+
+.u-slide-up-leave-active {
+  animation: u-slide-up var(--u-transition-duration) reverse;
+}
+
+@keyframes u-slide-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.u-slide-down-enter-active {
+  animation: u-slide-down var(--u-transition-duration);
+}
+
+.u-slide-down-leave-active {
+  animation: u-slide-down var(--u-transition-duration) reverse;
+}
+
+@keyframes u-slide-left {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.u-slide-left-enter-active {
+  animation: u-slide-left var(--u-transition-duration);
+}
+
+.u-slide-left-leave-active {
+  animation: u-slide-left var(--u-transition-duration) reverse;
+}
+
+@keyframes u-slide-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.u-slide-right-enter-active {
+  animation: u-slide-right var(--u-transition-duration);
+}
+
+.u-slide-right-leave-active {
+  animation: u-slide-right var(--u-transition-duration) reverse;
 }

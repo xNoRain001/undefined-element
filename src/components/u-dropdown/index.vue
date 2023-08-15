@@ -8,7 +8,7 @@
       <slot></slot>
     </div>
 
-    <Transition name="u-animate-opacity">
+    <Transition name="u-fade">
       <div 
         v-if="visible"
         class="u-dropdown-list absolute z-10 left-0 right-0 top-full" 

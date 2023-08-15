@@ -1,7 +1,7 @@
 <template>
   <div ref="containerRef">
     <Teleport to="body">
-      <Transition name="u-animate-opacity">
+      <Transition name="u-fade">
         <div 
           v-if="visible" 
           ref="tooltipRef" 

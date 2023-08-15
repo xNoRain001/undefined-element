@@ -39,7 +39,7 @@
 
       <slot name="append" :expanded="expanded"></slot>
 
-      <Transition name="u-animate-opacity">
+      <Transition name="u-fade">
         <div 
           v-if="expanded"
           @click="updateModel" 

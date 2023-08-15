@@ -1,6 +1,6 @@
 <template>
   <Teleport to="body">
-    <Transition name="u-animate-opacity" :duration="600000">
+    <Transition name="u-fade">
       <div 
         v-if="modelValue" 
         class="u-dialog w-screen h-screen fixed top-0 z-50" 
@@ -17,7 +17,7 @@
           class="u-dialog-inner absolute flex" 
           :class="innerClass"
         >
-          <!-- this is a container for persistent -->
+          <!-- add a container for persistent -->
           <div>
             <slot></slot>
           </div>
@@ -56,43 +56,39 @@ const innerPositionClassStrategies = {
   center: 'top-0 right-0 bottom-0 left-0 justify-center items-center'
 }
 const innerAnimationClassStrategies = {
-  top: ['animate-u-slide-down', 'animate-u-slide-up'],
-  right: ['animate-u-slide-left', 'animate-u-slide-right'],
-  bottom: ['animate-u-slide-up', 'animate-u-slide-down'],
-  left: ['animate-u-slide-right', 'animate-u-slide-left'],
+  top: ['animate-u-slide-down', 'animate-u-slide-down-reverse'],
+  right: ['animate-u-slide-left', 'animate-u-slide-left-reverse'],
+  bottom: ['animate-u-slide-up', 'animate-u-slide-up-reverse'],
+  left: ['animate-u-slide-right', 'animate-u-slide-right-reverse'],
   center: []
 }
 const innerClass = computed(() => {
   const _position = position.value
 
-  return `${ innerPositionClassStrategies[_position] } ${ 
-    innerAnimationClassStrategies[_position][modelValue.value ? '0' : '1'] 
-  }`
+  return `${ innerPositionClassStrategies[_position] }`
+  // innerAnimationClassStrategies[position][modelValue ? '0' : '1'] 
 })
 
 const closeDialog = (e: Event) => {
-  const _inner = innerRef.value as HTMLElement
+  const _innerRef = innerRef.value as HTMLElement
+  const _backdropRef = backdropRef.value as HTMLElement
 
-  // dialog is closed by inner element
-  if (!_inner) {
+  // dialog is closed by click inner's children
+  if (!_innerRef) {
     return
   }
 
-  // close dialog by outer element
-  const isInner = _inner.contains(e.target as HTMLElement)
-  const _persistent = persistent.value
+  const target = e.target as HTMLElement
+  const outer = target === _innerRef || target === _backdropRef
 
-  if (!_persistent && !isInner) {
+  if (!outer) {
+    return
+  }
+
+  if (persistent.value) {
+    // 
+  } else {
     emit('update:modelValue', false)
-  } else if (_persistent && !isInner && modelValue.value) {
-    // when dialog is opened and persistent, need to add animation, 
-    // but don't add to inner node, because animation will clear 
-    // inner node's transform property.
-    // useAddAnimation(
-    //   _inner.children[0] as HTMLElement, 
-    //   'u-animate-dialog-inner-persistent', 
-    //   150
-    // )
   }
 }
 </script>
