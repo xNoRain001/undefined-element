@@ -6,6 +6,24 @@ import Drawer from '../examples/dialog/03.drawer.vue'
 </script>
 <!-- import -->
 
+# Dialog
+
+Dialog 组件可以向用户提供信息，或要求他们作出决定。
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+|position|对话框的位置|'top' \| 'right' \| 'bottom' \| 'left' \| 'center'|'center'|
+|modelValue|绑定的值，用于控制是否显示对话框|boolean|-|
+|persistent|是否开启持久化|boolean|false|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+|default|对话框的内容|
+:::
+
 ## 基础
 
 <!-- component -->
@@ -315,6 +333,8 @@ const updateVisible5 = () => visible5.value = !visible5.value
 
 ## 持久化
 
+开启持久化后，点击遮罩层不会关闭对话框。
+
 <!-- component -->
 <Persistent></Persistent>
 ::: details 查看源码
@@ -401,6 +421,8 @@ const updateVisible = () => visible.value = !visible.value
 <!-- component -->
 
 ## 抽屉
+
+可以非常容易地将对话框改为抽屉
 
 <!-- component -->
 <Drawer></Drawer>

@@ -4,6 +4,25 @@ import Basic from '../examples/rating/01.basic.vue'
 </script>
 <!-- import -->
 
+# Rating
+
+Rating 组件的作用是进行星级评分
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+|max|评分的最大值|number|-|
+|color|未点亮时图标的颜色|string|#000|
+|modelValue|绑定的值|number|-|
+|activeColor|点亮时图标的颜色|string|#eab308|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+|default|图标|
+:::
+
 ## 基础
 
 <!-- component -->
