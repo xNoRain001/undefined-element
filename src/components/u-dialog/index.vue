@@ -4,7 +4,7 @@
       <div 
         v-if="modelValue" 
         class="u-dialog w-screen h-screen fixed top-0 z-50" 
-        @click="closeDialog"
+        @click="onClose"
       >
         <div 
           ref="backdropRef"
@@ -18,7 +18,7 @@
           :class="innerClass"
         >
           <!-- add a container for persistent -->
-          <div>
+          <div ref="slotContainerRef">
             <slot></slot>
           </div>
         </div>
@@ -28,9 +28,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed, watch } from 'vue'
-
-import { useAddAnimation } from '../../composables'
+import { ref, watch, toRefs, computed, nextTick } from 'vue'
+import { dialogPosition, dialogAnimation } from '../../const/strategies'
 
 const props = withDefaults(defineProps<{ 
   position?: 'top' | 'right' | 'bottom' | 'left' | 'center',
@@ -43,37 +42,22 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
 const { position, modelValue, persistent } = toRefs(props)
 const innerRef = ref<HTMLElement | null>(null)
-const backdropRef = ref<HTMLElement | null>()
+const backdropRef = ref<HTMLElement | null>(null)
 const backdropClass = computed(() => modelValue.value 
   ? 'bg-[rgba(0,0,0,.4)]' 
   : 'bg-transparent'
 )
-const innerPositionClassStrategies = {
-  top: 'top-0 left-0 right-0 justify-center',
-  right: 'right-0 top-0 bottom-0 items-center',
-  bottom: 'bottom-0 left-0 right-0 justify-center',
-  left: 'left-0 top-0 bottom-0 items-center',
-  center: 'top-0 right-0 bottom-0 left-0 justify-center items-center'
-}
-const innerAnimationClassStrategies = {
-  top: ['animate-u-slide-down', 'animate-u-slide-down-reverse'],
-  right: ['animate-u-slide-left', 'animate-u-slide-left-reverse'],
-  bottom: ['animate-u-slide-up', 'animate-u-slide-up-reverse'],
-  left: ['animate-u-slide-right', 'animate-u-slide-right-reverse'],
-  center: []
-}
-const innerClass = computed(() => {
-  const _position = position.value
 
-  return `${ innerPositionClassStrategies[_position] }`
-  // innerAnimationClassStrategies[position][modelValue ? '0' : '1'] 
-})
+const innerClass = computed(() => dialogPosition[position.value])
 
-const closeDialog = (e: Event) => {
+let timeout: number | null = null
+const slotContainerRef = ref<HTMLElement | null>(null)
+
+const onClose = (e: Event) => {
   const _innerRef = innerRef.value as HTMLElement
   const _backdropRef = backdropRef.value as HTMLElement
 
-  // dialog is closed by click inner's children
+  // dialog is closed by click container
   if (!_innerRef) {
     return
   }
@@ -86,9 +70,38 @@ const closeDialog = (e: Event) => {
   }
 
   if (persistent.value) {
-    // 
+    const { classList } = slotContainerRef.value as HTMLElement
+
+    classList.remove('u-shake')
+    classList.add('u-shake')
+
+    if (timeout) {
+      clearTimeout(timeout)
+    }
+
+    timeout = setTimeout(() => {
+      timeout = null
+
+      classList.remove('u-shake')
+    }, 150)
   } else {
     emit('update:modelValue', false)
   }
 }
+
+watch(modelValue, value => {
+  const className = dialogAnimation[position.value][value ? 0 : 1]
+
+  if (value) {
+    nextTick(() => {
+      slotContainerRef.value!.classList.add(className)
+
+      setTimeout(() => {
+        slotContainerRef.value!.classList.remove(className)
+      }, 300)
+    })
+  } else {
+    slotContainerRef.value!.classList.add(className)
+  }
+})
 </script>
