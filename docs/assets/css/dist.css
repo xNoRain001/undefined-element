@@ -826,6 +826,10 @@ video {
   cursor: pointer;
 }
 
+.cursor-none {
+  cursor: none;
+}
+
 .grid-cols-10 {
   grid-template-columns: repeat(10, minmax(0, 1fr));
 }
@@ -1159,6 +1163,11 @@ video {
   --tw-shadow: 0 1px 5px #0003,0 2px 2px #00000024, 0 3px 1px -2px #0000001f;
   --tw-shadow-colored: 0 1px 5px var(--tw-shadow-color), 0 2px 2px var(--tw-shadow-color), 0 3px 1px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .transition-\[all\] {

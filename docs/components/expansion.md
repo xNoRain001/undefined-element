@@ -22,7 +22,7 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
-|header|始终显示的内容|
+|default|始终显示的内容|
 |content|展开时才显示的内容|
 :::
 
@@ -41,10 +41,10 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
       <u-expansion-item 
         name="1" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
@@ -65,10 +65,10 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
       <u-expansion-item 
         name="2" 
         class="
-          border-px border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
@@ -106,10 +106,10 @@ const expanded = reactive(['1'])
       <u-expansion-item 
         name="1" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
@@ -130,10 +130,10 @@ const expanded = reactive(['1'])
       <u-expansion-item 
         name="2" 
         class="
-          border-px border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
@@ -181,10 +181,10 @@ const expanded = reactive(['1'])
       <u-expansion-item 
         name="1" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
@@ -205,10 +205,10 @@ const expanded = reactive(['1'])
       <u-expansion-item 
         name="2" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
@@ -229,10 +229,10 @@ const expanded = reactive(['1'])
       <u-expansion-item 
         name="3" 
         class="
-          border-px border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 
@@ -272,10 +272,10 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="1" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
@@ -296,10 +296,10 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="2" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
@@ -320,10 +320,10 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="3" 
         class="
-          border-px border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 
@@ -372,10 +372,10 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="1" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
@@ -396,10 +396,10 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="2" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
@@ -420,10 +420,10 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="3" 
         class="
-          border-px border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 
@@ -463,10 +463,10 @@ const expanded = reactive<string[]>([])
       <u-expansion-item 
         name="1" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
@@ -487,10 +487,10 @@ const expanded = reactive<string[]>([])
       <u-expansion-item 
         name="2" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
@@ -511,10 +511,10 @@ const expanded = reactive<string[]>([])
       <u-expansion-item 
         name="3" 
         class="
-          border-px border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 

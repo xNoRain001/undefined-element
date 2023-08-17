@@ -4,7 +4,7 @@
       @click="onClick" 
       class="u-expansion-item-header cursor-pointer"
     >
-      <slot name="header" :expanded="expanded"></slot>
+      <slot :expanded="expanded"></slot>
     </div>
 
     <div 

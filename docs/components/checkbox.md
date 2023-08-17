@@ -28,7 +28,7 @@ Checkbox 组件是用户输入的一个基本元素，你可以使用它为用�
 |插槽名|描述|
 |:-----------:|:-----------:|
 |before|复选框左边的内容|
-|checkbox|复选框|
+|default|复选框|
 |after|复选框右边的内容|
 :::
 
@@ -41,7 +41,7 @@ Checkbox 组件是用户输入的一个基本元素，你可以使用它为用�
 ```vue [template]
 <template>
   <u-checkbox v-model="value">
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid
@@ -72,7 +72,7 @@ Checkbox 组件是用户输入的一个基本元素，你可以使用它为用�
     class="ml-[16px]"
     v-model="value" 
   >
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid rounded-full
@@ -100,7 +100,7 @@ Checkbox 组件是用户输入的一个基本元素，你可以使用它为用�
     class="ml-[16px]"
     v-model="value" 
   >
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid rounded-full
@@ -140,7 +140,7 @@ const value =ref(false)
 ```vue [all]
 <template>
   <u-checkbox v-model="value">
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid
@@ -171,7 +171,7 @@ const value =ref(false)
     class="ml-[16px]"
     v-model="value" 
   >
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid rounded-full
@@ -199,7 +199,7 @@ const value =ref(false)
     class="ml-[16px]"
     v-model="value" 
   >
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid rounded-full
@@ -255,7 +255,7 @@ const value =ref(false)
       class="flex items-center"
     >
       <u-checkbox value="red">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -278,7 +278,7 @@ const value =ref(false)
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -301,7 +301,7 @@ const value =ref(false)
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -345,7 +345,7 @@ const selection = reactive<any[]>([])
       class="flex items-center"
     >
       <u-checkbox value="red">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -368,7 +368,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -391,7 +391,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -444,7 +444,7 @@ const selection = reactive<any[]>([])
       class="flex items-center"
     >
       <u-checkbox value="red" disabled>
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -460,7 +460,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -477,7 +477,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -515,7 +515,7 @@ const selection = reactive<any[]>([])
       class="flex items-center"
     >
       <u-checkbox value="red" disabled>
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -531,7 +531,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -548,7 +548,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -597,7 +597,7 @@ const selection = reactive<any[]>([])
       :max="2"
     >
       <u-checkbox value="red">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -614,7 +614,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -631,7 +631,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -671,7 +671,7 @@ const selection = reactive<any[]>([])
       :max="2"
     >
       <u-checkbox value="red">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -688,7 +688,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -705,7 +705,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -755,7 +755,7 @@ const selection = reactive<any[]>([])
       race
     >
       <u-checkbox value="red">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -772,7 +772,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -789,7 +789,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -829,7 +829,7 @@ const selection = reactive<any[]>([])
       race
     >
       <u-checkbox value="red">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -846,7 +846,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -863,7 +863,7 @@ const selection = reactive<any[]>([])
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 

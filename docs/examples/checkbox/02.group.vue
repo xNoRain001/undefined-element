@@ -5,7 +5,7 @@
       class="flex items-center"
     >
       <u-checkbox value="red">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -28,7 +28,7 @@
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="green">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
@@ -51,7 +51,7 @@
       </u-checkbox>
 
       <u-checkbox class="ml-[32px]" value="blue">
-        <template #checkbox="{ checked }">
+        <template #default="{ checked }">
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 

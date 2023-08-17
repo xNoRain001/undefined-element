@@ -32,12 +32,12 @@ Dialog 组件可以向用户提供信息，或要求他们作出决定。
 ::: code-group
 ```vue [template]
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center flex-wrap -m-[8px]">
     <button 
       @click="updateVisible1" 
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="keyboard_arrow_up" color="#fff"></u-icon>
@@ -47,7 +47,7 @@ Dialog 组件可以向用户提供信息，或要求他们作出决定。
       @click="updateVisible2"
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] ml-[16px]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="keyboard_arrow_right" color="#fff"></u-icon>
@@ -57,7 +57,7 @@ Dialog 组件可以向用户提供信息，或要求他们作出决定。
       @click="updateVisible3"
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] ml-[16px]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="keyboard_arrow_down" color="#fff"></u-icon>
@@ -67,7 +67,7 @@ Dialog 组件可以向用户提供信息，或要求他们作出决定。
       @click="updateVisible4"
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] ml-[16px]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="keyboard_arrow_left" color="#fff"></u-icon>
@@ -77,7 +77,7 @@ Dialog 组件可以向用户提供信息，或要求他们作出决定。
       @click="updateVisible5"
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] ml-[16px]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="control_camera" color="#fff"></u-icon>
@@ -182,12 +182,12 @@ const updateVisible5 = () => visible5.value = !visible5.value
 
 ```vue [all]
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center flex-wrap -m-[8px]">
     <button 
       @click="updateVisible1" 
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="keyboard_arrow_up" color="#fff"></u-icon>
@@ -197,7 +197,7 @@ const updateVisible5 = () => visible5.value = !visible5.value
       @click="updateVisible2"
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] ml-[16px]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="keyboard_arrow_right" color="#fff"></u-icon>
@@ -207,7 +207,7 @@ const updateVisible5 = () => visible5.value = !visible5.value
       @click="updateVisible3"
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] ml-[16px]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="keyboard_arrow_down" color="#fff"></u-icon>
@@ -217,7 +217,7 @@ const updateVisible5 = () => visible5.value = !visible5.value
       @click="updateVisible4"
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] ml-[16px]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="keyboard_arrow_left" color="#fff"></u-icon>
@@ -227,7 +227,7 @@ const updateVisible5 = () => visible5.value = !visible5.value
       @click="updateVisible5"
       class="
         cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] ml-[16px]
+        rounded-[3px] bg-[#1976d2] m-[8px]
       "
     >
       <u-icon name="control_camera" color="#fff"></u-icon>

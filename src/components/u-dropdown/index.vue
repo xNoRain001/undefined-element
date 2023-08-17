@@ -1,57 +1,78 @@
 <template>
   <div 
-    tabindex="-1"
     class="u-dropdown relative w-fit h-fit"
     ref="dropdownRef"
   >
-    <div class="u-dropdown-trigger">
-      <slot></slot>
+    <div 
+      class="u-dropdown-header"
+      tabindex="-1"
+      ref="headerRef"
+      @click="onClick"
+      @focus="onFocus"
+      @blur="onBlur"
+    >
+      <slot :visible="visible"></slot>
     </div>
 
     <Transition name="u-fade">
       <div 
         v-if="visible"
         class="u-dropdown-list absolute z-10 left-0 right-0 top-full" 
-        :class="listClass"
-        :style="listStyle"
-        @click.stop="updateVisibility"
+        @click="onToggle"
       >
-        <slot name="dropdown-list"></slot>
+        <slot name="list" :visible="visible"></slot>
       </div>
     </Transition>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, onMounted } from 'vue'
+import { ref, toRefs, onMounted, watch } from 'vue'
+
+import { noop } from '../../utils'
 
 const visible = ref(false)
 const props = withDefaults(defineProps<{
   trigger?: 'click' | 'hover',
-  listClass?: string,
-  listStyle?: { [propName: string]: string |number }
 }>(), {
   trigger: 'click',
-  listClass: '',
-  listStyle: () => ({})
 })
 const dropdownRef = ref<HTMLElement | null>(null)
+const headerRef = ref<HTMLElement | null>(null)
 const { trigger } = toRefs(props)
 
 const onShow = () => visible.value = true
 
 const onHide = () => visible.value = false
 
-const updateVisibility = () => visible.value = !visible.value
+const onToggle = () => visible.value = !visible.value
+
+const _onClick = () => {
+  headerRef.value!.focus()
+}
+
+const onClick = trigger.value === 'click' ? _onClick : noop
+
+const onFocus = () => {
+  console.log('focus')
+  onShow()
+}
+
+const onBlur = () => {
+  console.log('blur')
+  onHide()
+}
 
 onMounted(() => {
-  const _dropdownRef = dropdownRef.value as HTMLElement
+  watch(trigger, value => {
+    const _dropdownRef = dropdownRef.value as HTMLElement
 
-  if (trigger.value === 'hover') {
-    _dropdownRef.addEventListener('mouseenter', onShow)
-    _dropdownRef.addEventListener('mouseleave', onHide)
-  }
-  
-  _dropdownRef.addEventListener('click', updateVisibility)
+    if (value === 'hover') {
+      _dropdownRef.addEventListener('mouseenter', onShow)
+      _dropdownRef.addEventListener('mouseleave', onHide)
+    } else {
+      _dropdownRef.addEventListener('click', onToggle)
+    }
+  }, { immediate: true })
 })
 </script>

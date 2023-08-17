@@ -7,10 +7,10 @@
       <u-expansion-item 
         name="1" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
@@ -31,10 +31,10 @@
       <u-expansion-item 
         name="2" 
         class="
-          border-px border-x-0 border-b-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-b-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
@@ -55,10 +55,10 @@
       <u-expansion-item 
         name="3" 
         class="
-          border-px border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[#dcdfe6]
         "
       >
-        <template #header="{ expanded }">
+        <template #default="{ expanded }">
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 

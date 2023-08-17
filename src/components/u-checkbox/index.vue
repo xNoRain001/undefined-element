@@ -4,7 +4,7 @@
     @click="updateModel"
   >
     <slot name="before" :checked="checked"></slot>
-    <slot name="checkbox" :checked="checked"></slot>
+    <slot :checked="checked"></slot>
     <slot name="after" :checked="checked"></slot>
   </div>
 </template>

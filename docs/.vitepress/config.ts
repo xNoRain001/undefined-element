@@ -37,10 +37,10 @@ export default defineConfig({
           { text: 'Skeleton', link: '/components/skeleton' },
           { text: 'Slider', link: '/components/slider' },
           { text: 'Splitter', link: '/components/splitter' },
-          { text: 'Table', link: '/components/table' },
+          // { text: 'Table', link: '/components/table' },
           { text: 'Tabs', link: '/components/tabs' },
           { text: 'Toggle', link: '/components/toggle' },
-          { text: 'Tooltip', link: '/components/tooltip' }
+          // { text: 'Tooltip', link: '/components/tooltip' }
         ]
       }
     ],

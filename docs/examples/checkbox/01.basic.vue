@@ -1,6 +1,6 @@
 <template>
   <u-checkbox v-model="value">
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid
@@ -31,7 +31,7 @@
     class="ml-[16px]"
     v-model="value" 
   >
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid rounded-full
@@ -59,7 +59,7 @@
     class="ml-[16px]"
     v-model="value" 
   >
-    <template #checkbox="{ checked }">
+    <template #default="{ checked }">
       <div 
         class="
           w-[20px] h-[20px] border-[2px] border-solid rounded-full
