@@ -5,3 +5,19 @@
 :root {
   --primary-color: #1976d2;
 }
+
+.btn {
+  @apply rounded-[20px] px-[20px] leading-[38px] text-[14px] inline-flex 
+  border border-solid text-center font-semibold whitespace-nowrap items-center
+  transition-colors duration-[250ms]
+  border-[var(--vp-button-brand-border)] 
+  text-[var(--vp-button-brand-text)]
+  bg-[var(--vp-button-brand-bg)]
+  hover:border-[var(--vp-button-brand-hover-border)]
+  hover:text-[var(--vp-button-brand-hover-text)]
+  hover:bg-[var(--vp-button-brand-hover-bg)]
+  active:border-[var(--vp-button-brand-active-border)]
+  active:text-[var(--vp-button-brand-active-text)]
+  active:bg-[var(--vp-button-brand-active-bg)]
+  active:duration-100
+}

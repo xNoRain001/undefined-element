@@ -1,55 +1,10 @@
 <template>
-  <div class="flex items-center flex-wrap -m-[8px]">
-    <button 
-      @click="updateVisible1" 
-      class="
-        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] m-[8px]
-      "
-    >
-      <u-icon name="keyboard_arrow_up" color="#fff"></u-icon>
-      <span class="ml-[12px] text-white text-[14px] font-medium">Top</span>
-    </button>
-    <button 
-      @click="updateVisible2"
-      class="
-        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] m-[8px]
-      "
-    >
-      <u-icon name="keyboard_arrow_right" color="#fff"></u-icon>
-      <span class="ml-[12px] text-white text-[14px] font-medium">Right</span>
-    </button>
-    <button 
-      @click="updateVisible3"
-      class="
-        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] m-[8px]
-      "
-    >
-      <u-icon name="keyboard_arrow_down" color="#fff"></u-icon>
-      <span class="ml-[12px] text-white text-[14px] font-medium">Bottom</span>
-    </button>
-    <button 
-      @click="updateVisible4"
-      class="
-        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] m-[8px]
-      "
-    >
-      <u-icon name="keyboard_arrow_left" color="#fff"></u-icon>
-      <span class="ml-[12px] text-white text-[14px] font-medium">Left</span>
-    </button>
-    <button 
-      @click="updateVisible5"
-      class="
-        cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-        rounded-[3px] bg-[#1976d2] m-[8px]
-      "
-    >
-      <u-icon name="control_camera" color="#fff"></u-icon>
-      <span class="ml-[12px] text-white text-[14px] font-medium">Center</span>
-    </button>
+  <div class="flex items-center flex-wrap -m-[4px]">
+    <button @click="updateVisible1" class="btn m-[4px]">Top</button>
+    <button @click="updateVisible2" class="btn m-[4px]">Right</button>
+    <button @click="updateVisible3" class="btn m-[4px]">Bottom</button>
+    <button @click="updateVisible4" class="btn m-[4px]">Left</button>
+    <button @click="updateVisible5" class="btn m-[4px]">Center</button>
   </div>
 
   <u-dialog v-model="visible1" position="top">

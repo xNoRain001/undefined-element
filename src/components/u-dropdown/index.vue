@@ -28,13 +28,15 @@ import { ref, watch, toRefs, onMounted } from 'vue'
 
 const props = withDefaults(defineProps<{
   trigger?: 'click' | 'hover',
+  isTooltip?: boolean
 }>(), {
   trigger: 'hover',
+  isTooltip: false
 })
 const visible = ref(false)
 const headerRef = ref<HTMLElement | null>(null)
 const dropdownRef = ref<HTMLElement | null>(null)
-const { trigger } = toRefs(props)
+const { trigger, isTooltip } = toRefs(props)
 
 const onShow = () => visible.value = true
 
@@ -42,14 +44,19 @@ const onHide = () => visible.value = false
 
 onMounted(() => {
   watch(trigger, value => {
-    if (value === 'hover') {
-      const _dropdownRef = dropdownRef.value as HTMLElement
+    const _headerRef = headerRef.value as HTMLElement
 
-      _dropdownRef.addEventListener('mouseenter', onShow)
-      _dropdownRef.addEventListener('mouseleave', onHide)
-    } else {
-      const _headerRef = headerRef.value as HTMLElement
-    
+    if (value === 'hover') {
+      if (isTooltip.value) {
+        _headerRef.addEventListener('mouseenter', onShow)
+        _headerRef.addEventListener('mouseleave', onHide)
+      } else {
+        const _dropdownRef = dropdownRef.value as HTMLElement
+
+        _dropdownRef.addEventListener('mouseenter', onShow)
+        _dropdownRef.addEventListener('mouseleave', onHide)
+      }
+    } else {    
       _headerRef.addEventListener('focusout', onHide)
       _headerRef.addEventListener('click', () => visible.value 
         ? onHide() 

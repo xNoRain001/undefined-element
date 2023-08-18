@@ -1,14 +1,7 @@
 <template>
-  <button 
-    @click="updateVisible" 
-    class="
-      cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-      rounded-[3px] bg-[#1976d2]
-    "
-  >
-    <u-icon name="keyboard_arrow_left" color="#fff"></u-icon>
-    <span class="ml-[12px] text-white text-[14px] font-medium">Left</span>
-  </button>
+  <div class="flex items-center flex-wrap">
+    <button @click="updateVisible" class="btn">Drawer</button>
+  </div>
 
   <u-dialog v-model="visible" position="left">
     <div class="w-[300px] h-screen bg-white p-[24px]">

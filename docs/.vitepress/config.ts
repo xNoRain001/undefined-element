@@ -40,7 +40,7 @@ export default defineConfig({
           // { text: 'Table', link: '/components/table' },
           { text: 'Tabs', link: '/components/tabs' },
           { text: 'Toggle', link: '/components/toggle' },
-          // { text: 'Tooltip', link: '/components/tooltip' }
+          { text: 'Tooltip', link: '/components/tooltip' }
         ]
       }
     ],

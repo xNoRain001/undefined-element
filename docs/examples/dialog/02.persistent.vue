@@ -1,14 +1,7 @@
 <template>
-  <button 
-    @click="updateVisible" 
-    class="
-      cursor-pointer flex items-center justify-between py-[6px] px-[16px] 
-      rounded-[3px] bg-[#1976d2]
-    "
-  >
-    <u-icon name="control_camera" color="#fff"></u-icon>
-    <span class="ml-[12px] text-white text-[14px] font-medium">center</span>
-  </button>
+  <div>
+    <button @click="updateVisible" class="btn">center</button>
+  </div>
 
   <u-dialog v-model="visible" position="center" persistent>
     <div class="w-[560px] bg-white p-[24px]">
