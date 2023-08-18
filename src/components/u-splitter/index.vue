@@ -36,8 +36,8 @@ import throttle from '../../utils/throttle'
 import { ref, toRefs, computed } from 'vue'
 
 const props = withDefaults(defineProps<{ 
-  min?: number | string,
-  max?: number | string,
+  min?: number,
+  max?: number,
   modelValue: number,
   horizontal?: boolean,
   afterStyle?: { [propName: string]: string | number },

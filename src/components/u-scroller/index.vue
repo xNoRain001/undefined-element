@@ -2,7 +2,10 @@
   <div 
     @click="scrollToTop" 
     ref="scrollerRef" 
-    class="u-scroller hidden"
+    class="
+      u-scroller opacity-0 duration-[var(--u-transition-duration)] 
+      transition-opacity
+    "
   >
     <slot></slot>
   </div>
@@ -74,9 +77,13 @@ const animateScroller = (el: HTMLElement, to: number, duration: number) => {
 
 const updateVisibility = () => {
   const scrollTarget = _scrollTarget.value as HTMLElement
+
   const onScroll = () => {
-    scrollerRef.value!.style.display = 
-      scrollTarget.scrollTop >= scrollOffset.value ? 'block' : 'none'
+    if (scrollTarget.scrollTop >= scrollOffset.value) {
+      scrollerRef.value?.classList.replace('opacity-0', 'opacity-100')
+    } else {
+      scrollerRef.value?.classList.replace('opacity-100', 'opacity-0')
+    }
   }
 
   scrollTarget.addEventListener('scroll', throttle(
@@ -84,6 +91,7 @@ const updateVisibility = () => {
     300, 
     { trailing: true }
   ))
+
   onScroll()
 }
 

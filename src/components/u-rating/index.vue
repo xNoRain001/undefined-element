@@ -24,7 +24,7 @@ import { ref, toRefs } from 'vue'
 import { throttle } from '../../utils'
 
 const props = withDefaults(defineProps<{ 
-  max: number | string, 
+  max: number, 
   color?: string,
   modelValue: number,
   activeColor?: string

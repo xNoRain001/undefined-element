@@ -8,6 +8,25 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 </script>
 <!-- import -->
 
+# Scroller
+
+Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定位置。
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+|to|滚动偏移量，默认值为0，这意味着滚动到顶部。|number|0|
+|duration|滚动过程中动画的时间|number|300|
+|scrollOffset|用于控制是否显示 Scroller 组件，只有当滚动偏移量超过这个值时才会显示 Scroller 组件|number|150|
+|scrollTarget|点击浮动按钮时滚动的目标，这里需要提供一个选择器。|string|-|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+|default|默认插槽|
+:::
+
 ## 基础
 
 <!-- component -->
@@ -51,6 +70,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 
 ## 滚动到
 
+这里将滚动偏移量设置为 100
+
 <!-- component -->
 <To></To>
 ::: details 查看源码
@@ -91,6 +112,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 <!-- component -->
 
 ## 持续时间
+
+这里将持续时间设为 0
 
 <!-- component -->
 <Duration></Duration>
@@ -133,6 +156,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 
 ## 偏移
 
+这里将偏移设为 0
+
 <!-- component -->
 <ScrollOffset></ScrollOffset>
 ::: details 查看源码
@@ -173,6 +198,8 @@ import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 <!-- component -->
 
 ## 滚动目标
+
+这里将滚动目标设置为
 
 <!-- component -->
 <ScrollTarget></ScrollTarget>

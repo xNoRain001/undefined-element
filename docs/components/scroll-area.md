@@ -6,6 +6,26 @@ import Hidden from '../examples/scroll-area/03.hidden.vue'
 </script>
 <!-- import -->
 
+# Scroll area
+
+ScrollArea 组件能够让你自定义滚动条。 
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+|width|容器的宽度|string|'100%'|
+|height|容器的高度|string|'100%'|
+|resize|当内容变化时是否更新滚动条的大小|boolean|true|
+|hidden|是否隐藏滚动条|boolean|false|
+|persistent|是否一直显示滚动条|boolean|false|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+|default|默认插槽|
+:::
+
 ## 基础
 
 <!-- component -->
