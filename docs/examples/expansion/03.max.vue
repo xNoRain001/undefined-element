@@ -14,7 +14,9 @@
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
-              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+              name="keyboard_arrow_down"
+              class="duration-300 transition-transform"
+              :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
           </div>
         </template>
@@ -38,7 +40,9 @@
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
-              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+              name="keyboard_arrow_down"
+              class="duration-300 transition-transform"
+              :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
           </div>
         </template>
@@ -62,7 +66,9 @@
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 
-              :name="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
+              name="keyboard_arrow_down"
+              class="duration-300 transition-transform"
+              :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
           </div>
         </template>

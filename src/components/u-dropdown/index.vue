@@ -7,9 +7,6 @@
       class="u-dropdown-header"
       tabindex="-1"
       ref="headerRef"
-      @click="onClick"
-      @focus="onFocus"
-      @blur="onBlur"
     >
       <slot :visible="visible"></slot>
     </div>
@@ -17,8 +14,8 @@
     <Transition name="u-fade">
       <div 
         v-if="visible"
-        class="u-dropdown-list absolute z-10 left-0 right-0 top-full" 
-        @click="onToggle"
+        class="u-dropdown-list" 
+        @click="onHide"
       >
         <slot name="list" :visible="visible"></slot>
       </div>
@@ -27,51 +24,37 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, onMounted, watch } from 'vue'
+import { ref, watch, toRefs, onMounted } from 'vue'
 
-import { noop } from '../../utils'
-
-const visible = ref(false)
 const props = withDefaults(defineProps<{
   trigger?: 'click' | 'hover',
 }>(), {
-  trigger: 'click',
+  trigger: 'hover',
 })
-const dropdownRef = ref<HTMLElement | null>(null)
+const visible = ref(false)
 const headerRef = ref<HTMLElement | null>(null)
+const dropdownRef = ref<HTMLElement | null>(null)
 const { trigger } = toRefs(props)
 
 const onShow = () => visible.value = true
 
 const onHide = () => visible.value = false
 
-const onToggle = () => visible.value = !visible.value
-
-const _onClick = () => {
-  headerRef.value!.focus()
-}
-
-const onClick = trigger.value === 'click' ? _onClick : noop
-
-const onFocus = () => {
-  console.log('focus')
-  onShow()
-}
-
-const onBlur = () => {
-  console.log('blur')
-  onHide()
-}
-
 onMounted(() => {
   watch(trigger, value => {
-    const _dropdownRef = dropdownRef.value as HTMLElement
-
     if (value === 'hover') {
+      const _dropdownRef = dropdownRef.value as HTMLElement
+
       _dropdownRef.addEventListener('mouseenter', onShow)
       _dropdownRef.addEventListener('mouseleave', onHide)
     } else {
-      _dropdownRef.addEventListener('click', onToggle)
+      const _headerRef = headerRef.value as HTMLElement
+    
+      _headerRef.addEventListener('focusout', onHide)
+      _headerRef.addEventListener('click', () => visible.value 
+        ? onHide() 
+        : onShow()
+      )
     }
   }, { immediate: true })
 })
