@@ -30,26 +30,25 @@ Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似
 :::
 
 :::details 插槽
-| 插槽名        | 描述   |
-| ------------- | :-----------: |
-| before      | before input container |
-| after      |   after input container    |
-| prepend |   before input    |
-| append |   after input    |
+|插槽名|描述|
+|:-----------:|:-----------:|
+|before|容器左边的内容|
+|after|容器右边的内容|
+|prepend|输入框左边的内容|
+|append|输入框右边的内容|
 :::
 
-<!-- :::details Events
-| Slot name         | Description   |
-| ------------- | :-----------: |
-| before      | before input container |
-| after      |   after input container    |
-| prepend |   before input    |
-| append |   after input    |
-::: -->
+:::details 事件
+|Slotname|Description|
+|-------------|:-----------:|
+|focus|获得焦点|
+|blur|失去焦点|
+|clear|清空|
+:::
 
 ## 基础
 
-<!-- u-input 组件上的 class 并不是作用在 input 元素上的，而是 input 的父元素， -->
+Input 组件由原生 input 标签和包裹它的容器组成，为了在容器边框宽度变化时不让文字抖动，所有与边框相关的样式都应该要作用到容器的伪元素 before 上，对于聚焦时的边框样式，通过 focusedBorderClass 属性来设置。
 
 <!-- component -->
 <Basic></Basic>
@@ -60,16 +59,15 @@ Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value1"
     >
     </u-input>
-    <template></template>
   </div>
 </template>
 ```
@@ -87,16 +85,15 @@ const value1 = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value1"
     >
     </u-input>
-    <template></template>
   </div>
 </template>
 <script lang="ts" setup>
@@ -121,16 +118,14 @@ const value1 = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="
-        text-[rgba(0,0,0,.87)] text-[14px] font-normal
-        placeholder:text-red-500
-      "
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
+      inputClass="placeholder:text-[var(--primary-color)]"
       placeholder="Write your story!"
     >
     </u-input>
@@ -151,16 +146,14 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="
-        text-[rgba(0,0,0,.87)] text-[14px] font-normal
-        placeholder:text-red-500
-      "
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
+      inputClass="placeholder:text-[var(--primary-color)]"
       placeholder="Write your story!"
     >
     </u-input>
@@ -188,12 +181,12 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       :debounce="300"
     >
@@ -217,12 +210,12 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       :debounce="300"
     >
@@ -253,12 +246,12 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       readonly
     >
@@ -280,12 +273,12 @@ const value = ref('This is readonly input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       readonly
     >
@@ -314,11 +307,12 @@ const value = ref('This is readonly input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       disabled
     >
@@ -340,11 +334,12 @@ const value = ref('This is disabled input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       disabled
     >
@@ -373,12 +368,12 @@ const value = ref('This is disabled input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
     >
       <template #append>
@@ -402,12 +397,12 @@ const value = ref('This is clearable input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
     >
       <template #append>
@@ -438,12 +433,12 @@ const value = ref('This is clearable input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       autofocus
     >
@@ -465,12 +460,12 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       autofocus
     >
@@ -499,12 +494,12 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       type="password"
     >
@@ -536,12 +531,12 @@ const updateVisible = () => visible.value = !visible.value
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       type="password"
     >

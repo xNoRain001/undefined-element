@@ -12,71 +12,113 @@ import Basic from '../examples/tooltip/01.basic.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="btns w-full flex items-center">
-    
-    <button>
-      <u-icon name="keyboard_arrow_right" color="#fff"></u-icon>
-      <span>Right</span>
-      <u-tooltip position="right">
-        <div class="tooltip">
-          Lorem ipsum dolor sit amet.
-        </div>
-      </u-tooltip>
-    </button>
-    <button>
-      <u-icon name="keyboard_arrow_down" color="#fff"></u-icon>
-      <span>Bottom</span>
-      <u-tooltip position="bottom">
-        <div class="tooltip">
-          Lorem ipsum dolor sit amet.
-        </div>
-      </u-tooltip>
-    </button>
-    <button>
-      <u-icon name="keyboard_arrow_left" fill="#fff"></u-icon>
-      <span>Left</span>
-      <u-tooltip position="left">
-        <div class="tooltip">
-          Lorem ipsum dolor sit amet.
-        </div>
-      </u-tooltip>
-    </button>
-  </div>
+  <u-tooltip>
+    <button class="btn m-[4px]">Top</button>
+
+    <template #text>
+      <div class="
+        absolute z-10 -top-full whitespace-nowrap py-[6px] px-[10px] 
+        bg-[#757575] text-[#fafafa] text-[12px] rounded-[4px]
+      ">
+        Here I am!
+      </div>
+    </template>
+  </u-tooltip>
+
+  <u-tooltip>
+    <button class="btn m-[4px]">Right</button>
+
+    <template #text>
+      <div class="
+        absolute z-10 top-1/2 -translate-y-1/2 left-full whitespace-nowrap py-[6px] px-[10px] 
+        bg-[#757575] text-[#fafafa] text-[12px] rounded-[4px]
+      ">
+        Here I am!
+      </div>
+    </template>
+  </u-tooltip>
+
+  <u-tooltip>
+    <button class="btn m-[4px]">Bottom</button>
+
+    <template #text>
+      <div class="
+        absolute z-10 top-full whitespace-nowrap py-[6px] px-[10px] 
+        bg-[#757575] text-[#fafafa] text-[12px] rounded-[4px]
+      ">
+        Here I am!
+      </div>
+    </template>
+  </u-tooltip>
+
+  <u-tooltip>
+    <button class="btn m-[4px]">Left</button>
+
+    <template #text>
+      <div class="
+        absolute z-10 top-1/2 -translate-y-1/2 -left-full whitespace-nowrap py-[6px] px-[10px] 
+        bg-[#757575] text-[#fafafa] text-[12px] rounded-[4px]
+      ">
+        Here I am!
+      </div>
+    </template>
+  </u-tooltip>
 </template>
 ```
 
 ```vue [all]
 <template>
-  <div class="btns w-full flex items-center">
-    
-    <button>
-      <u-icon name="keyboard_arrow_right" color="#fff"></u-icon>
-      <span>Right</span>
-      <u-tooltip position="right">
-        <div class="tooltip">
-          Lorem ipsum dolor sit amet.
-        </div>
-      </u-tooltip>
-    </button>
-    <button>
-      <u-icon name="keyboard_arrow_down" color="#fff"></u-icon>
-      <span>Bottom</span>
-      <u-tooltip position="bottom">
-        <div class="tooltip">
-          Lorem ipsum dolor sit amet.
-        </div>
-      </u-tooltip>
-    </button>
-    <button>
-      <u-icon name="keyboard_arrow_left" fill="#fff"></u-icon>
-      <span>Left</span>
-      <u-tooltip position="left">
-        <div class="tooltip">
-          Lorem ipsum dolor sit amet.
-        </div>
-      </u-tooltip>
-    </button>
-  </div>
+  <u-tooltip>
+    <button class="btn m-[4px]">Top</button>
+
+    <template #text>
+      <div class="
+        absolute z-10 -top-full whitespace-nowrap py-[6px] px-[10px] 
+        bg-[#757575] text-[#fafafa] text-[12px] rounded-[4px]
+      ">
+        Here I am!
+      </div>
+    </template>
+  </u-tooltip>
+
+  <u-tooltip>
+    <button class="btn m-[4px]">Right</button>
+
+    <template #text>
+      <div class="
+        absolute z-10 top-1/2 -translate-y-1/2 left-full whitespace-nowrap py-[6px] px-[10px] 
+        bg-[#757575] text-[#fafafa] text-[12px] rounded-[4px]
+      ">
+        Here I am!
+      </div>
+    </template>
+  </u-tooltip>
+
+  <u-tooltip>
+    <button class="btn m-[4px]">Bottom</button>
+
+    <template #text>
+      <div class="
+        absolute z-10 top-full whitespace-nowrap py-[6px] px-[10px] 
+        bg-[#757575] text-[#fafafa] text-[12px] rounded-[4px]
+      ">
+        Here I am!
+      </div>
+    </template>
+  </u-tooltip>
+
+  <u-tooltip>
+    <button class="btn m-[4px]">Left</button>
+
+    <template #text>
+      <div class="
+        absolute z-10 top-1/2 -translate-y-1/2 -left-full whitespace-nowrap py-[6px] px-[10px] 
+        bg-[#757575] text-[#fafafa] text-[12px] rounded-[4px]
+      ">
+        Here I am!
+      </div>
+    </template>
+  </u-tooltip>
 </template>
 
 

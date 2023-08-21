@@ -30,45 +30,39 @@ Dropdown 组件用于实现下拉列表
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
-    <u-dropdown>
-      <template #default="{ visible }">
-        <button 
-          class="
-            h-[36px] bg-[rgb(25,118,210)] flex jusfity-center
-            items-center text-white text-[14px] font-medium py-[4px] px-[16px]
-            whitespace-nowrap
-          ">
-          Dropdown
-          <u-icon 
-            name="keyboard_arrow_down" 
-            color="white" 
-            class="ml-[8px] duration-300 transition-transform"
-            :class="visible ? 'rotate-180' : ''"
-          ></u-icon>
-        </button>
-      </template>
+  <u-dropdown>
+    <template #default="{ visible }">
+      <button 
+        class="btn">
+        Dropdown
+        <u-icon 
+          name="keyboard_arrow_down" 
+          color="white" 
+          class="ml-[8px] duration-300 transition-transform"
+          :class="visible ? 'rotate-180' : ''"
+        ></u-icon>
+      </button>
+    </template>
 
-      <template #list>
-        <div class="
-          absolute z-10 w-full top-full
-          p-[12px] bg-white rounded-[12px] border border-solid 
-          border-[rgba(60,60,67,0.12)] 
-          shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
-        ">
-          <div 
-            v-for="(item, index) in list" 
-            :key="index"
-            class="
-              px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
-              hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
-              rounded-[6px] font-medium
-            "
-          >{{ item }}</div>
-        </div>
-      </template>
-    </u-dropdown>
-  </div>
+    <template #list>
+      <div class="
+        absolute z-10 w-full top-full
+        p-[12px] bg-white rounded-[12px] border border-solid 
+        border-[rgba(60,60,67,0.12)] 
+        shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
+      ">
+        <div 
+          v-for="(item, index) in list" 
+          :key="index"
+          class="
+            px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
+            hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
+            rounded-[6px] font-medium
+          "
+        >{{ item }}</div>
+      </div>
+    </template>
+  </u-dropdown>
 </template>
 ```
 
@@ -80,45 +74,39 @@ const list = ['简体中文', 'English']
 
 ```vue [all]
 <template>
-  <div class="w-full">
-    <u-dropdown>
-      <template #default="{ visible }">
-        <button 
-          class="
-            h-[36px] bg-[rgb(25,118,210)] flex jusfity-center
-            items-center text-white text-[14px] font-medium py-[4px] px-[16px]
-            whitespace-nowrap
-          ">
-          Dropdown
-          <u-icon 
-            name="keyboard_arrow_down" 
-            color="white" 
-            class="ml-[8px] duration-300 transition-transform"
-            :class="visible ? 'rotate-180' : ''"
-          ></u-icon>
-        </button>
-      </template>
+  <u-dropdown>
+    <template #default="{ visible }">
+      <button 
+        class="btn">
+        Dropdown
+        <u-icon 
+          name="keyboard_arrow_down" 
+          color="white" 
+          class="ml-[8px] duration-300 transition-transform"
+          :class="visible ? 'rotate-180' : ''"
+        ></u-icon>
+      </button>
+    </template>
 
-      <template #list>
-        <div class="
-          absolute z-10 w-full top-full
-          p-[12px] bg-white rounded-[12px] border border-solid 
-          border-[rgba(60,60,67,0.12)] 
-          shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
-        ">
-          <div 
-            v-for="(item, index) in list" 
-            :key="index"
-            class="
-              px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
-              hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
-              rounded-[6px] font-medium
-            "
-          >{{ item }}</div>
-        </div>
-      </template>
-    </u-dropdown>
-  </div>
+    <template #list>
+      <div class="
+        absolute z-10 w-full top-full
+        p-[12px] bg-white rounded-[12px] border border-solid 
+        border-[rgba(60,60,67,0.12)] 
+        shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
+      ">
+        <div 
+          v-for="(item, index) in list" 
+          :key="index"
+          class="
+            px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
+            hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
+            rounded-[6px] font-medium
+          "
+        >{{ item }}</div>
+      </div>
+    </template>
+  </u-dropdown>
 </template>
 <script lang="ts" setup>
 const list = ['简体中文', 'English']
@@ -139,45 +127,39 @@ const list = ['简体中文', 'English']
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
-    <u-dropdown trigger="click">
-      <template #default="{ visible }">
-        <button 
-          class="
-            h-[36px] bg-[rgb(25,118,210)] flex jusfity-center
-            items-center text-white text-[14px] font-medium py-[4px] px-[16px]
-            whitespace-nowrap
-          ">
-          Dropdown
-          <u-icon 
-            name="keyboard_arrow_down" 
-            color="white" 
-            class="ml-[8px] duration-300 transition-transform"
-            :class="visible ? 'rotate-180' : ''"
-          ></u-icon>
-        </button>
-      </template>
+  <u-dropdown trigger="click">
+    <template #default="{ visible }">
+      <button 
+        class="btn">
+        Dropdown
+        <u-icon 
+          name="keyboard_arrow_down" 
+          color="white" 
+          class="ml-[8px] duration-300 transition-transform"
+          :class="visible ? 'rotate-180' : ''"
+        ></u-icon>
+      </button>
+    </template>
 
-      <template #list>
-        <div class="
-          absolute z-10 w-full top-full
-          p-[12px] bg-white rounded-[12px] border border-solid 
-          border-[rgba(60,60,67,0.12)] 
-          shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
-        ">
-          <div 
-            v-for="(item, index) in list" 
-            :key="index"
-            class="
-              px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
-              hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
-              rounded-[6px] font-medium
-            "
-          >{{ item }}</div>
-        </div>
-      </template>
-    </u-dropdown>
-  </div>
+    <template #list>
+      <div class="
+        absolute z-10 w-full top-full
+        p-[12px] bg-white rounded-[12px] border border-solid 
+        border-[rgba(60,60,67,0.12)] 
+        shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
+      ">
+        <div 
+          v-for="(item, index) in list" 
+          :key="index"
+          class="
+            px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
+            hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
+            rounded-[6px] font-medium
+          "
+        >{{ item }}</div>
+      </div>
+    </template>
+  </u-dropdown>
 </template>
 ```
 
@@ -189,45 +171,39 @@ const list = ['简体中文', 'English']
 
 ```vue [all]
 <template>
-  <div class="w-full">
-    <u-dropdown trigger="click">
-      <template #default="{ visible }">
-        <button 
-          class="
-            h-[36px] bg-[rgb(25,118,210)] flex jusfity-center
-            items-center text-white text-[14px] font-medium py-[4px] px-[16px]
-            whitespace-nowrap
-          ">
-          Dropdown
-          <u-icon 
-            name="keyboard_arrow_down" 
-            color="white" 
-            class="ml-[8px] duration-300 transition-transform"
-            :class="visible ? 'rotate-180' : ''"
-          ></u-icon>
-        </button>
-      </template>
+  <u-dropdown trigger="click">
+    <template #default="{ visible }">
+      <button 
+        class="btn">
+        Dropdown
+        <u-icon 
+          name="keyboard_arrow_down" 
+          color="white" 
+          class="ml-[8px] duration-300 transition-transform"
+          :class="visible ? 'rotate-180' : ''"
+        ></u-icon>
+      </button>
+    </template>
 
-      <template #list>
-        <div class="
-          absolute z-10 w-full top-full
-          p-[12px] bg-white rounded-[12px] border border-solid 
-          border-[rgba(60,60,67,0.12)] 
-          shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
-        ">
-          <div 
-            v-for="(item, index) in list" 
-            :key="index"
-            class="
-              px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
-              hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
-              rounded-[6px] font-medium
-            "
-          >{{ item }}</div>
-        </div>
-      </template>
-    </u-dropdown>
-  </div>
+    <template #list>
+      <div class="
+        absolute z-10 w-full top-full
+        p-[12px] bg-white rounded-[12px] border border-solid 
+        border-[rgba(60,60,67,0.12)] 
+        shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
+      ">
+        <div 
+          v-for="(item, index) in list" 
+          :key="index"
+          class="
+            px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
+            hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
+            rounded-[6px] font-medium
+          "
+        >{{ item }}</div>
+      </div>
+    </template>
+  </u-dropdown>
 </template>
 <script lang="ts" setup>
 const list = ['简体中文', 'English']

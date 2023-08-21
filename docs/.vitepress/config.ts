@@ -54,14 +54,14 @@ export default defineConfig({
       text: '在 Github 上编辑此页'
     }
   },
-  locales: {
-    root: {
-      label: '中文简体',
-      lang: 'zh'
-    },
-    en: {
-      label: 'English',
-      lang: 'en', // optional, will be added  as `lang` attribute on `html` tag
-    }
-  }
+  // locales: {
+  //   root: {
+  //     label: '中文简体',
+  //     lang: 'zh'
+  //   },
+  //   en: {
+  //     label: 'English',
+  //     lang: 'en', // optional, will be added  as `lang` attribute on `html` tag
+  //   }
+  // }
 })

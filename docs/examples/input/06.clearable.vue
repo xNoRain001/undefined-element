@@ -2,12 +2,12 @@
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[4px]
-        before:border before:border-solid before:border-[rgba(0,0,0,.23)]
-        hover:before:border-[rgba(0,0,0,.87)]
+        w-full h-[56px] px-[12px] rounded-[8px]
+        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
+        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        text-[14px] font-normal
       "
-      focusedClass="before:!border-[rgb(25,118,210)] before:!border-[2px]"
-      inputClass="text-[rgba(0,0,0,.87)] text-[14px] font-normal"
+      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
     >
       <template #append>

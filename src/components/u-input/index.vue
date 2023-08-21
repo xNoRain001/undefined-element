@@ -60,7 +60,7 @@ const props = withDefaults(defineProps<{
   modelValue: string,
   inputClass?: string,
   placeholder?: string,
-  focusedClass?: string
+  focusedBorderClass?: string
 }>(), {
   type: 'text',
   class: '',
@@ -70,7 +70,7 @@ const props = withDefaults(defineProps<{
   autofocus: false,
   inputClass: '',
   placeholder: '',
-  focusedClass: ''
+  focusedBorderClass: ''
 })
 const emit = defineEmits<{ 
   'blur': [e: Event],
@@ -88,7 +88,7 @@ const {
   modelValue, 
   inputClass,
   placeholder,
-  focusedClass
+  focusedBorderClass
 } = toRefs(props)
 const visible = ref(false)
 const inputRef = ref<HTMLElement | null>(null)
@@ -105,16 +105,12 @@ const focused = computed(() => {
     !disabled.value &&
     (focusedInput.value || focusedInputContainer.value)
 })
-const inputContainerClass = computed(() => `
-  ${ className.value }
-  ${ focused.value ? ` ${ focusedClass.value }` : ''}
-  ${ disabled.value ? ' cursor-not-allowed' : ''}
-`)
-const _inputClass = computed(() => `
-  ${ inputClass.value }
-  ${ disabled.value ? ' cursor-not-allowed' : '' }
-  ${ readonly.value ? ' cursor-auto' : '' }
-`)
+const inputContainerClass = computed(() => `${ className.value }${ 
+  disabled.value ? ' cursor-not-allowed' : ''
+}${ focused.value ? ` ${ focusedBorderClass.value }` : ''}`)
+const _inputClass = computed(() => `${ inputClass.value }${ 
+  disabled.value ? ' cursor-not-allowed' : '' 
+}${ readonly.value ? ' cursor-auto' : '' }`)
 
 const foucsHelper = () => inputRef.value!.focus()
 
