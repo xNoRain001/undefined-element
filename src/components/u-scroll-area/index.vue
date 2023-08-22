@@ -26,7 +26,7 @@
         class="
           u-scroll-area-thumb-x opacity-0 absolute cursor-pointer rounded-[4px]
           bg-[rgba(144,147,153,.3)] transition-[opacity,background-color]
-          duration-[var(--u-transition-duration)] hover:!opacity-100 
+          duration-[--u-transition-duration] hover:!opacity-100 
           hover:bg-[rgba(144,147,153,.5)] h-full left-0 
         " 
         :style="thumbXStyle"
@@ -45,7 +45,7 @@
         class="
           u-scroll-area-thumb-y opacity-0 absolute cursor-pointer rounded-[4px]
           bg-[rgba(144,147,153,.3)] transition-[opacity,background-color]
-          duration-[var(--u-transition-duration)] hover:!opacity-100 
+          duration-[--u-transition-duration] hover:!opacity-100 
           hover:bg-[rgba(144,147,153,.5)] w-full top-0 
         " 
         :style="thumbYStyle"

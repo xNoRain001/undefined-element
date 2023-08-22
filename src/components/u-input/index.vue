@@ -12,7 +12,7 @@
         before:content-[''] before:absolute before:left-0 before:right-0 
         before:bottom-0 before:top-0 before:z-[-1]
         before:transition-colors
-        before:duration-[var(--u-transition-duration)]
+        before:duration-[--u-transition-duration]
       " 
       :class="inputContainerClass"
       @click="foucsHelper"
@@ -37,7 +37,7 @@
         :type="_type" 
       />
 
-      <slot name="append"></slot>
+      <slot name="append" :visible="visible"></slot>
     </div>
 
     <slot name="after"></slot>
@@ -166,7 +166,7 @@ const initClearableBtns = () => {
 const initVisibleBtns = () => {
   const updateVisibility = () => visible.value = !visible.value
 
-  const elms = inputWrapperRef.value!.querySelectorAll('*[visible]')
+  const elms = inputWrapperRef.value!.querySelectorAll('*[password]')
 
   for (let i = 0, l = elms.length; i < l; i++) {
     elms[i].addEventListener('click', updateVisibility)

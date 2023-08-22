@@ -3,21 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #10b981;
+  --primary-color: var(--vp-c-green);
+  --primary-color-light: var(--vp-c-green-light);
+  --primary-color-lighter: var(--vp-c-green-lighter);
+  --primary-color-dark: var(--vp-c-green-dark);
+  --primary-color-darker: var(--vp-c-green-darker);
+  --primary-border-color: var(--vp-c-border);
 }
 
 .btn {
   @apply rounded-[20px] px-[20px] leading-[38px] text-[14px] inline-flex 
   border border-solid text-center font-semibold whitespace-nowrap items-center
   transition-colors duration-[250ms]
-  border-[var(--vp-button-brand-border)] 
-  text-[var(--vp-button-brand-text)]
-  bg-[var(--vp-button-brand-bg)]
-  hover:border-[var(--vp-button-brand-hover-border)]
-  hover:text-[var(--vp-button-brand-hover-text)]
-  hover:bg-[var(--vp-button-brand-hover-bg)]
-  active:border-[var(--vp-button-brand-active-border)]
-  active:text-[var(--vp-button-brand-active-text)]
-  active:bg-[var(--vp-button-brand-active-bg)]
+  border-[--vp-button-brand-border] 
+  text-[--vp-button-brand-text]
+  bg-[--vp-button-brand-bg]
+  hover:border-[--vp-button-brand-hover-border]
+  hover:text-[--vp-button-brand-hover-text]
+  hover:bg-[--vp-button-brand-hover-bg]
+  active:border-[--vp-button-brand-active-border]
+  active:text-[--vp-button-brand-active-text]
+  active:bg-[--vp-button-brand-active-bg]
   active:duration-100
 }

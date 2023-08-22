@@ -12,7 +12,7 @@
       :style="contentStyle"
       class="
         u-expansion-item-content overflow-y-hidden transition-[height] 
-        duration-[var(--u-transition-duration)]
+        duration-[--u-transition-duration]
       "
     >
       <slot name="content" :expanded="expanded"></slot>

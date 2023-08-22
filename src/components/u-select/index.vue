@@ -11,10 +11,10 @@
       tabindex="-1"
       class="
         u-input-container flex items-center relative !border-none
-        transition-[background-color] duration-[var(--u-transition-duration)]
+        transition-[background-color] duration-[--u-transition-duration]
         before:content-[''] before:absolute before:left-0 before:right-0 
         before:bottom-0 before:top-0 before:z-[-1] before:transition-[border-color] 
-        before:duration-[var(--u-transition-duration)]
+        before:duration-[--u-transition-duration]
       " 
       :style="_selectStyle"
       :class="_selectClass"

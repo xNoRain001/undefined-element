@@ -59,13 +59,14 @@ Input 组件由原生 input 标签和包裹它的容器组成，为了在容器�
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
-      v-model="value1"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      v-model="value"
     >
     </u-input>
   </div>
@@ -76,7 +77,7 @@ Input 组件由原生 input 标签和包裹它的容器组成，为了在容器�
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value1 = ref('')
+const value = ref('')
 </script>
 ```
 
@@ -85,13 +86,14 @@ const value1 = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
-      v-model="value1"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      v-model="value"
     >
     </u-input>
   </div>
@@ -99,7 +101,7 @@ const value1 = ref('')
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value1 = ref('')
+const value = ref('')
 </script>
 
 ```
@@ -118,14 +120,15 @@ const value1 = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
-      inputClass="placeholder:text-[var(--primary-color)]"
+      inputClass="placeholder:text-[--primary-color-light]"
       placeholder="Write your story!"
     >
     </u-input>
@@ -146,14 +149,15 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
-      inputClass="placeholder:text-[var(--primary-color)]"
+      inputClass="placeholder:text-[--primary-color-light]"
       placeholder="Write your story!"
     >
     </u-input>
@@ -181,12 +185,13 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       :debounce="300"
     >
@@ -210,12 +215,13 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       :debounce="300"
     >
@@ -246,12 +252,12 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       readonly
     >
@@ -264,7 +270,7 @@ const value = ref('')
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value = ref('This is readonly input')
+const value = ref('readonly text')
 </script>
 ```
 
@@ -273,12 +279,12 @@ const value = ref('This is readonly input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       readonly
     >
@@ -288,7 +294,7 @@ const value = ref('This is readonly input')
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value = ref('This is readonly input')
+const value = ref('readonly text')
 </script>
 
 ```
@@ -307,12 +313,11 @@ const value = ref('This is readonly input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       disabled
     >
@@ -334,12 +339,11 @@ const value = ref('This is disabled input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       disabled
     >
@@ -359,6 +363,8 @@ const value = ref('This is disabled input')
 
 ## 清空
 
+点击含有 clearable 属性的元素后，会点击清空表单的值，
+
 <!-- component -->
 <Clearable></Clearable>
 ::: details 查看源码
@@ -368,16 +374,21 @@ const value = ref('This is disabled input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
     >
       <template #append>
-        <u-icon name="close" width="16" height="16" clearable></u-icon>
+        <u-icon 
+          v-show="value.length" 
+          name="close" 
+          clearable
+        ></u-icon>
       </template>
     </u-input>
   </div>
@@ -397,16 +408,21 @@ const value = ref('This is clearable input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
     >
       <template #append>
-        <u-icon name="close" width="16" height="16" clearable></u-icon>
+        <u-icon 
+          v-show="value.length" 
+          name="close" 
+          clearable
+        ></u-icon>
       </template>
     </u-input>
   </div>
@@ -421,6 +437,10 @@ const value = ref('This is clearable input')
 
 :::
 <!-- component -->
+
+::: tip
+如果要控制 clearable 属性的元素的隐藏和出现，不要使用 v-if，而是使用 v-show，因为只会在初始化时给该元素绑定事件。
+:::
 
 ## 自动聚焦
 
@@ -433,12 +453,13 @@ const value = ref('This is clearable input')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       autofocus
     >
@@ -460,12 +481,13 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       autofocus
     >
@@ -483,7 +505,9 @@ const value = ref('')
 :::
 <!-- component -->
 
-## 类型
+## 密码框
+
+当 type 为 password 时，点击含有 password 属性的元素时可以切换密码的可见性。
 
 <!-- component -->
 <Types></Types>
@@ -494,19 +518,19 @@ const value = ref('')
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       type="password"
     >
-      <template #append>
+      <template #append="{ visible }">
         <u-icon 
-          visible
-          @click="updateVisible" 
+          password 
           :name="visible ? 'visibility' : 'visibility_off'"
         ></u-icon>
       </template>
@@ -520,9 +544,6 @@ const value = ref('')
 import { ref } from 'vue'
 
 const value = ref('')
-const visible = ref(false)
-
-const updateVisible = () => visible.value = !visible.value
 </script>
 ```
 
@@ -531,19 +552,19 @@ const updateVisible = () => visible.value = !visible.value
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
+      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       type="password"
     >
-      <template #append>
+      <template #append="{ visible }">
         <u-icon 
-          visible
-          @click="updateVisible" 
+          password 
           :name="visible ? 'visibility' : 'visibility_off'"
         ></u-icon>
       </template>
@@ -554,9 +575,6 @@ const updateVisible = () => visible.value = !visible.value
 import { ref } from 'vue'
 
 const value = ref('')
-const visible = ref(false)
-
-const updateVisible = () => visible.value = !visible.value
 </script>
 
 ```

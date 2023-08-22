@@ -6,7 +6,7 @@
     <div 
       class="
         u-toggle-track w-full h-full transition-[background-color] 
-        duration-[var(--u-transition-duration)]
+        duration-[--u-transition-duration]
       " 
       :style="_trackStyle" 
       :class="_trackClass"
@@ -15,7 +15,7 @@
     <div 
       class="
         u-toggle-thumb absolute flex justify-center items-center 
-        transition-[left] duration-[var(--u-transition-duration)]
+        transition-[left] duration-[--u-transition-duration]
       " 
       :style="_thumbStyle"
       :class="_thumbClass"

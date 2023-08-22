@@ -2,12 +2,12 @@
   <div class="my-[16px]">
     <u-input
       class="
-        w-full h-[56px] px-[12px] rounded-[8px]
-        before:border-solid before:border before:border-[rgba(0,0,0,.23)] 
-        hover:before:border-[rgba(0,0,0,.87)] text-[rgba(0,0,0,.87)] 
+        w-full h-[58px] px-[16px] before:rounded-[8px]
+        before:border-solid before:border 
+        before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:!border-[rgb(25,118,210)]"
       v-model="value"
       readonly
     >
@@ -18,5 +18,5 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value = ref('This is readonly input')
+const value = ref('readonly text')
 </script>

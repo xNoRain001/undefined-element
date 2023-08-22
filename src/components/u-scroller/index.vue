@@ -3,7 +3,7 @@
     @click="scrollToTop" 
     ref="scrollerRef" 
     class="
-      u-scroller opacity-0 duration-[var(--u-transition-duration)] 
+      u-scroller opacity-0 duration-[--u-transition-duration] 
       transition-opacity
     "
   >
