@@ -968,6 +968,20 @@ video {
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
+.border-\[--primary-border-color\] {
+  border-color: var(--primary-border-color);
+}
+
+.border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+
+.\!border-red-500 {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity)) !important;
+}
+
 .\!border-b-\[\#409eff\] {
   --tw-border-opacity: 1 !important;
   border-bottom-color: rgb(64 158 255 / var(--tw-border-opacity)) !important;
