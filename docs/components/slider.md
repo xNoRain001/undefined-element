@@ -13,17 +13,43 @@ import Step from '../examples/slider/02.step.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
-    <div>value: {{ value }}</div>
+  <div class="my-[16px]">
+    <!-- <u-slider 
+      v-model="value" 
+      :min="0"
+      :max="100" 
+      trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
+      selectionClass="bg-[--primary-color]"
+    >
+      <template #thumb>
+        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full"></div>
+      </template>
+    </u-slider> -->
+
     <u-slider 
       v-model="value" 
       :min="0"
       :max="100" 
-      class="w-full h-[20px] flex items-center"
-      trackClass="w-full h-[4px] bg-[rgba(0,0,0,.1)] flex items-center"
-      selectionClass="h-full bg-[#1976d2]"
-      thumbClass="w-[20px] h-[20px] bg-[#1976d2] rounded-full"
-    ></u-slider>
+      trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
+      selectionClass="bg-[--primary-color]"
+    >
+      <template #thumb>
+        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
+        </div>
+
+        <!-- before:content-[''] 
+        before:border-[6px] before:border-solid
+        before:border-b-transparent before:border-x-transparent
+        before:absolute before:bottom-0 before:left-1/2 
+        before:-translate-x-1/2 before:border-red-500 -->
+        <div class="
+            px-[8px] absolute rounded-[4px] bg-[--primary-color]
+            text-[12px] text-white -top-full left-1/2 -translate-x-1/2
+        ">
+          {{ value }}
+        </div>
+      </template>
+    </u-slider>
   </div>
 </template>
 ```
@@ -38,17 +64,43 @@ const value = ref(50)
 
 ```vue [all]
 <template>
-  <div class="w-full">
-    <div>value: {{ value }}</div>
+  <div class="my-[16px]">
+    <!-- <u-slider 
+      v-model="value" 
+      :min="0"
+      :max="100" 
+      trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
+      selectionClass="bg-[--primary-color]"
+    >
+      <template #thumb>
+        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full"></div>
+      </template>
+    </u-slider> -->
+
     <u-slider 
       v-model="value" 
       :min="0"
       :max="100" 
-      class="w-full h-[20px] flex items-center"
-      trackClass="w-full h-[4px] bg-[rgba(0,0,0,.1)] flex items-center"
-      selectionClass="h-full bg-[#1976d2]"
-      thumbClass="w-[20px] h-[20px] bg-[#1976d2] rounded-full"
-    ></u-slider>
+      trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
+      selectionClass="bg-[--primary-color]"
+    >
+      <template #thumb>
+        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
+        </div>
+
+        <!-- before:content-[''] 
+        before:border-[6px] before:border-solid
+        before:border-b-transparent before:border-x-transparent
+        before:absolute before:bottom-0 before:left-1/2 
+        before:-translate-x-1/2 before:border-red-500 -->
+        <div class="
+            px-[8px] absolute rounded-[4px] bg-[--primary-color]
+            text-[12px] text-white -top-full left-1/2 -translate-x-1/2
+        ">
+          {{ value }}
+        </div>
+      </template>
+    </u-slider>
   </div>
 </template>
 <script lang="ts" setup>
@@ -71,17 +123,26 @@ const value = ref(50)
 ```vue [template]
 <template>
   <div class="w-full">
-    <div>value: {{ value }}</div>
     <u-slider 
       v-model="value" 
       :min="0"
       :max="100" 
       :step="50"
-      class="w-full h-[20px] flex items-center"
-      trackClass="w-full h-[4px] bg-[rgba(0,0,0,.1)] flex items-center"
-      selectionClass="h-full bg-[#1976d2]"
-      thumbClass="w-[20px] h-[20px] bg-[#1976d2] rounded-full"
-    ></u-slider>
+      trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
+      selectionClass="bg-[--primary-color]"
+    >
+      <template #thumb>
+        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
+        </div>
+
+        <div class="
+            px-[8px] absolute rounded-[4px] bg-[--primary-color]
+            text-[12px] text-white -top-full left-1/2 -translate-x-1/2
+        ">
+          {{ value }}
+        </div>
+      </template>
+    </u-slider>
   </div>
 </template>
 ```
@@ -97,17 +158,26 @@ const value = ref(50)
 ```vue [all]
 <template>
   <div class="w-full">
-    <div>value: {{ value }}</div>
     <u-slider 
       v-model="value" 
       :min="0"
       :max="100" 
       :step="50"
-      class="w-full h-[20px] flex items-center"
-      trackClass="w-full h-[4px] bg-[rgba(0,0,0,.1)] flex items-center"
-      selectionClass="h-full bg-[#1976d2]"
-      thumbClass="w-[20px] h-[20px] bg-[#1976d2] rounded-full"
-    ></u-slider>
+      trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
+      selectionClass="bg-[--primary-color]"
+    >
+      <template #thumb>
+        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
+        </div>
+
+        <div class="
+            px-[8px] absolute rounded-[4px] bg-[--primary-color]
+            text-[12px] text-white -top-full left-1/2 -translate-x-1/2
+        ">
+          {{ value }}
+        </div>
+      </template>
+    </u-slider>
   </div>
 </template>
 <script lang="ts" setup>
