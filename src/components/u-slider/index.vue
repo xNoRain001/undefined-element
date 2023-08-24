@@ -1,27 +1,29 @@
 <template>
-  <div class="u-slider cursor-pointer">
+  <div class="u-slider cursor-pointer w-full">
     <div
       ref="trackRef" 
-      class="u-slider-track relative"
+      class="u-slider-track relative flex items-center"
       :class="trackClass"
       :style="trackStyle"
     >
       <div 
         ref="selectionRef"
-        class="u-slider-track-selection absolute" 
+        class="u-slider-track-selection absolute h-full" 
         :class="selectionClass"
         :style="_selectionStyle"
       ></div>
 
       <div 
         ref="thumbRef"
-        class="u-slider-track-thumb absolute" 
+        class="u-slider-track-thumb absolute -translate-x-1/2" 
         :class="thumbClass"
         :style="_thumbStyle"
         @mousedown="mousedownHandler"
         @mousemove="mousemoveHandler"
         @mouseup="mouseupHandler"
-      ></div>
+      >
+        <slot name="thumb"></slot>
+      </div>
     </div>
   </div>
 </template>
