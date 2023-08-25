@@ -4,7 +4,6 @@
   "description": "undefined element",
   "author": "xnorain001",
   "main": "./dist/undefined-element.prod.js",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/xNoRain001/undefined-element.git"
