@@ -35,6 +35,8 @@
         {{ value }}
       </div>
     </u-slider>
+
+    <button class="btn" @click="() => value = 0">reset</button>
   </div>
 </template>
 

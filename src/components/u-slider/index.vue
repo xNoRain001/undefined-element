@@ -1,7 +1,8 @@
 <template>
   <div 
     class="u-slider cursor-pointer w-full flex items-center"
-    @click="onClick"
+    @mousedown="onClick"
+    @mouseup="onMouseup"
   >
     <div
       ref="trackRef" 
@@ -30,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, onMounted } from 'vue'
+import { ref, watch, toRefs, onMounted } from 'vue'
 
 import { throttle } from '../../utils'
 
@@ -80,6 +81,7 @@ let x = 0
 let dragging = false
 
 const onMousedown = (e: MouseEvent) => {
+  e.stopPropagation()
   x = e.pageX
   dragging = true
   before()
@@ -118,10 +120,12 @@ const addAnimation = () => {
   setTimeout(() => {
     thumbClassList.remove(...thumbClassListTokens)
     selectionClassList.remove(...selectionClassListTokens)
+    // update last position
+    x = thumbRef.value!.getBoundingClientRect().x
   }, 300)
 }
 
-const onUpdate = (e: MouseEvent | Event, animate = false) => {
+const onUpdate = (e: MouseEvent | Event) => {
   const { pageX } = e as any
   const offset = pageX - x
   const newLeft = parseFloat(left.value) + 
@@ -133,7 +137,7 @@ const onUpdate = (e: MouseEvent | Event, animate = false) => {
 
   const value = Math.round(newLeft / 100 * (max.value - min.value))
 
-  updateModelValue(value) 
+  updateModelValue(value)
   left.value = `${ newLeft }%`
   x = pageX
 }
@@ -147,15 +151,27 @@ const onMousemove = throttle((e: MouseEvent) => {
   onUpdate(e)
 }, 10)
 
-const onMouseup = () => {
+const onMouseup = (e: Event) => {
+  e.stopPropagation()
   dragging = false
   addAnimation()
   after()
 }
 
 const onClick = (e: Event) => {
-  // onUpdate(e, true)
+  dragging = true
+  onUpdate(e)
 }
 
+// modify value outside the component, such as reset slider.
+watch(modelValue, () => {
+  if (dragging) {
+    return
+  }
+
+  addAnimation()
+})
+
+// for update slider by click
 onMounted(() => x = thumbRef.value!.getBoundingClientRect().x)
 </script>
