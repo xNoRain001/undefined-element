@@ -1,21 +1,24 @@
 <template>
-  <div class="u-slider cursor-pointer w-full">
+  <div 
+    class="u-slider cursor-pointer w-full flex items-center"
+    @click="onClick"
+  >
     <div
       ref="trackRef" 
-      class="u-slider-track relative flex items-center"
+      class="u-slider-track relative flex items-center w-full"
       :class="trackClass"
     >
       <div 
         ref="selectionRef"
         class="u-slider-track-selection absolute h-full" 
-        style="width: 0;"
+        :style="{ width: left }"
         :class="selectionClass"
       ></div>
 
       <div 
         ref="thumbRef"
         class="u-slider-track-thumb absolute -translate-x-1/2" 
-        style="left: 0;"
+        :style="{ left }"
         :class="thumbClass"
         @mousedown="onMousedown"
         @mousemove="onMousemove"
@@ -28,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs } from 'vue'
+import { ref, toRefs, onMounted } from 'vue'
 
 import { throttle } from '../../utils'
 
@@ -58,6 +61,7 @@ const {
   thumbClass,
   selectionClass
 } = toRefs(props)
+const left = ref(`${ modelValue.value / (max.value - min.value) * 100 }%`)
 const thumbRef = ref<HTMLElement | null>(null)
 const trackRef = ref<HTMLElement | null>(null)
 const selectionRef = ref<HTMLElement | null>(null)
@@ -76,7 +80,7 @@ const after = () => {
   body.removeEventListener('mouseup', onMouseup)
 }
 
-let x = 0 
+let x = 0
 let dragging = false
 
 const onMousedown = (e: MouseEvent) => {
@@ -85,24 +89,57 @@ const onMousedown = (e: MouseEvent) => {
   before()
 }
 
-const onUpdate = (e: MouseEvent) => {
-  const { pageX } = e
-  const offset = pageX - x
-  const { style } = thumbRef.value as HTMLElement
-  const value = parseInt(style.left) + offset
-  const _min = min.value
-  const _max = max.value
-  const { clientWidth } = trackRef.value as HTMLElement
+const updateModelValue = (value: number) => {
+  const _step = step.value
+  const mod = value % _step
 
-  if (value < 0 || value > clientWidth) {
+  value -= mod
+
+  if (mod >= _step / 2) {
+    value += _step
+  }
+
+  emit('update:modelValue', value)
+}
+
+const addAnimation = () => {
+  const { classList: thumbClassList} = thumbRef.value as HTMLElement
+  const { classList: selectionClassList } = selectionRef.value as HTMLElement
+  const thumbClassListTokens = [
+    'transition-[left]', 
+    'duration-[--u-transition-duration]'
+  ]
+  const selectionClassListTokens = [
+    'transition-[width]', 
+    'duration-[--u-transition-duration]'
+  ]
+  
+  thumbClassList.add(...thumbClassListTokens)
+  selectionClassList.add(...selectionClassListTokens)
+  
+  left.value = `${ modelValue.value / (max.value - min.value) * 100 }%`
+
+  setTimeout(() => {
+    thumbClassList.remove(...thumbClassListTokens)
+    selectionClassList.remove(...selectionClassListTokens)
+  }, 300)
+}
+
+const onUpdate = (e: MouseEvent | Event, animate = false) => {
+  const { pageX } = e as any
+  const offset = pageX - x
+  const newLeft = parseFloat(left.value) + 
+    offset / trackRef.value!.clientWidth * 100
+
+  if (newLeft < 0 || newLeft > 100) {
     return
   }
 
-  const _value = `${ value }px`
+  const value = Math.round(newLeft / 100 * (max.value - min.value))
 
+  updateModelValue(value) 
+  left.value = `${ newLeft }%`
   x = pageX
-  emit('update:modelValue', Math.round(value / clientWidth * (_max - _min)))
-  style.left = selectionRef.value!.style.width = _value
 }
 
 const onMousemove = throttle((e: MouseEvent) => {
@@ -116,6 +153,13 @@ const onMousemove = throttle((e: MouseEvent) => {
 
 const onMouseup = () => {
   dragging = false
+  addAnimation()
   after()
 }
+
+const onClick = (e: Event) => {
+  // onUpdate(e, true)
+}
+
+onMounted(() => x = thumbRef.value!.getBoundingClientRect().x)
 </script>

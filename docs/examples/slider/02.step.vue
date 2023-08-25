@@ -5,6 +5,7 @@
       :min="0"
       :max="100" 
       :step="50"
+      class="h-[40px]"
       trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
       selectionClass="bg-[--primary-color]"
     >

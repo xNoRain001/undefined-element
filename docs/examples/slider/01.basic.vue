@@ -16,6 +16,7 @@
       v-model="value" 
       :min="0"
       :max="100" 
+      class="h-[40px]"
       trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
       selectionClass="bg-[--primary-color]"
     >
