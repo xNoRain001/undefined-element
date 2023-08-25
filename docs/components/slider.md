@@ -53,25 +53,19 @@ Slider 向用户提供一种选择最小值和最大值之间值的方法。
       v-model="value" 
       :min="0"
       :max="100" 
+      class="h-[40px]"
       trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
       selectionClass="bg-[--primary-color]"
     >
-      <template #thumb>
-        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
-        </div>
+      <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
+      </div>
 
-        <!-- before:content-[''] 
-        before:border-[6px] before:border-solid
-        before:border-b-transparent before:border-x-transparent
-        before:absolute before:bottom-0 before:left-1/2 
-        before:-translate-x-1/2 before:border-red-500 -->
-        <div class="
-            px-[8px] absolute rounded-[4px] bg-[--primary-color]
-            text-[12px] text-white -top-full left-1/2 -translate-x-1/2
-        ">
-          {{ value }}
-        </div>
-      </template>
+      <div class="
+          px-[8px] absolute rounded-[4px] bg-[--primary-color]
+          text-[12px] text-white -top-full left-1/2 -translate-x-1/2
+      ">
+        {{ value }}
+      </div>
     </u-slider>
   </div>
 </template>
@@ -104,25 +98,19 @@ const value = ref(50)
       v-model="value" 
       :min="0"
       :max="100" 
+      class="h-[40px]"
       trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
       selectionClass="bg-[--primary-color]"
     >
-      <template #thumb>
-        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
-        </div>
+      <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
+      </div>
 
-        <!-- before:content-[''] 
-        before:border-[6px] before:border-solid
-        before:border-b-transparent before:border-x-transparent
-        before:absolute before:bottom-0 before:left-1/2 
-        before:-translate-x-1/2 before:border-red-500 -->
-        <div class="
-            px-[8px] absolute rounded-[4px] bg-[--primary-color]
-            text-[12px] text-white -top-full left-1/2 -translate-x-1/2
-        ">
-          {{ value }}
-        </div>
-      </template>
+      <div class="
+          px-[8px] absolute rounded-[4px] bg-[--primary-color]
+          text-[12px] text-white -top-full left-1/2 -translate-x-1/2
+      ">
+        {{ value }}
+      </div>
     </u-slider>
   </div>
 </template>
@@ -153,20 +141,19 @@ const value = ref(50)
       :min="0"
       :max="100" 
       :step="50"
+      class="h-[40px]"
       trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
       selectionClass="bg-[--primary-color]"
     >
-      <template #thumb>
-        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
-        </div>
+      <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
+      </div>
 
-        <div class="
-            px-[8px] absolute rounded-[4px] bg-[--primary-color]
-            text-[12px] text-white -top-full left-1/2 -translate-x-1/2
-        ">
-          {{ value }}
-        </div>
-      </template>
+      <div class="
+          px-[8px] absolute rounded-[4px] bg-[--primary-color]
+          text-[12px] text-white -top-full left-1/2 -translate-x-1/2
+      ">
+        {{ value }}
+      </div>
     </u-slider>
   </div>
 </template>
@@ -188,20 +175,19 @@ const value = ref(50)
       :min="0"
       :max="100" 
       :step="50"
+      class="h-[40px]"
       trackClass="h-[4px] bg-[--primary-border-color] rounded-[4px]"
       selectionClass="bg-[--primary-color]"
     >
-      <template #thumb>
-        <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
-        </div>
+      <div class="w-[20px] h-[20px] bg-[--primary-color] rounded-full">
+      </div>
 
-        <div class="
-            px-[8px] absolute rounded-[4px] bg-[--primary-color]
-            text-[12px] text-white -top-full left-1/2 -translate-x-1/2
-        ">
-          {{ value }}
-        </div>
-      </template>
+      <div class="
+          px-[8px] absolute rounded-[4px] bg-[--primary-color]
+          text-[12px] text-white -top-full left-1/2 -translate-x-1/2
+      ">
+        {{ value }}
+      </div>
     </u-slider>
   </div>
 </template>

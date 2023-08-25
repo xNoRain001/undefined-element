@@ -40,7 +40,8 @@ export default defineConfig({
           // { text: 'Table', link: '/components/table' },
           { text: 'Tabs', link: '/components/tabs' },
           { text: 'Toggle', link: '/components/toggle' },
-          // { text: 'Tooltip', link: '/components/tooltip' }
+          // { text: 'Tooltip', link: '/components/tooltip' },
+          { text: 'Range', link: '/components/range' }
         ]
       }
     ],
@@ -52,6 +53,10 @@ export default defineConfig({
     editLink: {
       pattern: 'https://github.com/xnorain001/undefined-element-test/edit/main/docs/:path',
       text: '在 Github 上编辑此页'
+    },
+
+    search: {
+      provider: 'local'
     }
   },
   // locales: {

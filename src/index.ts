@@ -3,6 +3,7 @@ import UTabs from './components/u-tabs/index.vue'
 import UIcon from './components/u-icon/index.vue'
 import UInput from './components/u-input/index.vue'
 import UTable from './components/u-table/index.vue'
+import URange from './components/u-range/index.vue'
 import UDialog from './components/u-dialog/index.vue'
 import USlider from './components/u-slider/index.vue'
 import URating from './components/u-rating/index.vue'
@@ -33,6 +34,7 @@ const undefinedElement = {
       .component('UIcon', UIcon)
       .component('UInput', UInput)
       .component('UTable', UTable)
+      .component('URange', URange)
       .component('UDialog', UDialog)
       .component('USlider', USlider)
       .component('URating', URating)
