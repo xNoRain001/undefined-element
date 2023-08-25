@@ -6,19 +6,19 @@
   >
     <div
       ref="trackRef" 
-      class="u-slider-track relative flex items-center w-full"
+      class="u-range-track relative flex items-center w-full"
       :class="trackClass"
     >
       <div 
         ref="selectionRef"
-        class="u-slider-track-selection absolute h-full" 
+        class="u-range-track-selection absolute h-full" 
         :style="{ width, left: leftThumbLeft }"
         :class="selectionClass"
       ></div>
 
       <div 
         ref="leftThumbRef"
-        class="u-slider-track-thumb-left absolute -translate-x-1/2" 
+        class="u-range-track-thumb-left absolute -translate-x-1/2" 
         :style="{ left: leftThumbLeft }"
         @mousedown="onMousedown"
         @mousemove="onMousemove"
@@ -29,7 +29,7 @@
 
       <div 
         ref="rightThumbRef"
-        class="u-slider-track-thumb-right absolute -translate-x-1/2" 
+        class="u-range-track-thumb-right absolute -translate-x-1/2" 
         :style="{ left: rightThumbLeft }"
         @mousedown="onMousedown"
         @mousemove="onMousemove"
@@ -73,11 +73,12 @@ const {
   selectionClass
 } = toRefs(props)
 const { min: leftThumbValue, max: rightThumbValue } = modelValue.value
-const _leftThumbLeft = leftThumbValue / (max.value - min.value) * 100
-const _rightThumbLeft = rightThumbValue / (max.value - min.value) * 100
+const v = max.value - min.value
+const _leftThumbLeft = leftThumbValue / v * 100
+const _rightThumbLeft = rightThumbValue / v * 100
 const leftThumbLeft = ref(`${ _leftThumbLeft }%`)
 const rightThumbLeft = ref(`${ _rightThumbLeft }%`)
-// 100 - _leftThumbLeft - (100 - _rightThumbValue) = _rightThumbLeft - _leftThumbLeft
+// 100 - _leftThumbLeft - (100 - _rightThumbLeft) = _rightThumbLeft - _leftThumbLeft
 const width = ref(`${ _rightThumbLeft - _leftThumbLeft }%`)
 const trackRef = ref<HTMLElement | null>(null)
 const selectionRef = ref<HTMLElement | null>(null)
@@ -151,14 +152,13 @@ const addAnimation = () => {
   thumbClassList.add(...thumbClassListTokens)
   selectionClassList.add(...selectionClassListTokens)
 
-  const _min = min.value
-  const _max = max.value
+  const v = max.value - min.value
   const { min: leftThumbValue, max: rightThumbValue } = modelValue.value
   
   if (isLeftThumb) {
-    leftThumbLeft.value = `${ leftThumbValue / (_max - _min) * 100 }%`
+    leftThumbLeft.value = `${ leftThumbValue / v * 100 }%`
   } else {
-    rightThumbLeft.value = `${ rightThumbValue / (_max - _min) * 100 }%`
+    rightThumbLeft.value = `${ rightThumbValue / v * 100 }%`
   }
 
   setTimeout(() => {
@@ -176,7 +176,10 @@ const addAnimation = () => {
 const onUpdate = (e: MouseEvent | Event) => {
   const { pageX } = e as any
   const offset = isLeftThumb ? pageX - x1 : pageX - x2
-  const newValue = parseFloat(isLeftThumb ? leftThumbLeft.value : rightThumbLeft.value) + 
+  const flostLeftThumbLeft = parseFloat(leftThumbLeft.value)
+  const floatRightThumbLeft = parseFloat(rightThumbLeft.value)
+  const newValue = 
+    parseFloat(isLeftThumb ? flostLeftThumbLeft : floatRightThumbLeft) + 
     offset / trackRef.value!.clientWidth * 100
 
   if (newValue < 0 || newValue > 100) {
@@ -190,11 +193,11 @@ const onUpdate = (e: MouseEvent | Event) => {
   if (isLeftThumb) {
     leftThumbLeft.value = `${ newValue }%`
     x1 = pageX
-    width.value = `${ parseFloat(rightThumbLeft.value) - newValue }%`
+    width.value = `${ floatRightThumbLeft - newValue }%`
   } else {
     rightThumbLeft.value = `${ newValue }%`
     x2 = pageX
-    width.value = `${ newValue - parseFloat(leftThumbLeft.value) }%`
+    width.value = `${ newValue - flostLeftThumbLeft }%`
   }
 }
 
