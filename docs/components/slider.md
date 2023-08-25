@@ -5,6 +5,27 @@ import Step from '../examples/slider/02.step.vue'
 </script>
 <!-- import -->
 
+# Slider
+
+Slider 向用户提供一种选择最小值和最大值之间值的方法。
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+|min|最小值|number|0|
+|max|最大值|number|100|
+|step|步长|number|1|
+|modelValue|模型值|number|-|
+|trackClass|滑动条的样式|string|''|
+|selectionClass|选中区域的样式|string|''|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+|default|thumb|
+:::
+
 ## 基础
 
 <!-- component -->
@@ -114,7 +135,7 @@ const value = ref(50)
 :::
 <!-- component -->
 
-## 间隔
+## 步长
 
 <!-- component -->
 <Step></Step>
