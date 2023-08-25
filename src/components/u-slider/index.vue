@@ -19,12 +19,11 @@
         ref="thumbRef"
         class="u-slider-track-thumb absolute -translate-x-1/2" 
         :style="{ left }"
-        :class="thumbClass"
         @mousedown="onMousedown"
         @mousemove="onMousemove"
         @mouseup="onMouseup"
       >
-        <slot name="thumb"></slot>
+        <slot></slot>
       </div>
     </div>
   </div>
@@ -42,14 +41,12 @@ const props = withDefaults(defineProps<{
   step?: number,
   modelValue: number,
   trackClass?: string,
-  thumbClass?: string,
   selectionClass?: string
 }>(), {
   min: 0,
   max: 100,
   step: 1,
   trackClass: '',
-  thumbClass: '',
   selectionClass: ''
 })
 const { 
@@ -58,7 +55,6 @@ const {
   step,
   modelValue, 
   trackClass, 
-  thumbClass,
   selectionClass
 } = toRefs(props)
 const left = ref(`${ modelValue.value / (max.value - min.value) * 100 }%`)
