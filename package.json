@@ -2,8 +2,9 @@
   "name": "undefined-element",
   "version": "0.10.1",
   "description": "undefined element",
-  "main": "./src/index.js",
   "author": "xnorain001",
+  "main": "./dist/undefined-element.prod.js",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/xNoRain001/undefined-element.git"
@@ -19,7 +20,8 @@
     "docs:preview": "vitepress preview docs",
     "css": "npx tailwindcss -i ./src/assets/css/index.css -o ./dist/index.css --minify --watch",
     "examples": "npx tailwindcss -i ./docs/assets/css/index.css -c ./docs/tailwind.config.js -o ./docs/assets/css/dist.css --watch",
-    "md": "node ./scripts/index.js"
+    "md": "node ./scripts/index.js",
+    "build": "rollup -c"
   },
   "license": "MIT",
   "devDependencies": {
