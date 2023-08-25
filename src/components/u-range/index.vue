@@ -141,7 +141,7 @@ const addAnimation = () => {
     : _rightThumbRef
   const { classList: selectionClassList } = selectionRef.value as HTMLElement
   const thumbClassListTokens = [
-    isLeftThumb ? 'transition-[left]' : 'transition-[right]', 
+    'transition-[left]', 
     'duration-[--u-transition-duration]'
   ]
   const selectionClassListTokens = [
@@ -173,7 +173,7 @@ const addAnimation = () => {
   }, 300)
 }
 
-const onUpdate = (e: MouseEvent | Event) => {
+const onUpdate = (e: MouseEvent | Event, isClick = false) => {
   const { pageX } = e as any
   const offset = isLeftThumb ? pageX - x1 : pageX - x2
   const flostLeftThumbLeft = parseFloat(leftThumbLeft.value)
@@ -219,7 +219,7 @@ const onMouseup = (e: Event) => {
 
 const onClick = (e: Event) => {
   dragging = true
-  onUpdate(e)
+  onUpdate(e, isClick)
 }
 
 watch(modelValue, () => {
