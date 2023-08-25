@@ -28,6 +28,8 @@ Slider 向用户提供一种选择最小值和最大值之间值的方法。
 
 ## 基础
 
+除了通过拖拽和点击修改值以外，也可以直接修改 modelValue 的值来让滑块到指定位置。
+
 <!-- component -->
 <Basic></Basic>
 ::: details 查看源码
@@ -136,6 +138,8 @@ const value = ref(50)
 <!-- component -->
 
 ## 步长
+
+这里将 step 设置为 50，意味着 modelValue 一定为 step 的整数倍。
 
 <!-- component -->
 <Step></Step>
