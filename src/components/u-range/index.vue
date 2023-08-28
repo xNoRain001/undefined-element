@@ -176,6 +176,11 @@ const addAnimation = () => {
 
 const onUpdate = (e: MouseEvent | Event, isClick = false) => {
   const { pageX } = e as any
+
+  if (isClick) {
+    isLeftThumb = Math.abs(pageX - x1) < Math.abs(pageX - x2) ? true : false
+  }
+
   const offset = isLeftThumb ? pageX - x1 : pageX - x2
   const flostLeftThumbLeft = parseFloat(leftThumbLeft.value)
   const floatRightThumbLeft = parseFloat(rightThumbLeft.value)
@@ -222,7 +227,7 @@ const onMouseup = (e: Event) => {
 
 const onClick = (e: Event) => {
   dragging = true
-  onUpdate(e, isClick)
+  onUpdate(e, true)
 }
 
 watch(modelValue, () => {
