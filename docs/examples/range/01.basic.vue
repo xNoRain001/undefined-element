@@ -36,5 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-const value = { min: 20, max: 80 }
+import { reactive } from 'vue'
+
+const value = reactive({ min: 20, max: 80 })
 </script>

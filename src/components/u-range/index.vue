@@ -12,7 +12,7 @@
       <div 
         ref="selectionRef"
         class="u-range-track-selection absolute h-full" 
-        :style="{ width, left: leftThumbLeft }"
+        :style="{ width, left: flag ? rightThumbLeft : leftThumbLeft }"
         :class="selectionClass"
       ></div>
 
@@ -78,7 +78,6 @@ const _leftThumbLeft = leftThumbValue / v * 100
 const _rightThumbLeft = rightThumbValue / v * 100
 const leftThumbLeft = ref(`${ _leftThumbLeft }%`)
 const rightThumbLeft = ref(`${ _rightThumbLeft }%`)
-// 100 - _leftThumbLeft - (100 - _rightThumbLeft) = _rightThumbLeft - _leftThumbLeft
 const width = ref(`${ _rightThumbLeft - _leftThumbLeft }%`)
 const trackRef = ref<HTMLElement | null>(null)
 const selectionRef = ref<HTMLElement | null>(null)
@@ -103,6 +102,8 @@ let x1 = 0
 let x2 = 0
 let dragging = false
 let isLeftThumb = false
+// boundary
+let flag = false
 
 const onMousedown = (e: MouseEvent) => {
   const { pageX, currentTarget } = e
@@ -179,12 +180,14 @@ const onUpdate = (e: MouseEvent | Event, isClick = false) => {
   const flostLeftThumbLeft = parseFloat(leftThumbLeft.value)
   const floatRightThumbLeft = parseFloat(rightThumbLeft.value)
   const newValue = 
-    parseFloat(isLeftThumb ? flostLeftThumbLeft : floatRightThumbLeft) + 
+    parseFloat(`${ isLeftThumb ? flostLeftThumbLeft : floatRightThumbLeft }`) + 
     offset / trackRef.value!.clientWidth * 100
 
   if (newValue < 0 || newValue > 100) {
     return
   }
+
+  flag = flostLeftThumbLeft >= floatRightThumbLeft ? true : false
 
   const value = Math.round(newValue / 100 * (max.value - min.value))
 
@@ -193,22 +196,22 @@ const onUpdate = (e: MouseEvent | Event, isClick = false) => {
   if (isLeftThumb) {
     leftThumbLeft.value = `${ newValue }%`
     x1 = pageX
-    width.value = `${ floatRightThumbLeft - newValue }%`
+    width.value = `${ Math.abs(floatRightThumbLeft - newValue) }%`
   } else {
     rightThumbLeft.value = `${ newValue }%`
     x2 = pageX
-    width.value = `${ newValue - flostLeftThumbLeft }%`
+    width.value = `${ Math.abs(newValue - flostLeftThumbLeft) }%`
   }
 }
 
-const onMousemove = throttle((e: MouseEvent) => {
+const onMousemove = (e: MouseEvent) => {
   if (!dragging) {
     return
   }
 
   e.stopPropagation()
   onUpdate(e)
-}, 10)
+}
 
 const onMouseup = (e: Event) => {
   e.stopPropagation()
