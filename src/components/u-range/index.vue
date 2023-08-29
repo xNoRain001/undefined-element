@@ -23,6 +23,9 @@
         @mousedown="onMousedown"
         @mousemove="onMousemove"
         @mouseup="onMouseup"
+        @touchstart="onMousedown"
+        @touchmove="onMousemove"
+        @touchend="onMouseup"
       >
         <slot name="left-thumb"></slot>
       </div>
@@ -34,6 +37,9 @@
         @mousedown="onMousedown"
         @mousemove="onMousemove"
         @mouseup="onMouseup"
+        @touchstart="onMousedown"
+        @touchmove="onMousemove"
+        @touchend="onMouseup"
       >
         <slot name="right-thumb"></slot>
       </div>
@@ -90,12 +96,16 @@ const before = () => {
   body.classList.add('select-none')
   body.addEventListener('mousemove', onMousemove)
   body.addEventListener('mouseup', onMouseup)
+  body.addEventListener('touchmove', onMousemove)
+  body.addEventListener('touchend', onMouseup)
 }
 
 const after = () => {
   body.classList.remove('select-none')
   body.removeEventListener('mousemove', onMousemove)
   body.removeEventListener('mouseup', onMouseup)
+  body.removeEventListener('touchmove', onMousemove)
+  body.removeEventListener('touchend', onMouseup)
 }
 
 let x1 = 0
@@ -105,12 +115,20 @@ let isLeftThumb = false
 // boundary
 let flag = false
 
-const onMousedown = (e: MouseEvent) => {
-  const { pageX, currentTarget } = e
+const onMousedown = (e: MouseEvent | TouchEvent) => {
+  const { type, currentTarget, target } = e
+  const _leftThumbRef = leftThumbRef.value as HTMLElement
 
   e.stopPropagation()
   dragging = true
-  isLeftThumb = currentTarget === leftThumbRef.value ? true : false
+
+  if (type === 'touchstart') {
+    isLeftThumb = _leftThumbRef.contains(target as HTMLElement)
+  } else {
+    isLeftThumb = currentTarget === _leftThumbRef ? true : false
+  }
+
+  const pageX = (e as MouseEvent).pageX || (e as TouchEvent).touches[0].pageX
 
   if (isLeftThumb) {
     x1 = pageX
@@ -155,12 +173,16 @@ const addAnimation = () => {
 
   const v = max.value - min.value
   const { min: leftThumbValue, max: rightThumbValue } = modelValue.value
+  const _leftThumbLeft = leftThumbValue / v * 100
+  const _rightThumbLeft = rightThumbValue / v * 100
   
   if (isLeftThumb) {
-    leftThumbLeft.value = `${ leftThumbValue / v * 100 }%`
+    leftThumbLeft.value = `${ _leftThumbLeft }%`
   } else {
-    rightThumbLeft.value = `${ rightThumbValue / v * 100 }%`
+    rightThumbLeft.value = `${ _rightThumbLeft }%`
   }
+
+  width.value = `${ _rightThumbLeft - _leftThumbLeft }%`
 
   setTimeout(() => {
     thumbClassList.remove(...thumbClassListTokens)
@@ -174,8 +196,8 @@ const addAnimation = () => {
   }, 300)
 }
 
-const onUpdate = (e: MouseEvent | Event, isClick = false) => {
-  const { pageX } = e as any
+const onUpdate = (e: MouseEvent | Event | TouchEvent, isClick = false) => {
+  const pageX = (e as any).pageX || (e as TouchEvent).touches[0].pageX
 
   if (isClick) {
     isLeftThumb = Math.abs(pageX - x1) < Math.abs(pageX - x2) ? true : false
@@ -209,7 +231,7 @@ const onUpdate = (e: MouseEvent | Event, isClick = false) => {
   }
 }
 
-const onMousemove = (e: MouseEvent) => {
+const onMousemove = (e: MouseEvent | TouchEvent) => {
   if (!dragging) {
     return
   }
@@ -218,7 +240,7 @@ const onMousemove = (e: MouseEvent) => {
   onUpdate(e)
 }
 
-const onMouseup = (e: Event) => {
+const onMouseup = (e: MouseEvent | TouchEvent) => {
   e.stopPropagation()
   dragging = false
   addAnimation()
