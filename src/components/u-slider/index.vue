@@ -3,6 +3,8 @@
     class="u-slider cursor-pointer w-full flex items-center"
     @mousedown="onClick"
     @mouseup="onMouseup"
+    @touchstart="onClick"
+    @touchend="onMouseup"
   >
     <div
       ref="trackRef" 
@@ -23,6 +25,9 @@
         @mousedown="onMousedown"
         @mousemove="onMousemove"
         @mouseup="onMouseup"
+        @touchstart="onMousedown"
+        @touchmove="onMousemove"
+        @touchend="onMouseup"
       >
         <slot></slot>
       </div>
@@ -31,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toRefs, onMounted } from 'vue'
+import { ref, watch, toRefs, onMounted, nextTick } from 'vue'
 
 import { throttle } from '../../utils'
 
@@ -69,20 +74,24 @@ const before = () => {
   body.classList.add('select-none')
   body.addEventListener('mousemove', onMousemove)
   body.addEventListener('mouseup', onMouseup)
+  body.addEventListener('touchmove', onMousemove)
+  body.addEventListener('touchend', onMouseup)
 }
 
 const after = () => {
   body.classList.remove('select-none')
   body.removeEventListener('mousemove', onMousemove)
   body.removeEventListener('mouseup', onMouseup)
+  body.removeEventListener('touchmove', onMousemove)
+  body.removeEventListener('touchend', onMouseup)
 }
 
 let x = 0
 let dragging = false
 
-const onMousedown = (e: MouseEvent) => {
+const onMousedown = (e: MouseEvent | TouchEvent) => {
   e.stopPropagation()
-  x = e.pageX
+  x = (e as MouseEvent).pageX || (e as TouchEvent).touches[0].pageX
   dragging = true
   before()
 }
@@ -125,8 +134,8 @@ const addAnimation = () => {
   }, 300)
 }
 
-const onUpdate = (e: MouseEvent | Event) => {
-  const { pageX } = e as any
+const onUpdate = (e: MouseEvent | Event | TouchEvent) => {
+  const pageX = (e as any).pageX || (e as TouchEvent).touches[0].pageX
   const offset = pageX - x
   const newLeft = parseFloat(left.value) + 
     offset / trackRef.value!.clientWidth * 100
@@ -142,7 +151,7 @@ const onUpdate = (e: MouseEvent | Event) => {
   x = pageX
 }
 
-const onMousemove = throttle((e: MouseEvent) => {
+const onMousemove = throttle((e: MouseEvent | TouchEvent) => {
   if (!dragging) {
     return
   }
@@ -151,7 +160,7 @@ const onMousemove = throttle((e: MouseEvent) => {
   onUpdate(e)
 }, 10)
 
-const onMouseup = (e: Event) => {
+const onMouseup = (e: MouseEvent | TouchEvent) => {
   e.stopPropagation()
   dragging = false
   addAnimation()
