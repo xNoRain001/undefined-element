@@ -36,9 +36,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toRefs, onMounted, nextTick } from 'vue'
+import { ref, watch, toRefs, onMounted } from 'vue'
 
 import { throttle } from '../../utils'
+import { useGetSliderValue } from '../../composables'
 
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const props = withDefaults(defineProps<{
@@ -97,16 +98,7 @@ const onMousedown = (e: MouseEvent | TouchEvent) => {
 }
 
 const updateModelValue = (value: number) => {
-  const _step = step.value
-  const mod = value % _step
-
-  value -= mod
-
-  if (mod >= _step / 2) {
-    value += _step
-  }
-
-  emit('update:modelValue', value)
+  emit('update:modelValue', useGetSliderValue(value, step.value) )
 }
 
 const addAnimation = () => {
@@ -158,7 +150,7 @@ const onMousemove = throttle((e: MouseEvent | TouchEvent) => {
 
   e.stopPropagation()
   onUpdate(e)
-}, 10)
+}, 10, { trailing: true })
 
 const onMouseup = (e: MouseEvent | TouchEvent) => {
   e.stopPropagation()

@@ -51,6 +51,7 @@
 import { ref, watch, toRefs, onMounted } from 'vue'
 
 import { throttle } from '../../utils'
+import { useGetSliderValue } from '../../composables'
 
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
 const props = withDefaults(defineProps<{
@@ -140,16 +141,7 @@ const onMousedown = (e: MouseEvent | TouchEvent) => {
 }
 
 const updateModelValue = (value: number) => {
-  const _step = step.value
-  const mod = value % _step
-
-  value -= mod
-
-  if (mod >= _step / 2) {
-    value += _step
-  }
-
-  modelValue.value[isLeftThumb ? 'min' : 'max'] = value
+  modelValue.value[isLeftThumb ? 'min' : 'max'] = useGetSliderValue(value, step.value)
 }
 
 const addAnimation = () => {
@@ -231,14 +223,14 @@ const onUpdate = (e: MouseEvent | Event | TouchEvent, isClick = false) => {
   }
 }
 
-const onMousemove = (e: MouseEvent | TouchEvent) => {
+const onMousemove = throttle((e: MouseEvent | TouchEvent) => {
   if (!dragging) {
     return
   }
 
   e.stopPropagation()
   onUpdate(e)
-}
+}, 10, { trailing: true }) 
 
 const onMouseup = (e: MouseEvent | TouchEvent) => {
   e.stopPropagation()

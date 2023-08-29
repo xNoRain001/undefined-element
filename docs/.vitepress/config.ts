@@ -33,7 +33,7 @@ export default defineConfig({
           { text: 'Rating', link: '/components/rating' },
           { text: 'Scroll Area', link: '/components/scroll-area' },
           { text: 'Scroller', link: '/components/scroller' },
-          { text: 'Select', link: '/components/select' },
+          // { text: 'Select', link: '/components/select' },
           { text: 'Skeleton', link: '/components/skeleton' },
           { text: 'Slider', link: '/components/slider' },
           { text: 'Splitter', link: '/components/splitter' },
