@@ -8,16 +8,15 @@
     <div 
       tabindex="-1"
       class="
-        u-input-container flex items-center relative
+        u-input-container flex items-center relative cursor-pointer
         before:content-[''] before:absolute before:left-0 before:right-0 
         before:bottom-0 before:top-0 before:z-[-1]
         before:transition-colors
         before:duration-[--u-transition-duration]
       " 
       :class="inputContainerClass"
-      @click="onClick"
-      @focusin="onFocusin"
-      @focusout="onFocusout"
+      @focus="onFocus"
+      @blur="onBlur"
     >
       <slot name="prepend"></slot>
 
@@ -26,10 +25,12 @@
         :disabled="disabled ? true : false"
         :placeholder="placeholder" 
         :value="modelValue" 
-        class="u-input h-full grow focus:outline-none bg-transparent"
+        class="u-input h-full grow focus:outline-none bg-transparent cursor-pointer"
         :class="_inputClass"
         ref="inputRef" 
         type="text"
+        @focus="onInputFocus"
+        @blur="onInputBlur"
       />
 
       <slot name="append" :expanded="expanded"></slot>
@@ -39,7 +40,7 @@
       <Transition name="u-fade">
         <div 
           v-if="expanded"
-          @click.stop="updateModelValue" 
+          @click="updateModelValue" 
           ref="selectListRef"
           class="u-select-list absolute left-0 right-0 top-full z-10"
         >
@@ -51,7 +52,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toRefs, computed, onMounted } from 'vue'
+import { ref, toRefs, computed } from 'vue'
 
 import { noop } from '../../utils'
 
@@ -75,7 +76,7 @@ const props = withDefaults(defineProps<{
   readonly: false,
   disabled: false,
   maxValues: Number.MAX_SAFE_INTEGER,
-  persistent: true,
+  persistent: false,
   inputClass: '',
   placeholder: '',
   focusedBorderClass: ''
@@ -100,40 +101,29 @@ const {
   placeholder,
   focusedBorderClass
 } = toRefs(props)
-const expanded = ref(false)
 const inputRef = ref<HTMLElement | null>(null)
-const focusedInput = ref(false)
 const selectListRef = ref<HTMLElement | null>(null)
 const inputWrapperRef = ref<HTMLElement | null>(null)
-const persistentFocus = ref(false)
-const focusedInputContainer = ref(false)
-const focused = computed(() => {
-  return !readonly.value && 
-    !disabled.value &&
-    (focusedInput.value || focusedInputContainer.value)
-})
-let flag = false
+const focusedContainer = ref(false)
+const focusedInput = ref(false)
+const expanded = computed(() => !readonly.value && 
+  !disabled.value && 
+  (focusedContainer.value || focusedInput.value)
+)
 const inputContainerClass = computed(() => `${ className.value }${ 
-  disabled.value ? ' cursor-not-allowed' : ''
-}${ focused.value ? ` ${ focusedBorderClass.value }` : ''}`)
+  disabled.value ? ' cursor-not-allowed' : '' 
+}${ expanded.value ? ` ${ focusedBorderClass.value }` : ''}`)
 const _inputClass = computed(() => `${ inputClass.value }${ 
   disabled.value ? ' cursor-not-allowed' : '' 
 }${ readonly.value ? ' cursor-auto' : '' }`)
 
-const onClick = () => expanded.value = !expanded.value
+const onFocus = () => focusedContainer.value = true
 
-const onFocus = () => focusedInputContainer.value = true
+const onBlur = () => setTimeout(() => focusedContainer.value = false)
 
-const onBlur = () => setTimeout(
-  () => focusedInputContainer.value = false
-)
+const onInputFocus = () => focusedInput.value = true
 
-const onFocusin = () => {
-  flag = true
-}
-
-const onFocusout = (e: FocusEvent) => {
-}
+const onInputBlur = () => setTimeout(() => focusedInput.value = false)
 
 const getIndex = (target: HTMLElement, parent: HTMLElement) => {
   let index: string | null = null
@@ -151,28 +141,29 @@ const updateModelValue = (e: Event) => {
   const value = options.value[Number(index)]
   
   if (multiple.value) {
+    console.log(maxValues.value);
+    
     const _modelValue = modelValue.value as string[]
     const index = _modelValue.indexOf(value)
+    const _maxValues = maxValues.value
 
     if (index >= 0) {
       _modelValue.splice(index, 1)
-    } else if (_modelValue.length < maxValues.value) {
+    } else if (_modelValue.length < _maxValues) {
       _modelValue.push(value)
     } else if (race.value) {
       _modelValue.shift()
       _modelValue.push(value)
     }
 
-    if (!persistent.value && _modelValue.length >= maxValues.value) {
-      containerBlurHandler(true)
+
+    console.log(persistent.value )
+    if (!persistent.value && _modelValue.length >= _maxValues) {
+      onBlur()
     }
   } else {
     emit('update:modelValue', value)
-    // click select items, input must be blurred, container muse be focused.
-    // make container blur for hide select items.
-    // containerBlurHandler(true)
+    onBlur()
   }
-
-  expanded.value = false
 }
 </script>

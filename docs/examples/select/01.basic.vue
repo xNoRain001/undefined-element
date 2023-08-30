@@ -20,12 +20,12 @@
           <div 
             v-for="(option, index) in options"
             :key="index"
+            :data-index="index"
             class="
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
             :class="value === option ? 'text-[--primary-color]' : ''"
-            :data-index="index"
           >
             {{ option }}
           </div>
