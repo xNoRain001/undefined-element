@@ -1,46 +1,45 @@
 <template>
   <div 
     class="u-input-wrapper flex items-center" 
-    ref="inputWrapperRef"
+    ref="wrapperRef"
   >
     <slot name="before"></slot>
 
     <div 
       tabindex="-1"
+      ref="containerRef"
       class="
-        u-input-container flex items-center relative cursor-pointer
+        u-input-container focus:outline-none flex items-center relative 
         before:content-[''] before:absolute before:left-0 before:right-0 
         before:bottom-0 before:top-0 before:z-[-1]
         before:transition-colors
         before:duration-[--u-transition-duration]
       " 
-      :class="inputContainerClass"
-      @focus="onFocus"
+      :class="containerClass"
+      @click="onClick"
       @blur="onBlur"
     >
       <slot name="prepend"></slot>
 
       <input 
-        readonly
+        :readonly="disabled ? false : true"
         :disabled="disabled ? true : false"
         :placeholder="placeholder" 
         :value="modelValue" 
-        class="u-input h-full grow focus:outline-none bg-transparent cursor-pointer"
+        class="u-input h-full grow focus:outline-none bg-transparent"
         :class="_inputClass"
         ref="inputRef" 
         type="text"
-        @focus="onInputFocus"
-        @blur="onInputBlur"
+        @mousedown="onMousedown"
       />
 
       <slot name="append" :expanded="expanded"></slot>
 
-      <slot name="after" :expanded="expanded"></slot>
-
       <Transition name="u-fade">
-        <div 
+        <div
           v-if="expanded"
-          @click="updateModelValue" 
+          @click.stop="updateModelValue" 
+          @focusout.stop="noop"
           ref="selectListRef"
           class="u-select-list absolute left-0 right-0 top-full z-10"
         >
@@ -48,11 +47,13 @@
         </div>
       </Transition>
     </div>
+
+    <slot name="after" :expanded="expanded"></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, toRefs, computed } from 'vue'
+import { ref, toRefs, computed, onMounted } from 'vue'
 
 import { noop } from '../../utils'
 
@@ -76,7 +77,7 @@ const props = withDefaults(defineProps<{
   readonly: false,
   disabled: false,
   maxValues: Number.MAX_SAFE_INTEGER,
-  persistent: false,
+  persistent: true,
   inputClass: '',
   placeholder: '',
   focusedBorderClass: ''
@@ -103,27 +104,41 @@ const {
 } = toRefs(props)
 const inputRef = ref<HTMLElement | null>(null)
 const selectListRef = ref<HTMLElement | null>(null)
-const inputWrapperRef = ref<HTMLElement | null>(null)
-const focusedContainer = ref(false)
-const focusedInput = ref(false)
+const wrapperRef = ref<HTMLElement | null>(null)
+const containerRef = ref<HTMLElement | null>(null)
+const focused = ref(false)
 const expanded = computed(() => !readonly.value && 
   !disabled.value && 
-  (focusedContainer.value || focusedInput.value)
+  focused.value
 )
-const inputContainerClass = computed(() => `${ className.value }${ 
-  disabled.value ? ' cursor-not-allowed' : '' 
-}${ expanded.value ? ` ${ focusedBorderClass.value }` : ''}`)
-const _inputClass = computed(() => `${ inputClass.value }${ 
-  disabled.value ? ' cursor-not-allowed' : '' 
-}${ readonly.value ? ' cursor-auto' : '' }`)
+const cursorClass = computed(() => `${ disabled.value 
+  ? ' cursor-not-allowed' 
+  : `${ readonly.value ? ' cursor-auto' : ' cursor-pointer' }` 
+}`)
+const containerClass = computed(() => `${ 
+  className.value 
+}${ 
+  cursorClass.value 
+}${ 
+  expanded.value ? ` ${ focusedBorderClass.value }` : ''
+}`)
+const _inputClass = computed(() => `${ 
+  inputClass.value 
+}${ 
+  cursorClass.value
+}`)
 
-const onFocus = () => focusedContainer.value = true
+// ------ keep mouse down ------
+// mousedown > focus > focus in > mouseup > click
+const onMousedown = (e: MouseEvent) => {
+  // prevent input focus
+  e.preventDefault()
+  containerRef.value!.focus()
+}
 
-const onBlur = () => setTimeout(() => focusedContainer.value = false)
+const onClick = () => focused.value = !focused.value
 
-const onInputFocus = () => focusedInput.value = true
-
-const onInputBlur = () => setTimeout(() => focusedInput.value = false)
+const onBlur = () => focused.value = false
 
 const getIndex = (target: HTMLElement, parent: HTMLElement) => {
   let index: string | null = null
@@ -141,8 +156,6 @@ const updateModelValue = (e: Event) => {
   const value = options.value[Number(index)]
   
   if (multiple.value) {
-    console.log(maxValues.value);
-    
     const _modelValue = modelValue.value as string[]
     const index = _modelValue.indexOf(value)
     const _maxValues = maxValues.value
@@ -156,8 +169,6 @@ const updateModelValue = (e: Event) => {
       _modelValue.push(value)
     }
 
-
-    console.log(persistent.value )
     if (!persistent.value && _modelValue.length >= _maxValues) {
       onBlur()
     }
@@ -166,4 +177,26 @@ const updateModelValue = (e: Event) => {
     onBlur()
   }
 }
+
+const initClearableBtns = () => {
+  const onClear = (e: Event) => {
+    e.stopPropagation()
+
+    if (Array.isArray(modelValue.value)) {
+      modelValue.value.splice(0)
+    } else {
+      emit('update:modelValue', '')
+    }
+  }
+
+  const elms = wrapperRef.value!.querySelectorAll('*[clearable]')
+
+  for (let i = 0, l = elms.length; i < l; i++) {
+    elms[i].addEventListener('click', onClear)
+  }
+}
+
+onMounted(() => {
+  initClearableBtns()
+})
 </script>

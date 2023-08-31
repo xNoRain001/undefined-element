@@ -5,13 +5,11 @@
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
-        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value" 
       :options="options"
-      disabled 
+      disabled
     >
       <template #select-list>
         <div class="
@@ -26,7 +24,7 @@
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
-            :class="value.includes(option) ? 'text-[--primary-color]' : ''"
+            :class="value === option ? 'text-[--primary-color]' : ''"
           >
             {{ option }}
           </div>
@@ -45,8 +43,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
-const value = reactive<string[]>([])
+const value = ref('')
 const options = ['1', '2', '3', '4']
 </script>

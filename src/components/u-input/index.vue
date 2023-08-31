@@ -1,7 +1,7 @@
 <template>
   <div 
     class="u-input-wrapper flex items-center" 
-    ref="inputWrapperRef"
+    ref="wrapperRef"
   >
     <slot name="before"></slot>
 
@@ -14,10 +14,10 @@
         before:transition-colors
         before:duration-[--u-transition-duration]
       " 
-      :class="inputContainerClass"
+      :class="containerClass"
       @click="foucsHelper"
-      @focus="onContainerFocus"
-      @blur="onContainerBlur"
+      @focus="onFocus"
+      @blur="onBlur"
     >
       <slot name="prepend"></slot>
 
@@ -28,8 +28,8 @@
         :placeholder="placeholder" 
         :value="modelValue" 
         @input="_onInput"  
-        @focus="onFocus"
-        @blur="onBlur"
+        @focus="onInputFocus"
+        @blur="onInputBlur"
         @click.stop="noop"
         class="u-input h-full grow focus:outline-none bg-transparent"
         :class="_inputClass"
@@ -92,9 +92,9 @@ const {
 } = toRefs(props)
 const visible = ref(false)
 const inputRef = ref<HTMLElement | null>(null)
+const wrapperRef = ref<HTMLElement | null>(null)
 const focusedInput = ref(false)
-const inputWrapperRef = ref<HTMLElement | null>(null)
-const focusedInputContainer = ref(false)
+const focusedContainer = ref(false)
 const _type = computed(() => {
   return type.value === 'password' && visible.value
     ? 'text'
@@ -103,9 +103,9 @@ const _type = computed(() => {
 const focused = computed(() => {
   return !readonly.value && 
     !disabled.value &&
-    (focusedInput.value || focusedInputContainer.value)
+    (focusedInput.value || focusedContainer.value)
 })
-const inputContainerClass = computed(() => `${ className.value }${ 
+const containerClass = computed(() => `${ className.value }${ 
   disabled.value ? ' cursor-not-allowed' : ''
 }${ focused.value ? ` ${ focusedBorderClass.value }` : ''}`)
 const _inputClass = computed(() => `${ inputClass.value }${ 
@@ -114,18 +114,16 @@ const _inputClass = computed(() => `${ inputClass.value }${
 
 const foucsHelper = () => inputRef.value!.focus()
 
-const onContainerFocus = () => focusedInputContainer.value = true
+const onFocus = () => focusedContainer.value = true
 
-const onContainerBlur = () => setTimeout(
-  () => focusedInputContainer.value = false
-)
+const onBlur = () => setTimeout(() => focusedContainer.value = false)
 
-const onFocus = (e: Event) => {
+const onInputFocus = (e: Event) => {
   focusedInput.value = true
   emit('focus', e)
 }
 
-const onBlur = (e: Event) => {
+const onInputBlur = (e: Event) => {
   setTimeout(() => {
     focusedInput.value = false
     emit('blur', e)
@@ -156,7 +154,7 @@ const initClearableBtns = () => {
     }
   }
 
-  const elms = inputWrapperRef.value!.querySelectorAll('*[clearable]')
+  const elms = wrapperRef.value!.querySelectorAll('*[clearable]')
 
   for (let i = 0, l = elms.length; i < l; i++) {
     elms[i].addEventListener('click', onClear)
@@ -166,7 +164,7 @@ const initClearableBtns = () => {
 const initVisibleBtns = () => {
   const updateVisibility = () => visible.value = !visible.value
 
-  const elms = inputWrapperRef.value!.querySelectorAll('*[password]')
+  const elms = wrapperRef.value!.querySelectorAll('*[password]')
 
   for (let i = 0, l = elms.length; i < l; i++) {
     elms[i].addEventListener('click', updateVisibility)

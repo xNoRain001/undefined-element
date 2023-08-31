@@ -11,9 +11,6 @@
       focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value" 
       :options="options"
-      multiple
-      :maxValues="2"
-      race
     >
       <template #select-list>
         <div class="
@@ -28,7 +25,7 @@
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
-            :class="value.includes(option) ? 'text-[--primary-color]' : ''"
+            :class="value === option ? 'text-[--primary-color]' : ''"
           >
             {{ option }}
           </div>
@@ -36,6 +33,13 @@
       </template>
       
       <template #append="{ expanded }">
+        <u-icon 
+          clearable
+          v-show="value"
+          name="close"
+          width="16"
+          height="16"
+        ></u-icon>
         <u-icon 
           name="keyboard_arrow_down"
           class="duration-300 transition-transform"
@@ -47,8 +51,8 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { ref } from 'vue'
 
-const value = reactive<string[]>([])
+const value = ref('')
 const options = ['1', '2', '3', '4']
 </script>

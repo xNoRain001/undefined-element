@@ -12,6 +12,7 @@
       v-model="value" 
       :options="options"
       multiple
+      placeholder="Multiple"
     >
       <template #select-list>
         <div class="
@@ -45,7 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
