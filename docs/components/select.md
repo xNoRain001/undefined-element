@@ -211,7 +211,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [script]
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -266,7 +266,7 @@ const options = ['1', '2', '3', '4']
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -336,7 +336,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [script]
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -391,7 +391,7 @@ const options = ['1', '2', '3', '4']
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -462,7 +462,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [script]
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -518,7 +518,7 @@ const options = ['1', '2', '3', '4']
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -590,7 +590,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [script]
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -647,7 +647,7 @@ const options = ['1', '2', '3', '4']
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -672,11 +672,12 @@ const options = ['1', '2', '3', '4']
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
       v-model="value" 
       :options="options"
-      disabled 
+      readonly
     >
       <template #select-list>
         <div class="
@@ -691,7 +692,7 @@ const options = ['1', '2', '3', '4']
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
-            :class="value.includes(option) ? 'text-[--primary-color]' : ''"
+            :class="value === option ? 'text-[--primary-color]' : ''"
           >
             {{ option }}
           </div>
@@ -712,9 +713,9 @@ const options = ['1', '2', '3', '4']
 
 ```vue [script]
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
-const value = reactive<string[]>([])
+const value = ref('')
 const options = ['1', '2', '3', '4']
 </script>
 ```
@@ -727,11 +728,12 @@ const options = ['1', '2', '3', '4']
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
+        hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
       v-model="value" 
       :options="options"
-      disabled 
+      readonly
     >
       <template #select-list>
         <div class="
@@ -746,7 +748,7 @@ const options = ['1', '2', '3', '4']
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
-            :class="value.includes(option) ? 'text-[--primary-color]' : ''"
+            :class="value === option ? 'text-[--primary-color]' : ''"
           >
             {{ option }}
           </div>
@@ -764,9 +766,9 @@ const options = ['1', '2', '3', '4']
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
-const value = reactive<string[]>([])
+const value = ref('')
 const options = ['1', '2', '3', '4']
 </script>
 
@@ -795,7 +797,7 @@ const options = ['1', '2', '3', '4']
       "
       v-model="value" 
       :options="options"
-      disabled 
+      disabled
     >
       <template #select-list>
         <div class="
@@ -810,7 +812,7 @@ const options = ['1', '2', '3', '4']
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
-            :class="value.includes(option) ? 'text-[--primary-color]' : ''"
+            :class="value === option ? 'text-[--primary-color]' : ''"
           >
             {{ option }}
           </div>
@@ -831,9 +833,9 @@ const options = ['1', '2', '3', '4']
 
 ```vue [script]
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
-const value = reactive<string[]>([])
+const value = ref('')
 const options = ['1', '2', '3', '4']
 </script>
 ```
@@ -850,7 +852,7 @@ const options = ['1', '2', '3', '4']
       "
       v-model="value" 
       :options="options"
-      disabled 
+      disabled
     >
       <template #select-list>
         <div class="
@@ -865,7 +867,7 @@ const options = ['1', '2', '3', '4']
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
-            :class="value.includes(option) ? 'text-[--primary-color]' : ''"
+            :class="value === option ? 'text-[--primary-color]' : ''"
           >
             {{ option }}
           </div>
@@ -883,9 +885,9 @@ const options = ['1', '2', '3', '4']
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
-const value = reactive<string[]>([])
+const value = ref('')
 const options = ['1', '2', '3', '4']
 </script>
 
@@ -928,7 +930,7 @@ const options = ['1', '2', '3', '4']
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
-            :class="value.includes(option) ? 'text-[--primary-color]' : ''"
+            :class="value === option ? 'text-[--primary-color]' : ''"
           >
             {{ option }}
           </div>
@@ -936,6 +938,13 @@ const options = ['1', '2', '3', '4']
       </template>
       
       <template #append="{ expanded }">
+        <u-icon 
+          clearable
+          v-show="value"
+          name="close"
+          width="16"
+          height="16"
+        ></u-icon>
         <u-icon 
           name="keyboard_arrow_down"
           class="duration-300 transition-transform"
@@ -949,9 +958,9 @@ const options = ['1', '2', '3', '4']
 
 ```vue [script]
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
-const value = reactive<string[]>([])
+const value = ref('')
 const options = ['1', '2', '3', '4']
 </script>
 ```
@@ -984,7 +993,7 @@ const options = ['1', '2', '3', '4']
               p-[16px] hover:bg-[--primary-border-color] transition-colors
               duration-300
             " 
-            :class="value.includes(option) ? 'text-[--primary-color]' : ''"
+            :class="value === option ? 'text-[--primary-color]' : ''"
           >
             {{ option }}
           </div>
@@ -992,6 +1001,13 @@ const options = ['1', '2', '3', '4']
       </template>
       
       <template #append="{ expanded }">
+        <u-icon 
+          clearable
+          v-show="value"
+          name="close"
+          width="16"
+          height="16"
+        ></u-icon>
         <u-icon 
           name="keyboard_arrow_down"
           class="duration-300 transition-transform"
@@ -1002,9 +1018,9 @@ const options = ['1', '2', '3', '4']
   </div>
 </template>
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 
-const value = reactive<string[]>([])
+const value = ref('')
 const options = ['1', '2', '3', '4']
 </script>
 

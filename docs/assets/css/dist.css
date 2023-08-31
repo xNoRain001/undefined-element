@@ -839,6 +839,10 @@ video {
   grid-template-columns: repeat(10, minmax(0, 1fr));
 }
 
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -857,6 +861,11 @@ video {
 
 .gap-y-\[24px\] {
   row-gap: 24px;
+}
+
+.gap-x-\[16px\] {
+  -moz-column-gap: 16px;
+       column-gap: 16px;
 }
 
 .overflow-y-scroll {
