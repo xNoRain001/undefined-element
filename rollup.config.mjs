@@ -3,13 +3,10 @@ import typescript from 'rollup-plugin-typescript'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 
 export default {
-  input: {
-    // index: 'src/index.ts',
-    'checkbox': 'src/components/u-checkbox/index.vue',
-  },
+  input: 'src/index.ts',
 
   output: {
-    dir: './dist',
+    file: './dist/index.js',
     format: 'es'
   },
 
