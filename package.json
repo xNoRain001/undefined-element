@@ -24,6 +24,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
     "rollup": "^3.28.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript": "^1.0.1",
