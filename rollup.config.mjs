@@ -12,7 +12,7 @@ const genConfig = (minify = false) => {
       format: 'es'
     },
 
-    external: ['vue'],
+    external: ['vue', 'undefined-element-icons'],
 
     plugins: [
       vue(), 
