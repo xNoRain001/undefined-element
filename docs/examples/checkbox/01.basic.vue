@@ -13,7 +13,7 @@
         <Transition>
           <u-icon 
             v-if="checked" 
-            name="done" 
+            :def="matDone"
             color="white" 
             width="16" 
             height="16"
@@ -72,7 +72,7 @@
         <Transition name="u-animate-opacity">
           <u-icon 
             v-if="checked" 
-            name="done" 
+            :def="matDone"
             color="white" 
             width="16" 
             height="16"
@@ -89,6 +89,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matDone } from 'undefined-element-icons/src/material-icons/filled'
 
 const value =ref(false)
 </script>

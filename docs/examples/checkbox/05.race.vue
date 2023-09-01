@@ -17,7 +17,7 @@
             :class="checked ? 'bg-red-500 border-red-500' : ''"
           >
             <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" name="done" color="white" width="16" height="16"></u-icon>
+              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
             </Transition>
           </div>
         </template>
@@ -34,7 +34,7 @@
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
             <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" name="done" color="white" width="16" height="16"></u-icon>
+              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
             </Transition>
           </div>
         </template>
@@ -51,7 +51,7 @@
             :class="checked ? 'bg-blue-500 border-blue-500' : ''"
           >
             <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" name="done" color="white" width="16" height="16"></u-icon>
+              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
             </Transition>
           </div>
         </template>
@@ -63,6 +63,7 @@
 </template>
 
 <script lang="ts" setup>
+import { matDone } from 'undefined-element-icons/src/material-icons/filled';
 import { reactive } from 'vue'
 
 const selection = reactive<any[]>([])

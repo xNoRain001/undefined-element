@@ -17,7 +17,7 @@
             <Transition name="u-animate-opacity">
               <u-icon 
                 v-if="checked" 
-                name="done" 
+                :def="matDone"
                 color="white" 
                 width="16" 
                 height="16"
@@ -40,7 +40,7 @@
             <Transition name="u-animate-opacity">
               <u-icon 
                 v-if="checked" 
-                name="done" 
+                :def="matDone"
                 color="white" 
                 width="16" 
                 height="16"
@@ -63,7 +63,7 @@
             <Transition name="u-animate-opacity">
               <u-icon 
                 v-if="checked" 
-                name="done" 
+                :def="matDone"
                 color="white" 
                 width="16" 
                 height="16"
@@ -79,6 +79,7 @@
 </template>
 
 <script lang="ts" setup>
+import { matDone } from 'undefined-element-icons/src/material-icons/filled'
 import { reactive } from 'vue'
 
 const selection = reactive<any[]>([])
