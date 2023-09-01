@@ -21,7 +21,7 @@ import { computed, toRefs } from 'vue'
 const props = withDefaults(defineProps<{ 
   def: string,
   // name: string,
-  type?: 'outlined' | 'filled' | 'rounded' | 'sharp'
+  // type?: 'outlined' | 'filled' | 'rounded' | 'sharp'
   color?: string,
   width?: string | number,
   height?: string | number,
@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<{
   height: 24,
 })
 
-const { def, /* name, */ type, color, width, height } = toRefs(props)
+const { def, /* name, type, */ color, width, height } = toRefs(props)
 // const prefixesMap = {
 //   filled: 'mat',
 //   sharp: 'sharp',

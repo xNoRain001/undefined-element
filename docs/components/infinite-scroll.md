@@ -5,7 +5,27 @@ import ScrollTarget from '../examples/infinite-scroll/02.scroll-target.vue'
 </script>
 <!-- import -->
 
+# Infinite Scroll
+
+Infinite Scroll 允许用户滚动到指定位置时加载更多内容。
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+|offset|当距离底部的偏移为该值时，触发回调。|number|200|
+|scrollTarget|目标|string|''|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+|default|默认插槽|
+|loading|loading 插槽|
+:::
+
 ## 基础
+
+需要提供 load 事件的回调，会给回调传递 load 参数，当获取数据后，需要调用 load 函数来关闭 loading 状态。
 
 <!-- component -->
 <Basic></Basic>
