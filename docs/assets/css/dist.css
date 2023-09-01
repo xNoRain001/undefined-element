@@ -859,13 +859,13 @@ video {
   justify-content: space-between;
 }
 
-.gap-y-\[24px\] {
-  row-gap: 24px;
-}
-
 .gap-x-\[16px\] {
   -moz-column-gap: 16px;
        column-gap: 16px;
+}
+
+.gap-y-\[24px\] {
+  row-gap: 24px;
 }
 
 .overflow-y-scroll {

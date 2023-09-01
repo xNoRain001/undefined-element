@@ -6,6 +6,10 @@
   --u-transition-duration: .3s;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes u-fade {
   0% {
     opacity: 0;

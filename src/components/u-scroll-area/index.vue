@@ -7,7 +7,7 @@
     <div 
       @scroll.self="onScroll" 
       ref="containerRef" 
-      class="u-scroll-area-container w-full h-full overflow-auto"
+      class="u-scroll-area-container hide-scrollbar w-full h-full overflow-auto"
     >
       <div 
         class="u-scroll-area-content"
@@ -464,9 +464,3 @@ onMounted(() => {
   initResizeObserver()
 })
 </script>
-
-<style scoped>
-.u-scroll-area-container::-webkit-scrollbar {
-  display: none;
-}
-</style>
