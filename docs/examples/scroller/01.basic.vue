@@ -5,8 +5,12 @@
     </div>
     <u-scroller class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
+
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>

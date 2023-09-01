@@ -7,7 +7,7 @@
     <div class="w-[300px] h-screen bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Left</div>
-        <u-icon class="cursor-pointer" name="close" @click="updateVisible"></u-icon>
+        <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible"></u-icon>
       </div>
       <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
@@ -21,6 +21,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matClose } from 'undefined-element-icons/src/material-icons/filled'
 
 const visible = ref(false)
 

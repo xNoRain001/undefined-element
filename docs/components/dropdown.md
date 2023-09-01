@@ -36,7 +36,7 @@ Dropdown 组件用于实现下拉列表
         class="btn">
         Dropdown
         <u-icon 
-          name="keyboard_arrow_down" 
+          :def="matKeyboardArrowDown"
           color="white" 
           class="ml-[8px] duration-300 transition-transform"
           :class="visible ? 'rotate-180' : ''"
@@ -68,6 +68,8 @@ Dropdown 组件用于实现下拉列表
 
 ```vue [script]
 <script lang="ts" setup>
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+
 const list = ['简体中文', 'English']
 </script>
 ```
@@ -80,7 +82,7 @@ const list = ['简体中文', 'English']
         class="btn">
         Dropdown
         <u-icon 
-          name="keyboard_arrow_down" 
+          :def="matKeyboardArrowDown"
           color="white" 
           class="ml-[8px] duration-300 transition-transform"
           :class="visible ? 'rotate-180' : ''"
@@ -109,6 +111,8 @@ const list = ['简体中文', 'English']
   </u-dropdown>
 </template>
 <script lang="ts" setup>
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+
 const list = ['简体中文', 'English']
 </script>
 
@@ -133,7 +137,7 @@ const list = ['简体中文', 'English']
         class="btn">
         Dropdown
         <u-icon 
-          name="keyboard_arrow_down" 
+          :def="matKeyboardArrowDown"
           color="white" 
           class="ml-[8px] duration-300 transition-transform"
           :class="visible ? 'rotate-180' : ''"
@@ -165,6 +169,8 @@ const list = ['简体中文', 'English']
 
 ```vue [script]
 <script lang="ts" setup>
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+
 const list = ['简体中文', 'English']
 </script>
 ```
@@ -177,7 +183,7 @@ const list = ['简体中文', 'English']
         class="btn">
         Dropdown
         <u-icon 
-          name="keyboard_arrow_down" 
+          :def="matKeyboardArrowDown"
           color="white" 
           class="ml-[8px] duration-300 transition-transform"
           :class="visible ? 'rotate-180' : ''"
@@ -206,6 +212,8 @@ const list = ['简体中文', 'English']
   </u-dropdown>
 </template>
 <script lang="ts" setup>
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+
 const list = ['简体中文', 'English']
 </script>
 

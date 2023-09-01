@@ -291,7 +291,7 @@ const value = ref(30)
             flex justify-center items-center top-1/2 -translate-y-1/2
             cursor-move
           ">
-            <u-icon class="!cursor-move" name="drag_indicator" color="white"></u-icon>
+            <u-icon class="!cursor-move" :def="matDragIndicator" color="white"></u-icon>
           </div>
         </div>
       </template>
@@ -308,6 +308,7 @@ const value = ref(30)
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matDragIndicator } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref(30)
 </script>
@@ -336,7 +337,7 @@ const value = ref(30)
             flex justify-center items-center top-1/2 -translate-y-1/2
             cursor-move
           ">
-            <u-icon class="!cursor-move" name="drag_indicator" color="white"></u-icon>
+            <u-icon class="!cursor-move" :def="matDragIndicator" color="white"></u-icon>
           </div>
         </div>
       </template>
@@ -350,6 +351,7 @@ const value = ref(30)
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matDragIndicator } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref(30)
 </script>

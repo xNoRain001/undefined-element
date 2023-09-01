@@ -5,7 +5,7 @@
         class="btn">
         Dropdown
         <u-icon 
-          name="keyboard_arrow_down" 
+          :def="matKeyboardArrowDown"
           color="white" 
           class="ml-[8px] duration-300 transition-transform"
           :class="visible ? 'rotate-180' : ''"
@@ -35,5 +35,7 @@
 </template>
 
 <script lang="ts" setup>
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+
 const list = ['简体中文', 'English']
 </script>

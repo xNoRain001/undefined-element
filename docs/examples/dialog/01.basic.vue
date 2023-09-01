@@ -11,7 +11,7 @@
     <div class="w-[560px] bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Top</div>
-        <u-icon class="cursor-pointer" name="close" @click="updateVisible1"></u-icon>
+        <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible1"></u-icon>
       </div>
       <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
@@ -26,7 +26,7 @@
     <div class="w-[560px] bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Right</div>
-        <u-icon class="cursor-pointer" name="close" @click="updateVisible2"></u-icon>
+        <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible2"></u-icon>
       </div>
       <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
@@ -41,7 +41,7 @@
     <div class="w-[560px] bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Bottom</div>
-        <u-icon class="cursor-pointer" name="close" @click="updateVisible3"></u-icon>
+        <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible3"></u-icon>
       </div>
       <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
@@ -56,7 +56,7 @@
     <div class="w-[560px] bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Left</div>
-        <u-icon class="cursor-pointer" name="close" @click="updateVisible4"></u-icon>
+        <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible4"></u-icon>
       </div>
       <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
@@ -71,7 +71,7 @@
     <div class="w-[560px] bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Center</div>
-        <u-icon class="cursor-pointer" name="close" @click="updateVisible5"></u-icon>
+        <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible5"></u-icon>
       </div>
       <div class="mt-[24px] text-[14px]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam 
@@ -85,6 +85,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matClose } from 'undefined-element-icons/src/material-icons/filled'
 
 const visible1 = ref(false)
 const visible2 = ref(false)

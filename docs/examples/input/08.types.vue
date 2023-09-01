@@ -15,7 +15,7 @@
       <template #append="{ visible }">
         <u-icon 
           password 
-          :name="visible ? 'visibility' : 'visibility_off'"
+          :def="visible ? matVisibility : matVisibilityOff"
         ></u-icon>
       </template>
     </u-input>
@@ -24,6 +24,10 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { 
+  matVisibility, 
+  matVisibilityOff 
+} from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 </script>

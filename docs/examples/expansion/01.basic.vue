@@ -13,7 +13,7 @@
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -39,7 +39,7 @@
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -60,5 +60,7 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+
 const expanded = reactive(['1'])
 </script>

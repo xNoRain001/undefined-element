@@ -219,7 +219,7 @@ const value = ref(false)
       activeTrackClass="!bg-green-500 "
     >
       <u-icon 
-        :name="value ? 'done' : 'close'"
+        :def="value ? matDone : matClose"
         width="16"
         height="16"
         :color="value ? 'white' : 'black'"
@@ -232,6 +232,7 @@ const value = ref(false)
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matDone, matClose } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref(false)
 </script>
@@ -254,7 +255,7 @@ const value = ref(false)
       activeTrackClass="!bg-green-500 "
     >
       <u-icon 
-        :name="value ? 'done' : 'close'"
+        :def="value ? matDone : matClose"
         width="16"
         height="16"
         :color="value ? 'white' : 'black'"
@@ -264,6 +265,7 @@ const value = ref(false)
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matDone, matClose } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref(false)
 </script>

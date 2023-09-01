@@ -41,11 +41,17 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
     </div>
     <u-scroller class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
+```
+
+```vue [script]
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 ```
 
 ```vue [all]
@@ -56,12 +62,14 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
     </div>
     <u-scroller class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
-
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 
 ```
 
@@ -84,11 +92,17 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
     </div>
     <u-scroller :to="100" class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
+```
+
+```vue [script]
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 ```
 
 ```vue [all]
@@ -99,12 +113,14 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
     </div>
     <u-scroller :to="100" class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
-
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 
 ```
 
@@ -127,11 +143,17 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
     </div>
     <u-scroller :duration="0" class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
+```
+
+```vue [script]
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 ```
 
 ```vue [all]
@@ -142,12 +164,14 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
     </div>
     <u-scroller :duration="0" class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
-
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 
 ```
 
@@ -170,11 +194,17 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
     </div>
     <u-scroller :scrollOffset="0" class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
+```
+
+```vue [script]
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 ```
 
 ```vue [all]
@@ -185,12 +215,14 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
     </div>
     <u-scroller :scrollOffset="0" class="absolute right-[20px] bottom-[20px]">
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
-
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 
 ```
 
@@ -218,11 +250,17 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
       class="absolute right-[20px] bottom-[20px]"
     >
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
+```
+
+```vue [script]
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 ```
 
 ```vue [all]
@@ -238,12 +276,14 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
       class="absolute right-[20px] bottom-[20px]"
     >
       <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon name="keyboard_arrow_up" color="white"></u-icon>
+        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
       </div>
     </u-scroller>
   </u-scroll-area>
 </template>
-
+<script lang="ts" setup>
+import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
+</script>
 
 ```
 

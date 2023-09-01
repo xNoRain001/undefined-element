@@ -36,12 +36,12 @@
         <u-icon 
           clearable
           v-show="value"
-          name="close"
+          :def="matKeyboardArrowDown"
           width="16"
           height="16"
         ></u-icon>
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -52,6 +52,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']

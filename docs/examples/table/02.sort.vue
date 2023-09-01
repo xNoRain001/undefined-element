@@ -15,7 +15,7 @@
       <template #th="{ label, sortable }">
         <div class="flex justify-center items-center">
           <span>{{ label }}</span>
-          <u-icon v-if="sortable" name="expand_less" width="24" height="24"></u-icon>
+          <u-icon v-if="sortable" :def="matExpandLess" width="24" height="24"></u-icon>
         </div>
       </template>
     </u-table>
@@ -24,6 +24,7 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matExpandLess } from 'undefined-element-icons/src/material-icons/filled'
 
 const head = [
   {

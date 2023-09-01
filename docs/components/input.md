@@ -386,7 +386,7 @@ const value = ref('This is disabled input')
       <template #append>
         <u-icon 
           v-show="value.length" 
-          name="close" 
+          :def="matClose" 
           clearable
         ></u-icon>
       </template>
@@ -398,6 +398,7 @@ const value = ref('This is disabled input')
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matClose } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('This is clearable input')
 </script>
@@ -420,7 +421,7 @@ const value = ref('This is clearable input')
       <template #append>
         <u-icon 
           v-show="value.length" 
-          name="close" 
+          :def="matClose" 
           clearable
         ></u-icon>
       </template>
@@ -429,6 +430,7 @@ const value = ref('This is clearable input')
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matClose } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('This is clearable input')
 </script>
@@ -531,7 +533,7 @@ const value = ref('')
       <template #append="{ visible }">
         <u-icon 
           password 
-          :name="visible ? 'visibility' : 'visibility_off'"
+          :def="visible ? matVisibility : matVisibilityOff"
         ></u-icon>
       </template>
     </u-input>
@@ -542,6 +544,10 @@ const value = ref('')
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { 
+  matVisibility, 
+  matVisibilityOff 
+} from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 </script>
@@ -565,7 +571,7 @@ const value = ref('')
       <template #append="{ visible }">
         <u-icon 
           password 
-          :name="visible ? 'visibility' : 'visibility_off'"
+          :def="visible ? matVisibility : matVisibilityOff"
         ></u-icon>
       </template>
     </u-input>
@@ -573,6 +579,10 @@ const value = ref('')
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { 
+  matVisibility, 
+  matVisibilityOff 
+} from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 </script>

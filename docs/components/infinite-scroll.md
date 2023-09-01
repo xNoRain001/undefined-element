@@ -46,7 +46,7 @@ Infinite Scroll 允许用户滚动到指定位置时加载更多内容。
 
       <template #loading="{ loading }">
         <div class="w-fit sticky bottom-[16px] left-1/2 h-[30px]">
-          <u-icon v-if="loading" class="animate-spin" name="refresh"></u-icon>
+          <u-icon v-if="loading" class="animate-spin" :def="matRefresh"></u-icon>
         </div>
       </template>
     </u-infinite-scroll>
@@ -57,6 +57,7 @@ Infinite Scroll 允许用户滚动到指定位置时加载更多内容。
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matRefresh } from 'undefined-element-icons/src/material-icons/filled'
 
 const items = reactive<string[]>((new Array(40)).fill('Lorem ipsum dolor sit amet.'))
 
@@ -85,7 +86,7 @@ const onLoad = (done: Function) => {
 
       <template #loading="{ loading }">
         <div class="w-fit sticky bottom-[16px] left-1/2 h-[30px]">
-          <u-icon v-if="loading" class="animate-spin" name="refresh"></u-icon>
+          <u-icon v-if="loading" class="animate-spin" :def="matRefresh"></u-icon>
         </div>
       </template>
     </u-infinite-scroll>
@@ -93,6 +94,7 @@ const onLoad = (done: Function) => {
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matRefresh } from 'undefined-element-icons/src/material-icons/filled'
 
 const items = reactive<string[]>((new Array(40)).fill('Lorem ipsum dolor sit amet.'))
 
@@ -132,7 +134,7 @@ const onLoad = (done: Function) => {
 
       <template #loading="{ loading }">
         <div class="w-fit sticky bottom-[16px] left-1/2 h-[30px]">
-          <u-icon v-if="loading" class="animate-spin" name="refresh"></u-icon>
+          <u-icon v-if="loading" class="animate-spin" :def="matRefresh"></u-icon>
         </div>
       </template>
     </u-infinite-scroll>
@@ -143,6 +145,7 @@ const onLoad = (done: Function) => {
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matRefresh } from 'undefined-element-icons/src/material-icons/filled'
 
 const items = reactive<string[]>((new Array(40)).fill('Lorem ipsum dolor sit amet.'))
 
@@ -172,7 +175,7 @@ const onLoad = (done: Function) => {
 
       <template #loading="{ loading }">
         <div class="w-fit sticky bottom-[16px] left-1/2 h-[30px]">
-          <u-icon v-if="loading" class="animate-spin" name="refresh"></u-icon>
+          <u-icon v-if="loading" class="animate-spin" :def="matRefresh"></u-icon>
         </div>
       </template>
     </u-infinite-scroll>
@@ -180,6 +183,7 @@ const onLoad = (done: Function) => {
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matRefresh } from 'undefined-element-icons/src/material-icons/filled'
 
 const items = reactive<string[]>((new Array(40)).fill('Lorem ipsum dolor sit amet.'))
 

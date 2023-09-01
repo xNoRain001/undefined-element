@@ -48,7 +48,7 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -74,7 +74,7 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -97,6 +97,8 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+
 const expanded = reactive(['1'])
 </script>
 ```
@@ -117,7 +119,7 @@ const expanded = reactive(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -143,7 +145,7 @@ const expanded = reactive(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -163,6 +165,8 @@ const expanded = reactive(['1'])
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+
 const expanded = reactive(['1'])
 </script>
 
@@ -196,7 +200,7 @@ const expanded = reactive(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -222,7 +226,7 @@ const expanded = reactive(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -248,7 +252,7 @@ const expanded = reactive(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -271,6 +275,7 @@ const expanded = reactive(['1'])
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const expanded = reactive<string[]>(['1'])
 </script>
@@ -293,7 +298,7 @@ const expanded = reactive<string[]>(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -319,7 +324,7 @@ const expanded = reactive<string[]>(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -345,7 +350,7 @@ const expanded = reactive<string[]>(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -365,6 +370,7 @@ const expanded = reactive<string[]>(['1'])
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const expanded = reactive<string[]>(['1'])
 </script>
@@ -399,7 +405,7 @@ const expanded = reactive<string[]>(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -425,7 +431,7 @@ const expanded = reactive<string[]>(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -451,7 +457,7 @@ const expanded = reactive<string[]>(['1'])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -474,6 +480,7 @@ const expanded = reactive<string[]>(['1'])
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const expanded = reactive<string[]>([])
 </script>
@@ -496,7 +503,7 @@ const expanded = reactive<string[]>([])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Home</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -522,7 +529,7 @@ const expanded = reactive<string[]>([])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">About us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -548,7 +555,7 @@ const expanded = reactive<string[]>([])
           <div class="flex items-center justify-between h-[47px]">
             <div class="text-[14px] text-[#303133] font-medium">Contact us</div>
             <u-icon 
-              name="keyboard_arrow_down"
+              :def="matKeyboardArrowDown"
               class="duration-300 transition-transform"
               :class="expanded ? 'rotate-180' : ''"
             ></u-icon>
@@ -568,6 +575,7 @@ const expanded = reactive<string[]>([])
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const expanded = reactive<string[]>([])
 </script>

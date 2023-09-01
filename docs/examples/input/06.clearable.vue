@@ -14,7 +14,7 @@
       <template #append>
         <u-icon 
           v-show="value.length" 
-          name="close" 
+          :def="matClose" 
           clearable
         ></u-icon>
       </template>
@@ -24,6 +24,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matClose } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('This is clearable input')
 </script>

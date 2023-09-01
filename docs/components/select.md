@@ -78,7 +78,7 @@ import Clearable from '../examples/select/08.clearable.vue'
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -91,6 +91,7 @@ import Clearable from '../examples/select/08.clearable.vue'
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
@@ -134,7 +135,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -144,6 +145,7 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
@@ -199,7 +201,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -212,6 +214,7 @@ const options = ['1', '2', '3', '4']
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -257,7 +260,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -267,6 +270,7 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -324,7 +328,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -337,6 +341,7 @@ const options = ['1', '2', '3', '4']
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -382,7 +387,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -392,6 +397,7 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -450,7 +456,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -463,6 +469,7 @@ const options = ['1', '2', '3', '4']
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -509,7 +516,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -519,6 +526,7 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -578,7 +586,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -591,6 +599,7 @@ const options = ['1', '2', '3', '4']
 ```vue [script]
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -638,7 +647,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -648,6 +657,7 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = reactive<string[]>([])
 const options = ['1', '2', '3', '4']
@@ -701,7 +711,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -714,6 +724,7 @@ const options = ['1', '2', '3', '4']
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
@@ -757,7 +768,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -767,6 +778,7 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
@@ -821,7 +833,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -834,6 +846,7 @@ const options = ['1', '2', '3', '4']
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
@@ -876,7 +889,7 @@ const options = ['1', '2', '3', '4']
       
       <template #append="{ expanded }">
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -886,6 +899,7 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
@@ -941,12 +955,12 @@ const options = ['1', '2', '3', '4']
         <u-icon 
           clearable
           v-show="value"
-          name="close"
+          :def="matKeyboardArrowDown"
           width="16"
           height="16"
         ></u-icon>
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -959,6 +973,7 @@ const options = ['1', '2', '3', '4']
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
@@ -1004,12 +1019,12 @@ const options = ['1', '2', '3', '4']
         <u-icon 
           clearable
           v-show="value"
-          name="close"
+          :def="matKeyboardArrowDown"
           width="16"
           height="16"
         ></u-icon>
         <u-icon 
-          name="keyboard_arrow_down"
+          :def="matKeyboardArrowDown"
           class="duration-300 transition-transform"
           :class="expanded ? 'rotate-180' : ''"
         ></u-icon>
@@ -1019,6 +1034,7 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
