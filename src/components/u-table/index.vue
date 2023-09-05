@@ -8,15 +8,16 @@
           @click="onSort(field, sortable, sortOrder)" 
           v-for="{ field, label, thClass, sortable, sortOrder } in head"
         >
-          {{ label }}
-          <slot name="th" :sortable="sortable" :label="label"></slot>
+          <slot name="th-inner" :sortable="sortable" :field="field" :label="label"></slot>
         </th>
       </tr>
     </thead>
 
     <tbody>
       <tr :class="bodyTrClass" v-for="item in body">
-        <td :class="tdClass" v-for="field in fields">{{ item[field] }}</td>
+        <td :class="tdClass" v-for="field in fields">
+          <slot name="td-inner" :text="item[field]"></slot>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -35,24 +36,24 @@ const props = withDefaults(defineProps<{
     sortOrder?: 'asc' | 'desc'
   }[],
   body: { [propName: string]: any }[],
+  class?: string,
   thClass?: string,
   tdClass?: string,
-  tableClass?: string,
   headTrClass?: string
   bodyTrClass?: string
 }>(), {
+  class: '',
   thClass: '',
   tdClass: '',
-  tableClass: '',
   headTrClass: '',
   bodyTrClass: ''
 })
 const { 
   head, 
   body, 
+  class: tableClass,
   thClass, 
   tdClass, 
-  tableClass,
   headTrClass,
   bodyTrClass
 } = toRefs(props)
