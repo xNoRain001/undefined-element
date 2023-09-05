@@ -5,6 +5,8 @@
 ::: code-group
   ```bash [npm]
   npm install -D undefined-element
+  # 如果需要使用 icon 组件，还需要安装 undefined-element-icons。
+  npm install -D undefined-element-icons
   ```
 :::
 

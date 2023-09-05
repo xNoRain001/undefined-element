@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <u-rating v-model="value1" :max="5" color="black" activeColor="#eab308">
+    <u-rating v-model="value" :max="5" color="black" activeColor="var(--primary-color)">
       <u-icon :def="matStar" fill="currentColor"></u-icon>
     </u-rating>
   </div>
@@ -10,5 +10,5 @@
 import { ref } from 'vue'
 import { matStar } from 'undefined-element-icons/src/material-icons/filled'
 
-const value1 = ref(3)
+const value = ref(3)
 </script>
