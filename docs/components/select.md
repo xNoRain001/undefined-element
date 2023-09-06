@@ -955,7 +955,7 @@ const options = ['1', '2', '3', '4']
         <u-icon 
           clearable
           v-show="value"
-          :def="matKeyboardArrowDown"
+          :def="matClose"
           width="16"
           height="16"
         ></u-icon>
@@ -973,7 +973,10 @@ const options = ['1', '2', '3', '4']
 ```vue [script]
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+import { 
+  matClose, 
+  matKeyboardArrowDown 
+} from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']
@@ -1019,7 +1022,7 @@ const options = ['1', '2', '3', '4']
         <u-icon 
           clearable
           v-show="value"
-          :def="matKeyboardArrowDown"
+          :def="matClose"
           width="16"
           height="16"
         ></u-icon>
@@ -1034,7 +1037,10 @@ const options = ['1', '2', '3', '4']
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons/filled'
+import { 
+  matClose, 
+  matKeyboardArrowDown 
+} from 'undefined-element-icons/src/material-icons/filled'
 
 const value = ref('')
 const options = ['1', '2', '3', '4']

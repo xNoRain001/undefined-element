@@ -1,42 +1,47 @@
 <template>
-  <div class="w-full">
+  <div class="vp-raw">
     <u-table 
-      :head="head" 
+      :header="header" 
       :body="body"
-      tdClass="
-        border-b-[1px] border-solid border-[#0000001f] px-[7px] py-[16px]
-        h-[48px] text-[13px] text-center
-      "
       bodyTrClass="hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
+      thClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+      "
+      tdClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+      "
       class="w-full border-separate border-spacing-0"
     >
-      <template #th-inner="{ label, sortable }">
-        <div class="text-center flex items-center group cursor-pointer">
+      <template #th-inner="{ label, sortable, descending }">
+        <div class="flex items-center group">
           {{ label }}
           <u-icon 
-            class="ml-[6px] opacity-0 group-hover:opacity-100"
-            width="16" 
-            height="16" 
-            v-if="sortable" 
-            :def="matArrowUpward"
+          class="ml-[6px] opacity-0 group-hover:opacity-100"
+          width="16" 
+          height="16" 
+          v-if="sortable" 
+          :def="descending ? matArrowDownward : matArrowUpward"
           ></u-icon>
         </div>
       </template>
 
       <template #td-inner="{ text }">
-        <div>{{ text }}</div>
+        {{ text }}
       </template>
     </u-table>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { reactive } from 'vue'
 import { 
-  matArrowUpward,
-  matArrowDownward
-} from 'undefined-element-icons/src/material-icons/filled';
+matArrowUpward,
+matArrowDownward
+} from 'undefined-element-icons/src/material-icons/filled'
 
-const head = [
+const header = [
   {
     field: 'name',
     label: 'Dessert (100g serving)'
@@ -45,7 +50,7 @@ const head = [
     field: 'calories', 
     label: 'Calories',
     sortable: true,
-    descending: true,
+    descending: true
   },
   { 
     field: 'fat', 
@@ -73,7 +78,7 @@ const head = [
   }
 ]
 
-const body = [
+const body = reactive([
   {
     name: 'Frozen Yogurt',
     calories: 159,
@@ -174,5 +179,5 @@ const body = [
     calcium: '12%',
     iron: '6%'
   }
-]
+])
 </script>

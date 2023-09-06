@@ -1,39 +1,42 @@
 <template>
-  <table :class="tableClass">
-    <thead>
-      <tr :class="headTrClass">
-        <th 
-          :class="_thClass" 
-          :key="field"
-          @click="onSort(field, sortable, descending)" 
-          v-for="{ field, label, thClass, sortable, descending } in head"
-        >
-          <slot 
-            name="th-inner" 
-            :sortable="sortable" 
-            :descending="descending" 
-            :field="field" 
-            :label="label"
-          ></slot>
-        </th>
-      </tr>
-    </thead>
+  <div>
+    <table :class="tableClass">
+      <thead :class="headerClass">
+        <tr :class="headerTrClass">
+          <th 
+            :class="thClass" 
+            :key="field"
+            @click="onSort(field, sortable, descending)" 
+            v-for="{ field, label, sortable, descending } in header"
+          >
+            <slot 
+              name="th-inner" 
+              :sortable="sortable" 
+              :descending="descending" 
+              :field="field" 
+              :label="label"
+            ></slot>
+          </th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr :class="bodyTrClass" v-for="item in body">
-        <td :class="tdClass" v-for="field in fields">
-          <slot name="td-inner" :text="item[field]"></slot>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      <tbody :class="bodyClass">
+        <tr :class="bodyTrClass" v-for="item in body">
+          <td :class="tdClass" v-for="field in fields">
+            <slot name="td-inner" :text="item[field]"></slot>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { toRefs, computed } from 'vue'
 
 const props = withDefaults(defineProps<{
-  head: {
+  body: { [propName: string]: any }[],
+  header: {
     // sort?: Function,
     field: string,
     label: string,
@@ -41,30 +44,33 @@ const props = withDefaults(defineProps<{
     sortable?: boolean,
     descending?: boolean
   }[],
-  body: { [propName: string]: any }[],
-  class?: string,
   thClass?: string,
   tdClass?: string,
-  headTrClass?: string
-  bodyTrClass?: string
+  bodyClass?: string,
+  tableClass?: string,
+  headerClass?: string,
+  bodyTrClass?: string,
+  headerTrClass?: string
 }>(), {
-  class: '',
   thClass: '',
   tdClass: '',
-  headTrClass: '',
-  bodyTrClass: ''
+  bodyClass: '',
+  tableClass: '',
+  headerClass: '',
+  bodyTrClass: '',
+  headerTrClass: ''
 })
 const { 
-  head, 
   body, 
-  class: tableClass,
+  header, 
   thClass, 
   tdClass, 
-  headTrClass,
-  bodyTrClass
+  bodyClass,
+  tableClass,
+  bodyTrClass,
+  headerTrClass
 } = toRefs(props)
-const _thClass = computed(() => `${ tdClass.value } ${ thClass.value }`)
-const fields = computed(() => head.value.map(item => item.field))
+const fields = computed(() => header.value.map(item => item.field))
 
 const onSort = (
   field: string, 
