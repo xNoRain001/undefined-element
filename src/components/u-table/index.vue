@@ -5,10 +5,16 @@
         <th 
           :class="_thClass" 
           :key="field"
-          @click="onSort(field, sortable, sortOrder)" 
-          v-for="{ field, label, thClass, sortable, sortOrder } in head"
+          @click="onSort(field, sortable, descending)" 
+          v-for="{ field, label, thClass, sortable, descending } in head"
         >
-          <slot name="th-inner" :sortable="sortable" :field="field" :label="label"></slot>
+          <slot 
+            name="th-inner" 
+            :sortable="sortable" 
+            :descending="descending" 
+            :field="field" 
+            :label="label"
+          ></slot>
         </th>
       </tr>
     </thead>
@@ -33,7 +39,7 @@ const props = withDefaults(defineProps<{
     label: string,
     thClass?: string,
     sortable?: boolean,
-    sortOrder?: 'asc' | 'desc'
+    descending?: boolean
   }[],
   body: { [propName: string]: any }[],
   class?: string,
@@ -63,16 +69,16 @@ const fields = computed(() => head.value.map(item => item.field))
 const onSort = (
   field: string, 
   sortable?: boolean, 
-  sortOrder?: 'asc' | 'desc'
+  descending?: boolean 
 ) => {
   if (!sortable) {
     return
   }
 
-  if (sortOrder === 'asc') {
-    body.value.sort((a, b) => a[field] - b[field])
-  } else {
+  if (descending) {
     body.value.sort((a, b) => b[field] - a[field])
+  } else {
+    body.value.sort((a, b) => a[field] - b[field])
   }
 }
 </script>

@@ -45,7 +45,7 @@ const head = [
     field: 'calories', 
     label: 'Calories',
     sortable: true,
-    sortOrder: 'desc',
+    descending: true,
   },
   { 
     field: 'fat', 
