@@ -754,7 +754,9 @@ const body = reactive([
     <u-table 
       :header="header" 
       :body="body"
-      bodyTrClass="hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
+      bodyTrClass="
+        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
+      "
       thClass="
         border border-solid border-[--primary-border-color] border-x-0 
         border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
@@ -763,7 +765,37 @@ const body = reactive([
         border border-solid border-[--primary-border-color] border-x-0 
         border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
       "
-      class="w-full border-separate border-spacing-0"
+      headerClass="sticky top-0 bg-white"
+      tableClass="w-full border-separate border-spacing-0"
+      class="h-[300px] overflow-scroll relative"
+    >
+      <template #th-inner="{ label }">
+        {{ label }}
+      </template>
+
+      <template #td-inner="{ text }">
+        {{ text }}
+      </template>
+    </u-table>
+
+    <u-table 
+      :header="header" 
+      :body="body"
+      bodyTrClass="
+        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
+      "
+      thClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        first:sticky first:left-0 first:bg-white
+      "
+      tdClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        first:sticky first:left-0 first:bg-white
+      "
+      tableClass="w-full border-separate border-spacing-0"
+      class="h-[300px] w-1/2 overflow-scroll relative"
     >
       <template #th-inner="{ label }">
         {{ label }}
@@ -784,7 +816,8 @@ import { reactive } from 'vue'
 const header = [
   {
     field: 'name',
-    label: 'Dessert (100g serving)'
+    label: 'Dessert (100g serving)',
+    fixed: true
   },
   { 
     field: 'calories', 
@@ -927,7 +960,9 @@ const body = reactive([
     <u-table 
       :header="header" 
       :body="body"
-      bodyTrClass="hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
+      bodyTrClass="
+        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
+      "
       thClass="
         border border-solid border-[--primary-border-color] border-x-0 
         border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
@@ -936,7 +971,37 @@ const body = reactive([
         border border-solid border-[--primary-border-color] border-x-0 
         border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
       "
-      class="w-full border-separate border-spacing-0"
+      headerClass="sticky top-0 bg-white"
+      tableClass="w-full border-separate border-spacing-0"
+      class="h-[300px] overflow-scroll relative"
+    >
+      <template #th-inner="{ label }">
+        {{ label }}
+      </template>
+
+      <template #td-inner="{ text }">
+        {{ text }}
+      </template>
+    </u-table>
+
+    <u-table 
+      :header="header" 
+      :body="body"
+      bodyTrClass="
+        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
+      "
+      thClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        first:sticky first:left-0 first:bg-white
+      "
+      tdClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        first:sticky first:left-0 first:bg-white
+      "
+      tableClass="w-full border-separate border-spacing-0"
+      class="h-[300px] w-1/2 overflow-scroll relative"
     >
       <template #th-inner="{ label }">
         {{ label }}
@@ -954,7 +1019,8 @@ import { reactive } from 'vue'
 const header = [
   {
     field: 'name',
-    label: 'Dessert (100g serving)'
+    label: 'Dessert (100g serving)',
+    fixed: true
   },
   { 
     field: 'calories', 
