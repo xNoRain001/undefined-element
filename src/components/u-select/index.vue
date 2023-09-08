@@ -69,7 +69,7 @@ const props = withDefaults(defineProps<{
   modelValue: string | string[],
   inputClass?: string,
   placeholder?: string,
-  focusedBorderClass?: string
+  focusedContainerClass?: string
 }>(), {
   race: false,
   class: '',
@@ -80,7 +80,7 @@ const props = withDefaults(defineProps<{
   persistent: true,
   inputClass: '',
   placeholder: '',
-  focusedBorderClass: ''
+  focusedContainerClass: ''
 })
 const emit = defineEmits<{ 
   'blur': [e: Event],
@@ -100,7 +100,7 @@ const {
   persistent,
   inputClass,
   placeholder,
-  focusedBorderClass
+  focusedContainerClass
 } = toRefs(props)
 const inputRef = ref<HTMLElement | null>(null)
 const selectListRef = ref<HTMLElement | null>(null)
@@ -120,7 +120,7 @@ const containerClass = computed(() => `${
 }${ 
   cursorClass.value 
 }${ 
-  expanded.value ? ` ${ focusedBorderClass.value }` : ''
+  expanded.value ? ` ${ focusedContainerClass.value }` : ''
 }`)
 const _inputClass = computed(() => `${ 
   inputClass.value 

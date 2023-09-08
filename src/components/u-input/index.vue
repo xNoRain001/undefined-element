@@ -14,7 +14,7 @@
         before:transition-colors
         before:duration-[--u-transition-duration]
       " 
-      :class="containerClass"
+      :class="_containerClass"
       @click="foucsHelper"
       @focus="onFocus"
       @blur="onBlur"
@@ -52,7 +52,6 @@ import { noop, debounce as debounceFn } from '../../utils'
 const props = withDefaults(defineProps<{
   type?: 'text' | 'password' | 'textareae' | 'mail' | 'search' | 'tel' | 'file' 
   | 'number' | 'url' | 'time' | 'date',
-  class?: string,
   debounce?: number,
   readonly?: boolean,
   disabled?: boolean,
@@ -60,17 +59,18 @@ const props = withDefaults(defineProps<{
   modelValue: string,
   inputClass?: string,
   placeholder?: string,
-  focusedBorderClass?: string
+  containerClass?: string,
+  focusedContainerClass?: string
 }>(), {
   type: 'text',
-  class: '',
   debounce: 0,
   readonly: false,
   disabled: false,
   autofocus: false,
   inputClass: '',
   placeholder: '',
-  focusedBorderClass: ''
+  containerClass: '',
+  focusedContainerClass: ''
 })
 const emit = defineEmits<{ 
   'blur': [e: Event],
@@ -80,7 +80,6 @@ const emit = defineEmits<{
 }>()
 const { 
   type,
-  class: className,
   debounce, 
   readonly,
   disabled,
@@ -88,7 +87,8 @@ const {
   modelValue, 
   inputClass,
   placeholder,
-  focusedBorderClass
+  containerClass,
+  focusedContainerClass
 } = toRefs(props)
 const visible = ref(false)
 const inputRef = ref<HTMLElement | null>(null)
@@ -105,9 +105,9 @@ const focused = computed(() => {
     !disabled.value &&
     (focusedInput.value || focusedContainer.value)
 })
-const containerClass = computed(() => `${ className.value }${ 
+const _containerClass = computed(() => `${ containerClass.value }${ 
   disabled.value ? ' cursor-not-allowed' : ''
-}${ focused.value ? ` ${ focusedBorderClass.value }` : ''}`)
+}${ focused.value ? ` ${ focusedContainerClass.value }` : '' }`)
 const _inputClass = computed(() => `${ inputClass.value }${ 
   disabled.value ? ' cursor-not-allowed' : '' 
 }${ readonly.value ? ' cursor-auto' : '' }`)

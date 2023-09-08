@@ -8,7 +8,7 @@
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value" 
       :options="options"
     >

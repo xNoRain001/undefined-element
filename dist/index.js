@@ -298,13 +298,13 @@ var script$l = /*#__PURE__*/ defineComponent({
         modelValue: { type: String, required: true },
         inputClass: { type: String, required: false, default: '' },
         placeholder: { type: String, required: false, default: '' },
-        focusedBorderClass: { type: String, required: false, default: '' }
+        focusedContainerClass: { type: String, required: false, default: '' }
     },
     emits: ["blur", "focus", "clear", "update:modelValue"],
     setup: function (__props, _a) {
         var emit = _a.emit;
         var props = __props;
-        var _b = toRefs(props), type = _b.type, className = _b.class, debounce$1 = _b.debounce, readonly = _b.readonly, disabled = _b.disabled, autofocus = _b.autofocus, modelValue = _b.modelValue, inputClass = _b.inputClass, placeholder = _b.placeholder, focusedBorderClass = _b.focusedBorderClass;
+        var _b = toRefs(props), type = _b.type, className = _b.class, debounce$1 = _b.debounce, readonly = _b.readonly, disabled = _b.disabled, autofocus = _b.autofocus, modelValue = _b.modelValue, inputClass = _b.inputClass, placeholder = _b.placeholder, focusedContainerClass = _b.focusedContainerClass;
         var visible = ref(false);
         var inputRef = ref(null);
         var wrapperRef = ref(null);
@@ -320,7 +320,7 @@ var script$l = /*#__PURE__*/ defineComponent({
                 !disabled.value &&
                 (focusedInput.value || focusedContainer.value);
         });
-        var containerClass = computed(function () { return "".concat(className.value).concat(disabled.value ? ' cursor-not-allowed' : '').concat(focused.value ? " ".concat(focusedBorderClass.value) : ''); });
+        var containerClass = computed(function () { return "".concat(className.value).concat(disabled.value ? ' cursor-not-allowed' : '').concat(focused.value ? " ".concat(focusedContainerClass.value) : ''); });
         var _inputClass = computed(function () { return "".concat(inputClass.value).concat(disabled.value ? ' cursor-not-allowed' : '').concat(readonly.value ? ' cursor-auto' : ''); });
         var foucsHelper = function () { return inputRef.value.focus(); };
         var onFocus = function () { return focusedContainer.value = true; };
@@ -1137,13 +1137,13 @@ var script$f = /*#__PURE__*/ defineComponent({
         modelValue: { type: [String, Array], required: true },
         inputClass: { type: String, required: false, default: '' },
         placeholder: { type: String, required: false, default: '' },
-        focusedBorderClass: { type: String, required: false, default: '' }
+        focusedContainerClass: { type: String, required: false, default: '' }
     },
     emits: ["blur", "focus", "clear", "update:modelValue"],
     setup: function (__props, _a) {
         var emit = _a.emit;
         var props = __props;
-        var _b = toRefs(props), race = _b.race, className = _b.class, options = _b.options, multiple = _b.multiple, readonly = _b.readonly, disabled = _b.disabled, maxValues = _b.maxValues, modelValue = _b.modelValue, persistent = _b.persistent, inputClass = _b.inputClass, placeholder = _b.placeholder, focusedBorderClass = _b.focusedBorderClass;
+        var _b = toRefs(props), race = _b.race, className = _b.class, options = _b.options, multiple = _b.multiple, readonly = _b.readonly, disabled = _b.disabled, maxValues = _b.maxValues, modelValue = _b.modelValue, persistent = _b.persistent, inputClass = _b.inputClass, placeholder = _b.placeholder, focusedContainerClass = _b.focusedContainerClass;
         var inputRef = ref(null);
         var selectListRef = ref(null);
         var wrapperRef = ref(null);
@@ -1155,7 +1155,7 @@ var script$f = /*#__PURE__*/ defineComponent({
         var cursorClass = computed(function () { return "".concat(disabled.value
             ? ' cursor-not-allowed'
             : "".concat(readonly.value ? ' cursor-auto' : ' cursor-pointer')); });
-        var containerClass = computed(function () { return "".concat(className.value).concat(cursorClass.value).concat(expanded.value ? " ".concat(focusedBorderClass.value) : ''); });
+        var containerClass = computed(function () { return "".concat(className.value).concat(cursorClass.value).concat(expanded.value ? " ".concat(focusedContainerClass.value) : ''); });
         var _inputClass = computed(function () { return "".concat(inputClass.value).concat(cursorClass.value); });
         // ------ keep mouse down ------
         // mousedown > focus > focus in > mouseup > click

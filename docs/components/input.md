@@ -48,7 +48,7 @@ Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似
 
 ## 基础
 
-Input 组件由原生 input 标签和包裹它的容器组成，为了在容器边框宽度变化时不让文字抖动，所有与边框相关的样式都应该要作用到容器的伪元素 before 上，对于聚焦时的边框样式，通过 focusedBorderClass 属性来设置。
+Input 组件由原生 input 标签和包裹它的容器组成，为了在容器边框宽度变化时不让文字抖动，所有与边框相关的样式都应该要作用到容器的伪元素 before 上，对于聚焦时的边框样式，通过 focusedContainerClass 属性来设置。
 
 <!-- component -->
 <Basic></Basic>
@@ -65,7 +65,7 @@ Input 组件由原生 input 标签和包裹它的容器组成，为了在容器�
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
     >
     </u-input>
@@ -92,7 +92,7 @@ const value = ref('')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
     >
     </u-input>
@@ -126,7 +126,7 @@ const value = ref('')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       inputClass="placeholder:text-[--primary-color-light]"
       placeholder="Write your story!"
@@ -155,7 +155,7 @@ const value = ref('')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       inputClass="placeholder:text-[--primary-color-light]"
       placeholder="Write your story!"
@@ -191,7 +191,7 @@ const value = ref('')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       :debounce="300"
     >
@@ -221,7 +221,7 @@ const value = ref('')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       :debounce="300"
     >
@@ -380,7 +380,7 @@ const value = ref('This is disabled input')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
     >
       <template #append>
@@ -415,7 +415,7 @@ const value = ref('This is clearable input')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
     >
       <template #append>
@@ -461,7 +461,7 @@ const value = ref('This is clearable input')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       autofocus
     >
@@ -489,7 +489,7 @@ const value = ref('')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       autofocus
     >
@@ -526,7 +526,7 @@ const value = ref('')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       type="password"
     >
@@ -564,7 +564,7 @@ const value = ref('')
         hover:before:border-[--primary-color]
         text-[14px] font-normal
       "
-      focusedBorderClass="before:border-[2px] before:border-[--primary-color]"
+      focusedContainerClass="before:border-[2px] before:border-[--primary-color]"
       v-model="value"
       type="password"
     >

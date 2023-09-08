@@ -3,16 +3,16 @@
     <u-table 
       :header="header" 
       :body="body"
-      bodyTrClass="hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
-      thClass="
+      headerTrClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0
       "
-      tdClass="
+      bodyTrClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
-      class="w-full border-separate border-spacing-0"
+      thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
+      tdClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
     >
       <template #th-inner="{ label }">
         {{ label }}

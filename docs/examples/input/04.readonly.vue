@@ -1,7 +1,7 @@
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 

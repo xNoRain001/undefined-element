@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="vp-raw">
     <u-expansion 
       v-model="expanded"
       :min="1"

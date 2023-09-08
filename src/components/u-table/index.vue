@@ -23,7 +23,7 @@
       <tbody :class="bodyClass">
         <tr :class="bodyTrClass" v-for="item in body">
           <td :class="tdClass" v-for="field in fields">
-            <slot name="td-inner" :text="item[field]"></slot>
+            <slot name="td-inner" :text="item[field]" :field="field"></slot>
           </td>
         </tr>
       </tbody>

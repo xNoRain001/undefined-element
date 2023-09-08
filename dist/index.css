@@ -717,6 +717,14 @@ video {
   resize: both;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.content-stretch {
+  align-content: stretch;
+}
+
 .items-center {
   align-items: center;
 }

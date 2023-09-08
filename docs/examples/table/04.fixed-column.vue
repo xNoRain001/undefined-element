@@ -3,28 +3,24 @@
     <u-table 
       :header="header" 
       :body="body"
-      headerTrClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0
-      "
       bodyTrClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
+        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
-      thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
-      tdClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
+      thClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        first:sticky first:left-0 first:bg-white
+      "
+      tdClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        first:sticky first:left-0 first:bg-white
+      "
+      tableClass="w-full border-separate border-spacing-0"
+      class="h-[300px] w-2/3 overflow-scroll relative"
     >
-      <template #th-inner="{ label, sortable, descending }">
-        <div class="flex items-center group cursor-pointer">
-          {{ label }}
-          <u-icon 
-          class="ml-[6px] opacity-0 group-hover:opacity-100"
-          width="16" 
-          height="16" 
-          v-if="sortable" 
-          :def="descending ? matArrowDownward : matArrowUpward"
-          ></u-icon>
-        </div>
+      <template #th-inner="{ label }">
+        {{ label }}
       </template>
 
       <template #td-inner="{ text }">
@@ -36,27 +32,20 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import { 
-matArrowUpward,
-matArrowDownward
-} from 'undefined-element-icons/src/material-icons/filled'
 
 const header = [
   {
     field: 'name',
-    label: 'Dessert (100g serving)'
+    label: 'Dessert (100g serving)',
+    fixed: true
   },
   { 
     field: 'calories', 
-    label: 'Calories',
-    sortable: true,
-    descending: true
+    label: 'Calories'
   },
   { 
     field: 'fat', 
-    label: 'Fat (g)',
-    sortable: true,
-    descending: false
+    label: 'Fat (g)'
   },
   { 
     field: 'carbs',
