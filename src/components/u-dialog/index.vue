@@ -29,14 +29,17 @@
 
 <script lang="ts" setup>
 import { ref, watch, toRefs, computed, nextTick } from 'vue'
+
 import { dialogPosition, dialogAnimation } from '../../const/strategies'
 
 const props = withDefaults(defineProps<{ 
   position?: 'top' | 'right' | 'bottom' | 'left' | 'center',
+  maximized?: boolean,
   modelValue: boolean,
-  persistent?: boolean
+  persistent?: boolean,
 }>(), { 
   position: 'center',
+  maximized: false,
   persistent: false
 })
 const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
@@ -91,10 +94,12 @@ const onClose = (e: Event) => {
 
 watch(modelValue, value => {
   const className = dialogAnimation[position.value][value ? 0 : 1]
+  const { classList } = document.body
 
   if (value) {
     nextTick(() => {
       slotContainerRef.value!.classList.add(className)
+      classList.add('overflow-hidden')
 
       setTimeout(() => {
         slotContainerRef.value!.classList.remove(className)
@@ -102,6 +107,7 @@ watch(modelValue, value => {
     })
   } else {
     slotContainerRef.value!.classList.add(className)
+    classList.remove('overflow-hidden')
   }
 })
 </script>

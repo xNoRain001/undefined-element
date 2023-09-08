@@ -58,7 +58,7 @@ Input 组件由原生 input 标签和包裹它的容器组成，为了在容器�
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -85,7 +85,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -119,7 +119,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -148,7 +148,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -184,7 +184,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -214,7 +214,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -251,7 +251,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -278,7 +278,7 @@ const value = ref('readonly text')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -312,7 +312,7 @@ const value = ref('readonly text')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -338,7 +338,7 @@ const value = ref('This is disabled input')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -373,7 +373,7 @@ const value = ref('This is disabled input')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -408,7 +408,7 @@ const value = ref('This is clearable input')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -454,7 +454,7 @@ const value = ref('This is clearable input')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -482,7 +482,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -519,7 +519,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 
@@ -557,7 +557,7 @@ const value = ref('')
 <template>
   <div class="my-[16px]">
     <u-input
-      class="
+      containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
         before:border-solid before:border 
         before:border-[--primary-border-color] 

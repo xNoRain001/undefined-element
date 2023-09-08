@@ -34,7 +34,7 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw">
     <u-expansion 
       v-model="expanded"
     >
@@ -105,7 +105,7 @@ const expanded = reactive(['1'])
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw">
     <u-expansion 
       v-model="expanded"
     >
@@ -185,7 +185,7 @@ const expanded = reactive(['1'])
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw">
     <u-expansion 
       v-model="expanded"
       :min="1"
@@ -283,7 +283,7 @@ const expanded = reactive<string[]>(['1'])
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw">
     <u-expansion 
       v-model="expanded"
       :min="1"
@@ -390,7 +390,7 @@ const expanded = reactive<string[]>(['1'])
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw">
     <u-expansion 
       v-model="expanded"
       :max="1"
@@ -398,7 +398,7 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="1" 
         class="
-          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[--primary-border-color] 
         "
       >
         <template #default="{ expanded }">
@@ -424,7 +424,7 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="2" 
         class="
-          border border-x-0 border-b-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-b-0 border-solid border-[--primary-border-color]
         "
       >
         <template #default="{ expanded }">
@@ -450,7 +450,7 @@ const expanded = reactive<string[]>(['1'])
       <u-expansion-item 
         name="3" 
         class="
-          border border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[--primary-border-color]
         "
       >
         <template #default="{ expanded }">
@@ -488,7 +488,7 @@ const expanded = reactive<string[]>([])
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw">
     <u-expansion 
       v-model="expanded"
       :max="1"
@@ -496,7 +496,7 @@ const expanded = reactive<string[]>([])
       <u-expansion-item 
         name="1" 
         class="
-          border border-x-0 border-b-0 border-solid border-[#dcdfe6] 
+          border border-x-0 border-b-0 border-solid border-[--primary-border-color] 
         "
       >
         <template #default="{ expanded }">
@@ -522,7 +522,7 @@ const expanded = reactive<string[]>([])
       <u-expansion-item 
         name="2" 
         class="
-          border border-x-0 border-b-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-b-0 border-solid border-[--primary-border-color]
         "
       >
         <template #default="{ expanded }">
@@ -548,7 +548,7 @@ const expanded = reactive<string[]>([])
       <u-expansion-item 
         name="3" 
         class="
-          border border-x-0 border-solid border-[#dcdfe6]
+          border border-x-0 border-solid border-[--primary-border-color]
         "
       >
         <template #default="{ expanded }">

@@ -717,14 +717,6 @@ video {
   resize: both;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
-.content-stretch {
-  align-content: stretch;
-}
-
 .items-center {
   align-items: center;
 }
@@ -735,6 +727,10 @@ video {
 
 .overflow-auto {
   overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .overflow-y-hidden {

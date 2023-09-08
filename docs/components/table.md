@@ -20,17 +20,16 @@ import FixedColumn from '../examples/table/04.fixed-column.vue'
     <u-table 
       :header="header" 
       :body="body"
+      headerTrClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0
+      "
       bodyTrClass="
-        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
-      thClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
-      tdClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
-      "
-      class="w-full border-separate border-spacing-0"
+      thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
+      tdClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
     >
       <template #th-inner="{ label }">
         {{ label }}
@@ -194,17 +193,16 @@ const body = reactive([
     <u-table 
       :header="header" 
       :body="body"
+      headerTrClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0
+      "
       bodyTrClass="
-        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
-      thClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
-      tdClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
-      "
-      class="w-full border-separate border-spacing-0"
+      thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
+      tdClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
     >
       <template #th-inner="{ label }">
         {{ label }}
@@ -378,16 +376,17 @@ const body = reactive([
       :header="header" 
       :body="body"
       bodyTrClass="
-        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
+        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
+      "
       thClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border border-solid border-[--primary-border-color]
       "
       tdClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border border-solid border-[--primary-border-color] border-l-0
+        border-t-0 first:border-l
       "
-      class="w-full border-separate border-spacing-0"
     >
       <template #th-inner="{ label }">
         {{ label }}
@@ -552,16 +551,17 @@ const body = reactive([
       :header="header" 
       :body="body"
       bodyTrClass="
-        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
+        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
+      "
       thClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border border-solid border-[--primary-border-color]
       "
       tdClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border border-solid border-[--primary-border-color] border-l-0
+        border-t-0 first:border-l
       "
-      class="w-full border-separate border-spacing-0"
     >
       <template #th-inner="{ label }">
         {{ label }}
@@ -732,16 +732,16 @@ const body = reactive([
     <u-table 
       :header="header" 
       :body="body"
-      bodyTrClass="hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
-      thClass="
+      headerTrClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0
       "
-      tdClass="
+      bodyTrClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
-      class="w-full border-separate border-spacing-0"
+      thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
+      tdClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
     >
       <template #th-inner="{ label, sortable, descending }">
         <div class="flex items-center group cursor-pointer">
@@ -922,16 +922,16 @@ const body = reactive([
     <u-table 
       :header="header" 
       :body="body"
-      bodyTrClass="hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors"
-      thClass="
+      headerTrClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0
       "
-      tdClass="
+      bodyTrClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
-      class="w-full border-separate border-spacing-0"
+      thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
+      tdClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
     >
       <template #th-inner="{ label, sortable, descending }">
         <div class="flex items-center group cursor-pointer">
@@ -1119,19 +1119,17 @@ const body = reactive([
     <u-table 
       :header="header" 
       :body="body"
+      headerTrClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0
+      "
       bodyTrClass="
-        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
-      "
-      thClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
-      tdClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
-      "
+      thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
+      tdClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
       headerClass="sticky top-0 bg-white"
-      tableClass="w-full border-separate border-spacing-0"
       class="h-[300px] overflow-scroll relative"
     >
       <template #th-inner="{ label }">
@@ -1297,19 +1295,17 @@ const body = reactive([
     <u-table 
       :header="header" 
       :body="body"
+      headerTrClass="
+        border border-solid border-[--primary-border-color] border-x-0 
+        border-t-0
+      "
       bodyTrClass="
-        hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
-      "
-      thClass="
         border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
+        border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
-      tdClass="
-        border border-solid border-[--primary-border-color] border-x-0 
-        border-t-0 px-[7px] py-[16px] h-[48px] text-[13px] text-center
-      "
+      thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
+      tdClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"
       headerClass="sticky top-0 bg-white"
-      tableClass="w-full border-separate border-spacing-0"
       class="h-[300px] overflow-scroll relative"
     >
       <template #th-inner="{ label }">

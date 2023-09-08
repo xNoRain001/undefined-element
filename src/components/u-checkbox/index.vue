@@ -1,6 +1,7 @@
 <template>
   <div 
-    class="u-checkbox cursor-pointer inline-flex items-center" 
+    class="u-checkbox inline-flex items-center" 
+    :class="disabled ? 'cursor-not-allowed' : 'cursor-pointer'"
     @click="updateModel"
   >
     <slot name="before" :checked="checked"></slot>

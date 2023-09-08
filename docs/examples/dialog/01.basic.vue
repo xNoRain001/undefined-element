@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center flex-wrap -m-[4px]">
+  <div class="vp-raw flex items-center flex-wrap -m-[4px]">
     <button @click="updateVisible1" class="btn m-[4px]">Top</button>
     <button @click="updateVisible2" class="btn m-[4px]">Right</button>
     <button @click="updateVisible3" class="btn m-[4px]">Bottom</button>
@@ -8,7 +8,7 @@
   </div>
 
   <u-dialog v-model="visible1" position="top">
-    <div class="w-[560px] bg-white p-[24px]">
+    <div class="w-[500px] bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Top</div>
         <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible1"></u-icon>

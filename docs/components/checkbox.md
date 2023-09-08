@@ -40,18 +40,18 @@ Checkbox 组件是用户输入的一个基本元素，你可以使用它为用�
 ::: code-group
 ```vue [template]
 <template>
-  <u-checkbox v-model="value">
-    <template #default="{ checked }">
-      <div 
-        class="
-          w-[20px] h-[20px] border-[2px] border-solid
-          border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-          items-center hover:border-red-500 duration-300 transition-colors
-          mr-[8px]
-        "
-        :class="checked ? 'bg-red-500 border-red-500' : ''"
-      >
-        <Transition>
+  <div class="vp-raw flex items-center my-[16px]">
+    <u-checkbox v-model="value">
+      <template #default="{ checked }">
+        <div 
+          class="
+            w-[20px] h-[20px] border-[2px] border-solid
+            border-gray-500 rounded-[2px] flex justify-center
+            items-center hover:border-red-500 duration-300 transition-colors
+            mr-[8px]
+          "
+          :class="checked ? 'bg-red-500 border-red-500' : ''"
+        >
           <u-icon 
             v-if="checked" 
             :def="matDone"
@@ -59,58 +59,55 @@ Checkbox 组件是用户输入的一个基本元素，你可以使用它为用�
             width="16" 
             height="16"
           ></u-icon>
-        </Transition>
-      </div>
-    </template>
+        </div>
+      </template>
 
-    <template #after>
-      <span>label</span>
-    </template>
-  </u-checkbox>
+      <template #after>
+        <span>red</span>
+      </template>
+    </u-checkbox>
 
-  <u-checkbox 
-    class="ml-[16px]"
-    v-model="value" 
-  >
-    <template #default="{ checked }">
-      <div 
-        class="
-          w-[20px] h-[20px] border-[2px] border-solid rounded-full
-          border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-          items-center hover:border-green-500 duration-300 transition-colors
-          mr-[8px]
-        "
-        :class="checked ? 'border-green-500' : ''"
-      >
-        <Transition>
+    <u-checkbox 
+      class="ml-[16px]"
+      v-model="value" 
+    >
+      <template #default="{ checked }">
+        <div 
+          class="
+            w-[20px] h-[20px] border-[2px] border-solid rounded-full
+            border-gray-500 flex justify-center
+            items-center hover:border-green-500 duration-300 transition-colors
+            mr-[8px]
+          "
+          :class="checked ? 'border-green-500' : ''"
+        >
           <div 
             v-if="checked" 
             class="w-[10px] h-[10px] bg-green-500 rounded-full"
           ></div>
-        </Transition>
-      </div>
-    </template>
+        </div>
+      </template>
 
-    <template #after>
-      <span>label</span>
-    </template>
-  </u-checkbox>
+      <template #after>
+        <span>green</span>
+      </template>
+    </u-checkbox>
 
-  <u-checkbox 
-    class="ml-[16px]"
-    v-model="value" 
-  >
-    <template #default="{ checked }">
-      <div 
-        class="
-          w-[20px] h-[20px] border-[2px] border-solid rounded-full
-          border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-          items-center hover:border-blue-500 duration-300 transition-[all]
-          mr-[8px]
-        "
-        :class="checked ? 'bg-blue-500 border-blue-500' : ''"
-      >
-        <Transition name="u-animate-opacity">
+    <u-checkbox 
+      class="ml-[16px]"
+      v-model="value" 
+    >
+      <template #default="{ checked }">
+        <div 
+          class="
+            w-[20px] h-[20px] border-[2px] border-solid rounded-full
+            border-gray-500 flex justify-center
+            items-center hover:border-blue-500 duration-300
+            transition-colors
+            mr-[8px]
+          "
+          :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
+        >
           <u-icon 
             v-if="checked" 
             :def="matDone"
@@ -118,14 +115,14 @@ Checkbox 组件是用户输入的一个基本元素，你可以使用它为用�
             width="16" 
             height="16"
           ></u-icon>
-        </Transition>
-      </div>
-    </template>
+        </div>
+      </template>
 
-    <template #after>
-      <span>label</span>
-    </template>
-  </u-checkbox>
+      <template #after>
+        <span>blue</span>
+      </template>
+    </u-checkbox>
+  </div>
 </template>
 ```
 
@@ -140,18 +137,18 @@ const value =ref(false)
 
 ```vue [all]
 <template>
-  <u-checkbox v-model="value">
-    <template #default="{ checked }">
-      <div 
-        class="
-          w-[20px] h-[20px] border-[2px] border-solid
-          border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-          items-center hover:border-red-500 duration-300 transition-colors
-          mr-[8px]
-        "
-        :class="checked ? 'bg-red-500 border-red-500' : ''"
-      >
-        <Transition>
+  <div class="vp-raw flex items-center my-[16px]">
+    <u-checkbox v-model="value">
+      <template #default="{ checked }">
+        <div 
+          class="
+            w-[20px] h-[20px] border-[2px] border-solid
+            border-gray-500 rounded-[2px] flex justify-center
+            items-center hover:border-red-500 duration-300 transition-colors
+            mr-[8px]
+          "
+          :class="checked ? 'bg-red-500 border-red-500' : ''"
+        >
           <u-icon 
             v-if="checked" 
             :def="matDone"
@@ -159,58 +156,55 @@ const value =ref(false)
             width="16" 
             height="16"
           ></u-icon>
-        </Transition>
-      </div>
-    </template>
+        </div>
+      </template>
 
-    <template #after>
-      <span>label</span>
-    </template>
-  </u-checkbox>
+      <template #after>
+        <span>red</span>
+      </template>
+    </u-checkbox>
 
-  <u-checkbox 
-    class="ml-[16px]"
-    v-model="value" 
-  >
-    <template #default="{ checked }">
-      <div 
-        class="
-          w-[20px] h-[20px] border-[2px] border-solid rounded-full
-          border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-          items-center hover:border-green-500 duration-300 transition-colors
-          mr-[8px]
-        "
-        :class="checked ? 'border-green-500' : ''"
-      >
-        <Transition>
+    <u-checkbox 
+      class="ml-[16px]"
+      v-model="value" 
+    >
+      <template #default="{ checked }">
+        <div 
+          class="
+            w-[20px] h-[20px] border-[2px] border-solid rounded-full
+            border-gray-500 flex justify-center
+            items-center hover:border-green-500 duration-300 transition-colors
+            mr-[8px]
+          "
+          :class="checked ? 'border-green-500' : ''"
+        >
           <div 
             v-if="checked" 
             class="w-[10px] h-[10px] bg-green-500 rounded-full"
           ></div>
-        </Transition>
-      </div>
-    </template>
+        </div>
+      </template>
 
-    <template #after>
-      <span>label</span>
-    </template>
-  </u-checkbox>
+      <template #after>
+        <span>green</span>
+      </template>
+    </u-checkbox>
 
-  <u-checkbox 
-    class="ml-[16px]"
-    v-model="value" 
-  >
-    <template #default="{ checked }">
-      <div 
-        class="
-          w-[20px] h-[20px] border-[2px] border-solid rounded-full
-          border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-          items-center hover:border-blue-500 duration-300 transition-[all]
-          mr-[8px]
-        "
-        :class="checked ? 'bg-blue-500 border-blue-500' : ''"
-      >
-        <Transition name="u-animate-opacity">
+    <u-checkbox 
+      class="ml-[16px]"
+      v-model="value" 
+    >
+      <template #default="{ checked }">
+        <div 
+          class="
+            w-[20px] h-[20px] border-[2px] border-solid rounded-full
+            border-gray-500 flex justify-center
+            items-center hover:border-blue-500 duration-300
+            transition-colors
+            mr-[8px]
+          "
+          :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
+        >
           <u-icon 
             v-if="checked" 
             :def="matDone"
@@ -218,14 +212,14 @@ const value =ref(false)
             width="16" 
             height="16"
           ></u-icon>
-        </Transition>
-      </div>
-    </template>
+        </div>
+      </template>
 
-    <template #after>
-      <span>label</span>
-    </template>
-  </u-checkbox>
+      <template #after>
+        <span>blue</span>
+      </template>
+    </u-checkbox>
+  </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -251,7 +245,7 @@ const value =ref(false)
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw flex items-center my-[16px]">
     <u-checkbox-group 
       v-model="selection"
       class="flex items-center"
@@ -261,20 +255,18 @@ const value =ref(false)
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-red-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-red-500 border-red-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon 
-                v-if="checked" 
-                :def="matDone"
-                color="white" 
-                width="16" 
-                height="16"
-              ></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone"
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -284,20 +276,18 @@ const value =ref(false)
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon 
-                v-if="checked" 
-                :def="matDone"
-                color="white" 
-                width="16" 
-                height="16"
-              ></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone"
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -307,27 +297,25 @@ const value =ref(false)
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-blue-500 duration-300 transition-colors
             "
-            :class="checked ? 'bg-blue-500 border-blue-500' : ''"
+            :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon 
-                v-if="checked" 
-                :def="matDone"
-                color="white" 
-                width="16" 
-                height="16"
-              ></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone"
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
     </u-checkbox-group>
-
-    <div class="mt-[16px]">checked: {{ selection }}</div>
   </div>
+
+  <div class="my-[16px]">checked: {{ selection }}</div>
 </template>
 ```
 
@@ -342,7 +330,7 @@ const selection = reactive<any[]>([])
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw flex items-center my-[16px]">
     <u-checkbox-group 
       v-model="selection"
       class="flex items-center"
@@ -352,20 +340,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-red-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-red-500 border-red-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon 
-                v-if="checked" 
-                :def="matDone"
-                color="white" 
-                width="16" 
-                height="16"
-              ></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone"
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -375,20 +361,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon 
-                v-if="checked" 
-                :def="matDone"
-                color="white" 
-                width="16" 
-                height="16"
-              ></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone"
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -398,27 +382,25 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-blue-500 duration-300 transition-colors
             "
-            :class="checked ? 'bg-blue-500 border-blue-500' : ''"
+            :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon 
-                v-if="checked" 
-                :def="matDone"
-                color="white" 
-                width="16" 
-                height="16"
-              ></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone"
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
     </u-checkbox-group>
-
-    <div class="mt-[16px]">checked: {{ selection }}</div>
   </div>
+
+  <div class="my-[16px]">checked: {{ selection }}</div>
 </template>
 <script lang="ts" setup>
 import { matDone } from 'undefined-element-icons/src/material-icons/filled'
@@ -442,24 +424,33 @@ const selection = reactive<any[]>([])
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw flex items-center my-[16px]">
     <u-checkbox-group 
       v-model="selection"
       class="flex items-center"
     >
-      <u-checkbox value="red" disabled>
+      <u-checkbox value="red" disabled class="opacity-30">
         <template #default="{ checked }">
-          <div 
+          <div
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-              items-center duration-300 transition-colors cursor-not-allowed
+              border-gray-500 rounded-[2px] flex justify-center
+              items-center duration-300 transition-colors
+              mr-[8px] 
             "
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
+        </template>
+
+        <template #after>
+          <span>disabled</span>
         </template>
       </u-checkbox>
 
@@ -468,14 +459,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -485,21 +480,25 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-blue-500 duration-300 transition-colors
             "
-            :class="checked ? 'bg-blue-500 border-blue-500' : ''"
+            :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
     </u-checkbox-group>
-
-    <div class="mt-[16px]">checked: {{ selection }}</div>
   </div>
+
+  <div class="my-[16px]">checked: {{ selection }}</div>
 </template>
 ```
 
@@ -514,24 +513,33 @@ const selection = reactive<any[]>([])
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw flex items-center my-[16px]">
     <u-checkbox-group 
       v-model="selection"
       class="flex items-center"
     >
-      <u-checkbox value="red" disabled>
+      <u-checkbox value="red" disabled class="opacity-30">
         <template #default="{ checked }">
-          <div 
+          <div
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
-              items-center duration-300 transition-colors cursor-not-allowed
+              border-gray-500 rounded-[2px] flex justify-center
+              items-center duration-300 transition-colors
+              mr-[8px] 
             "
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
+        </template>
+
+        <template #after>
+          <span>disabled</span>
         </template>
       </u-checkbox>
 
@@ -540,14 +548,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -557,21 +569,25 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-blue-500 duration-300 transition-colors
             "
-            :class="checked ? 'bg-blue-500 border-blue-500' : ''"
+            :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
     </u-checkbox-group>
-
-    <div class="mt-[16px]">checked: {{ selection }}</div>
   </div>
+
+  <div class="my-[16px]">checked: {{ selection }}</div>
 </template>
 <script lang="ts" setup>
 import { matDone } from 'undefined-element-icons/src/material-icons/filled'
@@ -595,7 +611,7 @@ const selection = reactive<any[]>([])
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw flex items-center my-[16px]">
     <u-checkbox-group 
       v-model="selection"
       class="flex items-center"
@@ -607,14 +623,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-red-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-red-500 border-red-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -624,14 +644,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -641,21 +665,25 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-blue-500 duration-300 transition-colors
             "
-            :class="checked ? 'bg-blue-500 border-blue-500' : ''"
+            :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
     </u-checkbox-group>
-
-    <div class="mt-[16px]">checked: {{ selection }}</div>
   </div>
+
+  <div class="my-[16px]">checked: {{ selection }}</div>
 </template>
 ```
 
@@ -670,7 +698,7 @@ const selection = reactive<any[]>([])
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw flex items-center my-[16px]">
     <u-checkbox-group 
       v-model="selection"
       class="flex items-center"
@@ -682,14 +710,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-red-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-red-500 border-red-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -699,14 +731,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -716,21 +752,25 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-blue-500 duration-300 transition-colors
             "
-            :class="checked ? 'bg-blue-500 border-blue-500' : ''"
+            :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
     </u-checkbox-group>
-
-    <div class="mt-[16px]">checked: {{ selection }}</div>
   </div>
+
+  <div class="my-[16px]">checked: {{ selection }}</div>
 </template>
 <script lang="ts" setup>
 import { matDone } from 'undefined-element-icons/src/material-icons/filled';
@@ -746,8 +786,7 @@ const selection = reactive<any[]>([])
 
 ## 自动淘汰
 
-该属性需要和复选框组的 max 属性配合使用，当选中的数量将超过最大限制时，自动移除此前最早选中
-的那个复选框。
+该属性需要和复选框组的 max 属性配合使用，当选中的数量将超过最大限制时，自动移除此前最早选中的那个复选框。如果开启了自动淘汰并且将 max 设置为 1 ，就变成了单选框。
 
 <!-- component -->
 <Race></Race>
@@ -755,7 +794,7 @@ const selection = reactive<any[]>([])
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw flex items-center my-[16px]">
     <u-checkbox-group 
       v-model="selection"
       class="flex items-center"
@@ -767,14 +806,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-red-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-red-500 border-red-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -784,14 +827,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -801,21 +848,25 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-blue-500 duration-300 transition-colors
             "
-            :class="checked ? 'bg-blue-500 border-blue-500' : ''"
+            :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
     </u-checkbox-group>
-
-    <div class="mt-[16px]">checked: {{ selection }}</div>
   </div>
+
+  <div class="my-[16px]">checked: {{ selection }}</div>
 </template>
 ```
 
@@ -830,7 +881,7 @@ const selection = reactive<any[]>([])
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw flex items-center my-[16px]">
     <u-checkbox-group 
       v-model="selection"
       class="flex items-center"
@@ -842,14 +893,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-red-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-red-500 border-red-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -859,14 +914,18 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-green-500 duration-300 transition-colors
             "
             :class="checked ? 'bg-green-500 border-green-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
@@ -876,21 +935,25 @@ const selection = reactive<any[]>([])
           <div 
             class="
               w-[20px] h-[20px] border-[2px] border-solid 
-              border-[rgba(0,0,0,.54)] rounded-[2px] flex justify-center
+              border-gray-500 rounded-[2px] flex justify-center
               items-center hover:border-blue-500 duration-300 transition-colors
             "
-            :class="checked ? 'bg-blue-500 border-blue-500' : ''"
+            :class="checked ? 'bg-blue-500 !border-blue-500' : ''"
           >
-            <Transition name="u-animate-opacity">
-              <u-icon v-if="checked" :def="matDone" color="white" width="16" height="16"></u-icon>
-            </Transition>
+            <u-icon 
+              v-if="checked" 
+              :def="matDone" 
+              color="white" 
+              width="16" 
+              height="16"
+            ></u-icon>
           </div>
         </template>
       </u-checkbox>
     </u-checkbox-group>
-
-    <div class="mt-[16px]">checked: {{ selection }}</div>
   </div>
+
+  <div class="my-[16px]">checked: {{ selection }}</div>
 </template>
 <script lang="ts" setup>
 import { matDone } from 'undefined-element-icons/src/material-icons/filled';
