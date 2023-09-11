@@ -657,6 +657,10 @@ video {
   height: 100vh;
 }
 
+.h-\[2px\] {
+  height: 2px;
+}
+
 .w-\[6px\] {
   width: 6px;
 }
@@ -759,6 +763,10 @@ video {
 
 .bg-transparent {
   background-color: transparent;
+}
+
+.bg-\[--primary-color\] {
+  background-color: var(--primary-color);
 }
 
 .opacity-0 {

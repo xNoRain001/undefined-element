@@ -1,9 +1,5 @@
 <template>
-  <div 
-    class="u-tab-panels" 
-    :style="panelStyle"
-    :class="panelClass"
-  >
+  <div class="u-tab-panels">
     <slot></slot>
   </div>
 </template>
@@ -13,15 +9,8 @@ import { toRefs, provide } from 'vue'
 
 import { panelsKey } from '../../const/keys'
 
-const props = withDefaults(defineProps<{
-  modelValue: string,
-  panelStyle?: { [propName: string]: string | number }
-  panelClass?: string
-}>(), {
-  panelStyle: () => ({}),
-  panelClass: ''
-})
-const { modelValue, panelStyle, panelClass } = toRefs(props)
+const props = defineProps<{ modelValue: string }>()
+const { modelValue } = toRefs(props)
 
 provide(panelsKey, modelValue)
 </script>

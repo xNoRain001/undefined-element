@@ -1,8 +1,5 @@
 <template>
-  <div 
-    class="u-tabs"
-    :style="style"
-  >
+  <div ref="tabsRef" class="u-tabs">
     <slot></slot>
   </div>
 </template>
@@ -12,33 +9,14 @@ import { toRefs, provide } from 'vue'
 
 import { tabsKey } from '../../const/keys'
 
-const props = withDefaults(defineProps<{
-  style?: { [propName: string]: string | number },
-  tabStyle?: { [propName: string]: string | number },
-  tabClass?: string,
-  modelValue: string,
-  activeTabClass?: string
-}>(), {
-  style: () => ({}),
-  tabStyle: () => ({}),
-  tabClass: '',
-  activeTabClass: ''
-})
+const props = defineProps<{ modelValue: string }>()
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
-const { 
-  style, 
-  tabStyle, 
-  tabClass, 
-  modelValue, 
-  activeTabClass 
-} = toRefs(props)
+const { modelValue } = toRefs(props)
+
 const updateModel = (name: string) => emit('update:modelValue', name)
 
 provide(tabsKey, {
-  tabStyle,
-  tabClass,
   modelValue,
-  updateModel,
-  activeTabClass
+  updateModel
 })
 </script>
