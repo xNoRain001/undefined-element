@@ -1,6 +1,6 @@
 {
   "name": "undefined-element",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "undefined element",
   "author": "xnorain001",
   "main": "./dist/index.min.js",
@@ -12,7 +12,9 @@
   "keywords": [
     "vue",
     "component-library",
-    "undefined-element"
+    "undefined-element",
+    "js",
+    "atomic-css"
   ],
   "scripts": {
     "docs:dev": "vitepress dev docs",

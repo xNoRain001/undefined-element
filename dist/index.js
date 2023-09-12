@@ -1,4 +1,4 @@
-import { defineComponent, useAttrs, computed, inject, openBlock, createElementBlock, normalizeClass, normalizeStyle, unref, renderSlot, toRefs, provide, Fragment, renderList, ref, onMounted, createElementVNode, withModifiers, createTextVNode, toDisplayString, watch, nextTick, createBlock, Teleport, createVNode, Transition, withCtx, createCommentVNode, resolveComponent, reactive } from 'vue';
+import { defineComponent, useAttrs, computed, inject, openBlock, createElementBlock, renderSlot, toRefs, ref, provide, onMounted, createElementVNode, normalizeClass, unref, Fragment, renderList, normalizeStyle, withModifiers, watch, nextTick, createBlock, Teleport, createVNode, Transition, withCtx, createCommentVNode, resolveComponent, reactive } from 'vue';
 
 var tabsKey = Symbol();
 var panelsKey = Symbol();
@@ -6,31 +6,29 @@ var skeletonKey = Symbol();
 var expansionKey = Symbol();
 var checkboxGroupKey = Symbol();
 
+var _hoisted_1$d = ["data-active"];
 var script$o = /*#__PURE__*/ defineComponent({
     __name: 'index',
     setup: function (__props) {
         var name = useAttrs().name;
         var actived = computed(function () { return name === modelValue.value; });
         // TODO: declare better type
-        var _a = inject(tabsKey), tabStyle = _a.tabStyle, tabClass = _a.tabClass, modelValue = _a.modelValue, updateModel = _a.updateModel, activeTabClass = _a.activeTabClass;
-        var updateActiveTab = function () {
-            if (name === actived.value) {
+        var _a = inject(tabsKey), modelValue = _a.modelValue, updateModel = _a.updateModel, updateIndicatorStyle = _a.updateIndicatorStyle;
+        var onClick = function (e) {
+            if (actived.value) {
                 return;
             }
+            updateIndicatorStyle(e.currentTarget);
             updateModel(name);
         };
-        var _tabClass = computed(function () {
-            return "".concat(tabClass.value).concat(actived.value ? " ".concat(activeTabClass.value) : '');
-        });
         return function (_ctx, _cache) {
             return (openBlock(), createElementBlock("div", {
-                tabindex: "-1",
-                onClick: updateActiveTab,
-                class: normalizeClass(["u-tab cursor-pointer", _tabClass.value]),
-                style: normalizeStyle(unref(tabStyle))
+                onClick: onClick,
+                class: "u-tab cursor-pointer",
+                "data-active": actived.value ? 'true' : 'false'
             }, [
                 renderSlot(_ctx.$slots, "default")
-            ], 6 /* CLASS, STYLE */));
+            ], 8 /* PROPS */, _hoisted_1$d));
         };
     }
 });
@@ -40,40 +38,50 @@ script$o.__file = "src/components/u-tab/index.vue";
 var script$n = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
-        style: { type: Object, required: false, default: function () { return ({}); } },
-        class: { type: String, required: false, default: '' },
-        tabStyle: { type: Object, required: false, default: function () { return ({}); } },
-        tabClass: { type: String, required: false, default: '' },
         modelValue: { type: String, required: true },
-        activeTabClass: { type: String, required: false, default: '' }
+        indicatorClass: { type: String, required: false, default: '' }
     },
     emits: ["update:modelValue"],
     setup: function (__props, _a) {
         var emit = _a.emit;
         var props = __props;
-        var _b = toRefs(props), style = _b.style, tabsClass = _b.class, tabStyle = _b.tabStyle, tabClass = _b.tabClass, modelValue = _b.modelValue, activeTabClass = _b.activeTabClass;
+        var _b = toRefs(props), modelValue = _b.modelValue, indicatorClass = _b.indicatorClass;
+        var tabsRef = ref(null);
+        var indicatorRef = ref(null);
         var updateModel = function (name) { return emit('update:modelValue', name); };
+        var updateIndicatorStyle = function (tab) {
+            var _a = tab.getBoundingClientRect(), left = _a.left, width = _a.width;
+            var offset = left - tabsRef.value.getBoundingClientRect().left;
+            indicatorRef.value.style.cssText = "\n    width: ".concat(width, "px; \n    transform: translateX(").concat(offset, "px);\n  ");
+        };
         provide(tabsKey, {
-            tabStyle: tabStyle,
-            tabClass: tabClass,
             modelValue: modelValue,
             updateModel: updateModel,
-            activeTabClass: activeTabClass
+            updateIndicatorStyle: updateIndicatorStyle
+        });
+        onMounted(function () {
+            updateIndicatorStyle(tabsRef.value.querySelector('div[data-active="true"]'));
         });
         return function (_ctx, _cache) {
             return (openBlock(), createElementBlock("div", {
-                class: normalizeClass(["u-tabs", unref(tabsClass)]),
-                style: normalizeStyle(unref(style))
+                ref_key: "tabsRef",
+                ref: tabsRef,
+                class: "u-tabs relative"
             }, [
-                renderSlot(_ctx.$slots, "default")
-            ], 6 /* CLASS, STYLE */));
+                renderSlot(_ctx.$slots, "default"),
+                createElementVNode("div", {
+                    ref_key: "indicatorRef",
+                    ref: indicatorRef,
+                    class: normalizeClass(["u-tabs-indicator absolute bottom-0 transition-[width_transform] duration-[--u-transition-duration]", unref(indicatorClass)])
+                }, null, 2 /* CLASS */)
+            ], 512 /* NEED_PATCH */));
         };
     }
 });
 
 script$n.__file = "src/components/u-tabs/index.vue";
 
-var _hoisted_1$b = ["width", "height", "fill"];
+var _hoisted_1$c = ["width", "height", "fill"];
 var _hoisted_2$4 = ["d", "transform"];
 var script$m = /*#__PURE__*/ defineComponent({
     __name: 'index',
@@ -135,7 +143,7 @@ var script$m = /*#__PURE__*/ defineComponent({
                         transform: transform
                     }, null, 12 /* STYLE, PROPS */, _hoisted_2$4));
                 }), 256 /* UNKEYED_FRAGMENT */))
-            ], 8 /* PROPS */, _hoisted_1$b));
+            ], 8 /* PROPS */, _hoisted_1$c));
         };
     }
 });
@@ -285,12 +293,11 @@ var debounce = function (fn, wait, immediate) {
     return _debounce;
 };
 
-var _hoisted_1$a = ["autofocus", "readonly", "disabled", "placeholder", "value", "type"];
+var _hoisted_1$b = ["autofocus", "readonly", "disabled", "placeholder", "value", "type"];
 var script$l = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         type: { type: String, required: false, default: 'text' },
-        class: { type: String, required: false, default: '' },
         debounce: { type: Number, required: false, default: 0 },
         readonly: { type: Boolean, required: false, default: false },
         disabled: { type: Boolean, required: false, default: false },
@@ -298,13 +305,14 @@ var script$l = /*#__PURE__*/ defineComponent({
         modelValue: { type: String, required: true },
         inputClass: { type: String, required: false, default: '' },
         placeholder: { type: String, required: false, default: '' },
+        containerClass: { type: String, required: false, default: '' },
         focusedContainerClass: { type: String, required: false, default: '' }
     },
     emits: ["blur", "focus", "clear", "update:modelValue"],
     setup: function (__props, _a) {
         var emit = _a.emit;
         var props = __props;
-        var _b = toRefs(props), type = _b.type, className = _b.class, debounce$1 = _b.debounce, readonly = _b.readonly, disabled = _b.disabled, autofocus = _b.autofocus, modelValue = _b.modelValue, inputClass = _b.inputClass, placeholder = _b.placeholder, focusedContainerClass = _b.focusedContainerClass;
+        var _b = toRefs(props), type = _b.type, debounce$1 = _b.debounce, readonly = _b.readonly, disabled = _b.disabled, autofocus = _b.autofocus, modelValue = _b.modelValue, inputClass = _b.inputClass, placeholder = _b.placeholder, containerClass = _b.containerClass, focusedContainerClass = _b.focusedContainerClass;
         var visible = ref(false);
         var inputRef = ref(null);
         var wrapperRef = ref(null);
@@ -320,7 +328,7 @@ var script$l = /*#__PURE__*/ defineComponent({
                 !disabled.value &&
                 (focusedInput.value || focusedContainer.value);
         });
-        var containerClass = computed(function () { return "".concat(className.value).concat(disabled.value ? ' cursor-not-allowed' : '').concat(focused.value ? " ".concat(focusedContainerClass.value) : ''); });
+        var _containerClass = computed(function () { return "".concat(containerClass.value).concat(disabled.value ? ' cursor-not-allowed' : '').concat(focused.value ? " ".concat(focusedContainerClass.value) : ''); });
         var _inputClass = computed(function () { return "".concat(inputClass.value).concat(disabled.value ? ' cursor-not-allowed' : '').concat(readonly.value ? ' cursor-auto' : ''); });
         var foucsHelper = function () { return inputRef.value.focus(); };
         var onFocus = function () { return focusedContainer.value = true; };
@@ -377,7 +385,7 @@ var script$l = /*#__PURE__*/ defineComponent({
                 renderSlot(_ctx.$slots, "before"),
                 createElementVNode("div", {
                     tabindex: "-1",
-                    class: normalizeClass(["u-input-container flex items-center relative before:content-[''] before:absolute before:left-0 before:right-0 before:bottom-0 before:top-0 before:z-[-1] before:transition-colors before:duration-[--u-transition-duration]", containerClass.value]),
+                    class: normalizeClass(["u-input-container flex items-center relative before:content-[''] before:absolute before:left-0 before:right-0 before:bottom-0 before:top-0 before:z-[-1] before:transition-colors before:duration-[--u-transition-duration]", _containerClass.value]),
                     onClick: foucsHelper,
                     onFocus: onFocus,
                     onBlur: onBlur
@@ -413,7 +421,7 @@ var script$l = /*#__PURE__*/ defineComponent({
                         ref_key: "inputRef",
                         ref: inputRef,
                         type: _type.value
-                    }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$a),
+                    }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$b),
                     renderSlot(_ctx.$slots, "append", { visible: visible.value })
                 ], 34 /* CLASS, HYDRATE_EVENTS */),
                 renderSlot(_ctx.$slots, "after")
@@ -424,72 +432,85 @@ var script$l = /*#__PURE__*/ defineComponent({
 
 script$l.__file = "src/components/u-input/index.vue";
 
-var _hoisted_1$9 = ["onClick"];
+var _hoisted_1$a = ["onClick"];
 var script$k = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
-        head: { type: Array, required: true },
         body: { type: Array, required: true },
+        header: { type: Array, required: true },
         thClass: { type: String, required: false, default: '' },
         tdClass: { type: String, required: false, default: '' },
+        bodyClass: { type: String, required: false, default: '' },
         tableClass: { type: String, required: false, default: '' },
-        headTrClass: { type: String, required: false, default: '' },
-        bodyTrClass: { type: String, required: false, default: '' }
+        headerClass: { type: String, required: false, default: '' },
+        bodyTrClass: { type: String, required: false, default: '' },
+        headerTrClass: { type: String, required: false, default: '' }
     },
     setup: function (__props) {
         var props = __props;
-        var _a = toRefs(props), head = _a.head, body = _a.body, thClass = _a.thClass, tdClass = _a.tdClass, tableClass = _a.tableClass, headTrClass = _a.headTrClass, bodyTrClass = _a.bodyTrClass;
-        var _thClass = computed(function () { return "".concat(tdClass.value, " ").concat(thClass.value); });
-        var fields = computed(function () { return head.value.map(function (item) { return item.field; }); });
-        var onSort = function (field, sortable, sortOrder) {
+        var _a = toRefs(props), body = _a.body, header = _a.header, thClass = _a.thClass, tdClass = _a.tdClass, bodyClass = _a.bodyClass, tableClass = _a.tableClass, bodyTrClass = _a.bodyTrClass, headerTrClass = _a.headerTrClass;
+        var fields = computed(function () { return header.value.map(function (item) { return item.field; }); });
+        var onSort = function (field, sortable, descending) {
             if (!sortable) {
                 return;
             }
-            if (sortOrder === 'asc') {
-                body.value.sort(function (a, b) { return a[field] - b[field]; });
+            if (descending) {
+                body.value.sort(function (a, b) { return b[field] - a[field]; });
             }
             else {
-                body.value.sort(function (a, b) { return b[field] - a[field]; });
+                body.value.sort(function (a, b) { return a[field] - b[field]; });
             }
         };
         return function (_ctx, _cache) {
-            return (openBlock(), createElementBlock("table", {
-                class: normalizeClass(unref(tableClass))
-            }, [
-                createElementVNode("thead", null, [
-                    createElementVNode("tr", {
-                        class: normalizeClass(unref(headTrClass))
+            return (openBlock(), createElementBlock("div", null, [
+                createElementVNode("table", {
+                    class: normalizeClass(unref(tableClass))
+                }, [
+                    createElementVNode("thead", {
+                        class: normalizeClass(_ctx.headerClass)
                     }, [
-                        (openBlock(true), createElementBlock(Fragment, null, renderList(unref(head), function (_a) {
-                            var field = _a.field, label = _a.label; _a.thClass; var sortable = _a.sortable, sortOrder = _a.sortOrder;
-                            return (openBlock(), createElementBlock("th", {
-                                class: normalizeClass(_thClass.value),
-                                key: field,
-                                onClick: function ($event) { return (onSort(field, sortable, sortOrder)); }
-                            }, [
-                                createTextVNode(toDisplayString(label) + " ", 1 /* TEXT */),
-                                renderSlot(_ctx.$slots, "th", {
-                                    sortable: sortable,
-                                    label: label
-                                })
-                            ], 10 /* CLASS, PROPS */, _hoisted_1$9));
-                        }), 128 /* KEYED_FRAGMENT */))
-                    ], 2 /* CLASS */)
-                ]),
-                createElementVNode("tbody", null, [
-                    (openBlock(true), createElementBlock(Fragment, null, renderList(unref(body), function (item) {
-                        return (openBlock(), createElementBlock("tr", {
-                            class: normalizeClass(unref(bodyTrClass))
+                        createElementVNode("tr", {
+                            class: normalizeClass(unref(headerTrClass))
                         }, [
-                            (openBlock(true), createElementBlock(Fragment, null, renderList(fields.value, function (field) {
-                                return (openBlock(), createElementBlock("td", {
-                                    class: normalizeClass(unref(tdClass))
-                                }, toDisplayString(item[field]), 3 /* TEXT, CLASS */));
-                            }), 256 /* UNKEYED_FRAGMENT */))
-                        ], 2 /* CLASS */));
-                    }), 256 /* UNKEYED_FRAGMENT */))
-                ])
-            ], 2 /* CLASS */));
+                            (openBlock(true), createElementBlock(Fragment, null, renderList(unref(header), function (_a) {
+                                var field = _a.field, label = _a.label, sortable = _a.sortable, descending = _a.descending;
+                                return (openBlock(), createElementBlock("th", {
+                                    class: normalizeClass(unref(thClass)),
+                                    key: field,
+                                    onClick: function ($event) { return (onSort(field, sortable, descending)); }
+                                }, [
+                                    renderSlot(_ctx.$slots, "th-inner", {
+                                        sortable: sortable,
+                                        descending: descending,
+                                        field: field,
+                                        label: label
+                                    })
+                                ], 10 /* CLASS, PROPS */, _hoisted_1$a));
+                            }), 128 /* KEYED_FRAGMENT */))
+                        ], 2 /* CLASS */)
+                    ], 2 /* CLASS */),
+                    createElementVNode("tbody", {
+                        class: normalizeClass(unref(bodyClass))
+                    }, [
+                        (openBlock(true), createElementBlock(Fragment, null, renderList(unref(body), function (item) {
+                            return (openBlock(), createElementBlock("tr", {
+                                class: normalizeClass(unref(bodyTrClass))
+                            }, [
+                                (openBlock(true), createElementBlock(Fragment, null, renderList(fields.value, function (field) {
+                                    return (openBlock(), createElementBlock("td", {
+                                        class: normalizeClass(unref(tdClass))
+                                    }, [
+                                        renderSlot(_ctx.$slots, "td-inner", {
+                                            text: item[field],
+                                            field: field
+                                        })
+                                    ], 2 /* CLASS */));
+                                }), 256 /* UNKEYED_FRAGMENT */))
+                            ], 2 /* CLASS */));
+                        }), 256 /* UNKEYED_FRAGMENT */))
+                    ], 2 /* CLASS */)
+                ], 2 /* CLASS */)
+            ]));
         };
     }
 });
@@ -779,6 +800,7 @@ var script$i = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         position: { type: String, required: false, default: 'center' },
+        maximized: { type: Boolean, required: false, default: false },
         modelValue: { type: Boolean, required: true },
         persistent: { type: Boolean, required: false, default: false }
     },
@@ -825,9 +847,11 @@ var script$i = /*#__PURE__*/ defineComponent({
         };
         watch(modelValue, function (value) {
             var className = dialogAnimation[position.value][value ? 0 : 1];
+            var classList = document.body.classList;
             if (value) {
                 nextTick(function () {
                     slotContainerRef.value.classList.add(className);
+                    classList.add('overflow-hidden');
                     setTimeout(function () {
                         slotContainerRef.value.classList.remove(className);
                     }, 300);
@@ -835,6 +859,7 @@ var script$i = /*#__PURE__*/ defineComponent({
             }
             else {
                 slotContainerRef.value.classList.add(className);
+                classList.remove('overflow-hidden');
             }
         });
         return function (_ctx, _cache) {
@@ -1039,7 +1064,7 @@ var script$h = /*#__PURE__*/ defineComponent({
 
 script$h.__file = "src/components/u-slider/index.vue";
 
-var _hoisted_1$8 = ["data-index"];
+var _hoisted_1$9 = ["data-index"];
 var script$g = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
@@ -1112,7 +1137,7 @@ var script$g = /*#__PURE__*/ defineComponent({
                         style: normalizeStyle({ color: i <= unref(modelValue) ? unref(activeColor) : unref(color) })
                     }, [
                         renderSlot(_ctx.$slots, "default")
-                    ], 12 /* STYLE, PROPS */, _hoisted_1$8));
+                    ], 12 /* STYLE, PROPS */, _hoisted_1$9));
                 }), 128 /* KEYED_FRAGMENT */))
             ], 544 /* HYDRATE_EVENTS, NEED_PATCH */));
         };
@@ -1121,7 +1146,7 @@ var script$g = /*#__PURE__*/ defineComponent({
 
 script$g.__file = "src/components/u-rating/index.vue";
 
-var _hoisted_1$7 = ["readonly", "disabled", "placeholder", "value"];
+var _hoisted_1$8 = ["readonly", "disabled", "placeholder", "value"];
 var _hoisted_2$3 = ["onClick"];
 var script$f = /*#__PURE__*/ defineComponent({
     __name: 'index',
@@ -1244,7 +1269,7 @@ var script$f = /*#__PURE__*/ defineComponent({
                         ref: inputRef,
                         type: "text",
                         onMousedown: onMousedown
-                    }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$7),
+                    }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$8),
                     renderSlot(_ctx.$slots, "append", { expanded: expanded.value }),
                     createVNode(Transition, { name: "u-fade" }, {
                         default: withCtx(function () { return [
@@ -1465,23 +1490,19 @@ var script$b = /*#__PURE__*/ defineComponent({
     setup: function (__props) {
         var modelValue = inject(panelsKey);
         var name = useAttrs().name;
-        var panelStyle = computed(function () { return ({
-            display: name === modelValue.value ? 'block' : 'none'
-        }); });
         return function (_ctx, _cache) {
             return (openBlock(), createElementBlock("div", {
-                class: "u-tab-panel",
-                style: normalizeStyle(panelStyle.value)
+                class: normalizeClass(["u-tab-panel", unref(name) === unref(modelValue) ? 'block' : 'hidden'])
             }, [
                 renderSlot(_ctx.$slots, "default")
-            ], 4 /* STYLE */));
+            ], 2 /* CLASS */));
         };
     }
 });
 
 script$b.__file = "src/components/u-tab-panel/index.vue";
 
-var _hoisted_1$6 = { class: "u-skeleton" };
+var _hoisted_1$7 = { class: "u-skeleton" };
 var _hoisted_2$2 = { key: 0 };
 var _hoisted_3$1 = { key: 1 };
 var script$a = /*#__PURE__*/ defineComponent({
@@ -1495,7 +1516,7 @@ var script$a = /*#__PURE__*/ defineComponent({
         var _a = toRefs(props), animate = _a.animate, modelValue = _a.modelValue;
         provide(skeletonKey, animate);
         return function (_ctx, _cache) {
-            return (openBlock(), createElementBlock("div", _hoisted_1$6, [
+            return (openBlock(), createElementBlock("div", _hoisted_1$7, [
                 (unref(modelValue))
                     ? (openBlock(), createElementBlock("div", _hoisted_2$2, [
                         renderSlot(_ctx.$slots, "skeleton-items")
@@ -1700,20 +1721,20 @@ var script$7 = /*#__PURE__*/ defineComponent({
         };
         return function (_ctx, _cache) {
             return (openBlock(), createElementBlock("div", {
-                class: "u-checkbox cursor-pointer inline-flex items-center",
+                class: normalizeClass(["u-checkbox inline-flex items-center", unref(disabled) ? 'cursor-not-allowed' : 'cursor-pointer']),
                 onClick: updateModel
             }, [
                 renderSlot(_ctx.$slots, "before", { checked: checked.value }),
                 renderSlot(_ctx.$slots, "default", { checked: checked.value }),
                 renderSlot(_ctx.$slots, "after", { checked: checked.value })
-            ]));
+            ], 2 /* CLASS */));
         };
     }
 });
 
 script$7.__file = "src/components/u-checkbox/index.vue";
 
-var _hoisted_1$5 = { class: "u-expansion" };
+var _hoisted_1$6 = { class: "u-expansion" };
 var script$6 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
@@ -1743,7 +1764,7 @@ var script$6 = /*#__PURE__*/ defineComponent({
             updateModel: updateModel,
         });
         return function (_ctx, _cache) {
-            return (openBlock(), createElementBlock("div", _hoisted_1$5, [
+            return (openBlock(), createElementBlock("div", _hoisted_1$6, [
                 renderSlot(_ctx.$slots, "default")
             ]));
         };
@@ -1752,24 +1773,20 @@ var script$6 = /*#__PURE__*/ defineComponent({
 
 script$6.__file = "src/components/u-expansion/index.vue";
 
+var _hoisted_1$5 = { class: "u-tab-panels" };
 var script$5 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
-        modelValue: { type: String, required: true },
-        panelStyle: { type: Object, required: false, default: function () { return ({}); } },
-        panelClass: { type: String, required: false, default: '' }
+        modelValue: { type: String, required: true }
     },
     setup: function (__props) {
         var props = __props;
-        var _a = toRefs(props), modelValue = _a.modelValue, panelStyle = _a.panelStyle, panelClass = _a.panelClass;
+        var modelValue = toRefs(props).modelValue;
         provide(panelsKey, modelValue);
         return function (_ctx, _cache) {
-            return (openBlock(), createElementBlock("div", {
-                class: normalizeClass(["u-tab-panels", unref(panelClass)]),
-                style: normalizeStyle(unref(panelStyle))
-            }, [
+            return (openBlock(), createElementBlock("div", _hoisted_1$5, [
                 renderSlot(_ctx.$slots, "default")
-            ], 6 /* CLASS, STYLE */));
+            ]));
         };
     }
 });
