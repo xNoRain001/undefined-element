@@ -33,7 +33,7 @@ Dialog 组件可以向用户提供信息，或要求他们作出决定。
 ::: code-group
 ```vue [template]
 <template>
-  <div class="flex items-center flex-wrap -m-[4px]">
+  <div class="vp-raw flex items-center flex-wrap -m-[4px]">
     <button @click="updateVisible1" class="btn m-[4px]">Top</button>
     <button @click="updateVisible2" class="btn m-[4px]">Right</button>
     <button @click="updateVisible3" class="btn m-[4px]">Bottom</button>
@@ -42,7 +42,7 @@ Dialog 组件可以向用户提供信息，或要求他们作出决定。
   </div>
 
   <u-dialog v-model="visible1" position="top">
-    <div class="w-[560px] bg-white p-[24px]">
+    <div class="w-[500px] bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Top</div>
         <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible1"></u-icon>
@@ -139,7 +139,7 @@ const updateVisible5 = () => visible5.value = !visible5.value
 
 ```vue [all]
 <template>
-  <div class="flex items-center flex-wrap -m-[4px]">
+  <div class="vp-raw flex items-center flex-wrap -m-[4px]">
     <button @click="updateVisible1" class="btn m-[4px]">Top</button>
     <button @click="updateVisible2" class="btn m-[4px]">Right</button>
     <button @click="updateVisible3" class="btn m-[4px]">Bottom</button>
@@ -148,7 +148,7 @@ const updateVisible5 = () => visible5.value = !visible5.value
   </div>
 
   <u-dialog v-model="visible1" position="top">
-    <div class="w-[560px] bg-white p-[24px]">
+    <div class="w-[500px] bg-white p-[24px]">
       <div class="flex justify-between">
         <div class="text-[20px] font-semibold ">Top</div>
         <u-icon class="cursor-pointer" :def="matClose" @click="updateVisible1"></u-icon>

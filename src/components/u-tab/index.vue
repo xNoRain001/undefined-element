@@ -5,18 +5,11 @@
     :data-active="actived ? 'true' : 'false'"
   >
     <slot></slot>
-
-    <div 
-      class="
-        absolute left-0 right-0 bottom-0 h-[2px] bg-[--primary-color]
-      "
-      :class="indicatorClass"  
-    ></div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, computed, useAttrs } from 'vue'
+import { inject, computed, useAttrs, onMounted } from 'vue'
 
 import { tabsKey } from '../../const/keys'
 
@@ -27,37 +20,22 @@ const actived = computed(() => name === modelValue.value)
 // TODO: declare better type
 const { 
   modelValue, 
-  updateModel
+  updateModel,
+  updateIndicatorStyle
 } = inject(tabsKey) as {
+  tabsRef: Ref<HTMLElement | null>,
   updateModel: Function,
-  modelValue: Ref<string>
+  modelValue: Ref<string>,
+  indicatorRef: Ref<HTMLElement | null>,
+  updateIndicatorStyle: Function
 }
-
-let isRight = false
 
 const onClick = (e: Event) => {
   if (actived.value) {
     return
   }
 
-  const currentTarget = e.currentTarget as HTMLElement
-  const parent = currentTarget.parentNode as HTMLElement
-  const children = Array.from(parent.children)
-  const prevActiveTab = parent.querySelector('div[data-active="true"]') as HTMLElement
-  const prevActiveIndex = children.indexOf(prevActiveTab)
-  const activeIndex = children.indexOf(currentTarget)
-
-  if (activeIndex > prevActiveIndex) {
-    isRight = true
-  } else {
-    isRight = false
-  }
-
+  updateIndicatorStyle(e.currentTarget as HTMLElement)
   updateModel(name)
 }
-
-const indicatorClass = computed(() => actived.value
-  ? `opacity-100 ${ isRight ? 'u-slide-right' : 'u-slide-left' }`
-  : 'opacity-0'
-)
 </script>

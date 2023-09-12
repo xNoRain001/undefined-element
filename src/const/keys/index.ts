@@ -2,7 +2,8 @@ import type { Ref, InjectionKey } from 'vue'
 
 export const tabsKey: InjectionKey<{
   modelValue: Ref<string>,
-  updateModel: Function
+  updateModel: Function,
+  updateIndicatorStyle: Function
 }> = Symbol()
 
 export const panelsKey: InjectionKey<Ref<string>> = Symbol()
