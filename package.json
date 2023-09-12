@@ -22,7 +22,8 @@
     "docs:preview": "vitepress preview docs",
     "css": "node ./scripts/css.cjs",
     "markdown": "node ./scripts/markdown.cjs",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "release": "node ./scripts/release.cjs"
   },
   "license": "MIT",
   "devDependencies": {
