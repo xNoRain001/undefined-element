@@ -616,6 +616,10 @@ video {
   z-index: 50;
 }
 
+.z-20 {
+  z-index: 20;
+}
+
 .block {
   display: block;
 }
@@ -638,10 +642,6 @@ video {
 
 .hidden {
   display: none;
-}
-
-.h-\[2px\] {
-  height: 2px;
 }
 
 .h-\[6px\] {
@@ -751,10 +751,6 @@ video {
 
 .border {
   border-width: 1px;
-}
-
-.bg-\[--primary-color\] {
-  background-color: var(--primary-color);
 }
 
 .bg-\[rgba\(0\2c 0\2c 0\2c \.4\)\] {

@@ -586,6 +586,10 @@ video {
   left: 50%;
 }
 
+.left-\[16px\] {
+  left: 16px;
+}
+
 .left-\[2px\] {
   left: 2px;
 }
@@ -596,6 +600,10 @@ video {
 
 .left-full {
   left: 100%;
+}
+
+.right-\[16px\] {
+  right: 16px;
 }
 
 .right-\[20px\] {
@@ -620,6 +628,14 @@ video {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-30 {
+  z-index: 30;
 }
 
 .-m-\[4px\] {
@@ -712,6 +728,10 @@ video {
   height: 24px;
 }
 
+.h-\[2px\] {
+  height: 2px;
+}
+
 .h-\[300px\] {
   height: 300px;
 }
@@ -758,10 +778,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[2px\] {
-  height: 2px;
 }
 
 .\!w-\[32px\] {
@@ -1122,10 +1138,6 @@ video {
   padding: 24px;
 }
 
-.p-\[32px\] {
-  padding: 32px;
-}
-
 .px-\[10px\] {
   padding-left: 10px;
   padding-right: 10px;
@@ -1407,11 +1419,6 @@ video {
   background-color: rgba(0,0,0,.05);
 }
 
-.after\:ml-0::after {
-  content: var(--tw-content);
-  margin-left: 0px;
-}
-
 .first\:sticky:first-child {
   position: sticky;
 }
@@ -1458,6 +1465,10 @@ video {
 
 .hover\:bg-\[rgba\(0\2c 0\2c 0\2c \.08\)\]:hover {
   background-color: rgba(0,0,0,.08);
+}
+
+.hover\:bg-\[rgba\(255\2c 255\2c 255\2c \.2\)\]:hover {
+  background-color: rgba(255,255,255,.2);
 }
 
 .hover\:text-\[--primary-color\]:hover {

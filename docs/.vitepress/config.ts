@@ -40,7 +40,8 @@ export default defineConfig({
           { text: 'Tabs', link: '/components/tabs' },
           { text: 'Toggle', link: '/components/toggle' },
           { text: 'Tooltip', link: '/components/tooltip' },
-          { text: 'Range', link: '/components/range' }
+          { text: 'Range', link: '/components/range' },
+          { text: 'Carousel', link: '/components/carousel' },
         ]
       }
     ],

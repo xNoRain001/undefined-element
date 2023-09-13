@@ -10,6 +10,12 @@ export const panelsKey: InjectionKey<Ref<string>> = Symbol()
 
 export const skeletonKey: InjectionKey<Ref<boolean>> = Symbol()
 
+export const carouselKey: InjectionKey<{
+  index: Ref<number>,
+  updateIndex: Function,
+  carouselRef: Ref<HTMLElement | null>
+}> = Symbol()
+
 export const expansionKey: InjectionKey<{
   modelValue: string[],
   updateModel: Function

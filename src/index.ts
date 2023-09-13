@@ -16,6 +16,7 @@ import USkeleton from './components/u-skeleton/index.vue'
 import UDropdown from './components/u-dropdown/index.vue'
 import UScroller from './components/u-scroller/index.vue'
 import UCheckbox from './components/u-checkbox/index.vue'
+import UCarousel from './components/u-carousel/index.vue'
 import UExpansion from './components/u-expansion/index.vue'
 import UTabPanels from './components/u-tab-panels/index.vue'
 import UScrollArea from './components/u-scroll-area/index.vue'
@@ -23,6 +24,8 @@ import USkeletonItem from './components/u-skeleton-item/index.vue'
 import UExpansionItem from './components/u-expansion-item/index.vue'
 import UCheckboxGroup from './components/u-checkbox-group/index.vue'
 import UInfiniteScroll from './components/u-infinite-scroll/index.vue'
+import UCarouselSlider from './components/u-carousel-slider/index.vue'
+import UCarouselNavigation from './components/u-carousel-navigation/index.vue'
 
 import type { App } from 'vue'
 
@@ -47,6 +50,7 @@ const undefinedElement = {
       .component('UDropdown', UDropdown)
       .component('UScroller', UScroller)
       .component('UCheckbox', UCheckbox)
+      .component('UCarousel', UCarousel)
       .component('UExpansion', UExpansion)
       .component('UTabPanels', UTabPanels)
       .component('UScrollArea', UScrollArea)
@@ -54,6 +58,8 @@ const undefinedElement = {
       .component('UExpansionItem', UExpansionItem)
       .component('UCheckboxGroup', UCheckboxGroup)
       .component('UInfiniteScroll', UInfiniteScroll)
+      .component('UCarouselSlider', UCarouselSlider)
+      .component('UCarouselNavigation', UCarouselNavigation)
   }
 }
 
