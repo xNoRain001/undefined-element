@@ -25,7 +25,7 @@ import UExpansionItem from './components/expansion-item/index.vue'
 import UCheckboxGroup from './components/checkbox-group/index.vue'
 import UInfiniteScroll from './components/infinite-scroll/index.vue'
 import UCarouselSlider from './components/carousel-slider/index.vue'
-import UCarouselNavigation from './components/carousel-navigation/index.vue'
+import UCarouselControl from './components/carousel-control/index.vue'
 
 import type { App } from 'vue'
 
@@ -59,7 +59,7 @@ const undefinedElement = {
       .component('UCheckboxGroup', UCheckboxGroup)
       .component('UInfiniteScroll', UInfiniteScroll)
       .component('UCarouselSlider', UCarouselSlider)
-      .component('UCarouselNavigation', UCarouselNavigation)
+      .component('UCarouselControl', UCarouselControl)
   }
 }
 

@@ -616,10 +616,6 @@ video {
   z-index: 50;
 }
 
-.z-20 {
-  z-index: 20;
-}
-
 .block {
   display: block;
 }
