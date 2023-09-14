@@ -1,5 +1,5 @@
 const { join, resolve } = require('path')
-const { readdir, readFile, writeFile } = require('fs/promises')
+const { stat, readdir, readFile, writeFile } = require('fs/promises')
 
 const rootDir = resolve(__dirname, '../')
 
@@ -105,7 +105,100 @@ const genMd = async meta => {
   }
 }
 
+const jsonToMarkdown = async () => {
+  const baseDir = join(rootDir, './src/components')
+  const dirs = await readdir(baseDir)
+
+  const genTitle = (title, desc) => `<!-- title -->\n# ${ title }\n<!-- title -->\n\n<!-- desc -->\n${ desc }\n<!-- desc -->`
+
+  const genSubtitle = ({ title, desc }) => `<!-- subtitle -->\n## ${ title }\n<!-- subtitle -->\n\n<!-- desc -->\n${ desc }\n<!-- desc -->`
+
+  const genProps = props => {
+    let res = '<!-- props -->\n:::details 属性\n|属性名|描述|类型|默认值|\n|:-----------:|:-----------:|:----:|:----:|\n'
+
+    for (let i = 0, l = props.length; i < l; i++) {
+      const { prop, desc, type, default: defaultValue } = props[i]
+      res += `|${ prop }|${ desc }|${ type }|${ defaultValue }|\n`
+    }
+
+    return `${ res }:::\n<!-- props -->`
+  }
+
+  const genSlots = slots => {
+    let res = '<!-- slots -->\n:::details 插槽\n|插槽名|描述|\n|:-----------:|:-----------:|\n'
+
+    for (let i = 0, l = slots.length; i < l; i++) {
+      const { name, desc } = slots[i]
+      res += `|${ name }|${ desc }|\n`
+    }
+
+    return `${ res }:::\n<!-- slots -->`
+  }
+
+  const replaceTitle = (markdown, title, desc) => markdown.replace(
+    /<!-- title -->[\s\S]*?<!-- desc -->[\s\S]*?<!-- desc -->/, 
+    () => genTitle(title, desc)
+  )
+
+  const replaceProps = (markdown, props) => markdown.replace(
+    /<!-- props -->[\s\S]*?<!-- props -->/, 
+    () => genProps(props)
+  )
+
+  const replaceSlots = (markdown, slots) => markdown.replace(
+    /<!-- slots -->[\s\S]*?<!-- slots -->/, 
+    () => genSlots(slots)
+  )
+
+  const replaceSubtitle = (markdown, children) => {
+    let index = 0
+
+    return markdown.replace(
+      /<!-- subtitle -->[\s\S]*?<!-- desc -->[\s\S]*?<!-- desc -->/g, 
+      () => genSubtitle(children[index++])
+    )
+  }
+
+  const replaceMarkdown = async meta => {
+    let markdown = await readFile(join(rootDir, './docs/components/dialog.md'), 'utf-8')
+    const { title, desc, props, slots, children } = JSON.parse(meta)
+
+    markdown = replaceTitle(markdown, title, desc)
+    markdown = replaceProps(markdown, props)
+    markdown = replaceSubtitle(markdown, children)
+    markdown = replaceSlots(markdown, slots)
+
+    writeFile(join(rootDir, './docs/components/dialog.md'), markdown)
+  }
+
+  const starter = async () => {
+    for (let i = 0, l = dirs.length; i < l; i++) {
+      const dir = dirs[i]
+      const _baseDir = join(baseDir, dir)
+      const isFile  = (await stat(_baseDir)).isFile()
+  
+      if (!isFile) {
+        const files = await readdir(_baseDir)
+  
+        for (let i = 0, l = files.length; i < l; i++) {
+          const file = files[i]
+  
+          if (file === 'index.json') {
+            const meta = await readFile(join(_baseDir, file), 'utf-8')
+            replaceMarkdown(meta)
+  
+            break
+          }
+        }
+      }
+    }
+  }
+
+  starter()
+}
+
 ;(async () => {
   const meta = await getMeta()
   await genMd(meta)
+  await jsonToMarkdown()
 })()

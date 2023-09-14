@@ -7,25 +7,39 @@ import Maximized from '../examples/dialog/04.maximized.vue'
 </script>
 <!-- import -->
 
-# Dialog
+<!-- title -->
+# UDialog
+<!-- title -->
 
+<!-- desc -->
 Dialog 组件可以向用户提供信息，或要求他们作出决定。
+<!-- desc -->
 
+<!-- props -->
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
-|position|对话框的位置|'top' \| 'right' \| 'bottom' \| 'left' \| 'center'|'center'|
+|position|对话框的位置|'top' \| 'right' \| 'bottom' \| 'left' \| 'center'|'center'|'center'|
 |modelValue|绑定的值，用于控制是否显示对话框|boolean|-|
 |persistent|是否开启持久化|boolean|false|
 :::
+<!-- props -->
 
+<!-- slots -->
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
 |default|对话框的内容|
 :::
+<!-- slots -->
 
+<!-- subtitle -->
 ## 基础
+<!-- subtitle -->
+
+<!-- desc -->
+
+<!-- desc -->
 
 <!-- component -->
 <Basic></Basic>
@@ -244,9 +258,13 @@ const updateVisible5 = () => visible5.value = !visible5.value
 :::
 <!-- component -->
 
+<!-- subtitle -->
 ## 持久化
+<!-- subtitle -->
 
+<!-- desc -->
 开启持久化后，点击遮罩层不会关闭对话框。
+<!-- desc -->
 
 <!-- component -->
 <Persistent></Persistent>
@@ -321,9 +339,13 @@ const updateVisible = () => visible.value = !visible.value
 :::
 <!-- component -->
 
+<!-- subtitle -->
 ## 抽屉
+<!-- subtitle -->
 
+<!-- desc -->
 可以非常容易地将对话框改为抽屉
+<!-- desc -->
 
 <!-- component -->
 <Drawer></Drawer>
