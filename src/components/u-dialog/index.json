@@ -1,22 +1,30 @@
 {
   "title": "UDialog",
-  "desc": "Dialog 组件可以向用户提供信息，或要求他们作出决定。",
+  "desc-with-translation": {
+    "zh": "Dialog 组件可以向用户提供信息，或要求他们作出决定。"
+  },
   "props": [
     {
       "prop": "position",
-      "desc": "对话框的位置",
+      "desc-with-translation": {
+        "zh": "对话框的位置"
+      },
       "type": "'top' \\| 'right' \\| 'bottom' \\| 'left' \\| 'center'|'center'",
       "default": "'center'"
     },
     {
       "prop": "modelValue",
-      "desc": "绑定的值，用于控制是否显示对话框",
+      "desc-with-translation": {
+        "zh": "绑定的值，用于控制是否显示对话框"
+      },
       "type": "boolean",
       "default": "-"
     },
     {
       "prop": "persistent",
-      "desc": "是否开启持久化",
+      "desc-with-translation": {
+        "zh": "是否开启持久化"
+      },
       "type": "boolean",
       "default": "false"
     }
@@ -24,22 +32,36 @@
   "slots": [
     {
       "name": "default",
-      "desc": "对话框的内容"
+      "desc-with-translation": {
+        "zh": "对话框的内容"
+      }
     }
   ],
   "events": {},
   "children": [
     {
-      "title": "基础",
-      "desc": ""
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
     },
     {
-      "title": "持久化",
-      "desc": "开启持久化后，点击遮罩层不会关闭对话框。"
+      "title-with-translation": {
+        "zh": "持久化"
+      },
+      "desc-with-translation": {
+        "zh": "开启持久化后，点击遮罩层不会关闭对话框。"
+      }
     },
     {
-      "title": "抽屉",
-      "desc": "可以非常容易地将对话框改为抽屉"
+      "title-with-translation": {
+        "zh": "抽屉"
+      },
+      "desc-with-translation": {
+        "zh": "可以非常容易地将对话框改为抽屉"
+      }
     }
   ]
 }
