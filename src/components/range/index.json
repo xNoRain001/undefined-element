@@ -1,0 +1,82 @@
+{
+  "title": "Range",
+  "desc-with-translation": {
+    "zh": "Range 组件是一种向用户提供的范围选择的组件。"
+  },
+  "props": [
+    {
+      "prop": "min",
+      "desc-with-translation": {
+        "zh": "最小值"
+      },
+      "type": "number",
+      "default": "0"
+    },
+    {
+      "prop": "max",
+      "desc-with-translation": {
+        "zh": "最大值"
+      },
+      "type": "number",
+      "default": "0"
+    },
+    {
+      "prop": "step",
+      "desc-with-translation": {
+        "zh": "步长"
+      },
+      "type": "number",
+      "default": "1"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "模型值"
+      },
+      "type": "number",
+      "default": "-"
+    },
+    {
+      "prop": "trackClass",
+      "desc-with-translation": {
+        "zh": "滑动条的样式"
+      },
+      "type": "string",
+      "default": "''"
+    },
+    {
+      "prop": "selectionClass",
+      "desc-with-translation": {
+        "zh": "选中区域的样式"
+      },
+      "type": "string",
+      "default": "''"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "thumb"
+      }
+    }
+  ],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "步长"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    }
+  ]
+}

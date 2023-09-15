@@ -5,10 +5,15 @@ import Step from '../examples/range/02.step.vue'
 </script>
 <!-- import -->
 
+<!-- title -->
 # Range
+<!-- title -->
 
+<!-- desc -->
 Range 组件是一种向用户提供的范围选择的组件。
+<!-- desc -->
 
+<!-- props -->
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
@@ -19,14 +24,22 @@ Range 组件是一种向用户提供的范围选择的组件。
 |trackClass|滑动条的样式|string|''|
 |selectionClass|选中区域的样式|string|''|
 :::
+<!-- props -->
 
+<!-- slots -->
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
 |default|thumb|
 :::
+<!-- slots -->
 
+<!-- subtitle -->
 ## Basic
+<!-- subtitle -->
+
+<!-- desc -->
+<!-- desc -->
 
 <!-- component -->
 <Basic></Basic>
@@ -127,7 +140,12 @@ const value = reactive({ min: 20, max: 80 })
 :::
 <!-- component -->
 
+<!-- subtitle -->
 ## Step
+<!-- subtitle -->
+
+<!-- desc -->
+<!-- desc -->
 
 <!-- component -->
 <Step></Step>

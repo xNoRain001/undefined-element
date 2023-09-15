@@ -1,0 +1,49 @@
+{
+  "title": "Dropdown",
+  "desc-with-translation": {
+    "zh": "Dropdown 组件用于实现下拉列表"
+  },
+  "props": [
+    {
+      "prop": "trigger",
+      "desc-with-translation": {
+        "zh": "触发方式"
+      },
+      "type": "'hover' \\| 'click'",
+      "default": "hover"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "始终显示的头部内容"
+      }
+    },
+    {
+      "name": "list",
+      "desc-with-translation": {
+        "zh": "列表内容"
+      }
+    }
+  ],
+  "events": {},
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "触发方式"
+      },
+      "desc-with-translation": {
+        "zh": "这里设置为点击触发"
+      }
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "title": "Input",
+  "desc-with-translation": {
+    "zh": "Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似于常规输入。"
+  },
+  "props": [
+    {
+      "prop": "type",
+      "desc-with-translation": {
+        "zh": "输入框的类型"
+      },
+      "type": "string",
+      "default": "'text'"
+    },
+    {
+      "prop": "debounce",
+      "desc-with-translation": {
+        "zh": "输入框的防抖间隔，值为 0 时表示不开启防抖。"
+      },
+      "type": "number",
+      "default": "0"
+    },
+    {
+      "prop": "readonly",
+      "desc-with-translation": {
+        "zh": "只读的输入框"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "disabled",
+      "desc-with-translation": {
+        "zh": "禁用输入框"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "aotofocus",
+      "desc-with-translation": {
+        "zh": "自动聚焦的输入框"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "输入框绑定的值"
+      },
+      "type": "string",
+      "default": "-"
+    },
+    {
+      "prop": "inputClass",
+      "desc-with-translation": {
+        "zh": "表单样式"
+      },
+      "type": "string",
+      "default": "''"
+    },
+    {
+      "prop": "placeholder",
+      "desc-with-translation": {
+        "zh": "输入框的占位符"
+      },
+      "type": "string",
+      "default": "''"
+    },
+    {
+      "prop": "focusedClass",
+      "desc-with-translation": {
+        "zh": "聚焦时表单容器的样式"
+      },
+      "type": "string",
+      "default": "''"
+    }
+  ],
+  "slots": [
+    {
+      "name": "before",
+      "desc-with-translation": {
+        "zh": "容器左边的内容"
+      }
+    },
+    {
+      "name": "after",
+      "desc-with-translation": {
+        "zh": "容器右边的内容"
+      }
+    },
+    {
+      "name": "prepend",
+      "desc-with-translation": {
+        "zh": "输入框左边的内容"
+      }
+    },
+    {
+      "name": "append",
+      "desc-with-translation": {
+        "zh": "输入框右边的内容"
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "focus",
+      "desc-with-translation": {
+        "zh": "获得焦点"
+      }
+    },
+    {
+      "name": "blur",
+      "desc-with-translation": {
+        "zh": "失去焦点"
+      }
+    },
+    {
+      "name": "clear",
+      "desc-with-translation": {
+        "zh": "清空"
+      }
+    }
+  ],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": "Input 组件由原生 input 标签和包裹它的容器组成，为了在容器边框宽度变化时不让文字抖动，所有与边框相关的样式都应该要作用到容器的伪元素 before 上，对于聚焦时的边框样式，通过 focusedContainerClass 属性来设置。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "占位符"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "防抖"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "只读"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "禁用"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "清空"
+      },
+      "desc-with-translation": {
+        "zh": "点击含有 clearable 属性的元素后，会点击清空表单的值，"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "自动聚焦"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "密码框"
+      },
+      "desc-with-translation": {
+        "zh": "当 type 为 password 时，点击含有 password 属性的元素时可以切换密码的可见性。"
+      }
+    }
+  ]
+}

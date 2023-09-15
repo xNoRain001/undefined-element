@@ -1,0 +1,90 @@
+{
+  "title": "Scroller",
+  "desc-with-translation": {
+    "zh": "Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定位置。"
+  },
+  "props": [
+    {
+      "prop": "to",
+      "desc-with-translation": {
+        "zh": "滚动偏移量，默认值为0，这意味着滚动到顶部。"
+      },
+      "type": "number",
+      "default": "0"
+    },
+    {
+      "prop": "duration",
+      "desc-with-translation": {
+        "zh": "滚动过程中动画的时间"
+      },
+      "type": "number",
+      "default": "300"
+    },
+    {
+      "prop": "scrollOffset",
+      "desc-with-translation": {
+        "zh": "用于控制是否显示 Scroller 组件，只有当滚动偏移量超过这个值时才会显示 Scroller 组件"
+      },
+      "type": "number",
+      "default": "150"
+    },
+    {
+      "prop": "scrollTarget",
+      "desc-with-translation": {
+        "zh": "点击浮动按钮时滚动的目标，这里需要提供一个选择器。"
+      },
+      "type": "string",
+      "default": "-"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "默认插槽"
+      }
+    }
+  ],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "滚动到"
+      },
+      "desc-with-translation": {
+        "zh": "这里将滚动偏移量设置为 100"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "持续时间"
+      },
+      "desc-with-translation": {
+        "zh": "这里将持续时间设为 0"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "偏移"
+      },
+      "desc-with-translation": {
+        "zh": "这里将偏移设为 0"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "滚动目标"
+      },
+      "desc-with-translation": {
+        "zh": "这里将滚动目标设置为"
+      }
+    }
+  ]
+}

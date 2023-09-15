@@ -1,0 +1,127 @@
+{
+  "title": "Checkbox",
+  "desc-with-translation": {
+    "zh": "Checkbox 组件是用户输入的一个基本元素，你可以使用它为用户提供一种切换选项的方法。"
+  },
+  "props": [
+    {
+      "prop": "value",
+      "desc-with-translation": {
+        "zh": "当使用复选框组时，该属性才会生效，表示复选框选中时，将被保存在复选框组的 modelValue 中的值。"
+      },
+      "type": "any",
+      "default": "false"
+    },
+    {
+      "prop": "disabled",
+      "desc-with-translation": {
+        "zh": "禁用复选框"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示复选框能选中的最少项。"
+      },
+      "type": "boolean",
+      "default": "-"
+    },
+    {
+      "prop": "min",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示复选框能选中的最少项。"
+      },
+      "type": "number",
+      "default": "Number.MIN_SAFE_INTEGER"
+    },
+    {
+      "prop": "max",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示复选框能选中的最多项。"
+      },
+      "type": "number",
+      "default": "Number.MAX_SAFE_INTEGER"
+    },
+    {
+      "prop": "race",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示当超过复选框能选中的最多项时，自动取消选中此前最早选中的那个复选框。"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示选中的复选框的"
+      },
+      "type": "any[]",
+      "default": "[]"
+    }
+  ],
+  "slots": [
+    {
+      "name": "before",
+      "desc-with-translation": {
+        "zh": "复选框左边的内容"
+      }
+    },
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "复选框"
+      }
+    },
+    {
+      "name": "after",
+      "desc-with-translation": {
+        "zh": "复选框右边的内容"
+      }
+    }
+  ],
+  "events": {},
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "复选框组"
+      },
+      "desc-with-translation": {
+        "zh": "当使用复选框组时，modelValue 不再绑定在 u-checkbox 组件上，而是绑定在 u-checkbox-group 组件上，此时 modelValue 的值是一个数组，当复选框被选中时，它的 value 属性的值将会被保存在 modelValue 中。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "禁用"
+      },
+      "desc-with-translation": {
+        "zh": "下面的示例中会禁用第一个复选框。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "数量限制"
+      },
+      "desc-with-translation": {
+        "zh": "通过 min 和 max 属性来限制复选框组能够选中的数量。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "自动淘汰"
+      },
+      "desc-with-translation": {
+        "zh": "该属性需要和复选框组的 max 属性配合使用，当选中的数量将超过最大限制时，自动移除此前最早选中的那个复选框。如果开启了自动淘汰并且将 max 设置为 1 ，就变成了单选框。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Splitter",
+  "desc-with-translation": {
+    "zh": ""
+  },
+  "props": [],
+  "slots": [],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "水平的"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "范围"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "分隔"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    }
+  ]
+}

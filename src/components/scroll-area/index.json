@@ -1,0 +1,82 @@
+{
+  "title": "Scroll Area",
+  "desc-with-translation": {
+    "zh": "ScrollArea 组件能够让你自定义滚动条。"
+  },
+  "props": [
+    {
+      "prop": "width",
+      "desc-with-translation": {
+        "zh": "容器的宽度"
+      },
+      "type": "string",
+      "default": "'100%'"
+    },
+    {
+      "prop": "height",
+      "desc-with-translation": {
+        "zh": "容器的高度"
+      },
+      "type": "string",
+      "default": "'100%'"
+    },
+    {
+      "prop": "resize",
+      "desc-with-translation": {
+        "zh": "当内容变化时是否更新滚动条的大小"
+      },
+      "type": "boolean",
+      "default": "true"
+    },
+    {
+      "prop": "hidden",
+      "desc-with-translation": {
+        "zh": "是否隐藏滚动条"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "persistent",
+      "desc-with-translation": {
+        "zh": "是否一直显示滚动条"
+      },
+      "type": "boolean",
+      "default": "false"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "默认插槽"
+      }
+    }
+  ],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "持久化"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "隐蔽"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    }
+  ]
+}

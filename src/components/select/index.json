@@ -1,0 +1,150 @@
+{
+  "title": "Select",
+  "desc-with-translation": {
+    "zh": ""
+  },
+  "props": [
+    {
+      "prop": "value",
+      "desc-with-translation": {
+        "zh": "当使用复选框组时，该属性才会生效，表示复选框选中时，将被保存在复选框组的 modelValue 中的值。"
+      },
+      "type": "any",
+      "default": "false"
+    },
+    {
+      "prop": "disabled",
+      "desc-with-translation": {
+        "zh": "禁用复选框"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "绑定的值"
+      },
+      "type": "boolean",
+      "default": "-"
+    },
+    {
+      "prop": "min",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示复选框能选中的最少项。"
+      },
+      "type": "number",
+      "default": "Number.MIN_SAFE_INTEGER"
+    },
+    {
+      "prop": "max",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示复选框能选中的最多项。"
+      },
+      "type": "number",
+      "default": "Number.MAX_SAFE_INTEGER"
+    },
+    {
+      "prop": "race",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示当超过复选框能选中的最多项时，自动取消选中此前最早选中的那个复选框。"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "这是复选框组的属性，表示选中的复选框的 value 属性值列表。"
+      },
+      "type": "any[]",
+      "default": "[]"
+    }
+  ],
+  "slots": [
+    {
+      "name": "before",
+      "desc-with-translation": {
+        "zh": "复选框左边的内容"
+      }
+    },
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "默认插槽"
+      }
+    },
+    {
+      "name": "after",
+      "desc-with-translation": {
+        "zh": "复选框右边的内容"
+      }
+    }
+  ],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ":data-index='index' 是必要的，当选择下拉列表项时，它在内部被用于找到该下拉列表在 options 中对应的值。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "多选"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "最大数量"
+      },
+      "desc-with-translation": {
+        "zh": "该属性需要配合 multiple 使用，用于指定能选择的项的最大数量。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "自动淘汰"
+      },
+      "desc-with-translation": {
+        "zh": "该属性需要配合 maxValues 使用，当选择的项的数量超过最大数量时，自动替换掉最开始选择的那一项。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "持久化"
+      },
+      "desc-with-translation": {
+        "zh": "该属性需要配合 maxValues 使用，当选择的项达到 maxValues 时，是否关闭下拉列表。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "只读"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "禁用"
+      },
+      "desc-with-translation": {
+        "zh": "禁用 Select 组件"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "清除"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    }
+  ]
+}

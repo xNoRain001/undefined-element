@@ -1,0 +1,58 @@
+{
+  "title": "Rating",
+  "desc-with-translation": {
+    "zh": "Rating 组件的作用是进行星级评分"
+  },
+  "props": [
+    {
+      "prop": "max",
+      "desc-with-translation": {
+        "zh": "评分的最大值"
+      },
+      "type": "number",
+      "default": "-"
+    },
+    {
+      "prop": "color",
+      "desc-with-translation": {
+        "zh": "未点亮时图标的颜色"
+      },
+      "type": "string",
+      "default": "'#000'"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "绑定的值"
+      },
+      "type": "number",
+      "default": "-"
+    },
+    {
+      "prop": "activeColor",
+      "desc-with-translation": {
+        "zh": "点亮时图标的颜色"
+      },
+      "type": "string",
+      "default": "'#eab308'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "图标"
+      }
+    }
+  ],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    }
+  ]
+}

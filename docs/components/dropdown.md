@@ -5,24 +5,20 @@ import Trigger from '../examples/dropdown/02.trigger.vue'
 </script>
 <!-- import -->
 
-# Dropdown
+<!-- title -->
+<!-- title -->
 
-Dropdown 组件用于实现下拉列表
+<!-- desc -->
+<!-- desc -->
 
-:::details 属性
-|属性名|描述|类型|默认值|
-|:-----------:|:-----------:|:----:|:----:|
-|trigger|触发方式|'hover' \| 'click'|'hover|
-:::
+<!-- props -->
+<!-- props -->
 
-:::details 插槽
-|插槽名|描述|
-|:-----------:|:-----------:|
-|default|始终显示的头部内容|
-|list|列表内容|
-:::
+<!-- subtitle -->
+<!-- subtitle -->
 
-## 基础
+<!-- desc -->
+<!-- desc -->
 
 <!-- component -->
 <Basic></Basic>
@@ -121,9 +117,12 @@ const list = ['简体中文', 'English']
 :::
 <!-- component -->
 
+<!-- subtitle -->
 ## 触发方式
+<!-- subtitle -->
 
-这里设置为点击触发
+<!-- desc -->
+<!-- desc -->
 
 <!-- component -->
 <Trigger></Trigger>

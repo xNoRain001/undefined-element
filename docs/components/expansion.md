@@ -6,10 +6,15 @@ import Max from '../examples/expansion/03.max.vue'
 </script>
 <!-- import -->
 
+<!-- title -->
 # Expansion
+<!-- title -->
 
+<!-- desc -->
 Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们视为单击时会扩展的手风琴元素，也被称为可折叠。
+<!-- desc -->
 
+<!-- props -->
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
@@ -18,15 +23,23 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
 |name|展开项的唯一标识|string|-|
 |modelValue|展开的项，里面存放着展开项的名字。|string[]|[]|
 :::
+<!-- props -->
 
+<!-- slots -->
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
 |default|始终显示的内容|
 |content|展开时才显示的内容|
 :::
+<!-- slots -->
 
+<!-- subtitle -->
 ## 基础
+<!-- subtitle -->
+
+<!-- desc -->
+<!-- desc -->
 
 <!-- component -->
 <Basic></Basic>
@@ -175,9 +188,13 @@ const expanded = reactive(['1'])
 :::
 <!-- component -->
 
+<!-- subtitle -->
 ## 最小数量
+<!-- subtitle -->
 
+<!-- desc -->
 至少应该展开的数量
+<!-- desc -->
 
 <!-- component -->
 <Min></Min>
@@ -380,9 +397,13 @@ const expanded = reactive<string[]>(['1'])
 :::
 <!-- component -->
 
+<!-- subtitle -->
 ## 最大数量
+<!-- subtitle -->
 
+<!-- desc -->
 最多能展开的数量，当即将超过该数量时，会自动折叠此前最早展开的项。
+<!-- desc -->
 
 <!-- component -->
 <Max></Max>

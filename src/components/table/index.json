@@ -1,0 +1,50 @@
+{
+  "title": "Table",
+  "desc-with-translation": {
+    "zh": ""
+  },
+  "props": [],
+  "slots": [],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "边框"
+      },
+      "desc-with-translation": {
+        "zh": "通过设置样式实现边框"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "排序"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "固定表头"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "固定列"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    }
+  ]
+}

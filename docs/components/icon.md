@@ -4,10 +4,19 @@ import Basic from '../examples/icon/01.basic.vue'
 </script>
 <!-- import -->
 
+<!-- title -->
 # Icon
+<!-- title -->
 
+<!-- desc -->
 Material Icons 图标库
+<!-- desc -->
 
+<!-- 
+  |name|图标的名称，支持下划线命名法如 check_circle 和大驼峰命名法如 checkCircle。|string|-|
+  |type|图标的类型|'outlined' \| 'filled' \| 'rounded' \| 'sharp'|'filled'| -->
+
+<!-- props -->
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
@@ -17,10 +26,15 @@ Material Icons 图标库
 |width|图标的宽度|string|number|24|
 |width|图标的高度|string|number|24|
 :::
+<!-- props -->
 
+<!-- subtitle -->
 ## 基础
+<!-- subtitle -->
 
+<!-- desc -->
 <a href="https://fonts.google.com/icons" target="_blank">查看所有图标</a>
+<!-- desc -->
 
 <!-- component -->
 <Basic></Basic>

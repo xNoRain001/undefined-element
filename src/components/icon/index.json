@@ -1,0 +1,52 @@
+{
+  "title": "Icon",
+  "desc-with-translation": {
+    "zh": "Material Icons 图标库"
+  },
+  "props": [
+    {
+      "prop": "def",
+      "desc-with-translation": {
+        "zh": "图标的代码"
+      },
+      "type": "string",
+      "default": "-"
+    },
+    {
+      "prop": "color",
+      "desc-with-translation": {
+        "zh": "图标的颜色"
+      },
+      "type": "string",
+      "default": "'#000'"
+    },
+    {
+      "prop": "width",
+      "desc-with-translation": {
+        "zh": "图标的宽度"
+      },
+      "type": "number",
+      "default": "24"
+    },
+    {
+      "prop": "height",
+      "desc-with-translation": {
+        "zh": "图标的高度"
+      },
+      "type": "number",
+      "default": "24"
+    }
+  ],
+  "slots": [],
+  "events": {},
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": "<a href='https://fonts.google.com/icons' target='_blank'>查看所有图标</a>"
+      }
+    }
+  ]
+}

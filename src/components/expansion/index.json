@@ -1,0 +1,81 @@
+{
+  "title": "Expansion",
+  "desc-with-translation": {
+    "zh": "Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们视为单击时会扩展的手风琴元素，也被称为可折叠。"
+  },
+  "props": [
+    {
+      "prop": "min",
+      "desc-with-translation": {
+        "zh": "至少应该展开的数量"
+      },
+      "type": "number",
+      "default": "Number.MIN_SAFE_INTEGER"
+    },
+    {
+      "prop": "max",
+      "desc-with-translation": {
+        "zh": "最多能展开的数量"
+      },
+      "type": "number",
+      "default": "Number.MAX_SAFE_INTEGER"
+    },
+    {
+      "prop": "name",
+      "desc-with-translation": {
+        "zh": "展开项的唯一标识"
+      },
+      "type": "string",
+      "default": "-"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "展开的项，里面存放着展开项的名字。"
+      },
+      "type": "string[]",
+      "default": "[]"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "始终显示的头部内容"
+      }
+    },
+    {
+      "name": "content",
+      "desc-with-translation": {
+        "zh": "展开时才显示的内容"
+      }
+    }
+  ],
+  "events": {},
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "最小数量"
+      },
+      "desc-with-translation": {
+        "zh": "至少应该展开的数量"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "最大数量"
+      },
+      "desc-with-translation": {
+        "zh": "最多能展开的数量，当即将超过该数量时，会自动折叠此前最早展开的项。"
+      }
+    }
+  ]
+}

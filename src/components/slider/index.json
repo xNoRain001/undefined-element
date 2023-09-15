@@ -1,0 +1,82 @@
+{
+  "title": "Slider",
+  "desc-with-translation": {
+    "zh": "Slider 向用户提供一种选择最小值和最大值之间值的方法。"
+  },
+  "props": [
+    {
+      "prop": "min",
+      "desc-with-translation": {
+        "zh": "最小值"
+      },
+      "type": "number",
+      "default": "0"
+    },
+    {
+      "prop": "max",
+      "desc-with-translation": {
+        "zh": "最大值"
+      },
+      "type": "number",
+      "default": "100"
+    },
+    {
+      "prop": "step",
+      "desc-with-translation": {
+        "zh": "步长"
+      },
+      "type": "number",
+      "default": "1"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "模型值"
+      },
+      "type": "number",
+      "default": "-"
+    },
+    {
+      "prop": "trackClass",
+      "desc-with-translation": {
+        "zh": "滑动条的样式"
+      },
+      "type": "string",
+      "default": "''"
+    },
+    {
+      "prop": "selectionClass",
+      "desc-with-translation": {
+        "zh": "选中区域的样式"
+      },
+      "type": "string",
+      "default": "''"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "thumb"
+      }
+    }
+  ],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": "除了通过拖拽和点击修改值以外，也可以直接修改 modelValue 的值来让滑块到指定位置。"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "步长"
+      },
+      "desc-with-translation": {
+        "zh": "这里将 step 设置为 50，意味着 modelValue 一定为 step 的整数倍。"
+      }
+    }
+  ]
+}

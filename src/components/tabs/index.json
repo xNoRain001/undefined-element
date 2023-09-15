@@ -1,0 +1,42 @@
+{
+  "title": "Tabs",
+  "desc-with-translation": {
+    "zh": ""
+  },
+  "props": [
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "模型值"
+      },
+      "type": "string",
+      "default": "-"
+    },
+    {
+      "prop": "indicatorClass",
+      "desc-with-translation": {
+        "zh": "标识符样式"
+      },
+      "type": "string",
+      "default": "''"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "默认插槽"
+      }
+    }
+  ],
+  "children": [
+    {
+      "title-with-translation": {
+        "zh": "基础"
+      },
+      "desc-with-translation": {
+        "zh": ""
+      }
+    }
+  ]
+}
