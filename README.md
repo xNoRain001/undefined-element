@@ -24,9 +24,9 @@ app
   .mount('#app')
 ```
 
-## Examples
+## Documentation
 
-<a href="http://120.77.148.28/">clike me</a>
+<a href="http://120.77.148.28">documentation</a>
 
 ## License
 
