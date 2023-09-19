@@ -1,14 +1,28 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/toggle/01.basic.vue'
 import Icon from '../examples/toggle/02.icon.vue'
 </script>
-<!-- import -->
+
+# Toggle
+
+
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+:::
 
 ## 基础
 
-<!-- component -->
+
+
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -192,14 +206,14 @@ const value = ref(false)
 </script>
 
 ```
-
 :::
-<!-- component -->
 
-## icon
+## 图标
 
-<!-- component -->
+通过设置样式实现边框
+
 <Icon></Icon>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -271,6 +285,5 @@ const value = ref(false)
 </script>
 
 ```
-
 :::
-<!-- component -->
+

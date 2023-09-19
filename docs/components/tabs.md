@@ -1,13 +1,30 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/tabs/01.basic.vue'
 </script>
-<!-- import -->
+
+# Tabs
+
+
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+|modelValue|模型值|string|-|
+|indicatorClass|标识符样式|string|''|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+|default|默认插槽|
+:::
 
 ## 基础
 
-<!-- component -->
+
+
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -125,6 +142,5 @@ const tabs = reactive([
 </script>
 
 ```
-
 :::
-<!-- component -->
+

@@ -1,16 +1,30 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/splitter/01.basic.vue'
 import Horizontal from '../examples/splitter/02.horizontal.vue'
 import Range from '../examples/splitter/03.range.vue'
 import Separator from '../examples/splitter/04.separator.vue'
 </script>
-<!-- import -->
+
+# Splitter
+
+
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+:::
 
 ## 基础
 
-<!-- component -->
+
+
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -86,14 +100,14 @@ const value = ref(30)
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 水平的
 
-<!-- component -->
+
+
 <Horizontal></Horizontal>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -171,14 +185,14 @@ const value = ref(30)
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 范围
 
-<!-- component -->
+
+
 <Range></Range>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -258,14 +272,14 @@ const value = ref(30)
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 分隔
 
-<!-- component -->
+
+
 <Separator></Separator>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -357,6 +371,5 @@ const value = ref(30)
 </script>
 
 ```
-
 :::
-<!-- component -->
+

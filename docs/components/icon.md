@@ -1,43 +1,31 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/icon/01.basic.vue'
 </script>
-<!-- import -->
 
-<!-- title -->
 # Icon
-<!-- title -->
 
-<!-- desc -->
 Material Icons 图标库
-<!-- desc -->
 
-<!-- 
-  |name|图标的名称，支持下划线命名法如 check_circle 和大驼峰命名法如 checkCircle。|string|-|
-  |type|图标的类型|'outlined' \| 'filled' \| 'rounded' \| 'sharp'|'filled'| -->
-
-<!-- props -->
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
-|name|图标的名称，支持下划线命名法如 check_circle 和大驼峰命名法如 checkCircle。|string|-|
-|type|图标的类型|'outlined' \| 'filled' \| 'rounded' \| 'sharp'|'filled'|
+|def|图标的代码|string|-|
 |color|图标的颜色|string|'#000'|
-|width|图标的宽度|string|number|24|
-|width|图标的高度|string|number|24|
+|width|图标的宽度|number|24|
+|height|图标的高度|number|24|
 :::
-<!-- props -->
 
-<!-- subtitle -->
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+:::
+
 ## 基础
-<!-- subtitle -->
 
-<!-- desc -->
-<a href="https://fonts.google.com/icons" target="_blank">查看所有图标</a>
-<!-- desc -->
+<a href='https://fonts.google.com/icons' target='_blank'>查看所有图标</a>
 
-<!-- component -->
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -73,6 +61,5 @@ import { matFavorite } from 'undefined-element-icons/src/material-icons/filled'
 </script>
 
 ```
-
 :::
-<!-- component -->
+

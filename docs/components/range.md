@@ -1,48 +1,35 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/range/01.basic.vue'
 import Step from '../examples/range/02.step.vue'
 </script>
-<!-- import -->
 
-<!-- title -->
 # Range
-<!-- title -->
 
-<!-- desc -->
 Range 组件是一种向用户提供的范围选择的组件。
-<!-- desc -->
 
-<!-- props -->
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
 |min|最小值|number|0|
-|max|最大值|number|100|
+|max|最大值|number|0|
 |step|步长|number|1|
 |modelValue|模型值|number|-|
 |trackClass|滑动条的样式|string|''|
 |selectionClass|选中区域的样式|string|''|
 :::
-<!-- props -->
 
-<!-- slots -->
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
 |default|thumb|
 :::
-<!-- slots -->
 
-<!-- subtitle -->
-## Basic
-<!-- subtitle -->
+## 基础
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -136,19 +123,14 @@ const value = reactive({ min: 20, max: 80 })
 </script>
 
 ```
-
 :::
-<!-- component -->
 
-<!-- subtitle -->
-## Step
-<!-- subtitle -->
+## 步长
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Step></Step>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -244,6 +226,5 @@ const value = reactive({ min: 20, max: 80 })
 </script>
 
 ```
-
 :::
-<!-- component -->
+

@@ -1,20 +1,13 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/scroll-area/01.basic.vue'
 import Persistent from '../examples/scroll-area/02.persistent.vue'
 import Hidden from '../examples/scroll-area/03.hidden.vue'
 </script>
-<!-- import -->
 
-<!-- title -->
-# Scroll area
-<!-- title -->
+# Scroll Area
 
-<!-- desc -->
-ScrollArea 组件能够让你自定义滚动条。 
-<!-- desc -->
+ScrollArea 组件能够让你自定义滚动条。
 
-<!-- props -->
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
@@ -24,25 +17,19 @@ ScrollArea 组件能够让你自定义滚动条。
 |hidden|是否隐藏滚动条|boolean|false|
 |persistent|是否一直显示滚动条|boolean|false|
 :::
-<!-- props -->
 
-<!-- slots -->
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
 |default|默认插槽|
 :::
-<!-- slots -->
 
-<!-- subtitle -->
 ## 基础
-<!-- subtitle -->
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -88,19 +75,14 @@ ScrollArea 组件能够让你自定义滚动条。
 
 
 ```
-
 :::
-<!-- component -->
 
-<!-- subtitle -->
 ## 持久化
-<!-- subtitle -->
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Persistent></Persistent>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -128,19 +110,14 @@ ScrollArea 组件能够让你自定义滚动条。
 
 
 ```
-
 :::
-<!-- component -->
 
-<!-- subtitle -->
 ## 隐蔽
-<!-- subtitle -->
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Hidden></Hidden>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -168,6 +145,5 @@ ScrollArea 组件能够让你自定义滚动条。
 
 
 ```
-
 :::
-<!-- component -->
+

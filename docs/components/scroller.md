@@ -1,4 +1,3 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/scroller/01.basic.vue'
 import To from '../examples/scroller/02.to.vue'
@@ -6,7 +5,6 @@ import Duration from '../examples/scroller/03.duration.vue'
 import ScrollOffset from '../examples/scroller/04.scroll-offset.vue'
 import ScrollTarget from '../examples/scroller/05.scroll-target.vue'
 </script>
-<!-- import -->
 
 # Scroller
 
@@ -29,8 +27,10 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
 
 ## 基础
 
-<!-- component -->
+
+
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -72,16 +72,14 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 滚动到
 
 这里将滚动偏移量设置为 100
 
-<!-- component -->
 <To></To>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -123,16 +121,14 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 持续时间
 
 这里将持续时间设为 0
 
-<!-- component -->
 <Duration></Duration>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -174,16 +170,14 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 偏移
 
 这里将偏移设为 0
 
-<!-- component -->
 <ScrollOffset></ScrollOffset>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -225,16 +219,14 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 滚动目标
 
 这里将滚动目标设置为
 
-<!-- component -->
 <ScrollTarget></ScrollTarget>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -286,6 +278,5 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 </script>
 
 ```
-
 :::
-<!-- component -->
+

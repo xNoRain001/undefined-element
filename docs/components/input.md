@@ -1,4 +1,3 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/input/01.basic.vue'
 import Placeholder from '../examples/input/02.placeholder.vue'
@@ -9,17 +8,11 @@ import Clearable from '../examples/input/06.clearable.vue'
 import Autofocus from '../examples/input/07.autofocus.vue'
 import Types from '../examples/input/08.types.vue'
 </script>
-<!-- import -->
 
-<!-- title -->
 # Input
-<!-- title -->
 
-<!-- desc -->
 Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似于常规输入。
-<!-- desc -->
 
-<!-- props -->
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
@@ -28,14 +21,12 @@ Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似
 |readonly|只读的输入框|boolean|false|
 |disabled|禁用输入框|boolean|false|
 |aotofocus|自动聚焦的输入框|boolean|false|
-|modelValue|输入框绑定的值||-|
+|modelValue|输入框绑定的值|string|-|
 |inputClass|表单样式|string|''|
 |placeholder|输入框的占位符|string|''|
 |focusedClass|聚焦时表单容器的样式|string|''|
 :::
-<!-- props -->
 
-<!-- slots -->
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
@@ -44,28 +35,13 @@ Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似
 |prepend|输入框左边的内容|
 |append|输入框右边的内容|
 :::
-<!-- slots -->
 
-<!-- events -->
-:::details 事件
-|Slotname|Description|
-|-------------|:-----------:|
-|focus|获得焦点|
-|blur|失去焦点|
-|clear|清空|
-:::
-<!-- events -->
-
-<!-- title -->
 ## 基础
-<!-- title -->
 
-<!-- desc -->
 Input 组件由原生 input 标签和包裹它的容器组成，为了在容器边框宽度变化时不让文字抖动，所有与边框相关的样式都应该要作用到容器的伪元素 before 上，对于聚焦时的边框样式，通过 focusedContainerClass 属性来设置。
-<!-- desc -->
 
-<!-- component -->
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -119,19 +95,14 @@ const value = ref('')
 </script>
 
 ```
-
 :::
-<!-- component -->
 
-<!-- title -->
 ## 占位符
-<!-- title -->
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Placeholder></Placeholder>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -189,19 +160,14 @@ const value = ref('')
 </script>
 
 ```
-
 :::
-<!-- component -->
 
-<!-- title -->
 ## 防抖
-<!-- title -->
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Debounce></Debounce>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -261,19 +227,14 @@ const value = ref('')
 </script>
 
 ```
-
 :::
-<!-- component -->
 
-<!-- subtitle -->
 ## 只读
-<!-- subtitle -->
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Readonly></Readonly>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -327,19 +288,14 @@ const value = ref('readonly text')
 </script>
 
 ```
-
 :::
-<!-- component -->
 
-<!-- subtitle -->
 ## 禁用
-<!-- subtitle -->
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Disabled></Disabled>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -391,20 +347,14 @@ const value = ref('This is disabled input')
 </script>
 
 ```
-
 :::
-<!-- component -->
 
-<!-- subtitle -->
 ## 清空
-<!-- subtitle -->
 
-<!-- desc -->
 点击含有 clearable 属性的元素后，会点击清空表单的值，
-<!-- desc -->
 
-<!-- component -->
 <Clearable></Clearable>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -474,23 +424,14 @@ const value = ref('This is clearable input')
 </script>
 
 ```
-
-:::
-<!-- component -->
-
-::: tip
-如果要控制 clearable 属性的元素的隐藏和出现，不要使用 v-if，而是使用 v-show，因为只会在初始化时给该元素绑定事件。
 :::
 
-<!-- subtitle -->
 ## 自动聚焦
-<!-- subtitle -->
 
-<!-- desc -->
-<!-- desc -->
 
-<!-- component -->
+
 <Autofocus></Autofocus>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -546,20 +487,14 @@ const value = ref('')
 </script>
 
 ```
-
 :::
-<!-- component -->
 
-<!-- subtitle -->
 ## 密码框
-<!-- subtitle -->
 
-<!-- desc -->
 当 type 为 password 时，点击含有 password 属性的元素时可以切换密码的可见性。
-<!-- desc -->
 
-<!-- component -->
 <Types></Types>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -635,6 +570,5 @@ const value = ref('')
 </script>
 
 ```
-
 :::
-<!-- component -->
+

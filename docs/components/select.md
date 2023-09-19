@@ -1,4 +1,3 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/select/01.basic.vue'
 import Multiple from '../examples/select/02.multiple.vue'
@@ -9,9 +8,10 @@ import Readonly from '../examples/select/06.readonly.vue'
 import Disabled from '../examples/select/07.disabled.vue'
 import Clearable from '../examples/select/08.clearable.vue'
 </script>
-<!-- import -->
 
 # Select
+
+
 
 :::details 属性
 |属性名|描述|类型|默认值|
@@ -29,16 +29,16 @@ import Clearable from '../examples/select/08.clearable.vue'
 |插槽名|描述|
 |:-----------:|:-----------:|
 |before|复选框左边的内容|
-|default|复选框|
+|default|默认插槽|
 |after|复选框右边的内容|
 :::
 
 ## 基础
 
-:data-index="index" 是必要的，当选择下拉列表项时，它在内部被用于找到该下拉列表在 options 中对应的值。
+:data-index='index' 是必要的，当选择下拉列表项时，它在内部被用于找到该下拉列表在 options 中对应的值。
 
-<!-- component -->
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -152,14 +152,14 @@ const options = ['1', '2', '3', '4']
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 多选
 
-<!-- component -->
+
+
 <Multiple></Multiple>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -277,16 +277,14 @@ const options = ['1', '2', '3', '4']
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 最大数量
 
 该属性需要配合 multiple 使用，用于指定能选择的项的最大数量。
 
-<!-- component -->
 <MaxValues></MaxValues>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -404,16 +402,14 @@ const options = ['1', '2', '3', '4']
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 自动淘汰
 
 该属性需要配合 maxValues 使用，当选择的项的数量超过最大数量时，自动替换掉最开始选择的那一项。
 
-<!-- component -->
 <Race></Race>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -533,16 +529,14 @@ const options = ['1', '2', '3', '4']
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 持久化
 
 该属性需要配合 maxValues 使用，当选择的项达到 maxValues 时，是否关闭下拉列表。
 
-<!-- component -->
 <Persistent></Persistent>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -664,14 +658,14 @@ const options = ['1', '2', '3', '4']
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 只读
 
-<!-- component -->
+
+
 <Readonly></Readonly>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -785,16 +779,14 @@ const options = ['1', '2', '3', '4']
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 禁用
 
 禁用 Select 组件
 
-<!-- component -->
 <Disabled></Disabled>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -906,14 +898,14 @@ const options = ['1', '2', '3', '4']
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 清除
 
-<!-- component -->
+
+
 <Clearable></Clearable>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -1047,6 +1039,5 @@ const options = ['1', '2', '3', '4']
 </script>
 
 ```
-
 :::
-<!-- component -->
+

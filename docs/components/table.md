@@ -1,4 +1,3 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/table/01.basic.vue'
 import Border from '../examples/table/02.border.vue'
@@ -6,12 +5,27 @@ import Sort from '../examples/table/02.sort.vue'
 import FixedHeader from '../examples/table/03.fixed-header.vue'
 import FixedColumn from '../examples/table/04.fixed-column.vue'
 </script>
-<!-- import -->
+
+# Table
+
+
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+:::
 
 ## 基础
 
-<!-- component -->
+
+
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -357,16 +371,14 @@ const body = reactive([
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 边框
 
 通过设置样式实现边框
 
-<!-- component -->
 <Border></Border>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -716,14 +728,14 @@ const body = reactive([
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 排序
 
-<!-- component -->
+
+
 <Sort></Sort>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -1103,14 +1115,14 @@ const body = reactive([
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 固定表头
 
-<!-- component -->
+
+
 <FixedHeader></FixedHeader>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -1462,14 +1474,14 @@ const body = reactive([
 </script>
 
 ```
-
 :::
-<!-- component -->
 
 ## 固定列
 
-<!-- component -->
+
+
 <FixedColumn></FixedColumn>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -1827,6 +1839,5 @@ const body = reactive([
 </script>
 
 ```
-
 :::
-<!-- component -->
+

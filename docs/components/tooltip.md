@@ -1,13 +1,27 @@
-<!-- import -->
 <script setup>
 import Basic from '../examples/tooltip/01.basic.vue'
 </script>
-<!-- import -->
+
+# Tooltip
+
+
+
+:::details 属性
+|属性名|描述|类型|默认值|
+|:-----------:|:-----------:|:----:|:----:|
+:::
+
+:::details 插槽
+|插槽名|描述|
+|:-----------:|:-----------:|
+:::
 
 ## 基础
 
-<!-- component -->
+
+
 <Basic></Basic>
+
 ::: details 查看源码
 ::: code-group
 ```vue [template]
@@ -127,6 +141,5 @@ import Basic from '../examples/tooltip/01.basic.vue'
 
 
 ```
-
 :::
-<!-- component -->
+
