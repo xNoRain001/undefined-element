@@ -44,7 +44,7 @@ const {
 }
 const expanded = computed(() => modelValue.includes(name.value))
 const contentRef = ref<HTMLElement | null>(null)
-const contentStyle = reactive({ height: expanded ? '100%' : '0px' })
+const contentStyle = reactive({ height: expanded.value ? '100%' : '0px' })
 
 const onClick = () => updateModel(name.value)
 
