@@ -8,7 +8,7 @@ const {
   constants 
 } = require('fs/promises')
 
-const genMarkdown = async () => {
+const genMarkdown = async langs => {
   const rootDir = resolve(__dirname, '../')
 
   const genCodes = async () => {
@@ -151,18 +151,22 @@ const genMarkdown = async () => {
     return `${ res }:::\n\n`
   }
 
-  const _genMarkdown = async (meta, component) => {
-    let res = ''
-    const { title, props, slots, children } = meta
-    const { importStr, examplesDetail } = genImport(component)
+  const _genMarkdown = async (meta, component, langs) => {
+    for (let i = 0, l = langs.length; i < l; i++) {
+      let res = ''
+      const lang = langs[i]
+      const { title, props, slots, children } = meta
+      const { importStr, examplesDetail } = genImport(component)
 
-    res += importStr
-    res += genTitle(title, meta['desc-with-translation'].zh)
-    res += genProps(props)
-    res += genSlots(slots)
-    res += genExamples(children, examplesDetail)
+      res += importStr
+      res += genTitle(title, meta['desc-with-translation'][lang])
+      res += genProps(props)
+      res += genSlots(slots)
+      res += genExamples(children, examplesDetail)
 
-    writeFile(join(rootDir, `./docs/components/${ component }.md`), res)
+      writeFile(join(rootDir, `./docs${ lang === 'zh' ? '' : `/${ lang }` }/components/${ component }.md`), res)
+    }
+    
   }
 
   const starter = async () => {
@@ -177,7 +181,7 @@ const genMarkdown = async () => {
           const path = join(_baseDir, 'index.json')
           await access(path,  constants.F_OK)
           const meta = JSON.parse(await readFile(path, 'utf-8'))
-          _genMarkdown(meta, dir)
+          _genMarkdown(meta, dir, langs)
         } catch (error) {}
       }
     }
@@ -187,5 +191,7 @@ const genMarkdown = async () => {
 }
 
 ;(async () => {
-  await genMarkdown()
+  const langs = ['zh', 'en']
+
+  await genMarkdown(langs)
 })()
