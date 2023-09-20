@@ -8,7 +8,7 @@ const {
   constants 
 } = require('fs/promises')
 
-const genMarkdown = async langs => {
+const genMarkdown = async (defaultLang, langs) => {
   const rootDir = resolve(__dirname, '../')
 
   const genCodes = async () => {
@@ -84,7 +84,7 @@ const genMarkdown = async langs => {
     return detail
   }
 
-  const genImport = component => {
+  const genImport = (component, lang) => {
     let importStr = '<script setup>\n'
     const examplesDetail = []
     const examplesCode = codes[component]
@@ -98,7 +98,7 @@ const genMarkdown = async langs => {
       // Basic
       const tagName = genTagName(name)
 
-      importStr += `import ${ tagName } from '../examples/${ component }/${ filename }'\n`
+      importStr += `import ${ tagName } from '../${ lang === defaultLang ? '' : '../' }examples/${ component }/${ filename }'\n`
       examplesDetail.push(genDetail(tagName, examplesCode[filename]))
     }
 
@@ -112,40 +112,40 @@ const genMarkdown = async langs => {
 
   const genTitle = (title, desc) => `# ${ title }\n\n${ desc }\n\n`
 
-  const genExamples = (children, examplesDetail) => {
+  const genExamples = (children, examplesDetail, lang) => {
     let res = ''
 
     for (let i = 0, l = children.length; i < l; i++) {
       const child = children[i]
 
-      res += `## ${ child['title-with-translation'].zh }\n\n${ child['desc-with-translation'].zh }\n\n`
+      res += `## ${ child['title-with-translation'][lang] }\n\n${ child['desc-with-translation'][lang] }\n\n`
       res += examplesDetail[i]
     }
 
     return res
   }
 
-  const genProps = props => {
+  const genProps = (props, lang) => {
     let res = ':::details 属性\n|属性名|描述|类型|默认值|\n|:-----------:|:-----------:|:----:|:----:|\n'
 
     for (let i = 0, l = props.length; i < l; i++) {
       const propItem = props[i]
       const { prop, type, default: defaultValue } = propItem
 
-      res += `|${ prop }|${ propItem['desc-with-translation'].zh }|${ type }|${ defaultValue }|\n`
+      res += `|${ prop }|${ propItem['desc-with-translation'][lang] }|${ type }|${ defaultValue }|\n`
     }
 
     return `${ res }:::\n\n`
   }
 
-  const genSlots = slots => {
+  const genSlots = (slots, lang) => {
     let res = ':::details 插槽\n|插槽名|描述|\n|:-----------:|:-----------:|\n'
 
     for (let i = 0, l = slots.length; i < l; i++) {
       const slot = slots[i]
       const { name } = slot
 
-      res += `|${ name }|${ slot['desc-with-translation'].zh }|\n`
+      res += `|${ name }|${ slot['desc-with-translation'][lang] }|\n`
     }
 
     return `${ res }:::\n\n`
@@ -156,15 +156,15 @@ const genMarkdown = async langs => {
       let res = ''
       const lang = langs[i]
       const { title, props, slots, children } = meta
-      const { importStr, examplesDetail } = genImport(component)
+      const { importStr, examplesDetail } = genImport(component, lang)
 
       res += importStr
       res += genTitle(title, meta['desc-with-translation'][lang])
-      res += genProps(props)
-      res += genSlots(slots)
-      res += genExamples(children, examplesDetail)
+      res += genProps(props, lang)
+      res += genSlots(slots, lang)
+      res += genExamples(children, examplesDetail, lang)
 
-      writeFile(join(rootDir, `./docs${ lang === 'zh' ? '' : `/${ lang }` }/components/${ component }.md`), res)
+      writeFile(join(rootDir, `./docs${ lang === defaultLang ? '' : `/${ lang }` }/components/${ component }.md`), res)
     }
     
   }
@@ -191,7 +191,8 @@ const genMarkdown = async langs => {
 }
 
 ;(async () => {
+  const defaultLang = 'zh'
   const langs = ['zh', 'en']
 
-  await genMarkdown(langs)
+  await genMarkdown(defaultLang, langs)
 })()

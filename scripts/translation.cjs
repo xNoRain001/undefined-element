@@ -19,6 +19,7 @@ const request = async keyword => {
   })
   const { translation } = await response.json()
 
+  console.log(translation[0])
   return translation[0]
 }
 
