@@ -21,19 +21,22 @@ const {
   index, 
   updateIndex,
   carouselRef,
-  updateModelValue
+  updateModelValue,
+  updateAnimationName
 } = inject(carouselKey) as {
   index: Ref<number>
   updateIndex: Function,
   carouselRef: Ref<HTMLElement | null>,
-  updateModelValue: Function
+  updateModelValue: Function,
+  updateAnimationName: Function
 }
 
 const onPrev = () => {
   const sliders = carouselRef.value!.querySelectorAll('.u-carousel-slider')
   const temp = index.value - 1
-  const newIndex = temp < 0 ? sliders.length : temp
-  
+  const newIndex = temp < 0 ? sliders.length - 1 : temp
+
+  updateAnimationName('u-slide-right')
   updateIndex(newIndex)
   updateModelValue(sliders[newIndex].getAttribute('name'))
 }
@@ -41,8 +44,9 @@ const onPrev = () => {
 const onNext = () => {
   const sliders = carouselRef.value!.querySelectorAll('.u-carousel-slider')
   const temp = index.value + 1
-  const newIndex = temp >= sliders.length ? 0 : temp
+  const newIndex = temp === sliders.length ? 0 : temp
   
+  updateAnimationName('u-slide-left')
   updateIndex(newIndex)
   updateModelValue(sliders[newIndex].getAttribute('name'))
 }

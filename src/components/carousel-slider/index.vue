@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, useAttrs, computed } from 'vue'
+import { ref, inject, useAttrs } from 'vue'
 
 import { carouselKey } from '../../const/keys'
 
@@ -17,17 +17,6 @@ import type { Ref } from 'vue'
 
 const { name } = useAttrs()
 const sliderContainerRef = ref<HTMLElement | null>(null)
-const { 
-  index, 
-  modelValue,
-  updateIndex,
-  updateModelValue
-} = inject(carouselKey) as {
-  index: Ref<number>,
-  modelValue: Ref<string>,
-  updateIndex: Function,
-  updateModelValue: Function
-}
-
-const activeClass = name === modelValue.value ? 'z-10' : ''
+const { modelValue } = inject(carouselKey) as { modelValue: Ref<string> }
+const activeClass = name === modelValue.value ? 'z-10 opacity-100' : 'opacity-0'
 </script>

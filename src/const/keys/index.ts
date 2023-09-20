@@ -15,7 +15,8 @@ export const carouselKey: InjectionKey<{
   modelValue: Ref<string>,
   updateIndex: Function,
   carouselRef: Ref<HTMLElement | null>,
-  updateModelValue: Function
+  updateModelValue: Function,
+  updateAnimationName: Function
 }> = Symbol()
 
 export const expansionKey: InjectionKey<{
