@@ -23,7 +23,8 @@
     "css": "node ./scripts/css.cjs",
     "markdown": "node ./scripts/markdown.cjs",
     "build": "rollup -c",
-    "release": "node ./scripts/release.cjs"
+    "release": "node ./scripts/release.cjs",
+    "translation": "node ./scripts/translation.cjs"
   },
   "license": "MIT",
   "devDependencies": {
