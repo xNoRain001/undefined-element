@@ -1,13 +1,15 @@
 {
   "title": "Icon",
   "desc-with-translation": {
-    "zh": "Material Icons 图标库"
+    "zh": "Material Icons 图标库",
+    "en-ai": "Material Icons library"
   },
   "props": [
     {
       "prop": "def",
       "desc-with-translation": {
-        "zh": "图标的代码"
+        "zh": "图标的代码",
+        "en-ai": "Icon code"
       },
       "type": "string",
       "default": "-"
@@ -15,7 +17,8 @@
     {
       "prop": "color",
       "desc-with-translation": {
-        "zh": "图标的颜色"
+        "zh": "图标的颜色",
+        "en-ai": "Icon color"
       },
       "type": "string",
       "default": "'#000'"
@@ -23,7 +26,8 @@
     {
       "prop": "width",
       "desc-with-translation": {
-        "zh": "图标的宽度"
+        "zh": "图标的宽度",
+        "en-ai": "Icon width"
       },
       "type": "number",
       "default": "24"
@@ -31,7 +35,8 @@
     {
       "prop": "height",
       "desc-with-translation": {
-        "zh": "图标的高度"
+        "zh": "图标的高度",
+        "en-ai": "Icon height"
       },
       "type": "number",
       "default": "24"
@@ -42,10 +47,12 @@
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": "<a href='https://fonts.google.com/icons' target='_blank'>查看所有图标</a>"
+        "zh": "<a href='https://fonts.google.com/icons' target='_blank'>查看所有图标</a>",
+        "en-ai": "< a href = \"https://fonts.google.com/icons\" target = \"_blank\" > view all icon < / a >"
       }
     }
   ]

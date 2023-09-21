@@ -118,7 +118,7 @@ const genMarkdown = async (defaultLang, langs) => {
     for (let i = 0, l = children.length; i < l; i++) {
       const child = children[i]
 
-      res += `## ${ child['title-with-translation'][lang] }\n\n${ child['desc-with-translation'][lang] }\n\n`
+      res += `## ${ child['title-with-translation'][`${ lang }${ lang === defaultLang ? '' : '-ai' }`] }\n\n${ child['desc-with-translation'][`${ lang }${ lang === defaultLang ? '' : '-ai' }`] }\n\n`
       res += examplesDetail[i]
     }
 
@@ -132,7 +132,7 @@ const genMarkdown = async (defaultLang, langs) => {
       const propItem = props[i]
       const { prop, type, default: defaultValue } = propItem
 
-      res += `|${ prop }|${ propItem['desc-with-translation'][lang] }|${ type }|${ defaultValue }|\n`
+      res += `|${ prop }|${ propItem['desc-with-translation'][`${ lang }${ lang === defaultLang ? '' : '-ai' }`] }|${ type }|${ defaultValue }|\n`
     }
 
     return `${ res }:::\n\n`
@@ -145,7 +145,7 @@ const genMarkdown = async (defaultLang, langs) => {
       const slot = slots[i]
       const { name } = slot
 
-      res += `|${ name }|${ slot['desc-with-translation'][lang] }|\n`
+      res += `|${ name }|${ slot['desc-with-translation'][`${ lang }${ lang === defaultLang ? '' : '-ai' }`] }|\n`
     }
 
     return `${ res }:::\n\n`
@@ -159,14 +159,13 @@ const genMarkdown = async (defaultLang, langs) => {
       const { importStr, examplesDetail } = genImport(component, lang)
 
       res += importStr
-      res += genTitle(title, meta['desc-with-translation'][lang])
+      res += genTitle(title, meta['desc-with-translation'][`${ lang }${ lang === defaultLang ? '' : '-ai' }`])
       res += genProps(props, lang)
       res += genSlots(slots, lang)
       res += genExamples(children, examplesDetail, lang)
 
       writeFile(join(rootDir, `./docs${ lang === defaultLang ? '' : `/${ lang }` }/components/${ component }.md`), res)
     }
-    
   }
 
   const starter = async () => {

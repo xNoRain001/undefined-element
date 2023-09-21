@@ -1,17 +1,20 @@
 {
   "title": "Tooltip",
   "desc-with-translation": {
-    "zh": ""
+    "zh": "",
+    "en-ai": ""
   },
   "props": [],
   "slots": [],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     }
   ]

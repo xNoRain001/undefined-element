@@ -1,13 +1,15 @@
 {
   "title": "Input",
   "desc-with-translation": {
-    "zh": "Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似于常规输入。"
+    "zh": "Input 组件用于捕获来自用户的文本输入，它使用 v-model，类似于常规输入。",
+    "en-ai": "The Input component is used to capture text input from the user using a v-model, similar to regular input."
   },
   "props": [
     {
       "prop": "type",
       "desc-with-translation": {
-        "zh": "输入框的类型"
+        "zh": "输入框的类型",
+        "en-ai": "Type of the input box"
       },
       "type": "string",
       "default": "'text'"
@@ -15,7 +17,8 @@
     {
       "prop": "debounce",
       "desc-with-translation": {
-        "zh": "输入框的防抖间隔，值为 0 时表示不开启防抖。"
+        "zh": "输入框的防抖间隔，值为 0 时表示不开启防抖。",
+        "en-ai": "Enter the anti-shake interval of the box. If the value is 0, anti-shake is not enabled."
       },
       "type": "number",
       "default": "0"
@@ -23,7 +26,8 @@
     {
       "prop": "readonly",
       "desc-with-translation": {
-        "zh": "只读的输入框"
+        "zh": "只读的输入框",
+        "en-ai": "Read-only input field"
       },
       "type": "boolean",
       "default": "false"
@@ -31,7 +35,8 @@
     {
       "prop": "disabled",
       "desc-with-translation": {
-        "zh": "禁用输入框"
+        "zh": "禁用输入框",
+        "en-ai": "Disable input field"
       },
       "type": "boolean",
       "default": "false"
@@ -39,7 +44,8 @@
     {
       "prop": "aotofocus",
       "desc-with-translation": {
-        "zh": "自动聚焦的输入框"
+        "zh": "自动聚焦的输入框",
+        "en-ai": "Autofocus input box"
       },
       "type": "boolean",
       "default": "false"
@@ -47,7 +53,8 @@
     {
       "prop": "modelValue",
       "desc-with-translation": {
-        "zh": "输入框绑定的值"
+        "zh": "输入框绑定的值",
+        "en-ai": "Enter the value bound to the box"
       },
       "type": "string",
       "default": "-"
@@ -55,7 +62,8 @@
     {
       "prop": "inputClass",
       "desc-with-translation": {
-        "zh": "表单样式"
+        "zh": "表单样式",
+        "en-ai": "Form style"
       },
       "type": "string",
       "default": "''"
@@ -63,7 +71,8 @@
     {
       "prop": "placeholder",
       "desc-with-translation": {
-        "zh": "输入框的占位符"
+        "zh": "输入框的占位符",
+        "en-ai": "A placeholder for the input field"
       },
       "type": "string",
       "default": "''"
@@ -71,7 +80,8 @@
     {
       "prop": "focusedClass",
       "desc-with-translation": {
-        "zh": "聚焦时表单容器的样式"
+        "zh": "聚焦时表单容器的样式",
+        "en-ai": "Focus on the style of the form container"
       },
       "type": "string",
       "default": "''"
@@ -81,25 +91,29 @@
     {
       "name": "before",
       "desc-with-translation": {
-        "zh": "容器左边的内容"
+        "zh": "容器左边的内容",
+        "en-ai": "The contents to the left of the container"
       }
     },
     {
       "name": "after",
       "desc-with-translation": {
-        "zh": "容器右边的内容"
+        "zh": "容器右边的内容",
+        "en-ai": "The contents to the right of the container"
       }
     },
     {
       "name": "prepend",
       "desc-with-translation": {
-        "zh": "输入框左边的内容"
+        "zh": "输入框左边的内容",
+        "en-ai": "Enter the content to the left of the box"
       }
     },
     {
       "name": "append",
       "desc-with-translation": {
-        "zh": "输入框右边的内容"
+        "zh": "输入框右边的内容",
+        "en-ai": "Enter the content to the right of the box"
       }
     }
   ],
@@ -107,85 +121,104 @@
     {
       "name": "focus",
       "desc-with-translation": {
-        "zh": "获得焦点"
+        "zh": "获得焦点",
+        "en-ai": "Gain focus"
       }
     },
     {
       "name": "blur",
       "desc-with-translation": {
-        "zh": "失去焦点"
+        "zh": "失去焦点",
+        "en-ai": "Lose focus"
       }
     },
     {
       "name": "clear",
       "desc-with-translation": {
-        "zh": "清空"
+        "zh": "清空",
+        "en-ai": "Clear"
       }
     }
   ],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": "Input 组件由原生 input 标签和包裹它的容器组成，为了在容器边框宽度变化时不让文字抖动，所有与边框相关的样式都应该要作用到容器的伪元素 before 上，对于聚焦时的边框样式，通过 focusedContainerClass 属性来设置。"
+        "zh": "Input 组件由原生 input 标签和包裹它的容器组成，为了在容器边框宽度变化时不让文字抖动，所有与边框相关的样式都应该要作用到容器的伪元素 before 上，对于聚焦时的边框样式，通过 focusedContainerClass 属性来设置。",
+        "en-ai": "The Input component consists of the native input tag and the container that wraps it. In order to keep text from jitter when the container border width changes, all bezel-related styles should be applied to the container pseudo-element before. For focused border styles, This is set using the focusedContainerClass attribute."
       }
     },
     {
       "title-with-translation": {
-        "zh": "占位符"
+        "zh": "占位符",
+        "en-ai": "placeholder"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "防抖"
+        "zh": "防抖",
+        "en-ai": "anti-shake"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "只读"
+        "zh": "只读",
+        "en-ai": "Read only"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "禁用"
+        "zh": "禁用",
+        "en-ai": "forbidden"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "清空"
+        "zh": "清空",
+        "en-ai": "Clear"
       },
       "desc-with-translation": {
-        "zh": "点击含有 clearable 属性的元素后，会点击清空表单的值，"
+        "zh": "点击含有 clearable 属性的元素后，会点击清空表单的值，",
+        "en-ai": "After clicking on the element with the clearable attribute, it will click on the value to clear the form,"
       }
     },
     {
       "title-with-translation": {
-        "zh": "自动聚焦"
+        "zh": "自动聚焦",
+        "en-ai": "autofocus"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "密码框"
+        "zh": "密码框",
+        "en-ai": "Password box"
       },
       "desc-with-translation": {
-        "zh": "当 type 为 password 时，点击含有 password 属性的元素时可以切换密码的可见性。"
+        "zh": "当 type 为 password 时，点击含有 password 属性的元素时可以切换密码的可见性。",
+        "en-ai": "When type is password, you can switch the visibility of the password when you click on the element with the password attribute."
       }
     }
   ]

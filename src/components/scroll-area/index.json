@@ -1,13 +1,15 @@
 {
   "title": "Scroll Area",
   "desc-with-translation": {
-    "zh": "ScrollArea 组件能够让你自定义滚动条。"
+    "zh": "ScrollArea 组件能够让你自定义滚动条。",
+    "en-ai": "The ScrollArea component allows you to customize the scrollbar."
   },
   "props": [
     {
       "prop": "width",
       "desc-with-translation": {
-        "zh": "容器的宽度"
+        "zh": "容器的宽度",
+        "en-ai": "Width of container"
       },
       "type": "string",
       "default": "'100%'"
@@ -15,7 +17,8 @@
     {
       "prop": "height",
       "desc-with-translation": {
-        "zh": "容器的高度"
+        "zh": "容器的高度",
+        "en-ai": "Height of container"
       },
       "type": "string",
       "default": "'100%'"
@@ -23,7 +26,8 @@
     {
       "prop": "resize",
       "desc-with-translation": {
-        "zh": "当内容变化时是否更新滚动条的大小"
+        "zh": "当内容变化时是否更新滚动条的大小",
+        "en-ai": "Whether to update the scrollbar size when the content changes"
       },
       "type": "boolean",
       "default": "true"
@@ -31,7 +35,8 @@
     {
       "prop": "hidden",
       "desc-with-translation": {
-        "zh": "是否隐藏滚动条"
+        "zh": "是否隐藏滚动条",
+        "en-ai": "Whether to hide scroll bars"
       },
       "type": "boolean",
       "default": "false"
@@ -39,7 +44,8 @@
     {
       "prop": "persistent",
       "desc-with-translation": {
-        "zh": "是否一直显示滚动条"
+        "zh": "是否一直显示滚动条",
+        "en-ai": "Whether to display scrollbars all the time"
       },
       "type": "boolean",
       "default": "false"
@@ -49,33 +55,40 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "默认插槽"
+        "zh": "默认插槽",
+        "en-ai": "Default slot"
       }
     }
   ],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "持久化"
+        "zh": "持久化",
+        "en-ai": "persistence"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "隐蔽"
+        "zh": "隐蔽",
+        "en-ai": "Take cover"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     }
   ]

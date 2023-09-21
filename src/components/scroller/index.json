@@ -1,13 +1,15 @@
 {
   "title": "Scroller",
   "desc-with-translation": {
-    "zh": "Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定位置。"
+    "zh": "Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定位置。",
+    "en-ai": "The Scroller component is a floating button that rolls the scroll bar to a specified position."
   },
   "props": [
     {
       "prop": "to",
       "desc-with-translation": {
-        "zh": "滚动偏移量，默认值为0，这意味着滚动到顶部。"
+        "zh": "滚动偏移量，默认值为0，这意味着滚动到顶部。",
+        "en-ai": "The scroll offset, which defaults to 0, means scroll to the top."
       },
       "type": "number",
       "default": "0"
@@ -15,7 +17,8 @@
     {
       "prop": "duration",
       "desc-with-translation": {
-        "zh": "滚动过程中动画的时间"
+        "zh": "滚动过程中动画的时间",
+        "en-ai": "Time of animation during scrolling"
       },
       "type": "number",
       "default": "300"
@@ -23,7 +26,8 @@
     {
       "prop": "scrollOffset",
       "desc-with-translation": {
-        "zh": "用于控制是否显示 Scroller 组件，只有当滚动偏移量超过这个值时才会显示 Scroller 组件"
+        "zh": "用于控制是否显示 Scroller 组件，只有当滚动偏移量超过这个值时才会显示 Scroller 组件",
+        "en-ai": "Used to control whether the Scroller component is displayed. The Scroller component is displayed only when the scroll offset exceeds this value"
       },
       "type": "number",
       "default": "150"
@@ -31,7 +35,8 @@
     {
       "prop": "scrollTarget",
       "desc-with-translation": {
-        "zh": "点击浮动按钮时滚动的目标，这里需要提供一个选择器。"
+        "zh": "点击浮动按钮时滚动的目标，这里需要提供一个选择器。",
+        "en-ai": "Click the float button to scroll the target, here you need to provide a selector."
       },
       "type": "string",
       "default": "-"
@@ -41,49 +46,60 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "默认插槽"
+        "zh": "默认插槽",
+        "en-ai": "Default slot"
       }
     }
   ],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "滚动到"
+        "zh": "滚动到",
+        "en-ai": "Scroll to"
       },
       "desc-with-translation": {
-        "zh": "这里将滚动偏移量设置为 100"
+        "zh": "这里将滚动偏移量设置为 100",
+        "en-ai": "Here the scroll offset is set to 100"
       }
     },
     {
       "title-with-translation": {
-        "zh": "持续时间"
+        "zh": "持续时间",
+        "en-ai": "duration"
       },
       "desc-with-translation": {
-        "zh": "这里将持续时间设为 0"
+        "zh": "这里将持续时间设为 0",
+        "en-ai": "Here we set the duration to 0"
       }
     },
     {
       "title-with-translation": {
-        "zh": "偏移"
+        "zh": "偏移",
+        "en-ai": "skew"
       },
       "desc-with-translation": {
-        "zh": "这里将偏移设为 0"
+        "zh": "这里将偏移设为 0",
+        "en-ai": "Here we set the offset to 0"
       }
     },
     {
       "title-with-translation": {
-        "zh": "滚动目标"
+        "zh": "滚动目标",
+        "en-ai": "Rolling target"
       },
       "desc-with-translation": {
-        "zh": "这里将滚动目标设置为"
+        "zh": "这里将滚动目标设置为",
+        "en-ai": "Here the scroll target is set to"
       }
     }
   ]

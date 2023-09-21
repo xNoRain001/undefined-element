@@ -1,13 +1,15 @@
 {
   "title": "Expansion",
   "desc-with-translation": {
-    "zh": "Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们视为单击时会扩展的手风琴元素，也被称为可折叠。"
+    "zh": "Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们视为单击时会扩展的手风琴元素，也被称为可折叠。",
+    "en-ai": "The Expansion component allows content that is not immediately relevant to the user to be hidden and can be thought of as accordion elements that expand when clicked, also known as foldable."
   },
   "props": [
     {
       "prop": "min",
       "desc-with-translation": {
-        "zh": "至少应该展开的数量"
+        "zh": "至少应该展开的数量",
+        "en-ai": "At least the amount that should be expanded"
       },
       "type": "number",
       "default": "Number.MIN_SAFE_INTEGER"
@@ -15,7 +17,8 @@
     {
       "prop": "max",
       "desc-with-translation": {
-        "zh": "最多能展开的数量"
+        "zh": "最多能展开的数量",
+        "en-ai": "The maximum number that can be expanded"
       },
       "type": "number",
       "default": "Number.MAX_SAFE_INTEGER"
@@ -23,7 +26,8 @@
     {
       "prop": "name",
       "desc-with-translation": {
-        "zh": "展开项的唯一标识"
+        "zh": "展开项的唯一标识",
+        "en-ai": "The unique identification of the expanded item"
       },
       "type": "string",
       "default": "-"
@@ -31,7 +35,8 @@
     {
       "prop": "modelValue",
       "desc-with-translation": {
-        "zh": "展开的项，里面存放着展开项的名字。"
+        "zh": "展开的项，里面存放着展开项的名字。",
+        "en-ai": "The expanded item, which contains the name of the expanded item."
       },
       "type": "string[]",
       "default": "[]"
@@ -41,13 +46,15 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "始终显示的头部内容"
+        "zh": "始终显示的头部内容",
+        "en-ai": "Always display the header content"
       }
     },
     {
       "name": "content",
       "desc-with-translation": {
-        "zh": "展开时才显示的内容"
+        "zh": "展开时才显示的内容",
+        "en-ai": "Content that is displayed only when expanded"
       }
     }
   ],
@@ -55,26 +62,32 @@
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "最小数量"
+        "zh": "最小数量",
+        "en-ai": "Minimum quantity"
       },
       "desc-with-translation": {
-        "zh": "至少应该展开的数量"
+        "zh": "至少应该展开的数量",
+        "en-ai": "At least the amount that should be expanded"
       }
     },
     {
       "title-with-translation": {
-        "zh": "最大数量"
+        "zh": "最大数量",
+        "en-ai": "Maximum quantity"
       },
       "desc-with-translation": {
-        "zh": "最多能展开的数量，当即将超过该数量时，会自动折叠此前最早展开的项。"
+        "zh": "最多能展开的数量，当即将超过该数量时，会自动折叠此前最早展开的项。",
+        "en-ai": "When the maximum number of items that can be expanded is exceeded, the earliest item that can be expanded is automatically folded."
       }
     }
   ]

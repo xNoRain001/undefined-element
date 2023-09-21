@@ -1,13 +1,15 @@
 {
   "title": "Range",
   "desc-with-translation": {
-    "zh": "Range 组件是一种向用户提供的范围选择的组件。"
+    "zh": "Range 组件是一种向用户提供的范围选择的组件。",
+    "en-ai": "A Range component is a range selection component that is provided to the user."
   },
   "props": [
     {
       "prop": "min",
       "desc-with-translation": {
-        "zh": "最小值"
+        "zh": "最小值",
+        "en-ai": "Minimum value"
       },
       "type": "number",
       "default": "0"
@@ -15,7 +17,8 @@
     {
       "prop": "max",
       "desc-with-translation": {
-        "zh": "最大值"
+        "zh": "最大值",
+        "en-ai": "Maximum value"
       },
       "type": "number",
       "default": "0"
@@ -23,7 +26,8 @@
     {
       "prop": "step",
       "desc-with-translation": {
-        "zh": "步长"
+        "zh": "步长",
+        "en-ai": "Step size"
       },
       "type": "number",
       "default": "1"
@@ -31,7 +35,8 @@
     {
       "prop": "modelValue",
       "desc-with-translation": {
-        "zh": "模型值"
+        "zh": "模型值",
+        "en-ai": "Model value"
       },
       "type": "number",
       "default": "-"
@@ -39,7 +44,8 @@
     {
       "prop": "trackClass",
       "desc-with-translation": {
-        "zh": "滑动条的样式"
+        "zh": "滑动条的样式",
+        "en-ai": "Slider style"
       },
       "type": "string",
       "default": "''"
@@ -47,7 +53,8 @@
     {
       "prop": "selectionClass",
       "desc-with-translation": {
-        "zh": "选中区域的样式"
+        "zh": "选中区域的样式",
+        "en-ai": "Select the style for the area"
       },
       "type": "string",
       "default": "''"
@@ -57,25 +64,30 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "thumb"
+        "zh": "thumb",
+        "en-ai": "thumb"
       }
     }
   ],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "步长"
+        "zh": "步长",
+        "en-ai": "Step size"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     }
   ]

@@ -1,13 +1,15 @@
 {
   "title": "Infinite Scroll",
   "desc-with-translation": {
-    "zh": "Infinite Scroll 允许用户滚动到指定位置时加载更多内容。"
+    "zh": "Infinite Scroll 允许用户滚动到指定位置时加载更多内容。",
+    "en-ai": "Infinite Scroll allows users to load more content when they scroll to a specified location."
   },
   "props": [
     {
       "prop": "offset",
       "desc-with-translation": {
-        "zh": "当距离底部的偏移为该值时，触发回调。"
+        "zh": "当距离底部的偏移为该值时，触发回调。",
+        "en-ai": "When the offset from the bottom is this value, the callback is triggered."
       },
       "type": "number",
       "default": "200"
@@ -15,7 +17,8 @@
     {
       "prop": "scrollTarget",
       "desc-with-translation": {
-        "zh": "目标"
+        "zh": "目标",
+        "en-ai": "goal"
       },
       "type": "string",
       "default": "''"
@@ -25,13 +28,15 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "默认插槽"
+        "zh": "默认插槽",
+        "en-ai": "Default slot"
       }
     },
     {
       "name": "loading",
       "desc-with-translation": {
-        "zh": "loading 插槽"
+        "zh": "loading 插槽",
+        "en-ai": "loading slot"
       }
     }
   ],
@@ -39,18 +44,22 @@
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": "需要提供 load 事件的回调，会给回调传递 load 参数，当获取数据后，需要调用 load 函数来关闭 loading 状态。"
+        "zh": "需要提供 load 事件的回调，会给回调传递 load 参数，当获取数据后，需要调用 load 函数来关闭 loading 状态。",
+        "en-ai": "You need to provide a callback for the load event, and pass the load parameter to the callback. After obtaining data, you need to call the load function to disable the loading state."
       }
     },
     {
       "title-with-translation": {
-        "zh": "目标"
+        "zh": "目标",
+        "en-ai": "goal"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     }
   ]

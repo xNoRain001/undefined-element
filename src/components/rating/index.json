@@ -1,13 +1,15 @@
 {
   "title": "Rating",
   "desc-with-translation": {
-    "zh": "Rating 组件的作用是进行星级评分"
+    "zh": "Rating 组件的作用是进行星级评分",
+    "en-ai": "The function of the Rating component is to give star ratings"
   },
   "props": [
     {
       "prop": "max",
       "desc-with-translation": {
-        "zh": "评分的最大值"
+        "zh": "评分的最大值",
+        "en-ai": "Maximum score"
       },
       "type": "number",
       "default": "-"
@@ -15,7 +17,8 @@
     {
       "prop": "color",
       "desc-with-translation": {
-        "zh": "未点亮时图标的颜色"
+        "zh": "未点亮时图标的颜色",
+        "en-ai": "The color of the icon when it is not lit"
       },
       "type": "string",
       "default": "'#000'"
@@ -23,7 +26,8 @@
     {
       "prop": "modelValue",
       "desc-with-translation": {
-        "zh": "绑定的值"
+        "zh": "绑定的值",
+        "en-ai": "Bound value"
       },
       "type": "number",
       "default": "-"
@@ -31,7 +35,8 @@
     {
       "prop": "activeColor",
       "desc-with-translation": {
-        "zh": "点亮时图标的颜色"
+        "zh": "点亮时图标的颜色",
+        "en-ai": "The color of the icon when lit"
       },
       "type": "string",
       "default": "'#eab308'"
@@ -41,17 +46,20 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "图标"
+        "zh": "图标",
+        "en-ai": "icon"
       }
     }
   ],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     }
   ]

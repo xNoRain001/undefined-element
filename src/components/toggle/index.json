@@ -1,25 +1,30 @@
 {
   "title": "Toggle",
   "desc-with-translation": {
-    "zh": ""
+    "zh": "",
+    "en-ai": ""
   },
   "props": [],
   "slots": [],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "图标"
+        "zh": "图标",
+        "en-ai": "icon"
       },
       "desc-with-translation": {
-        "zh": "通过设置样式实现边框"
+        "zh": "通过设置样式实现边框",
+        "en-ai": "Implement borders by setting styles"
       }
     }
   ]

@@ -1,13 +1,15 @@
 {
   "title": "Dropdown",
   "desc-with-translation": {
-    "zh": "Dropdown 组件用于实现下拉列表"
+    "zh": "Dropdown 组件用于实现下拉列表",
+    "en-ai": "The Dropdown component is used to implement drop-down lists"
   },
   "props": [
     {
       "prop": "trigger",
       "desc-with-translation": {
-        "zh": "触发方式"
+        "zh": "触发方式",
+        "en-ai": "Trigger mode"
       },
       "type": "'hover' \\| 'click'",
       "default": "hover"
@@ -17,13 +19,15 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "始终显示的头部内容"
+        "zh": "始终显示的头部内容",
+        "en-ai": "Always display the header content"
       }
     },
     {
       "name": "list",
       "desc-with-translation": {
-        "zh": "列表内容"
+        "zh": "列表内容",
+        "en-ai": "List content"
       }
     }
   ],
@@ -31,18 +35,22 @@
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "触发方式"
+        "zh": "触发方式",
+        "en-ai": "Trigger mode"
       },
       "desc-with-translation": {
-        "zh": "这里设置为点击触发"
+        "zh": "这里设置为点击触发",
+        "en-ai": "This is set to click trigger"
       }
     }
   ]

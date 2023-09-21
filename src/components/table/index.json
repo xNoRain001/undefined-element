@@ -1,49 +1,60 @@
 {
   "title": "Table",
   "desc-with-translation": {
-    "zh": ""
+    "zh": "",
+    "en-ai": ""
   },
   "props": [],
   "slots": [],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "边框"
+        "zh": "边框",
+        "en-ai": "border"
       },
       "desc-with-translation": {
-        "zh": "通过设置样式实现边框"
+        "zh": "通过设置样式实现边框",
+        "en-ai": "Implement borders by setting styles"
       }
     },
     {
       "title-with-translation": {
-        "zh": "排序"
+        "zh": "排序",
+        "en-ai": "sort"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "固定表头"
+        "zh": "固定表头",
+        "en-ai": "Fixed head"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "固定列"
+        "zh": "固定列",
+        "en-ai": "Fixed column"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     }
   ]

@@ -45,10 +45,10 @@ const translator = async () => {
           const { zh } = o
 
           if (zh) {
-            o.en = await request(zh)
+            o['en-ai'] = await request(zh)
             await sleep(3000)
           } else {
-            o.en = zh
+            o['en-ai'] = zh
           }
         } else {
           let helper = source
@@ -61,10 +61,10 @@ const translator = async () => {
           const { zh } = o
 
           if (zh) {
-            o.en = await request(zh)
+            o['en-ai'] = await request(zh)
             await sleep(3000)
           } else {
-            o.en = zh
+            o['en-ai'] = zh
           }
         }
       } else {

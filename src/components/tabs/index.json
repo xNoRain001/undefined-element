@@ -1,13 +1,15 @@
 {
   "title": "Tabs",
   "desc-with-translation": {
-    "zh": ""
+    "zh": "",
+    "en-ai": ""
   },
   "props": [
     {
       "prop": "modelValue",
       "desc-with-translation": {
-        "zh": "模型值"
+        "zh": "模型值",
+        "en-ai": "Model value"
       },
       "type": "string",
       "default": "-"
@@ -15,7 +17,8 @@
     {
       "prop": "indicatorClass",
       "desc-with-translation": {
-        "zh": "标识符样式"
+        "zh": "标识符样式",
+        "en-ai": "Identifier style"
       },
       "type": "string",
       "default": "''"
@@ -25,17 +28,20 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "默认插槽"
+        "zh": "默认插槽",
+        "en-ai": "Default slot"
       }
     }
   ],
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     }
   ]

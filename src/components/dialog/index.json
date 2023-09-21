@@ -1,13 +1,15 @@
 {
   "title": "UDialog",
   "desc-with-translation": {
-    "zh": "Dialog 组件可以向用户提供信息，或要求他们作出决定。"
+    "zh": "Dialog 组件可以向用户提供信息，或要求他们作出决定。",
+    "en-ai": "The Dialog component can provide information to the user or ask them to make a decision."
   },
   "props": [
     {
       "prop": "position",
       "desc-with-translation": {
-        "zh": "对话框的位置"
+        "zh": "对话框的位置",
+        "en-ai": "Dialog box location"
       },
       "type": "'top' \\| 'right' \\| 'bottom' \\| 'left' \\| 'center'|'center'",
       "default": "'center'"
@@ -15,7 +17,8 @@
     {
       "prop": "modelValue",
       "desc-with-translation": {
-        "zh": "绑定的值，用于控制是否显示对话框"
+        "zh": "绑定的值，用于控制是否显示对话框",
+        "en-ai": "The bound value that controls whether the dialog box is displayed"
       },
       "type": "boolean",
       "default": "-"
@@ -23,7 +26,8 @@
     {
       "prop": "persistent",
       "desc-with-translation": {
-        "zh": "是否开启持久化"
+        "zh": "是否开启持久化",
+        "en-ai": "Whether to enable persistence"
       },
       "type": "boolean",
       "default": "false"
@@ -33,7 +37,8 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "对话框的内容"
+        "zh": "对话框的内容",
+        "en-ai": "Dialog box content"
       }
     }
   ],
@@ -41,26 +46,32 @@
   "children": [
     {
       "title-with-translation": {
-        "zh": "基础"
+        "zh": "基础",
+        "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "",
+        "en-ai": ""
       }
     },
     {
       "title-with-translation": {
-        "zh": "持久化"
+        "zh": "持久化",
+        "en-ai": "persistence"
       },
       "desc-with-translation": {
-        "zh": "开启持久化后，点击遮罩层不会关闭对话框。"
+        "zh": "开启持久化后，点击遮罩层不会关闭对话框。",
+        "en-ai": "After persistence is enabled, clicking the mask layer does not close the dialog box."
       }
     },
     {
       "title-with-translation": {
-        "zh": "抽屉"
+        "zh": "抽屉",
+        "en-ai": "drawer"
       },
       "desc-with-translation": {
-        "zh": "可以非常容易地将对话框改为抽屉"
+        "zh": "可以非常容易地将对话框改为抽屉",
+        "en-ai": "You can easily change the dialog box to a drawer"
       }
     }
   ]
