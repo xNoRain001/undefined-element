@@ -3,11 +3,15 @@
     <slot></slot>
 
     <div class="u-carousel-prev" @click="onPrev">
-      <slot name="prev" :total="counter"></slot>
+      <Transition name="u-fade">
+        <slot name="prev" v-if="loop || modelValue !== 0"></slot>
+      </Transition>
     </div>
 
     <div class="u-carousel-next" @click="onNext">
-      <slot name="next" :total="counter"></slot>
+      <Transition name="u-fade">
+        <slot name="next" v-if="loop || modelValue !== counter - 1"></slot>
+      </Transition>
     </div>
 
     <div class="u-carousel-navigation">

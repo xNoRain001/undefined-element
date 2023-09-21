@@ -13,10 +13,7 @@ export const skeletonKey: InjectionKey<Ref<boolean>> = Symbol()
 export const carouselKey: InjectionKey<{
   counter: Ref<number>,
   modelValue: Ref<number>,
-  carouselRef: Ref<HTMLElement | null>,
-  updateCounter: Function,
-  updateModelValue: Function,
-  updateAnimationName: Function
+  updateCounter: Function
 }> = Symbol()
 
 export const expansionKey: InjectionKey<{

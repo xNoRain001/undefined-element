@@ -29,7 +29,7 @@
         </button>
       </template>
 
-      <template #next>
+      <template #next="{ total }">
         <button class="
           absolute top-1/2 right-[16px] -translate-y-1/2 hover:bg-[rgba(255,255,255,.2)]
           rounded-full transition-colors duration-300 block z-20 w-[33px] h-[33px]
