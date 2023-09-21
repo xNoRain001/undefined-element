@@ -1,6 +1,18 @@
 <template>
   <div ref="carouselRef" class="u-carousel relative overflow-hidden">
-    <slot></slot>
+    <slot name="sliders"></slot>
+
+    <div class="u-carousel-prev" @click="onPrev">
+      <slot name="prev"></slot>
+    </div>
+
+    <div class="u-carousel-next" @click="onNext">
+      <slot name="next"></slot>
+    </div>
+
+    <div class="u-carousel-navigation">
+      <slot name="navigation" :total="counter"></slot>
+    </div>
   </div>
 </template>
 
@@ -9,29 +21,47 @@ import { ref, watch, toRefs, provide } from 'vue'
 
 import { carouselKey } from '../../const/keys'
 
-const emit = defineEmits<{ 'update:modelValue': [string] }>()
-const props = defineProps<{ modelValue: string }>()
+const emit = defineEmits<{ 'update:modelValue': [number] }>()
+const props = defineProps<{ modelValue: number }>()
 const { modelValue } = toRefs(props)
-const index = ref(0)
+const counter = ref(0)
 const animationName = ref<'u-slide-left' | 'u-slide-right'>('u-slide-left')
 const carouselRef = ref<HTMLElement | null>(null)
 
-const updateIndex = (value: number) => index.value = value
-
-const updateModelValue = (value: string) => emit('update:modelValue', value)
+const updateModelValue = (value: number) => emit('update:modelValue', value)
 
 const updateAnimationName = (value: 'u-slide-left' | 'u-slide-right') => animationName.value = value
 
+const updateCounter = (value: number) => counter.value = value
+
 provide(carouselKey, {
-  index,
+  counter,
   modelValue,
-  updateIndex,
   carouselRef,
+  updateCounter,
   updateModelValue,
   updateAnimationName
 })
 
-watch(index, (newIndex, oldIndex) => {
+const onPrev = () => {
+  const sliders = carouselRef.value!.querySelectorAll('.u-carousel-slider')
+  const temp = modelValue.value - 1
+  const newIndex = temp < 0 ? sliders.length - 1 : temp
+
+  animationName.value = 'u-slide-right'
+  updateModelValue(newIndex)
+}
+
+const onNext = () => {
+  const sliders = carouselRef.value!.querySelectorAll('.u-carousel-slider')
+  const temp = modelValue.value + 1
+  const newIndex = temp === sliders.length ? 0 : temp
+  
+  animationName.value = 'u-slide-left'
+  updateModelValue(newIndex)
+}
+
+watch(modelValue, (newIndex, oldIndex) => {
   const sliders = carouselRef.value!.querySelectorAll('.u-carousel-slider')
   const _animationName = animationName.value
   
