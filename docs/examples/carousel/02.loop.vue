@@ -2,6 +2,7 @@
   <div class="vp-raw my-[16px]">
     <u-carousel 
       v-model="value"
+      :loop="true"
       class="h-[300px]"
     >
       <u-carousel-slider>

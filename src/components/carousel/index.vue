@@ -1,13 +1,13 @@
 <template>
   <div ref="carouselRef" class="u-carousel relative overflow-hidden">
-    <slot name="sliders"></slot>
+    <slot></slot>
 
     <div class="u-carousel-prev" @click="onPrev">
-      <slot name="prev"></slot>
+      <slot name="prev" :total="counter"></slot>
     </div>
 
     <div class="u-carousel-next" @click="onNext">
-      <slot name="next"></slot>
+      <slot name="next" :total="counter"></slot>
     </div>
 
     <div class="u-carousel-navigation">
@@ -22,43 +22,56 @@ import { ref, watch, toRefs, provide } from 'vue'
 import { carouselKey } from '../../const/keys'
 
 const emit = defineEmits<{ 'update:modelValue': [number] }>()
-const props = defineProps<{ modelValue: number }>()
-const { modelValue } = toRefs(props)
+const props = withDefaults(defineProps<{ 
+  loop?: boolean,
+  modelValue: number
+}>(), {
+  loop: false
+})
+const { loop, modelValue } = toRefs(props)
 const counter = ref(0)
 const animationName = ref<'u-slide-left' | 'u-slide-right'>('u-slide-left')
 const carouselRef = ref<HTMLElement | null>(null)
 
-const updateModelValue = (value: number) => emit('update:modelValue', value)
-
-const updateAnimationName = (value: 'u-slide-left' | 'u-slide-right') => animationName.value = value
-
 const updateCounter = (value: number) => counter.value = value
+
+const updateModelValue = (value: number) => emit('update:modelValue', value)
 
 provide(carouselKey, {
   counter,
   modelValue,
-  carouselRef,
-  updateCounter,
-  updateModelValue,
-  updateAnimationName
+  updateCounter
 })
 
 const onPrev = () => {
-  const sliders = carouselRef.value!.querySelectorAll('.u-carousel-slider')
-  const temp = modelValue.value - 1
-  const newIndex = temp < 0 ? sliders.length - 1 : temp
+  let temp = modelValue.value - 1
+
+  if (temp < 0) {
+    if (!loop.value) {
+      return
+    } 
+
+    temp = counter.value - 1
+  }
 
   animationName.value = 'u-slide-right'
-  updateModelValue(newIndex)
+  updateModelValue(temp)
 }
 
 const onNext = () => {
-  const sliders = carouselRef.value!.querySelectorAll('.u-carousel-slider')
-  const temp = modelValue.value + 1
-  const newIndex = temp === sliders.length ? 0 : temp
-  
+  let temp = modelValue.value + 1
+  const _counter = counter.value
+
+  if (temp === _counter) {
+    if (!loop.value) {
+      return
+    } 
+
+    temp = 0
+  }
+
   animationName.value = 'u-slide-left'
-  updateModelValue(newIndex)
+  updateModelValue(temp)
 }
 
 watch(modelValue, (newIndex, oldIndex) => {

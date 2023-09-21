@@ -2,14 +2,14 @@
   <div 
     ref="sliderContainerRef" 
     class="u-carousel-slider absolute left-0 w-full h-full"
-    :class="activeClass"
+    :class="sliderClass"
   >
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, useAttrs } from 'vue'
+import { ref, inject } from 'vue'
 
 import { carouselKey } from '../../const/keys'
 
@@ -27,7 +27,7 @@ const {
 }
 
 const index = counter.value
-const activeClass = index === modelValue.value ? 'z-10 opacity-100' : 'opacity-0'
+const sliderClass = index === modelValue.value ? 'z-10 opacity-100' : 'opacity-0'
 
 updateCounter(index + 1)
 </script>
