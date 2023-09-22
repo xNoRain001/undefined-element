@@ -1,7 +1,7 @@
 {
   "title": "Carousel",
   "desc-with-translation": {
-    "zh": ""
+    "zh": "Carousel 组件可以实现用更少的空间显示更多信息"
   },
   "props": [],
   "slots": [],
@@ -20,7 +20,15 @@
         "zh": "循环"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "将 loop 设置为 true 开启循环"
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "方向"
+      },
+      "desc-with-translation": {
+        "zh": "默认的方向是水平，将 vertical 设置为 true，方向为垂直。"
       }
     },
     {
@@ -28,7 +36,7 @@
         "zh": "自动播放"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "当鼠标移入到 slider 上时会停止自动播放，当鼠标移出时会恢复自动播放。"
       }
     }
   ]

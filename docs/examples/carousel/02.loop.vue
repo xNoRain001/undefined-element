@@ -40,12 +40,17 @@
       </template>
 
       <template #navigation="{ total }">
-        <div class="absolute bottom-[16px] left-1/2 -translate-x-1/2 h-[16px] z-20 flex items-center">
+        <div class="absolute bottom-[16px] left-1/2 -translate-x-1/2 z-20 flex">
           <div 
             v-for="i in total" 
-            class="w-[16px] h-[16px] rounded-full bg-white ml-[16px] first:ml-0 opacity-50 transition-opacity duration-300"
-            :class="i === value + 1 ? 'opacity-100' : ''"
-          ></div>
+            :data-index="i - 1"
+            class="w-[30px] h-[30px] ml-[16px] first:ml-0 flex items-center cursor-pointer"
+          >
+            <div 
+              class="w-full h-[2px] bg-white transition-opacity duration-300"
+              :class="i === value + 1 ? 'opacity-100' : 'opacity-50'"
+            ></div>
+          </div>
         </div>
       </template>
     </u-carousel>

@@ -40,12 +40,22 @@
         </button>
       </template>
 
-      <template #navigation="{ total }">
-        <div class="absolute bottom-[16px] left-1/2 -translate-x-1/2 h-[16px] z-20 flex items-center">
+      <template #navigation>
+        <div class="absolute bottom-[16px] left-1/2 -translate-x-1/2 z-20 flex">
           <div 
-            v-for="i in total" 
-            class="w-[16px] h-[16px] rounded-full bg-white ml-[16px] first:ml-0 opacity-50 transition-opacity duration-300"
-            :class="i === value + 1 ? 'opacity-100' : ''"
+            :data-index="0"
+            :class="value === 0 ? 'opacity-100 border-white' : 'border-transparent'"
+            class="w-[70px] h-[50px] rounded-[4px] bg-red-500 opacity-50 transition-opacity duration-300 cursor-pointer hover:opacity-100 border border-solid"
+          ></div>
+          <div 
+            :data-index="1"
+            :class="value === 1 ? 'opacity-100 border-white' : 'border-transparent'"
+            class="w-[70px] h-[50px] rounded-[4px] bg-green-500 opacity-50 ml-[16px] transition-opacity duration-300 cursor-pointer hover:opacity-100 border border-solid"
+          ></div>
+          <div 
+            :data-index="2"
+            :class="value === 2 ? 'opacity-100 border-white' : 'border-transparent'"
+            class="w-[70px] h-[50px] rounded-[4px] bg-blue-500 opacity-50 ml-[16px] transition-opacity duration-300 cursor-pointer hover:opacity-100 border border-solid"
           ></div>
         </div>
       </template>

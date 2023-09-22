@@ -19,7 +19,7 @@
       </Transition>
     </div>
 
-    <div class="u-carousel-navigation">
+    <div class="u-carousel-navigation" @click="onClick">
       <slot name="navigation" :total="counter"></slot>
     </div>
   </div>
@@ -29,20 +29,28 @@
 import { ref, watch, toRefs, provide, onMounted } from 'vue'
 
 import { carouselKey } from '../../const/keys'
+import { useGetIndex } from '../../composables'
 
 let timer = 0
 const emit = defineEmits<{ 'update:modelValue': [number] }>()
 const props = withDefaults(defineProps<{ 
   loop?: boolean,
-  autoplay?: boolean,
+  autoplay?: number | boolean,
+  vertical?: boolean, 
   modelValue: number,
 }>(), {
   loop: false,
-  autoplay: false
+  autoplay: false,
+  vertical: false
 })
-const { loop, autoplay, modelValue } = toRefs(props)
+const { loop, autoplay, vertical, modelValue } = toRefs(props)
 const counter = ref(0)
-const animationName = ref<'u-slide-left' | 'u-slide-right'>('u-slide-left')
+const animationName = ref<
+  'u-slide-left' | 
+  'u-slide-right' | 
+  'u-slide-down' | 
+  'u-slide-up'
+>('u-slide-left')
 const carouselRef = ref<HTMLElement | null>(null)
 
 const updateCounter = (value: number) => counter.value = value
@@ -63,7 +71,7 @@ const onPrev = () => {
     return
   }
 
-  animationName.value = 'u-slide-right'
+  animationName.value = vertical.value ? 'u-slide-down' : 'u-slide-right'
   updateModelValue(isBoundary ? counter.value - 1 : newIndex)
 }
 
@@ -75,8 +83,33 @@ const onNext = () => {
     return
   }
 
-  animationName.value = 'u-slide-left'
+  animationName.value = vertical.value ? 'u-slide-up' : 'u-slide-left'
   updateModelValue(isBoundary ? 0 : newIndex)
+}
+
+const onClick = (e: Event) => {
+  const { 
+    target, currentTarget 
+  }: { target: HTMLElement, currentTarget: HTMLElement} = e as any
+
+  if (target === currentTarget) {
+    return
+  }
+
+  const index = useGetIndex(target, currentTarget)
+  const _modelValue = modelValue.value
+
+  if (index !== _modelValue) {
+    animationName.value = vertical.value 
+      ? index > _modelValue 
+        ? 'u-slide-up' 
+        : 'u-slide-down'
+      : index > _modelValue 
+        ? 'u-slide-left' 
+        : 'u-slide-right'
+
+    updateModelValue(index)
+  }
 }
 
 const onMouseenter = () => {
@@ -86,7 +119,9 @@ const onMouseenter = () => {
 }
 
 const onMouseleave = () => {
-  if (autoplay.value) {
+  const _autoplay = autoplay.value
+
+  if (_autoplay) {
     timer = setInterval(() => onNext(), 3000)
   }
 }
@@ -106,7 +141,9 @@ watch(modelValue, (newIndex, oldIndex) => {
 })
 
 onMounted(() => {
-  if (autoplay.value) {
+  const _autoplay = autoplay.value
+
+  if (_autoplay) {
     timer = setInterval(() => onNext(), 3000)
   }
 })

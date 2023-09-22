@@ -56,6 +56,7 @@
 import { ref, toRefs, computed, onMounted } from 'vue'
 
 import { noop } from '../../utils'
+import { useGetIndex } from '../../composables'
 
 const props = withDefaults(defineProps<{
   race?: boolean,
@@ -140,20 +141,10 @@ const onClick = () => focused.value = !focused.value
 
 const onBlur = () => focused.value = false
 
-const getIndex = (target: HTMLElement, parent: HTMLElement) => {
-  let index: string | null = null
-
-  while (!(index = target.getAttribute('data-index')) && target !== parent) {
-    target = target.parentNode as HTMLElement
-  }
-
-  return index as string
-}
-
 const updateModelValue = (e: Event) => {
   const { target, currentTarget } = e 
-  const index = getIndex(target as HTMLElement, currentTarget as HTMLElement)
-  const value = options.value[Number(index)]
+  const index = useGetIndex(target as HTMLElement, currentTarget as HTMLElement)
+  const value = options.value[index]
   
   if (multiple.value) {
     const _modelValue = modelValue.value as string[]
