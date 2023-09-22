@@ -29,7 +29,7 @@
         </button>
       </template>
 
-      <template #next="{ total }">
+      <template #next>
         <button class="
           absolute top-1/2 right-[16px] -translate-y-1/2 hover:bg-[rgba(255,255,255,.2)]
           rounded-full transition-colors duration-300 block z-20 w-[33px] h-[33px]
@@ -42,8 +42,8 @@
         <div class="absolute bottom-[16px] left-1/2 -translate-x-1/2 h-[16px] z-20 flex items-center">
           <div 
             v-for="i in total" 
-            class="w-[16px] h-[16px] rounded-full bg-white ml-[16px] first:ml-0"
-            :class="i === value + 1 ? '' : 'opacity-50'"
+            class="w-[16px] h-[16px] rounded-full bg-white ml-[16px] first:ml-0 opacity-50 transition-opacity duration-300"
+            :class="i === value + 1 ? 'opacity-100' : ''"
           ></div>
         </div>
       </template>

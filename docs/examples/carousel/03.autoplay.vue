@@ -3,6 +3,7 @@
     <u-carousel 
       v-model="value"
       :loop="true"
+      :autoplay="true"
       class="h-[300px]"
     >
       <u-carousel-slider>

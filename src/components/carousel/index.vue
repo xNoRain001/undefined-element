@@ -1,5 +1,10 @@
 <template>
-  <div ref="carouselRef" class="u-carousel relative overflow-hidden">
+  <div 
+    ref="carouselRef" 
+    class="u-carousel relative overflow-hidden"
+    @mouseenter="onMouseenter"
+    @mouseleave="onMouseleave"
+  >
     <slot></slot>
 
     <div class="u-carousel-prev" @click="onPrev">
@@ -21,18 +26,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, toRefs, provide } from 'vue'
+import { ref, watch, toRefs, provide, onMounted } from 'vue'
 
 import { carouselKey } from '../../const/keys'
 
+let timer = 0
 const emit = defineEmits<{ 'update:modelValue': [number] }>()
 const props = withDefaults(defineProps<{ 
   loop?: boolean,
-  modelValue: number
+  autoplay?: boolean,
+  modelValue: number,
 }>(), {
-  loop: false
+  loop: false,
+  autoplay: false
 })
-const { loop, modelValue } = toRefs(props)
+const { loop, autoplay, modelValue } = toRefs(props)
 const counter = ref(0)
 const animationName = ref<'u-slide-left' | 'u-slide-right'>('u-slide-left')
 const carouselRef = ref<HTMLElement | null>(null)
@@ -48,34 +56,39 @@ provide(carouselKey, {
 })
 
 const onPrev = () => {
-  let temp = modelValue.value - 1
+  const newIndex = modelValue.value - 1
+  const isBoundary = newIndex === -1
 
-  if (temp < 0) {
-    if (!loop.value) {
-      return
-    } 
-
-    temp = counter.value - 1
+  if (isBoundary && !loop.value) {
+    return
   }
 
   animationName.value = 'u-slide-right'
-  updateModelValue(temp)
+  updateModelValue(isBoundary ? counter.value - 1 : newIndex)
 }
 
 const onNext = () => {
-  let temp = modelValue.value + 1
-  const _counter = counter.value
+  const newIndex = modelValue.value + 1
+  const isBoundary = newIndex === counter.value 
 
-  if (temp === _counter) {
-    if (!loop.value) {
-      return
-    } 
-
-    temp = 0
+  if (isBoundary && !loop.value) {
+    return
   }
 
   animationName.value = 'u-slide-left'
-  updateModelValue(temp)
+  updateModelValue(isBoundary ? 0 : newIndex)
+}
+
+const onMouseenter = () => {
+  if (timer) {
+    clearInterval(timer)
+  }
+}
+
+const onMouseleave = () => {
+  if (autoplay.value) {
+    timer = setInterval(() => onNext(), 3000)
+  }
 }
 
 watch(modelValue, (newIndex, oldIndex) => {
@@ -90,5 +103,11 @@ watch(modelValue, (newIndex, oldIndex) => {
     sliders[newIndex].classList.remove(_animationName)
     sliders[oldIndex].classList.replace('opacity-100', 'opacity-0')
   }, 300)
+})
+
+onMounted(() => {
+  if (autoplay.value) {
+    timer = setInterval(() => onNext(), 3000)
+  }
 })
 </script>
