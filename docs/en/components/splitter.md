@@ -29,7 +29,7 @@ import Separator from '../../examples/splitter/04.separator.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       v-model="value" 
       class="w-full h-[200px]"
@@ -67,7 +67,7 @@ const value = ref(30)
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       v-model="value" 
       class="w-full h-[200px]"
@@ -112,7 +112,7 @@ const value = ref(30)
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       v-model="value" 
       horizontal 
@@ -151,7 +151,7 @@ const value = ref(30)
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       v-model="value" 
       horizontal 
@@ -197,7 +197,7 @@ const value = ref(30)
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       min="10"
       max="60"
@@ -237,7 +237,7 @@ const value = ref(30)
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       min="10"
       max="60"
@@ -284,7 +284,7 @@ const value = ref(30)
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       v-model="value" 
       class="w-full h-[200px]"
@@ -330,7 +330,7 @@ const value = ref(30)
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       v-model="value" 
       class="w-full h-[200px]"

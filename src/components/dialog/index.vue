@@ -34,12 +34,10 @@ import { dialogPosition, dialogAnimation } from '../../const/strategies'
 
 const props = withDefaults(defineProps<{ 
   position?: 'top' | 'right' | 'bottom' | 'left' | 'center',
-  maximized?: boolean,
   modelValue: boolean,
   persistent?: boolean,
 }>(), { 
   position: 'center',
-  maximized: false,
   persistent: false
 })
 const emit = defineEmits<{ 'update:modelValue': [value: boolean] }>()
@@ -70,7 +68,7 @@ const onClose = (e: Event) => {
 
   if (!outer) {
     return
-  }
+  }  
 
   if (persistent.value) {
     const { classList } = slotContainerRef.value as HTMLElement

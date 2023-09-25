@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-slider 
       v-model="value" 
       :min="0"

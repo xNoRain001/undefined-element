@@ -12,11 +12,19 @@ undefined
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
+|loop|undefined|boolean|false|
+|autoplay|undefined|number \| boolean|false|
+|vertical|undefined|boolean|false|
+|modelValue|undefined|number|-|
 :::
 
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
+|default|undefined|
+|prev|undefined|
+|next|undefined|
+|navigation|undefined|
 :::
 
 ## undefined

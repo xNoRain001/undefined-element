@@ -27,11 +27,11 @@ import Icon from '../../examples/toggle/02.icon.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full grid gap-y-[24px]">
-    <div class="grid grid-cols-10">
+  <div class="vp-raw my-[16px] grid gap-y-[24px]">
+    <div class="-m-[4px] flex items-center flex-wrap">
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -42,7 +42,7 @@ import Icon from '../../examples/toggle/02.icon.vue'
 
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -53,7 +53,7 @@ import Icon from '../../examples/toggle/02.icon.vue'
 
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -63,10 +63,10 @@ import Icon from '../../examples/toggle/02.icon.vue'
       ></u-toggle>
     </div>
 
-    <div class="grid grid-cols-10">
+    <div class="-m-[4px] flex items-center flex-wrap">
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "
@@ -80,7 +80,7 @@ import Icon from '../../examples/toggle/02.icon.vue'
 
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "
@@ -94,7 +94,7 @@ import Icon from '../../examples/toggle/02.icon.vue'
 
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "
@@ -119,11 +119,11 @@ const value = ref(false)
 
 ```vue [all]
 <template>
-  <div class="w-full grid gap-y-[24px]">
-    <div class="grid grid-cols-10">
+  <div class="vp-raw my-[16px] grid gap-y-[24px]">
+    <div class="-m-[4px] flex items-center flex-wrap">
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -134,7 +134,7 @@ const value = ref(false)
 
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -145,7 +145,7 @@ const value = ref(false)
 
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -155,10 +155,10 @@ const value = ref(false)
       ></u-toggle>
     </div>
 
-    <div class="grid grid-cols-10">
+    <div class="-m-[4px] flex items-center flex-wrap">
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "
@@ -172,7 +172,7 @@ const value = ref(false)
 
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "
@@ -186,7 +186,7 @@ const value = ref(false)
 
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "
@@ -218,7 +218,7 @@ Implement borders by setting styles
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-toggle 
       v-model="value"
       class="w-[52px] h-[20px] px-[10px]"
@@ -254,7 +254,7 @@ const value = ref(false)
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-toggle 
       v-model="value"
       class="w-[52px] h-[20px] px-[10px]"

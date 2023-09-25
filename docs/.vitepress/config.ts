@@ -22,13 +22,15 @@ export default defineConfig({
       {
         text: 'Components',
         items: [
-          { text: 'Input', link: '/components/input' },
+          { text: 'Carousel', link: '/components/carousel' },
           { text: 'Checkbox', link: '/components/checkbox' },
           { text: 'Dialog', link: '/components/dialog' },
           { text: 'Dropdown', link: '/components/dropdown' },
           { text: 'Expansion', link: '/components/expansion' },
           { text: 'Icon', link: '/components/icon' },
           { text: 'Infinite Scroll', link: '/components/infinite-scroll' },
+          { text: 'Input', link: '/components/input' },
+          { text: 'Range', link: '/components/range' },
           { text: 'Rating', link: '/components/rating' },
           { text: 'Scroll Area', link: '/components/scroll-area' },
           { text: 'Scroller', link: '/components/scroller' },
@@ -36,12 +38,10 @@ export default defineConfig({
           { text: 'Skeleton', link: '/components/skeleton' },
           { text: 'Slider', link: '/components/slider' },
           { text: 'Splitter', link: '/components/splitter' },
-          { text: 'Table', link: '/components/table' },
           { text: 'Tabs', link: '/components/tabs' },
+          { text: 'Table', link: '/components/table' },
           { text: 'Toggle', link: '/components/toggle' },
-          { text: 'Tooltip', link: '/components/tooltip' },
-          { text: 'Range', link: '/components/range' },
-          { text: 'Carousel', link: '/components/carousel' },
+          { text: 'Tooltip', link: '/components/tooltip' }
         ]
       }
     ],
@@ -84,13 +84,15 @@ export default defineConfig({
           {
             text: 'Components',
             items: [
-              { text: 'Input', link: '/en/components/input' },
+              { text: 'Carousel', link: '/en/components/carousel' },
               { text: 'Checkbox', link: '/en/components/checkbox' },
               { text: 'Dialog', link: '/en/components/dialog' },
               { text: 'Dropdown', link: '/en/components/dropdown' },
               { text: 'Expansion', link: '/en/components/expansion' },
               { text: 'Icon', link: '/en/components/icon' },
               { text: 'Infinite Scroll', link: '/en/components/infinite-scroll' },
+              { text: 'Input', link: '/en/components/input' },
+              { text: 'Range', link: '/en/components/range' },
               { text: 'Rating', link: '/en/components/rating' },
               { text: 'Scroll Area', link: '/en/components/scroll-area' },
               { text: 'Scroller', link: '/en/components/scroller' },
@@ -98,12 +100,10 @@ export default defineConfig({
               { text: 'Skeleton', link: '/en/components/skeleton' },
               { text: 'Slider', link: '/en/components/slider' },
               { text: 'Splitter', link: '/en/components/splitter' },
-              { text: 'Table', link: '/en/components/table' },
               { text: 'Tabs', link: '/en/components/tabs' },
+              { text: 'Table', link: '/en/components/table' },
               { text: 'Toggle', link: '/en/components/toggle' },
-              { text: 'Tooltip', link: '/en/components/tooltip' },
-              { text: 'Range', link: '/en/components/range' },
-              { text: 'Carousel', link: '/en/components/carousel' },
+              { text: 'Tooltip', link: '/en/components/tooltip' }
             ]
           }
         ],

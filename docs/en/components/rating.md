@@ -31,7 +31,7 @@ The function of the Rating component is to give star ratings
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-rating v-model="value" :max="5" color="black" activeColor="var(--primary-color)">
       <u-icon :def="matStar" fill="currentColor"></u-icon>
     </u-rating>
@@ -50,7 +50,7 @@ const value = ref(3)
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-rating v-model="value" :max="5" color="black" activeColor="var(--primary-color)">
       <u-icon :def="matStar" fill="currentColor"></u-icon>
     </u-rating>

@@ -34,7 +34,7 @@ The Expansion component allows content that is not immediately relevant to the u
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
     >
@@ -105,7 +105,7 @@ const expanded = reactive(['1'])
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
     >
@@ -183,7 +183,7 @@ At least the amount that should be expanded
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
       :min="1"
@@ -281,7 +281,7 @@ const expanded = reactive<string[]>(['1'])
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
       :min="1"
@@ -386,7 +386,7 @@ When the maximum number of items that can be expanded is exceeded, the earliest 
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
       :max="1"
@@ -484,7 +484,7 @@ const expanded = reactive<string[]>([])
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
       :max="1"

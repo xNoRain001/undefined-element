@@ -34,7 +34,7 @@ The ScrollArea component allows you to customize the scrollbar.
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full grid gap-y-[24px]">
+  <div class="vp-raw my-[16px]">
     <u-scroll-area height="200px" width="400px">
       <div v-for="i in 5" :key="i">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eligendi doloribus nulla impedit adipisci quia, quisquam minima similique eaque perspiciatis reiciendis sequi. Reiciendis, excepturi repellendus at unde in voluptatibus illum.
@@ -55,7 +55,7 @@ The ScrollArea component allows you to customize the scrollbar.
 
 ```vue [all]
 <template>
-  <div class="w-full grid gap-y-[24px]">
+  <div class="vp-raw my-[16px]">
     <u-scroll-area height="200px" width="400px">
       <div v-for="i in 5" :key="i">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eligendi doloribus nulla impedit adipisci quia, quisquam minima similique eaque perspiciatis reiciendis sequi. Reiciendis, excepturi repellendus at unde in voluptatibus illum.
@@ -87,7 +87,7 @@ The ScrollArea component allows you to customize the scrollbar.
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-scroll-area height="200px" width="400px" persistent>
       <div v-for="i in 5" :key="i">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eligendi doloribus nulla impedit adipisci quia, quisquam minima similique eaque perspiciatis reiciendis sequi. Reiciendis, excepturi repellendus at unde in voluptatibus illum.
@@ -99,7 +99,7 @@ The ScrollArea component allows you to customize the scrollbar.
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-scroll-area height="200px" width="400px" persistent>
       <div v-for="i in 5" :key="i">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eligendi doloribus nulla impedit adipisci quia, quisquam minima similique eaque perspiciatis reiciendis sequi. Reiciendis, excepturi repellendus at unde in voluptatibus illum.
@@ -122,7 +122,7 @@ The ScrollArea component allows you to customize the scrollbar.
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-scroll-area height="200px" width="400px" hidden>
       <div v-for="i in 5" :key="i">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eligendi doloribus nulla impedit adipisci quia, quisquam minima similique eaque perspiciatis reiciendis sequi. Reiciendis, excepturi repellendus at unde in voluptatibus illum.
@@ -134,7 +134,7 @@ The ScrollArea component allows you to customize the scrollbar.
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-scroll-area height="200px" width="400px" hidden>
       <div v-for="i in 5" :key="i">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eligendi doloribus nulla impedit adipisci quia, quisquam minima similique eaque perspiciatis reiciendis sequi. Reiciendis, excepturi repellendus at unde in voluptatibus illum.

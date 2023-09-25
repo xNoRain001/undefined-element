@@ -1,5 +1,5 @@
 <template>
-  <div class="my-[16px] grid-cols-4 gap-x-[16px]">
+  <div class="vp-raw my-[16px] flex items-center flex-wrap">
     <u-tooltip>
       <button class="btn m-[4px]">Top</button>
 

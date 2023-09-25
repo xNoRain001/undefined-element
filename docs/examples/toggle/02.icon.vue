@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-toggle 
       v-model="value"
       class="w-[52px] h-[20px] px-[10px]"

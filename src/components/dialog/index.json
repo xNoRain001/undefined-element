@@ -1,7 +1,7 @@
 {
-  "title": "UDialog",
+  "title": "Dialog",
   "desc-with-translation": {
-    "zh": "Dialog 组件可以向用户提供信息，或要求他们作出决定。",
+    "zh": "Dialog 组件会弹出一个对话框，可以向用户提供信息，或要求他们作出决定。",
     "en-ai": "The Dialog component can provide information to the user or ask them to make a decision."
   },
   "props": [
@@ -17,7 +17,7 @@
     {
       "prop": "modelValue",
       "desc-with-translation": {
-        "zh": "绑定的值，用于控制是否显示对话框",
+        "zh": "模型值，用于控制是否显示对话框。",
         "en-ai": "The bound value that controls whether the dialog box is displayed"
       },
       "type": "boolean",
@@ -26,7 +26,7 @@
     {
       "prop": "persistent",
       "desc-with-translation": {
-        "zh": "是否开启持久化",
+        "zh": "对话框是否开启持久化",
         "en-ai": "Whether to enable persistence"
       },
       "type": "boolean",
@@ -37,7 +37,7 @@
     {
       "name": "default",
       "desc-with-translation": {
-        "zh": "对话框的内容",
+        "zh": "对话框内部的内容",
         "en-ai": "Dialog box content"
       }
     }
@@ -50,7 +50,7 @@
         "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": "",
+        "zh": "在下面的例子中，演示了 Dialog 组件的五个不同位置。",
         "en-ai": ""
       }
     },
@@ -60,17 +60,17 @@
         "en-ai": "persistence"
       },
       "desc-with-translation": {
-        "zh": "开启持久化后，点击遮罩层不会关闭对话框。",
+        "zh": "在下面的例子中，演示了 Dialog 组件开启持久化后的效果，这意味着点击遮罩层不会关闭对话框，只有点击对话框内的元素时才会关闭对话框。",
         "en-ai": "After persistence is enabled, clicking the mask layer does not close the dialog box."
       }
     },
     {
       "title-with-translation": {
-        "zh": "抽屉",
+        "zh": "有趣的例子",
         "en-ai": "drawer"
       },
       "desc-with-translation": {
-        "zh": "可以非常容易地将对话框改为抽屉",
+        "zh": "在下面的例子中，演示了 Dialog 组件两个有趣的用法。第一个是 Dialog 组件转化为抽屉；第二个是最大化 Dialog 组件。",
         "en-ai": "You can easily change the dialog box to a drawer"
       }
     }

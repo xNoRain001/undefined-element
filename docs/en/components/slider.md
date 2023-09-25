@@ -34,7 +34,7 @@ In addition to dragging and clicking to modify the value, you can also modify th
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <!-- <u-slider 
       v-model="value" 
       :min="0"
@@ -79,7 +79,7 @@ const value = ref(50)
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <!-- <u-slider 
       v-model="value" 
       :min="0"
@@ -131,7 +131,7 @@ Here, step is set to 50, which means that modelValue must be an integer multiple
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-slider 
       v-model="value" 
       :min="0"
@@ -165,7 +165,7 @@ const value = ref(50)
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-slider 
       v-model="value" 
       :min="0"

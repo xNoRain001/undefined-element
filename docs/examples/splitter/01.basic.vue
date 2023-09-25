@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-splitter 
       v-model="value" 
       class="w-full h-[200px]"

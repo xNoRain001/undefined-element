@@ -31,7 +31,7 @@ You need to provide a callback for the load event, and pass the load parameter t
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-infinite-scroll 
       @load="onLoad" 
       :offset="200"
@@ -71,7 +71,7 @@ const onLoad = (done: Function) => {
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-infinite-scroll 
       @load="onLoad" 
       :offset="200"
@@ -118,7 +118,7 @@ const onLoad = (done: Function) => {
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-infinite-scroll 
       @load="onLoad" 
       :offset="200"
@@ -159,7 +159,7 @@ const onLoad = (done: Function) => {
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-infinite-scroll 
       @load="onLoad" 
       :offset="200"

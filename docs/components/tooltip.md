@@ -26,7 +26,7 @@ import Basic from '../examples/tooltip/01.basic.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px] grid-cols-4 gap-x-[16px]">
+  <div class="vp-raw my-[16px] flex items-center flex-wrap">
     <u-tooltip>
       <button class="btn m-[4px]">Top</button>
 
@@ -84,7 +84,7 @@ import Basic from '../examples/tooltip/01.basic.vue'
 
 ```vue [all]
 <template>
-  <div class="my-[16px] grid-cols-4 gap-x-[16px]">
+  <div class="vp-raw my-[16px] flex items-center flex-wrap">
     <u-tooltip>
       <button class="btn m-[4px]">Top</button>
 

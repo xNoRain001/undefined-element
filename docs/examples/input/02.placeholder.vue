@@ -1,5 +1,5 @@
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]

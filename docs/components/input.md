@@ -46,7 +46,7 @@ Input 组件由原生 input 标签和包裹它的容器组成，为了在容器�
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -73,7 +73,7 @@ const value = ref('')
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -107,7 +107,7 @@ const value = ref('')
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -136,7 +136,7 @@ const value = ref('')
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -172,7 +172,7 @@ const value = ref('')
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -202,7 +202,7 @@ const value = ref('')
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -239,7 +239,7 @@ const value = ref('')
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -266,7 +266,7 @@ const value = ref('readonly text')
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -300,7 +300,7 @@ const value = ref('readonly text')
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -326,7 +326,7 @@ const value = ref('This is disabled input')
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -359,7 +359,7 @@ const value = ref('This is disabled input')
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -394,7 +394,7 @@ const value = ref('This is clearable input')
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -436,7 +436,7 @@ const value = ref('This is clearable input')
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -464,7 +464,7 @@ const value = ref('')
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -499,7 +499,7 @@ const value = ref('')
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -537,7 +537,7 @@ const value = ref('')
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-input
       containerClass="
         w-full h-[58px] px-[16px] before:rounded-[8px]

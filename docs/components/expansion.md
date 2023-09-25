@@ -34,7 +34,7 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
     >
@@ -105,7 +105,7 @@ const expanded = reactive(['1'])
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
     >
@@ -183,7 +183,7 @@ const expanded = reactive(['1'])
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
       :min="1"
@@ -281,7 +281,7 @@ const expanded = reactive<string[]>(['1'])
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
       :min="1"
@@ -386,7 +386,7 @@ const expanded = reactive<string[]>(['1'])
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
       :max="1"
@@ -484,7 +484,7 @@ const expanded = reactive<string[]>([])
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-expansion 
       v-model="expanded"
       :max="1"

@@ -30,7 +30,7 @@ import FixedColumn from '../examples/table/04.fixed-column.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -203,7 +203,7 @@ const body = reactive([
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -383,7 +383,7 @@ const body = reactive([
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -558,7 +558,7 @@ const body = reactive([
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -740,7 +740,7 @@ const body = reactive([
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -930,7 +930,7 @@ const body = reactive([
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -1127,7 +1127,7 @@ const body = reactive([
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -1303,7 +1303,7 @@ const body = reactive([
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -1486,7 +1486,7 @@ const body = reactive([
 ::: code-group
 ```vue [template]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"
@@ -1665,7 +1665,7 @@ const body = reactive([
 
 ```vue [all]
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"

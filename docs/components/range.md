@@ -34,7 +34,7 @@ Range 组件是一种向用户提供的范围选择的组件。
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-range 
       v-model="value" 
       :min="0"
@@ -81,7 +81,7 @@ const value = reactive({ min: 20, max: 80 })
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-range 
       v-model="value" 
       :min="0"
@@ -135,7 +135,7 @@ const value = reactive({ min: 20, max: 80 })
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-range 
       v-model="value" 
       :min="0"
@@ -183,7 +183,7 @@ const value = reactive({ min: 20, max: 80 })
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-range 
       v-model="value" 
       :min="0"

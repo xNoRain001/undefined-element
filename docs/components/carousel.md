@@ -12,16 +12,24 @@ Carousel 组件可以实现用更少的空间显示更多信息
 :::details 属性
 |属性名|描述|类型|默认值|
 |:-----------:|:-----------:|:----:|:----:|
+|loop|转盘是否开启循环|boolean|false|
+|autoplay|转盘是否开启自动播放|number \| boolean|false|
+|vertical|转盘的方向是否设置为垂直|boolean|false|
+|modelValue|模型值，表示转盘内当前显示的 slider 的索引。|number|-|
 :::
 
 :::details 插槽
 |插槽名|描述|
 |:-----------:|:-----------:|
+|default|sliders 的内容|
+|prev|prev 的内容|
+|next|next 的内容|
+|navigation|navigation 的内容|
 :::
 
 ## 基础
 
-
+在下面的例子中，演示了 Carousel 组件的基础用法。
 
 <Basic></Basic>
 
@@ -166,7 +174,7 @@ const value = ref(0)
 
 ## 循环
 
-将 loop 设置为 true 开启循环
+在下面的例子中，演示了 Carousel 组件开启循环后的效果。
 
 <Loop></Loop>
 
@@ -321,7 +329,7 @@ const value = ref(0)
 
 ## 方向
 
-默认的方向是水平，将 vertical 设置为 true，方向为垂直。
+在下面的例子中，演示了 Carousel 组件开启垂直后的效果
 
 <Direction></Direction>
 
@@ -470,7 +478,7 @@ const value = ref(0)
 
 ## 自动播放
 
-当鼠标移入到 slider 上时会停止自动播放，当鼠标移出时会恢复自动播放。
+在下面的例子中，演示了 Carousel 组件开启自动播放后的效果，当鼠标移入到 slider 上时会停止自动播放，当鼠标移出时会恢复自动播放。
 
 <Autoplay></Autoplay>
 

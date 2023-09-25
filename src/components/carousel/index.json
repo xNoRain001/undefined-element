@@ -3,8 +3,66 @@
   "desc-with-translation": {
     "zh": "Carousel 组件可以实现用更少的空间显示更多信息"
   },
-  "props": [],
-  "slots": [],
+  "props": [
+    {
+      "prop": "loop",
+      "desc-with-translation": {
+        "zh": "转盘是否开启循环"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "autoplay",
+      "desc-with-translation": {
+        "zh": "转盘是否开启自动播放"
+      },
+      "type": "number \\| boolean",
+      "default": "false"
+    },
+    {
+      "prop": "vertical",
+      "desc-with-translation": {
+        "zh": "转盘的方向是否设置为垂直"
+      },
+      "type": "boolean",
+      "default": "false"
+    },
+    {
+      "prop": "modelValue",
+      "desc-with-translation": {
+        "zh": "模型值，表示转盘内当前显示的 slider 的索引。"
+      },
+      "type": "number",
+      "default": "-"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "desc-with-translation": {
+        "zh": "sliders 的内容"
+      }
+    },
+    {
+      "name": "prev",
+      "desc-with-translation": {
+        "zh": "prev 的内容"
+      }
+    },
+    {
+      "name": "next",
+      "desc-with-translation": {
+        "zh": "next 的内容"
+      }
+    },
+    {
+      "name": "navigation",
+      "desc-with-translation": {
+        "zh": "navigation 的内容"
+      }
+    }
+  ],
   "events": [],
   "children": [
     {
@@ -12,7 +70,7 @@
         "zh": "基础"
       },
       "desc-with-translation": {
-        "zh": ""
+        "zh": "在下面的例子中，演示了 Carousel 组件的基础用法。"
       }
     },
     {
@@ -20,7 +78,7 @@
         "zh": "循环"
       },
       "desc-with-translation": {
-        "zh": "将 loop 设置为 true 开启循环"
+        "zh": "在下面的例子中，演示了 Carousel 组件开启循环后的效果。"
       }
     },
     {
@@ -28,7 +86,7 @@
         "zh": "方向"
       },
       "desc-with-translation": {
-        "zh": "默认的方向是水平，将 vertical 设置为 true，方向为垂直。"
+        "zh": "在下面的例子中，演示了 Carousel 组件开启垂直后的效果"
       }
     },
     {
@@ -36,7 +94,7 @@
         "zh": "自动播放"
       },
       "desc-with-translation": {
-        "zh": "当鼠标移入到 slider 上时会停止自动播放，当鼠标移出时会恢复自动播放。"
+        "zh": "在下面的例子中，演示了 Carousel 组件开启自动播放后的效果，当鼠标移入到 slider 上时会停止自动播放，当鼠标移出时会恢复自动播放。"
       }
     }
   ]

@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full grid gap-y-[24px]">
-    <div class="grid grid-cols-10">
+  <div class="vp-raw my-[16px] grid gap-y-[24px]">
+    <div class="-m-[4px] flex items-center flex-wrap">
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -14,7 +14,7 @@
 
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -25,7 +25,7 @@
 
       <u-toggle 
         v-model="value"
-        class="w-[40px] h-[20px]"
+        class="w-[40px] h-[20px] m-[4px]"
         thumbClass="
           w-[16px] h-[16px] top-[2px] left-[2px] rounded-full bg-white
         "
@@ -35,10 +35,10 @@
       ></u-toggle>
     </div>
 
-    <div class="grid grid-cols-10">
+    <div class="-m-[4px] flex items-center flex-wrap">
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "
@@ -52,7 +52,7 @@
 
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "
@@ -66,7 +66,7 @@
 
       <u-toggle 
         v-model="value"
-        class="w-[52px] h-[20px] px-[10px]"
+        class="w-[52px] h-[20px] px-[10px] m-[4px]"
         thumbClass="
           w-[20px] h-[20px] rounded-full bg-white left-0
         "

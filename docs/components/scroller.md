@@ -35,16 +35,19 @@ Scroller 组件是一个浮动按钮，用于实现将滚动条滚动到指定�
 ::: code-group
 ```vue [template]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
-    </div>
-    <u-scroller class="absolute right-[20px] bottom-[20px]">
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
       </div>
-    </u-scroller>
-  </u-scroll-area>
+      <u-scroller class="absolute right-[20px] bottom-[20px]">
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div>
+  
 </template>
 ```
 
@@ -56,16 +59,19 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 
 ```vue [all]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
-    </div>
-    <u-scroller class="absolute right-[20px] bottom-[20px]">
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
       </div>
-    </u-scroller>
-  </u-scroll-area>
+      <u-scroller class="absolute right-[20px] bottom-[20px]">
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div>
+  
 </template>
 <script lang="ts" setup>
 import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
@@ -84,16 +90,18 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 ::: code-group
 ```vue [template]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero debitis numquam rem aspernatur sequi recusandae iure et expedita soluta voluptatum velit nihil placeat, ab perspiciatis quaerat voluptatem non ducimus nam.
-    </div>
-    <u-scroller :to="100" class="absolute right-[20px] bottom-[20px]">
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero debitis numquam rem aspernatur sequi recusandae iure et expedita soluta voluptatum velit nihil placeat, ab perspiciatis quaerat voluptatem non ducimus nam.
       </div>
-    </u-scroller>
-  </u-scroll-area>
+      <u-scroller :to="100" class="absolute right-[20px] bottom-[20px]">
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div>
 </template>
 ```
 
@@ -105,16 +113,18 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 
 ```vue [all]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero debitis numquam rem aspernatur sequi recusandae iure et expedita soluta voluptatum velit nihil placeat, ab perspiciatis quaerat voluptatem non ducimus nam.
-    </div>
-    <u-scroller :to="100" class="absolute right-[20px] bottom-[20px]">
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero debitis numquam rem aspernatur sequi recusandae iure et expedita soluta voluptatum velit nihil placeat, ab perspiciatis quaerat voluptatem non ducimus nam.
       </div>
-    </u-scroller>
-  </u-scroll-area>
+      <u-scroller :to="100" class="absolute right-[20px] bottom-[20px]">
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div>
 </template>
 <script lang="ts" setup>
 import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
@@ -133,16 +143,18 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 ::: code-group
 ```vue [template]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
-    </div>
-    <u-scroller :duration="0" class="absolute right-[20px] bottom-[20px]">
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
       </div>
-    </u-scroller>
-  </u-scroll-area>
+      <u-scroller :duration="0" class="absolute right-[20px] bottom-[20px]">
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div>
 </template>
 ```
 
@@ -154,16 +166,18 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 
 ```vue [all]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
-    </div>
-    <u-scroller :duration="0" class="absolute right-[20px] bottom-[20px]">
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
       </div>
-    </u-scroller>
-  </u-scroll-area>
+      <u-scroller :duration="0" class="absolute right-[20px] bottom-[20px]">
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div>
 </template>
 <script lang="ts" setup>
 import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
@@ -182,16 +196,18 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 ::: code-group
 ```vue [template]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
-    </div>
-    <u-scroller :scrollOffset="0" class="absolute right-[20px] bottom-[20px]">
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
       </div>
-    </u-scroller>
-  </u-scroll-area>
+      <u-scroller :scrollOffset="0" class="absolute right-[20px] bottom-[20px]">
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div> 
 </template>
 ```
 
@@ -203,16 +219,18 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 
 ```vue [all]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
-    </div>
-    <u-scroller :scrollOffset="0" class="absolute right-[20px] bottom-[20px]">
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
       </div>
-    </u-scroller>
-  </u-scroll-area>
+      <u-scroller :scrollOffset="0" class="absolute right-[20px] bottom-[20px]">
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div> 
 </template>
 <script lang="ts" setup>
 import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'
@@ -231,21 +249,23 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 ::: code-group
 ```vue [template]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
-    </div>
-
-    <u-scroller 
-      scrollTarget=".content-container" 
-      :duration="300" 
-      class="absolute right-[20px] bottom-[20px]"
-    >
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
       </div>
-    </u-scroller>
-  </u-scroll-area>
+
+      <u-scroller 
+        scrollTarget=".content-container" 
+        :duration="300" 
+        class="absolute right-[20px] bottom-[20px]"
+      >
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div>
 </template>
 ```
 
@@ -257,21 +277,23 @@ import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/f
 
 ```vue [all]
 <template>
-  <u-scroll-area height="400px" persistent>
-    <div v-for="i in 20" :key="i">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
-    </div>
-
-    <u-scroller 
-      scrollTarget=".content-container" 
-      :duration="300" 
-      class="absolute right-[20px] bottom-[20px]"
-    >
-      <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
-        <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+  <div class="vp-raw my-[16px]">
+    <u-scroll-area height="400px" persistent>
+      <div v-for="i in 20" :key="i">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur, corrupti quidem cupiditate reiciendis nostrum facere est voluptatem ea a recusandae vero maiores deleniti sapiente consectetur earum ratione? Nesciunt, animi beatae? 
       </div>
-    </u-scroller>
-  </u-scroll-area>
+
+      <u-scroller 
+        scrollTarget=".content-container" 
+        :duration="300" 
+        class="absolute right-[20px] bottom-[20px]"
+      >
+        <div class="cursor-pointer w-[40px] h-[40px] bg-blue-500 rounded-full flex justify-center items-center">
+          <u-icon :def="matKeyboardArrowUp" color="white"></u-icon>
+        </div>
+      </u-scroller>
+    </u-scroll-area>
+  </div>
 </template>
 <script lang="ts" setup>
 import { matKeyboardArrowUp } from 'undefined-element-icons/src/material-icons/filled'

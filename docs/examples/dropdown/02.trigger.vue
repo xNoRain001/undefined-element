@@ -1,37 +1,39 @@
 <template>
-  <u-dropdown trigger="click">
-    <template #default="{ visible }">
-      <button 
-        class="btn">
-        Dropdown
-        <u-icon 
-          :def="matKeyboardArrowDown"
-          color="white" 
-          class="ml-[8px] duration-300 transition-transform"
-          :class="visible ? 'rotate-180' : ''"
-        ></u-icon>
-      </button>
-    </template>
+  <div class="vp-raw my-[16px]">
+    <u-dropdown trigger="click">
+      <template #default="{ visible }">
+        <button 
+          class="btn">
+          Dropdown
+          <u-icon 
+            :def="matKeyboardArrowDown"
+            color="white" 
+            class="ml-[8px] duration-300 transition-transform"
+            :class="visible ? 'rotate-180' : ''"
+          ></u-icon>
+        </button>
+      </template>
 
-    <template #list>
-      <div class="
-        absolute z-10 w-full top-full
-        p-[12px] bg-white rounded-[12px] border border-solid 
-        border-[rgba(60,60,67,0.12)] 
-        shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
-      ">
-        <div 
-          v-for="(item, index) in list" 
-          :key="index"
-          class="
-            px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
-            hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
-            rounded-[6px] font-medium
-          "
-        >{{ item }}</div>
-      </div>
-    </template>
-  </u-dropdown>
+      <template #list>
+        <div class="
+          absolute z-10 w-full top-full
+          p-[12px] bg-white rounded-[12px] border border-solid 
+          border-[rgba(60,60,67,0.12)] 
+          shadow-[0_12px_32px_rgba(0,0,0,0.1),0_2px_6px_rgba(0,0,0,0.08)]
+        ">
+          <div 
+            v-for="(item, index) in list" 
+            :key="index"
+            class="
+              px-[12px] leading-[32px] hover:text-[--vp-c-brand] 
+              hover:bg-[--vp-c-bg-elv-mute] cursor-pointer text-[14px] 
+              rounded-[6px] font-medium
+            "
+          >{{ item }}</div>
+        </div>
+      </template>
+    </u-dropdown>
+  </div>
 </template>
 
 <script lang="ts" setup>

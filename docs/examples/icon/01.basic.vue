@@ -1,5 +1,5 @@
 <template>
-  <div class="py-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-icon :def="matFavorite" width="18" height="18" color="var(--primary-color)"></u-icon>
     <u-icon :def="matFavorite" width="24" height="24" color="var(--primary-color)"></u-icon>
     <u-icon :def="matFavorite" width="32" height="32" color="var(--primary-color)"></u-icon>

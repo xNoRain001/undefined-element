@@ -26,7 +26,7 @@ import Basic from '../examples/skeleton/01.basic.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-skeleton v-model="loading">
       <div>Lorem ipsum dolor sit amet.</div>
       <div class="w-[48px] h-[48px] rounded-full bg-pink-500 mt-[16px]"></div>
@@ -58,7 +58,7 @@ setTimeout(() => {
 
 ```vue [all]
 <template>
-  <div class="w-full">
+  <div class="vp-raw my-[16px]">
     <u-skeleton v-model="loading">
       <div>Lorem ipsum dolor sit amet.</div>
       <div class="w-[48px] h-[48px] rounded-full bg-pink-500 mt-[16px]"></div>

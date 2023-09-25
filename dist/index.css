@@ -761,6 +761,14 @@ video {
   background-color: transparent;
 }
 
+.bg-\[rgba\(0\2c 0\2c 0\2c \.12\)\] {
+  background-color: rgba(0,0,0,.12);
+}
+
+.\!opacity-100 {
+  opacity: 1 !important;
+}
+
 .opacity-0 {
   opacity: 0;
 }

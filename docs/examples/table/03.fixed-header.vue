@@ -1,5 +1,5 @@
 <template>
-  <div class="vp-raw">
+  <div class="vp-raw my-[16px]">
     <u-table 
       :header="header" 
       :body="body"

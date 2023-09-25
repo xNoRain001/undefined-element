@@ -43,7 +43,7 @@ import Clearable from '../examples/select/08.clearable.vue'
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -100,7 +100,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -164,7 +164,7 @@ const options = ['1', '2', '3', '4']
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -223,7 +223,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -289,7 +289,7 @@ const options = ['1', '2', '3', '4']
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -348,7 +348,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -414,7 +414,7 @@ const options = ['1', '2', '3', '4']
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -474,7 +474,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -541,7 +541,7 @@ const options = ['1', '2', '3', '4']
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -602,7 +602,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -670,7 +670,7 @@ const options = ['1', '2', '3', '4']
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -727,7 +727,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -791,7 +791,7 @@ const options = ['1', '2', '3', '4']
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -847,7 +847,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -910,7 +910,7 @@ const options = ['1', '2', '3', '4']
 ::: code-group
 ```vue [template]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
@@ -977,7 +977,7 @@ const options = ['1', '2', '3', '4']
 
 ```vue [all]
 <template>
-  <div class="my-[16px]">
+  <div class="vp-raw my-[16px]">
     <u-select 
       class="
         w-full h-[58px] px-[16px] before:rounded-[8px]
