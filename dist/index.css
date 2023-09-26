@@ -644,11 +644,6 @@ video {
   height: 6px;
 }
 
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
 .h-full {
   height: 100%;
 }
@@ -761,12 +756,9 @@ video {
   background-color: transparent;
 }
 
-.bg-\[rgba\(0\2c 0\2c 0\2c \.12\)\] {
-  background-color: rgba(0,0,0,.12);
-}
-
-.\!opacity-100 {
-  opacity: 1 !important;
+.bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
 .opacity-0 {

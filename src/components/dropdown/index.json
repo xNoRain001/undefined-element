@@ -52,6 +52,14 @@
         "zh": "在下面的例子中，演示了 Dropdown 组件开启点击触发后的效果。",
         "en-ai": "This is set to click trigger"
       }
+    },
+    {
+      "title-with-translation": {
+        "zh": "禁用"
+      },
+      "desc-with-translation": {
+        "zh": "在下面的例子中，演示了 Dropdown 组件将 disabled 属性设置为 true 时的效果。"
+      }
     }
   ]
 }

@@ -1,13 +1,13 @@
 <template>
   <div class="vp-raw my-[16px]">
-    <u-dropdown trigger="click">
+    <u-dropdown disabled>
       <template #default="{ visible }">
-        <button class="btn">
+        <button class="btn !cursor-not-allowed !bg-[--vp-c-green-lighter]">
           Dropdown
           <u-icon 
             :def="matKeyboardArrowDown"
             color="white" 
-            class="ml-[8px] duration-300 transition-transform"
+            class="ml-[8px] duration-300 transition-transform !cursor-not-allowed"
             :class="visible ? 'rotate-180' : ''"
           ></u-icon>
         </button>

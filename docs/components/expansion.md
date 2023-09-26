@@ -26,7 +26,7 @@ Expansion 组件允许隐藏与用户不立即相关的内容，可以将它们�
 
 ## 基础
 
-
+在下面的例子中，演示了 Expansion 组件的基础用法。
 
 <Basic></Basic>
 
@@ -175,7 +175,7 @@ const expanded = reactive(['1'])
 
 ## 最小数量
 
-至少应该展开的数量
+在下面的例子中，演示了 Expansion 组件将 min 设置为 1 时的效果，这意味着 Expansion 组件会保持至少 1 个项是展开的。
 
 <Min></Min>
 
@@ -378,7 +378,7 @@ const expanded = reactive<string[]>(['1'])
 
 ## 最大数量
 
-最多能展开的数量，当即将超过该数量时，会自动折叠此前最早展开的项。
+在下面的例子中，演示了 Expansion 组件将 max 设置为 1 时的效果，这意味着 Expansion 组件最多只能展开 1 个项，当已经展开 1 个项时点击其它项会关闭当前展开的项。
 
 <Max></Max>
 

@@ -66,7 +66,7 @@
         "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": "",
+        "zh": "在下面的例子中，演示了 Expansion 组件的基础用法。",
         "en-ai": ""
       }
     },
@@ -76,7 +76,7 @@
         "en-ai": "Minimum quantity"
       },
       "desc-with-translation": {
-        "zh": "至少应该展开的数量",
+        "zh": "在下面的例子中，演示了 Expansion 组件将 min 设置为 1 时的效果，这意味着 Expansion 组件会保持至少 1 个项是展开的。",
         "en-ai": "At least the amount that should be expanded"
       }
     },
@@ -86,7 +86,7 @@
         "en-ai": "Maximum quantity"
       },
       "desc-with-translation": {
-        "zh": "最多能展开的数量，当即将超过该数量时，会自动折叠此前最早展开的项。",
+        "zh": "在下面的例子中，演示了 Expansion 组件将 max 设置为 1 时的效果，这意味着 Expansion 组件最多只能展开 1 个项，当已经展开 1 个项时点击其它项会关闭当前展开的项。",
         "en-ai": "When the maximum number of items that can be expanded is exceeded, the earliest item that can be expanded is automatically folded."
       }
     }

@@ -2,8 +2,7 @@
   <div class="vp-raw my-[16px]">
     <u-dropdown>
       <template #default="{ visible }">
-        <button 
-          class="btn">
+        <button class="btn">
           Dropdown
           <u-icon 
             :def="matKeyboardArrowDown"
