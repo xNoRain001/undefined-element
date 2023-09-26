@@ -4,7 +4,7 @@ import Basic from '../examples/icon/01.basic.vue'
 
 # Icon
 
-Material Icons 图标库
+Icon 组件集成了 Material Icons 图标库，<a href='https://fonts.google.com/icons' target='_blank'>查看所有图标</a>。
 
 :::details 属性
 |属性名|描述|类型|默认值|
@@ -22,7 +22,7 @@ Material Icons 图标库
 
 ## 基础
 
-<a href='https://fonts.google.com/icons' target='_blank'>查看所有图标</a>
+在下面的例子中，演示了 Icon 组件的基础用法。
 
 <Basic></Basic>
 

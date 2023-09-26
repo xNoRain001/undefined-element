@@ -21,22 +21,27 @@ import { useIsScrollToOffsetPosition } from '../../composables'
 const emit = defineEmits<{ 'load': [done: Function] }>()
 const props = withDefaults(defineProps<{
   offset?: number,
-  scrollTarget?: string
+  reverse?: boolean,
+  scrollTarget?: string,
 }>(), {
   offset: 200,
+  reverse: true,
   scrollTarget: '',
 })
 const loading = ref(false)
 const containerRef = ref<HTMLElement | null>(null)
-const { offset, scrollTarget } = toRefs(props)
+const { offset, reverse, scrollTarget } = toRefs(props)
 
 const done = () => loading.value = false
 
+const loaded = (target: HTMLElement) => {
+  const { scrollTop, clientHeight, scrollHeight } = target
+
+  return scrollHeight - clientHeight <= scrollTop + offset.value
+}
+
 const onScroll = debounce((e: Event) => {
-  if (
-    !loading.value && 
-    useIsScrollToOffsetPosition(e.target as HTMLElement, offset.value)
-  ) {
+  if (!loading.value && loaded(e.target as HTMLElement)) {
     loading.value = true
     emit('load', done)
   }

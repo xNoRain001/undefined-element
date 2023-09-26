@@ -23,7 +23,7 @@ Infinite Scroll 允许用户滚动到指定位置时加载更多内容。
 
 ## 基础
 
-需要提供 load 事件的回调，会给回调传递 load 参数，当获取数据后，需要调用 load 函数来关闭 loading 状态。
+在下面的例子中，演示了 Infinite Scroll 组件的基础用法，你需要给 Infinite Scroll 组件提供 load 事件的回调，内部将给这个回调提供一个参数 done，当获取数据后，需要调用 done 函数来关闭 loading 状态。
 
 <Basic></Basic>
 

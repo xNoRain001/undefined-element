@@ -22,7 +22,7 @@ Material Icons library
 
 ## Basics
 
-< a href = "https://fonts.google.com/icons" target = "_blank" > view all icon < / a >
+undefined
 
 <Basic></Basic>
 

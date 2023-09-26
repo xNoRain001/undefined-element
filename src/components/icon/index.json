@@ -1,7 +1,7 @@
 {
   "title": "Icon",
   "desc-with-translation": {
-    "zh": "Material Icons 图标库",
+    "zh": "Icon 组件集成了 Material Icons 图标库，<a href='https://fonts.google.com/icons' target='_blank'>查看所有图标</a>。",
     "en-ai": "Material Icons library"
   },
   "props": [
@@ -51,8 +51,7 @@
         "en-ai": "Basics"
       },
       "desc-with-translation": {
-        "zh": "<a href='https://fonts.google.com/icons' target='_blank'>查看所有图标</a>",
-        "en-ai": "< a href = \"https://fonts.google.com/icons\" target = \"_blank\" > view all icon < / a >"
+        "zh": "在下面的例子中，演示了 Icon 组件的基础用法。"
       }
     }
   ]
