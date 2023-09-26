@@ -1,6 +1,6 @@
 {
   "name": "undefined-element",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "undefined element",
   "author": "xnorain001",
   "main": "./dist/index.min.js",
