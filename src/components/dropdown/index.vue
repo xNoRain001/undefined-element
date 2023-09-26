@@ -23,17 +23,15 @@ import { ref, watch, toRefs, onMounted } from 'vue'
 
 const props = withDefaults(defineProps<{
   trigger?: 'click' | 'hover',
-  disabled?: boolean,
-  isTooltip?: boolean
+  disabled?: boolean
 }>(), {
   trigger: 'hover',
-  disabled: false,
-  isTooltip: false
+  disabled: false
 })
 const visible = ref(false)
 const headerRef = ref<HTMLElement | null>(null)
 const dropdownRef = ref<HTMLElement | null>(null)
-const { trigger, disabled, isTooltip } = toRefs(props)
+const { trigger, disabled } = toRefs(props)
 
 const onShow = () => {
   if (!disabled.value) {

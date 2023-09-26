@@ -60,6 +60,14 @@
       "desc-with-translation": {
         "zh": "在下面的例子中，演示了 Dropdown 组件将 disabled 属性设置为 true 时的效果。"
       }
+    },
+    {
+      "title-with-translation": {
+        "zh": "有趣的例子"
+      },
+      "desc-with-translation": {
+        "zh": "在下面的例子中，演示了 Dropdown 组件一个有趣的用法：用 Dialog 组件实现 Tooltip 效果。"
+      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 <script setup>
 import Basic from '../examples/dialog/01.basic.vue'
 import Persistent from '../examples/dialog/02.persistent.vue'
-import Drawer from '../examples/dialog/03.drawer.vue'
+import InterestingExamples from '../examples/dialog/03.interesting-examples.vue'
 </script>
 
 # Dialog
@@ -308,7 +308,7 @@ const updateVisible = () => visible.value = !visible.value
 
 在下面的例子中，演示了 Dialog 组件两个有趣的用法。第一个是 Dialog 组件转化为抽屉；第二个是最大化 Dialog 组件。
 
-<Drawer></Drawer>
+<InterestingExamples></InterestingExamples>
 
 ::: details 查看源码
 ::: code-group

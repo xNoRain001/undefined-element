@@ -1,7 +1,7 @@
 <script setup>
 import Basic from '../../examples/dialog/01.basic.vue'
 import Persistent from '../../examples/dialog/02.persistent.vue'
-import Drawer from '../../examples/dialog/03.drawer.vue'
+import InterestingExamples from '../../examples/dialog/03.interesting-examples.vue'
 </script>
 
 # Dialog
@@ -308,7 +308,7 @@ const updateVisible = () => visible.value = !visible.value
 
 You can easily change the dialog box to a drawer
 
-<Drawer></Drawer>
+<InterestingExamples></InterestingExamples>
 
 ::: details 查看源码
 ::: code-group

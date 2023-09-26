@@ -9,7 +9,6 @@ import USlider from './components/slider/index.vue'
 import URating from './components/rating/index.vue'
 import USelect from './components/select/index.vue'
 import UToggle from './components/toggle/index.vue'
-import UTooltip from './components/tooltip/index.vue'
 import USplitter from './components/splitter/index.vue'
 import UTabPanel from './components/tab-panel/index.vue'
 import USkeleton from './components/skeleton/index.vue'
@@ -42,7 +41,6 @@ const undefinedElement = {
       .component('URating', URating)
       .component('USelect', USelect)
       .component('UToggle', UToggle)
-      .component('UTooltip', UTooltip)
       .component('USplitter', USplitter)
       .component('UTabPanel', UTabPanel)
       .component('USkeleton', USkeleton)

@@ -2,6 +2,7 @@
 import Basic from '../examples/dropdown/01.basic.vue'
 import Trigger from '../examples/dropdown/02.trigger.vue'
 import Disabled from '../examples/dropdown/03.disabled.vue'
+import InterestingExamples from '../examples/dropdown/04.interesting-examples.vue'
 </script>
 
 # Dropdown
@@ -320,6 +321,57 @@ import { matKeyboardArrowDown } from 'undefined-element-icons/src/material-icons
 
 const list = ['简体中文', 'English']
 </script>
+
+```
+:::
+
+## 有趣的例子
+
+在下面的例子中，演示了 Dropdown 组件一个有趣的用法：用 Dialog 组件实现 Tooltip 效果。
+
+<InterestingExamples></InterestingExamples>
+
+::: details 查看源码
+::: code-group
+```vue [template]
+<template>
+  <div class="vp-raw my-[16px] flex items-center flex-wrap">
+    <u-dropdown>
+      <button class="btn">Tooltip</button>
+
+      <template #list>
+        <div class="
+          absolute z-10 -bottom-full left-1/2 -translate-x-1/2 
+          py-[6px] whitespace-nowrap px-[10px] 
+          bg-gray-500 text-white text-[12px] rounded-[4px]
+        ">
+          Lorem, ipsum dolor.
+        </div>
+      </template>
+    </u-dropdown>
+  </div> 
+</template>
+```
+
+```vue [all]
+<template>
+  <div class="vp-raw my-[16px] flex items-center flex-wrap">
+    <u-dropdown>
+      <button class="btn">Tooltip</button>
+
+      <template #list>
+        <div class="
+          absolute z-10 -bottom-full left-1/2 -translate-x-1/2 
+          py-[6px] whitespace-nowrap px-[10px] 
+          bg-gray-500 text-white text-[12px] rounded-[4px]
+        ">
+          Lorem, ipsum dolor.
+        </div>
+      </template>
+    </u-dropdown>
+  </div> 
+</template>
+
 
 ```
 :::
