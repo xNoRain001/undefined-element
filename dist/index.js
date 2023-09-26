@@ -1,13 +1,14 @@
-import { defineComponent, useAttrs, computed, inject, openBlock, createElementBlock, renderSlot, toRefs, ref, provide, onMounted, createElementVNode, normalizeClass, unref, Fragment, renderList, normalizeStyle, withModifiers, watch, nextTick, createBlock, Teleport, createVNode, Transition, withCtx, createCommentVNode, resolveComponent, reactive } from 'vue';
+import { defineComponent, useAttrs, computed, inject, openBlock, createElementBlock, renderSlot, toRefs, ref, provide, onMounted, createElementVNode, normalizeClass, unref, Fragment, renderList, normalizeStyle, withModifiers, watch, nextTick, createBlock, Teleport, createVNode, Transition, withCtx, createCommentVNode, reactive } from 'vue';
 
 var tabsKey = Symbol();
 var panelsKey = Symbol();
 var skeletonKey = Symbol();
+var carouselKey = Symbol();
 var expansionKey = Symbol();
 var checkboxGroupKey = Symbol();
 
-var _hoisted_1$d = ["data-active"];
-var script$o = /*#__PURE__*/ defineComponent({
+var _hoisted_1$e = ["data-active"];
+var script$p = /*#__PURE__*/ defineComponent({
     __name: 'index',
     setup: function (__props) {
         var name = useAttrs().name;
@@ -28,14 +29,14 @@ var script$o = /*#__PURE__*/ defineComponent({
                 "data-active": actived.value ? 'true' : 'false'
             }, [
                 renderSlot(_ctx.$slots, "default")
-            ], 8 /* PROPS */, _hoisted_1$d));
+            ], 8 /* PROPS */, _hoisted_1$e));
         };
     }
 });
 
-script$o.__file = "src/components/u-tab/index.vue";
+script$p.__file = "src/components/tab/index.vue";
 
-var script$n = /*#__PURE__*/ defineComponent({
+var script$o = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         modelValue: { type: String, required: true },
@@ -79,11 +80,11 @@ var script$n = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$n.__file = "src/components/u-tabs/index.vue";
+script$o.__file = "src/components/tabs/index.vue";
 
-var _hoisted_1$c = ["width", "height", "fill"];
+var _hoisted_1$d = ["width", "height", "fill"];
 var _hoisted_2$4 = ["d", "transform"];
-var script$m = /*#__PURE__*/ defineComponent({
+var script$n = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         def: { type: String, required: true },
@@ -143,12 +144,12 @@ var script$m = /*#__PURE__*/ defineComponent({
                         transform: transform
                     }, null, 12 /* STYLE, PROPS */, _hoisted_2$4));
                 }), 256 /* UNKEYED_FRAGMENT */))
-            ], 8 /* PROPS */, _hoisted_1$c));
+            ], 8 /* PROPS */, _hoisted_1$d));
         };
     }
 });
 
-script$m.__file = "src/components/u-icon/index.vue";
+script$n.__file = "src/components/icon/index.vue";
 
 var noop = function () { };
 
@@ -293,8 +294,8 @@ var debounce = function (fn, wait, immediate) {
     return _debounce;
 };
 
-var _hoisted_1$b = ["autofocus", "readonly", "disabled", "placeholder", "value", "type"];
-var script$l = /*#__PURE__*/ defineComponent({
+var _hoisted_1$c = ["autofocus", "readonly", "disabled", "placeholder", "value", "type"];
+var script$m = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         type: { type: String, required: false, default: 'text' },
@@ -421,7 +422,7 @@ var script$l = /*#__PURE__*/ defineComponent({
                         ref_key: "inputRef",
                         ref: inputRef,
                         type: _type.value
-                    }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$b),
+                    }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$c),
                     renderSlot(_ctx.$slots, "append", { visible: visible.value })
                 ], 34 /* CLASS, HYDRATE_EVENTS */),
                 renderSlot(_ctx.$slots, "after")
@@ -430,10 +431,10 @@ var script$l = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$l.__file = "src/components/u-input/index.vue";
+script$m.__file = "src/components/input/index.vue";
 
-var _hoisted_1$a = ["onClick"];
-var script$k = /*#__PURE__*/ defineComponent({
+var _hoisted_1$b = ["onClick"];
+var script$l = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         body: { type: Array, required: true },
@@ -485,7 +486,7 @@ var script$k = /*#__PURE__*/ defineComponent({
                                         field: field,
                                         label: label
                                     })
-                                ], 10 /* CLASS, PROPS */, _hoisted_1$a));
+                                ], 10 /* CLASS, PROPS */, _hoisted_1$b));
                             }), 128 /* KEYED_FRAGMENT */))
                         ], 2 /* CLASS */)
                     ], 2 /* CLASS */),
@@ -515,7 +516,15 @@ var script$k = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$k.__file = "src/components/u-table/index.vue";
+script$l.__file = "src/components/table/index.vue";
+
+var useGetIndex = function (target, parent) {
+    var index = null;
+    while (!(index = target.getAttribute('data-index')) && target !== parent) {
+        target = target.parentNode;
+    }
+    return Number(index);
+};
 
 var useGetSliderValue = function (value, step) {
     var mod = value % step;
@@ -531,7 +540,7 @@ var useIsScrollToOffsetPosition = function (target, offset) {
     return scrollHeight - clientHeight <= scrollTop + offset;
 };
 
-var script$j = /*#__PURE__*/ defineComponent({
+var script$k = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         min: { type: Number, required: false, default: 0 },
@@ -778,7 +787,7 @@ var script$j = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$j.__file = "src/components/u-range/index.vue";
+script$k.__file = "src/components/range/index.vue";
 
 var dialogPositon = {
     top: 'top-0 left-0 right-0 justify-center',
@@ -796,11 +805,10 @@ var dialogAnimation = {
     center: ['u-scale', 'u-scale-reverse']
 };
 
-var script$i = /*#__PURE__*/ defineComponent({
+var script$j = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         position: { type: String, required: false, default: 'center' },
-        maximized: { type: Boolean, required: false, default: false },
         modelValue: { type: Boolean, required: true },
         persistent: { type: Boolean, required: false, default: false }
     },
@@ -900,9 +908,9 @@ var script$i = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$i.__file = "src/components/u-dialog/index.vue";
+script$j.__file = "src/components/dialog/index.vue";
 
-var script$h = /*#__PURE__*/ defineComponent({
+var script$i = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         min: { type: Number, required: false, default: 0 },
@@ -1062,10 +1070,10 @@ var script$h = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$h.__file = "src/components/u-slider/index.vue";
+script$i.__file = "src/components/slider/index.vue";
 
-var _hoisted_1$9 = ["data-index"];
-var script$g = /*#__PURE__*/ defineComponent({
+var _hoisted_1$a = ["data-index"];
+var script$h = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         max: { type: Number, required: true },
@@ -1137,18 +1145,18 @@ var script$g = /*#__PURE__*/ defineComponent({
                         style: normalizeStyle({ color: i <= unref(modelValue) ? unref(activeColor) : unref(color) })
                     }, [
                         renderSlot(_ctx.$slots, "default")
-                    ], 12 /* STYLE, PROPS */, _hoisted_1$9));
+                    ], 12 /* STYLE, PROPS */, _hoisted_1$a));
                 }), 128 /* KEYED_FRAGMENT */))
             ], 544 /* HYDRATE_EVENTS, NEED_PATCH */));
         };
     }
 });
 
-script$g.__file = "src/components/u-rating/index.vue";
+script$h.__file = "src/components/rating/index.vue";
 
-var _hoisted_1$8 = ["readonly", "disabled", "placeholder", "value"];
+var _hoisted_1$9 = ["readonly", "disabled", "placeholder", "value"];
 var _hoisted_2$3 = ["onClick"];
-var script$f = /*#__PURE__*/ defineComponent({
+var script$g = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         race: { type: Boolean, required: false, default: false },
@@ -1191,17 +1199,10 @@ var script$f = /*#__PURE__*/ defineComponent({
         };
         var onClick = function () { return focused.value = !focused.value; };
         var onBlur = function () { return focused.value = false; };
-        var getIndex = function (target, parent) {
-            var index = null;
-            while (!(index = target.getAttribute('data-index')) && target !== parent) {
-                target = target.parentNode;
-            }
-            return index;
-        };
         var updateModelValue = function (e) {
             var target = e.target, currentTarget = e.currentTarget;
-            var index = getIndex(target, currentTarget);
-            var value = options.value[Number(index)];
+            var index = useGetIndex(target, currentTarget);
+            var value = options.value[index];
             if (multiple.value) {
                 var _modelValue = modelValue.value;
                 var index_1 = _modelValue.indexOf(value);
@@ -1269,7 +1270,7 @@ var script$f = /*#__PURE__*/ defineComponent({
                         ref: inputRef,
                         type: "text",
                         onMousedown: onMousedown
-                    }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$8),
+                    }, null, 42 /* CLASS, PROPS, HYDRATE_EVENTS */, _hoisted_1$9),
                     renderSlot(_ctx.$slots, "append", { expanded: expanded.value }),
                     createVNode(Transition, { name: "u-fade" }, {
                         default: withCtx(function () { return [
@@ -1303,9 +1304,9 @@ var script$f = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$f.__file = "src/components/u-select/index.vue";
+script$g.__file = "src/components/select/index.vue";
 
-var script$e = /*#__PURE__*/ defineComponent({
+var script$f = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         modelValue: { type: Boolean, required: true },
@@ -1354,29 +1355,9 @@ var script$e = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$e.__file = "src/components/u-toggle/index.vue";
+script$f.__file = "src/components/toggle/index.vue";
 
-function render(_ctx, _cache) {
-  const _component_u_dropdown = resolveComponent("u-dropdown");
-
-  return (openBlock(), createBlock(_component_u_dropdown, { isTooltip: true }, {
-    list: withCtx(() => [
-      renderSlot(_ctx.$slots, "text")
-    ]),
-    default: withCtx(() => [
-      renderSlot(_ctx.$slots, "default")
-    ]),
-    _: 3 /* FORWARDED */
-  }))
-}
-
-const script$d = {};
-
-
-script$d.render = render;
-script$d.__file = "src/components/u-tooltip/index.vue";
-
-var script$c = /*#__PURE__*/ defineComponent({
+var script$e = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         min: { type: Number, required: false, default: 20 },
@@ -1483,9 +1464,9 @@ var script$c = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$c.__file = "src/components/u-splitter/index.vue";
+script$e.__file = "src/components/splitter/index.vue";
 
-var script$b = /*#__PURE__*/ defineComponent({
+var script$d = /*#__PURE__*/ defineComponent({
     __name: 'index',
     setup: function (__props) {
         var modelValue = inject(panelsKey);
@@ -1500,12 +1481,12 @@ var script$b = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$b.__file = "src/components/u-tab-panel/index.vue";
+script$d.__file = "src/components/tab-panel/index.vue";
 
-var _hoisted_1$7 = { class: "u-skeleton" };
+var _hoisted_1$8 = { class: "u-skeleton" };
 var _hoisted_2$2 = { key: 0 };
 var _hoisted_3$1 = { key: 1 };
-var script$a = /*#__PURE__*/ defineComponent({
+var script$c = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         animate: { type: Boolean, required: false, default: true },
@@ -1516,7 +1497,7 @@ var script$a = /*#__PURE__*/ defineComponent({
         var _a = toRefs(props), animate = _a.animate, modelValue = _a.modelValue;
         provide(skeletonKey, animate);
         return function (_ctx, _cache) {
-            return (openBlock(), createElementBlock("div", _hoisted_1$7, [
+            return (openBlock(), createElementBlock("div", _hoisted_1$8, [
                 (unref(modelValue))
                     ? (openBlock(), createElementBlock("div", _hoisted_2$2, [
                         renderSlot(_ctx.$slots, "skeleton-items")
@@ -1529,47 +1510,80 @@ var script$a = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$a.__file = "src/components/u-skeleton/index.vue";
+script$c.__file = "src/components/skeleton/index.vue";
 
-var script$9 = /*#__PURE__*/ defineComponent({
+var _hoisted_1$7 = ["disabled"];
+var script$b = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         trigger: { type: String, required: false, default: 'hover' },
-        isTooltip: { type: Boolean, required: false, default: false }
+        disabled: { type: Boolean, required: false, default: false }
     },
     setup: function (__props) {
         var props = __props;
         var visible = ref(false);
         var headerRef = ref(null);
         var dropdownRef = ref(null);
-        var _a = toRefs(props), trigger = _a.trigger, isTooltip = _a.isTooltip;
-        var onShow = function () { return visible.value = true; };
+        var _a = toRefs(props), trigger = _a.trigger, disabled = _a.disabled;
+        var onShow = function () {
+            if (!disabled.value) {
+                visible.value = true;
+            }
+        };
         var onHide = function () { return visible.value = false; };
+        var onToggle = function () {
+            if (!disabled.value) {
+                visible.value = !visible.value;
+            }
+        };
+        var focused = false;
+        var onBlur = function () {
+            focused = false;
+            onHide();
+        };
+        var onFocus = function (e) {
+            e.stopPropagation();
+            focused = true;
+        };
+        var onClick = function () {
+            if (focused) {
+                onToggle();
+            }
+        };
+        var clean = function (trigger) {
+            var _headerRef = headerRef.value;
+            var _dropdownRef = dropdownRef.value;
+            if (trigger === 'click') {
+                _dropdownRef.removeEventListener('mouseenter', onShow);
+                _dropdownRef.removeEventListener('mouseleave', onHide);
+                _dropdownRef.removeEventListener('click', onToggle);
+            }
+            else {
+                _headerRef.removeEventListener('blur', onBlur, true);
+                _headerRef.removeEventListener('focus', onFocus, true);
+                _dropdownRef.removeEventListener('click', onClick);
+            }
+        };
         onMounted(function () {
             watch(trigger, function (value) {
                 var _headerRef = headerRef.value;
+                var _dropdownRef = dropdownRef.value;
                 if (value === 'hover') {
-                    if (isTooltip.value) {
-                        _headerRef.addEventListener('mouseenter', onShow);
-                        _headerRef.addEventListener('mouseleave', onHide);
-                    }
-                    else {
-                        var _dropdownRef = dropdownRef.value;
-                        _dropdownRef.addEventListener('mouseenter', onShow);
-                        _dropdownRef.addEventListener('mouseleave', onHide);
-                    }
+                    _dropdownRef.addEventListener('mouseenter', onShow);
+                    _dropdownRef.addEventListener('mouseleave', onHide);
+                    _dropdownRef.addEventListener('click', onToggle);
                 }
                 else {
-                    _headerRef.addEventListener('focusout', onHide);
-                    _headerRef.addEventListener('click', function () { return visible.value
-                        ? onHide()
-                        : onShow(); });
+                    _headerRef.addEventListener('blur', onBlur, true);
+                    _headerRef.addEventListener('focus', onFocus, true);
+                    _dropdownRef.addEventListener('click', onClick);
                 }
+                clean(value);
             }, { immediate: true });
         });
         return function (_ctx, _cache) {
             return (openBlock(), createElementBlock("div", {
-                class: "u-dropdown relative w-fit h-fit",
+                class: "u-dropdown relative w-fit",
                 ref_key: "dropdownRef",
                 ref: dropdownRef
             }, [
@@ -1577,20 +1591,18 @@ var script$9 = /*#__PURE__*/ defineComponent({
                     class: "u-dropdown-header",
                     tabindex: "-1",
                     ref_key: "headerRef",
-                    ref: headerRef
+                    ref: headerRef,
+                    disabled: unref(disabled)
                 }, [
                     renderSlot(_ctx.$slots, "default", { visible: visible.value })
-                ], 512 /* NEED_PATCH */),
+                ], 8 /* PROPS */, _hoisted_1$7),
                 createVNode(Transition, { name: "u-fade" }, {
                     default: withCtx(function () { return [
                         (visible.value)
-                            ? (openBlock(), createElementBlock("div", {
+                            ? renderSlot(_ctx.$slots, "list", {
                                 key: 0,
-                                class: "u-dropdown-list",
-                                onClick: onHide
-                            }, [
-                                renderSlot(_ctx.$slots, "list", { visible: visible.value })
-                            ]))
+                                visible: visible.value
+                            })
                             : createCommentVNode("v-if", true)
                     ]; }),
                     _: 3 /* FORWARDED */
@@ -1600,9 +1612,9 @@ var script$9 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$9.__file = "src/components/u-dropdown/index.vue";
+script$b.__file = "src/components/dropdown/index.vue";
 
-var script$8 = /*#__PURE__*/ defineComponent({
+var script$a = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         to: { type: Number, required: false, default: 0 },
@@ -1685,9 +1697,9 @@ var script$8 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$8.__file = "src/components/u-scroller/index.vue";
+script$a.__file = "src/components/scroller/index.vue";
 
-var script$7 = /*#__PURE__*/ defineComponent({
+var script$9 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         value: { type: null, required: false, default: false },
@@ -1732,10 +1744,146 @@ var script$7 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$7.__file = "src/components/u-checkbox/index.vue";
+script$9.__file = "src/components/checkbox/index.vue";
+
+var script$8 = /*#__PURE__*/ defineComponent({
+    __name: 'index',
+    props: {
+        loop: { type: Boolean, required: false, default: false },
+        autoplay: { type: [Number, Boolean], required: false, default: false },
+        vertical: { type: Boolean, required: false, default: false },
+        modelValue: { type: Number, required: true }
+    },
+    emits: ["update:modelValue"],
+    setup: function (__props, _a) {
+        var emit = _a.emit;
+        var props = __props;
+        var timer = 0;
+        var _b = toRefs(props), loop = _b.loop, autoplay = _b.autoplay, vertical = _b.vertical, modelValue = _b.modelValue;
+        var counter = ref(0);
+        var animationName = ref('u-slide-left');
+        var carouselRef = ref(null);
+        var updateCounter = function (value) { return counter.value = value; };
+        var updateModelValue = function (value) { return emit('update:modelValue', value); };
+        provide(carouselKey, {
+            counter: counter,
+            modelValue: modelValue,
+            updateCounter: updateCounter
+        });
+        var onPrev = function () {
+            var newIndex = modelValue.value - 1;
+            var isBoundary = newIndex === -1;
+            if (isBoundary && !loop.value) {
+                return;
+            }
+            animationName.value = vertical.value ? 'u-slide-down' : 'u-slide-right';
+            updateModelValue(isBoundary ? counter.value - 1 : newIndex);
+        };
+        var onNext = function () {
+            var newIndex = modelValue.value + 1;
+            var isBoundary = newIndex === counter.value;
+            if (isBoundary && !loop.value) {
+                return;
+            }
+            animationName.value = vertical.value ? 'u-slide-up' : 'u-slide-left';
+            updateModelValue(isBoundary ? 0 : newIndex);
+        };
+        var onClick = function (e) {
+            var _a = e, target = _a.target, currentTarget = _a.currentTarget;
+            if (target === currentTarget) {
+                return;
+            }
+            var index = useGetIndex(target, currentTarget);
+            var _modelValue = modelValue.value;
+            if (index !== _modelValue) {
+                animationName.value = vertical.value
+                    ? index > _modelValue
+                        ? 'u-slide-up'
+                        : 'u-slide-down'
+                    : index > _modelValue
+                        ? 'u-slide-left'
+                        : 'u-slide-right';
+                updateModelValue(index);
+            }
+        };
+        var onMouseenter = function () {
+            if (timer) {
+                clearInterval(timer);
+            }
+        };
+        var onMouseleave = function () {
+            var _autoplay = autoplay.value;
+            if (_autoplay) {
+                timer = setInterval(function () { return onNext(); }, 3000);
+            }
+        };
+        watch(modelValue, function (newIndex, oldIndex) {
+            var sliders = carouselRef.value.querySelectorAll('.u-carousel-slider');
+            var _animationName = animationName.value;
+            sliders[oldIndex].classList.remove('z-10');
+            sliders[newIndex].classList.add(_animationName, 'z-10');
+            sliders[newIndex].classList.replace('opacity-0', 'opacity-100');
+            setTimeout(function () {
+                sliders[newIndex].classList.remove(_animationName);
+                sliders[oldIndex].classList.replace('opacity-100', 'opacity-0');
+            }, 300);
+        });
+        onMounted(function () {
+            var _autoplay = autoplay.value;
+            if (_autoplay) {
+                timer = setInterval(function () { return onNext(); }, 3000);
+            }
+        });
+        return function (_ctx, _cache) {
+            return (openBlock(), createElementBlock("div", {
+                ref_key: "carouselRef",
+                ref: carouselRef,
+                class: "u-carousel relative overflow-hidden",
+                onMouseenter: onMouseenter,
+                onMouseleave: onMouseleave
+            }, [
+                renderSlot(_ctx.$slots, "default"),
+                createElementVNode("div", {
+                    class: "u-carousel-prev",
+                    onClick: onPrev
+                }, [
+                    createVNode(Transition, { name: "u-fade" }, {
+                        default: withCtx(function () { return [
+                            (unref(loop) || unref(modelValue) !== 0)
+                                ? renderSlot(_ctx.$slots, "prev", { key: 0 })
+                                : createCommentVNode("v-if", true)
+                        ]; }),
+                        _: 3 /* FORWARDED */
+                    })
+                ]),
+                createElementVNode("div", {
+                    class: "u-carousel-next",
+                    onClick: onNext
+                }, [
+                    createVNode(Transition, { name: "u-fade" }, {
+                        default: withCtx(function () { return [
+                            (unref(loop) || unref(modelValue) !== counter.value - 1)
+                                ? renderSlot(_ctx.$slots, "next", { key: 0 })
+                                : createCommentVNode("v-if", true)
+                        ]; }),
+                        _: 3 /* FORWARDED */
+                    })
+                ]),
+                createElementVNode("div", {
+                    class: "u-carousel-navigation",
+                    onClick: onClick
+                }, [
+                    renderSlot(_ctx.$slots, "navigation", { total: counter.value })
+                ])
+            ], 544 /* HYDRATE_EVENTS, NEED_PATCH */));
+        };
+    }
+});
+
+script$8.__file = "src/components/carousel/index.vue";
 
 var _hoisted_1$6 = { class: "u-expansion" };
-var script$6 = /*#__PURE__*/ defineComponent({
+var script$7 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         min: { type: Number, required: false, default: Number.MIN_SAFE_INTEGER },
@@ -1771,10 +1919,10 @@ var script$6 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$6.__file = "src/components/u-expansion/index.vue";
+script$7.__file = "src/components/expansion/index.vue";
 
 var _hoisted_1$5 = { class: "u-tab-panels" };
-var script$5 = /*#__PURE__*/ defineComponent({
+var script$6 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         modelValue: { type: String, required: true }
@@ -1791,14 +1939,14 @@ var script$5 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$5.__file = "src/components/u-tab-panels/index.vue";
+script$6.__file = "src/components/tab-panels/index.vue";
 
 var _hoisted_1$4 = ["onScroll"];
 var _hoisted_2$1 = ["onClick"];
 var _hoisted_3 = ["onMousemove"];
 var _hoisted_4 = ["onClick"];
 var _hoisted_5 = ["onMousemove"];
-var script$4 = /*#__PURE__*/ defineComponent({
+var script$5 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         width: { type: String, required: false, default: '100%' },
@@ -2138,7 +2286,7 @@ var script$4 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$4.__file = "src/components/u-scroll-area/index.vue";
+script$5.__file = "src/components/scroll-area/index.vue";
 
 var _hoisted_1$3 = {
     class: "u-skeleton-item relative before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:-left-full before:z-0 before:bg-gradient-to-r before:from-[rgba(255,255,255,0)] before:via-[rgba(255,255,255,.5)] before:to-[rgba(255,255,255,0)] before:animate-[u-animate-left_1.5s_linear_.5s_infinite]",
@@ -2147,7 +2295,7 @@ var _hoisted_1$3 = {
         '--u-left-end': '100%',
     }
 };
-var script$3 = /*#__PURE__*/ defineComponent({
+var script$4 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     setup: function (__props) {
         inject(skeletonKey);
@@ -2157,10 +2305,10 @@ var script$3 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$3.__file = "src/components/u-skeleton-item/index.vue";
+script$4.__file = "src/components/skeleton-item/index.vue";
 
 var _hoisted_1$2 = { class: "u-expansion-item" };
-var script$2 = /*#__PURE__*/ defineComponent({
+var script$3 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         name: { type: String, required: true }
@@ -2171,7 +2319,7 @@ var script$2 = /*#__PURE__*/ defineComponent({
         var _a = inject(expansionKey), modelValue = _a.modelValue, updateModel = _a.updateModel;
         var expanded = computed(function () { return modelValue.includes(name.value); });
         var contentRef = ref(null);
-        var contentStyle = reactive({ height: expanded ? '100%' : '0px' });
+        var contentStyle = reactive({ height: expanded.value ? '100%' : '0px' });
         var onClick = function () { return updateModel(name.value); };
         onMounted(function () {
             watch(expanded, function (value) {
@@ -2201,10 +2349,10 @@ var script$2 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$2.__file = "src/components/u-expansion-item/index.vue";
+script$3.__file = "src/components/expansion-item/index.vue";
 
 var _hoisted_1$1 = { class: "u-checkbox-group" };
-var script$1 = /*#__PURE__*/ defineComponent({
+var script$2 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         min: { type: Number, required: false, default: Number.MIN_SAFE_INTEGER },
@@ -2244,11 +2392,11 @@ var script$1 = /*#__PURE__*/ defineComponent({
     }
 });
 
-script$1.__file = "src/components/u-checkbox-group/index.vue";
+script$2.__file = "src/components/checkbox-group/index.vue";
 
 var _hoisted_1 = { class: "u-infinite-scroll-content" };
 var _hoisted_2 = { class: "u-infinite-scroll-loading" };
-var script = /*#__PURE__*/ defineComponent({
+var script$1 = /*#__PURE__*/ defineComponent({
     __name: 'index',
     props: {
         offset: { type: Number, required: false, default: 200 },
@@ -2297,36 +2445,59 @@ var script = /*#__PURE__*/ defineComponent({
     }
 });
 
-script.__file = "src/components/u-infinite-scroll/index.vue";
+script$1.__file = "src/components/infinite-scroll/index.vue";
+
+var script = /*#__PURE__*/ defineComponent({
+    __name: 'index',
+    setup: function (__props) {
+        var sliderContainerRef = ref(null);
+        var _a = inject(carouselKey), counter = _a.counter, modelValue = _a.modelValue, updateCounter = _a.updateCounter;
+        var index = counter.value;
+        var sliderClass = index === modelValue.value ? 'z-10 opacity-100' : 'opacity-0';
+        updateCounter(index + 1);
+        return function (_ctx, _cache) {
+            return (openBlock(), createElementBlock("div", {
+                ref_key: "sliderContainerRef",
+                ref: sliderContainerRef,
+                class: normalizeClass(["u-carousel-slider absolute left-0 w-full h-full", unref(sliderClass)])
+            }, [
+                renderSlot(_ctx.$slots, "default")
+            ], 2 /* CLASS */));
+        };
+    }
+});
+
+script.__file = "src/components/carousel-slider/index.vue";
 
 var undefinedElement = {
     install: function (app) {
         app
-            .component('UTab', script$o)
-            .component('UTabs', script$n)
-            .component('UIcon', script$m)
-            .component('UInput', script$l)
-            .component('UTable', script$k)
-            .component('URange', script$j)
-            .component('UDialog', script$i)
-            .component('USlider', script$h)
-            .component('URating', script$g)
-            .component('USelect', script$f)
-            .component('UToggle', script$e)
-            .component('UTooltip', script$d)
-            .component('USplitter', script$c)
-            .component('UTabPanel', script$b)
-            .component('USkeleton', script$a)
-            .component('UDropdown', script$9)
-            .component('UScroller', script$8)
-            .component('UCheckbox', script$7)
-            .component('UExpansion', script$6)
-            .component('UTabPanels', script$5)
-            .component('UScrollArea', script$4)
-            .component('USkeletonItem', script$3)
-            .component('UExpansionItem', script$2)
-            .component('UCheckboxGroup', script$1)
-            .component('UInfiniteScroll', script);
+            .component('UTab', script$p)
+            .component('UTabs', script$o)
+            .component('UIcon', script$n)
+            .component('UInput', script$m)
+            .component('UTable', script$l)
+            .component('URange', script$k)
+            .component('UDialog', script$j)
+            .component('USlider', script$i)
+            .component('URating', script$h)
+            .component('USelect', script$g)
+            .component('UToggle', script$f)
+            .component('USplitter', script$e)
+            .component('UTabPanel', script$d)
+            .component('USkeleton', script$c)
+            .component('UDropdown', script$b)
+            .component('UScroller', script$a)
+            .component('UCheckbox', script$9)
+            .component('UCarousel', script$8)
+            .component('UExpansion', script$7)
+            .component('UTabPanels', script$6)
+            .component('UScrollArea', script$5)
+            .component('USkeletonItem', script$4)
+            .component('UExpansionItem', script$3)
+            .component('UCheckboxGroup', script$2)
+            .component('UInfiniteScroll', script$1)
+            .component('UCarouselSlider', script);
     }
 };
 

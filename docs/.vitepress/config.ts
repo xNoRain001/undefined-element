@@ -40,8 +40,7 @@ export default defineConfig({
           { text: 'Splitter', link: '/components/splitter' },
           { text: 'Tabs', link: '/components/tabs' },
           { text: 'Table', link: '/components/table' },
-          { text: 'Toggle', link: '/components/toggle' },
-          { text: 'Tooltip', link: '/components/tooltip' }
+          { text: 'Toggle', link: '/components/toggle' }
         ]
       }
     ],
@@ -102,8 +101,7 @@ export default defineConfig({
               { text: 'Splitter', link: '/en/components/splitter' },
               { text: 'Tabs', link: '/en/components/tabs' },
               { text: 'Table', link: '/en/components/table' },
-              { text: 'Toggle', link: '/en/components/toggle' },
-              { text: 'Tooltip', link: '/en/components/tooltip' }
+              { text: 'Toggle', link: '/en/components/toggle' }
             ]
           }
         ],
