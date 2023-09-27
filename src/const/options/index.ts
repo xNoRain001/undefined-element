@@ -1,5 +1,1 @@
-const watchOptions = { immediate: true }
-
-export {
-  watchOptions
-}
+export const watchOptions = { immediate: true }
