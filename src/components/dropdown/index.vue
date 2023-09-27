@@ -21,6 +21,8 @@
 <script lang="ts" setup>
 import { ref, watch, toRefs, onMounted } from 'vue'
 
+import { watchOptions } from '../../const/options'
+
 const props = withDefaults(defineProps<{
   trigger?: 'click' | 'hover',
   disabled?: boolean
@@ -96,6 +98,6 @@ onMounted(() => {
     }
 
     clean(value)
-  }, { immediate: true })
+  }, watchOptions)
 })
 </script>

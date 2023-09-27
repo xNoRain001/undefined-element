@@ -32,6 +32,7 @@ import {
 } from 'vue'
 
 import { expansionKey } from '../../const/keys'
+import { watchOptions } from '../..//const/options'
 
 const props = defineProps<{ name: string }>()
 const { name } = toRefs(props)
@@ -53,6 +54,6 @@ onMounted(() => {
     contentStyle.height = value 
       ? `${ contentRef.value!.scrollHeight }px` 
       : '0px'
-  }, { immediate: true })
+  }, watchOptions)
 })
 </script>

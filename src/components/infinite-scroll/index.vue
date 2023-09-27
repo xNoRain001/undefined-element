@@ -22,6 +22,7 @@
 import { ref, watch, toRefs, onMounted } from 'vue'
 
 import { debounce } from '../../utils'
+import { watchOptions } from '../../const/options'
 
 const emit = defineEmits<{ 'load': [done: Function] }>()
 const props = withDefaults(defineProps<{
@@ -59,6 +60,6 @@ onMounted(() => {
     const target = v ? document.querySelector(v) : containerRef.value
     
     target?.addEventListener('scroll', onScroll)
-  }, { immediate: true })
+  }, watchOptions)
 })
 </script>

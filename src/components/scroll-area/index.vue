@@ -61,6 +61,7 @@
 import { ref, watch, toRefs, computed, onMounted } from 'vue'
 
 import { debounce } from '@/utils'
+import { watchOptions } from '../../const/options'
 
 const props = withDefaults(defineProps<{ 
   width?: string,
@@ -453,7 +454,7 @@ const initResizeObserver = () => {
   watch(
     resize, 
     value => resizeObserver[value ? 'observe' : 'unobserve'](_contentRef), 
-    { immediate: true }
+    watchOptions
   )
 }
 

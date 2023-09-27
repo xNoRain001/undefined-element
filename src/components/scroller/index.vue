@@ -15,6 +15,7 @@
 import { ref, watch, toRefs, onMounted } from 'vue'
 
 import { throttle } from '../../utils'
+import { watchOptions } from '../../const/options'
 
 const props = withDefaults(defineProps<{ 
   to?: number,
@@ -100,7 +101,7 @@ onMounted(() => {
     _scrollTarget.value = v
     ? document.querySelector(v)
     : getScrollTarget()
-  }, { immediate: true })
+  }, watchOptions)
 
   updateVisibility()
 })
