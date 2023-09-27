@@ -2,8 +2,8 @@
   <div class="vp-raw my-[16px]">
     <u-infinite-scroll 
       @load="onLoad" 
-      :offset="200"
-      class="infinite-scroll h-[400px] overflow-y-scroll relative"
+      :offset="0"
+      class="h-[400px] overflow-y-scroll"
     >
       <div 
         v-for="(item, index) in items" 
@@ -12,13 +12,13 @@
         <span class="
           text-[12px] bg-[--primary-color] text-white py-[2px] px-[6px] 
           rounded-[4px]
-        ">{{ index }}</span>  
-        : {{ item }}
+        ">{{ index + 1 }}</span>  
+        {{ item }}
       </div>
       <template #loading="{ loading }">
         <div 
           v-if="loading" 
-          class="inline-block py-[16px] sticky bottom-0 left-1/2 -translate-x-1/2"
+          class="py-[16px] flex justify-center items-center"
         >
           <u-icon 
             class="animate-spin "
@@ -28,6 +28,7 @@
             color="var(--primary-color)"
           ></u-icon>
         </div>
+        <div v-else class="py-[16px] h-[36px] box-content"></div>
       </template>
     </u-infinite-scroll>
   </div>
@@ -43,7 +44,7 @@ const text = `
   alias magnam quae iusto neque illum minus possimus magni vero quas 
   voluptates.
 `
-const items = reactive<string[]>((new Array(40)).fill(text))
+const items = reactive<string[]>((new Array(20)).fill(text))
 
 const onLoad = (done: Function) => {
   setTimeout(() => {

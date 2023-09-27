@@ -1,11 +1,17 @@
 <template>
   <div class="u-infinite-scroll" ref="containerRef">
+    <Transition name="u-fade">
+      <div v-if="reverse" class="u-infinite-scroll-loading">
+        <slot name="loading" :loading="loading"></slot>
+      </div>
+    </Transition>
+
     <div class="u-infinite-scroll-content">
       <slot></slot>
     </div>
 
     <Transition name="u-fade">
-      <div class="u-infinite-scroll-loading">
+      <div v-if="!reverse" class="u-infinite-scroll-loading">
         <slot name="loading" :loading="loading"></slot>
       </div>
     </Transition>
@@ -16,7 +22,6 @@
 import { ref, watch, toRefs, onMounted } from 'vue'
 
 import { debounce } from '../../utils'
-import { useIsScrollToOffsetPosition } from '../../composables'
 
 const emit = defineEmits<{ 'load': [done: Function] }>()
 const props = withDefaults(defineProps<{
@@ -25,7 +30,7 @@ const props = withDefaults(defineProps<{
   scrollTarget?: string,
 }>(), {
   offset: 200,
-  reverse: true,
+  reverse: false,
   scrollTarget: '',
 })
 const loading = ref(false)
@@ -34,14 +39,16 @@ const { offset, reverse, scrollTarget } = toRefs(props)
 
 const done = () => loading.value = false
 
-const loaded = (target: HTMLElement) => {
-  const { scrollTop, clientHeight, scrollHeight } = target
+const loader = (container: HTMLElement) => {
+  const { scrollTop, clientHeight, scrollHeight } = container
 
-  return scrollHeight - clientHeight <= scrollTop + offset.value
+  return reverse.value 
+    ? scrollTop <= offset.value
+    : scrollTop >= scrollHeight - clientHeight - offset.value
 }
 
 const onScroll = debounce((e: Event) => {
-  if (!loading.value && loaded(e.target as HTMLElement)) {
+  if (!loading.value && loader(e.target as HTMLElement)) {
     loading.value = true
     emit('load', done)
   }
@@ -50,6 +57,7 @@ const onScroll = debounce((e: Event) => {
 onMounted(() => {
   watch(scrollTarget, v => {
     const target = v ? document.querySelector(v) : containerRef.value
+    
     target?.addEventListener('scroll', onScroll)
   }, { immediate: true })
 })

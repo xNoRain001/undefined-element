@@ -2,7 +2,7 @@
   <div class="vp-raw my-[16px]">
     <u-infinite-scroll 
       @load="onLoad" 
-      class="h-[400px] overflow-y-scroll"
+      class="h-[400px] overflow-y-auto"
     >
       <div 
         v-for="(item, index) in items" 
@@ -11,12 +11,12 @@
         <span class="
           text-[12px] bg-[--primary-color] text-white py-[2px] px-[6px] 
           rounded-[4px]
-        ">{{ index + 1 }}</span>  
+        ">{{ items.length - index }}</span>  
         {{ item }}
       </div>
       <template #loading="{ loading }">
         <div 
-          v-if="loading" 
+          v-if="loading"
           class="py-[16px] flex justify-center items-center"
         >
           <u-icon 

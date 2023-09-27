@@ -8,7 +8,7 @@
     {
       "prop": "offset",
       "desc-with-translation": {
-        "zh": "当距离底部的偏移为该值时，触发回调。",
+        "zh": "当距离底部的偏移小于或等于该值时，触发 load 回调。",
         "en-ai": "When the offset from the bottom is this value, the callback is triggered."
       },
       "type": "number",
@@ -17,7 +17,7 @@
     {
       "prop": "scrollTarget",
       "desc-with-translation": {
-        "zh": "目标",
+        "zh": "设置与 offset 进行比较的滚动容器目标，这个值会被传入 document.querySelector() 中。",
         "en-ai": "goal"
       },
       "type": "string",
@@ -54,11 +54,21 @@
     },
     {
       "title-with-translation": {
-        "zh": "目标",
+        "zh": "偏移",
+        "en-ai": "Basics"
+      },
+      "desc-with-translation": {
+        "zh": "在下面的例子中，演示了 Infinite Scroll 组件将 offset 设置为 0 时的效果，这意味着只有完全滚动到底部时才会加载更多内容。",
+        "en-ai": "You need to provide a callback for the load event, and pass the load parameter to the callback. After obtaining data, you need to call the load function to disable the loading state."
+      }
+    },
+    {
+      "title-with-translation": {
+        "zh": "滚动目标",
         "en-ai": "goal"
       },
       "desc-with-translation": {
-        "zh": "",
+        "zh": "在下面的例子中，演示了 Infinite Scroll 组件将 scrollTarget 设置为 .infinite-scroll-container 时的效果。",
         "en-ai": ""
       }
     }
