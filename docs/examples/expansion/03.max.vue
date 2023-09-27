@@ -7,7 +7,7 @@
       <u-expansion-item 
         name="1" 
         class="
-          border border-x-0 border-b-0 border-solid border-[--primary-border-color] 
+          border border-x-0 border-b-0 border-solid border-[--u-primary-border-color] 
         "
       >
         <template #default="{ expanded }">
@@ -33,7 +33,7 @@
       <u-expansion-item 
         name="2" 
         class="
-          border border-x-0 border-b-0 border-solid border-[--primary-border-color]
+          border border-x-0 border-b-0 border-solid border-[--u-primary-border-color]
         "
       >
         <template #default="{ expanded }">
@@ -59,7 +59,7 @@
       <u-expansion-item 
         name="3" 
         class="
-          border border-x-0 border-solid border-[--primary-border-color]
+          border border-x-0 border-solid border-[--u-primary-border-color]
         "
       >
         <template #default="{ expanded }">

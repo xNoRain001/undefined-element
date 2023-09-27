@@ -2,7 +2,7 @@
   <div class="vp-raw my-[16px]">
     <u-dropdown disabled>
       <template #default="{ visible }">
-        <button class="btn !cursor-not-allowed !bg-[--vp-c-green-lighter]">
+        <button class="btn !cursor-not-allowed !bg-[--u-primary-color-lighter]">
           Dropdown
           <u-icon 
             :def="matKeyboardArrowDown"

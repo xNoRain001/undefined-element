@@ -4,11 +4,11 @@
       :header="header" 
       :body="body"
       headerTrClass="
-        border border-solid border-[--primary-border-color] border-x-0 
+        border border-solid border-[--u-primary-border-color] border-x-0 
         border-t-0
       "
       bodyTrClass="
-        border border-solid border-[--primary-border-color] border-x-0 
+        border border-solid border-[--u-primary-border-color] border-x-0 
         border-t-0 hover:bg-[rgba(0,0,0,.08)] duration-300 transition-colors
       "
       thClass="px-[7px] py-[16px] h-[48px] text-[13px] text-center"

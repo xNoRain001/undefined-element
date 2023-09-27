@@ -740,10 +740,6 @@ video {
   border-radius: 4px;
 }
 
-.border {
-  border-width: 1px;
-}
-
 .bg-\[rgba\(0\2c 0\2c 0\2c \.4\)\] {
   background-color: rgba(0,0,0,.4);
 }

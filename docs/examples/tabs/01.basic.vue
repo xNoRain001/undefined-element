@@ -3,7 +3,7 @@
     <u-tabs 
       v-model="activeTab" 
       class="h-[40px] flex" 
-      indicatorClass="h-[2px] bg-[--primary-color]"
+      indicatorClass="h-[2px] bg-[--u-primary-color]"
     >
       <u-tab 
         :name="name" 
@@ -12,9 +12,9 @@
         class="
           font-medium flex items-center border-x-0 relative
           border-t-0 border-b-transparent border-solid border-[2px] mx-[16px]
-          hover:text-[--primary-color] first:ml-0
+          hover:text-[--u-primary-color] first:ml-0
         "
-        :class="name === activeTab ? 'text-[--primary-color]' : ''"
+        :class="name === activeTab ? 'text-[--u-primary-color]' : ''"
       >
         {{ label }}
       </u-tab> 

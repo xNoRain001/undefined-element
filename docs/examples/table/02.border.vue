@@ -8,11 +8,11 @@
       "
       thClass="
         px-[7px] py-[16px] h-[48px] text-[13px] text-center
-        border border-solid border-[--primary-border-color]
+        border border-solid border-[--u-primary-border-color]
       "
       tdClass="
         px-[7px] py-[16px] h-[48px] text-[13px] text-center
-        border border-solid border-[--primary-border-color] border-l-0
+        border border-solid border-[--u-primary-border-color] border-l-0
         border-t-0 first:border-l
       "
     >

@@ -9,7 +9,7 @@
         :key="index"
       >
         <span class="
-          text-[12px] bg-[--primary-color] text-white py-[2px] px-[6px] 
+          text-[12px] bg-[--u-primary-color] text-white py-[2px] px-[6px] 
           rounded-[4px]
         ">{{ index + 1 }}</span>  
         {{ item }}
@@ -24,7 +24,7 @@
             :def="matRefresh"
             width="36"
             height="36"
-            color="var(--primary-color)"
+            color="var(--u-primary-color)"
           ></u-icon>
         </div>
         <div v-else class="py-[16px] h-[36px] box-content"></div>
